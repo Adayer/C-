@@ -1,2 +1,3 @@
-﻿  Source.cpp
+﻿  Ejercicio2.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\Intro\Ejercicio2.cpp(12,29): warning C4838: conversion from 'unsigned int' to 'int' requires a narrowing conversion
   Intro.vcxproj -> C:\Users\andres.perez\Documents\GitHub\C-\Intro\Debug\Intro.exe
