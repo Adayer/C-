@@ -33,7 +33,8 @@ void ReturnBytes(int _pNum, std::vector<char>& _tPtrs)
 	/*std::vector<char*> tPtrChars;
 	tPtrChars.reserve(4);*/
 
-	for (int i = 3; i >= 0; --i) 
+	int iIndex = sizeof(int) - 1;
+	for (int i = iIndex; i >= 0; --i) 
 	{
 		printf("%02hhX\n", *(pByte + i)); //Este printf printea bien, el std::out printea cosas muy raras
 		_tPtrs.push_back(*(pByte + i));

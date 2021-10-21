@@ -1,0 +1,6 @@
+﻿  APM_Practica4.cpp
+  consola.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\AndrésPérez_Practica4\consola.cpp(8,18): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+C:\Users\andres.perez\Documents\GitHub\C-\AndrésPérez_Practica4\consola.cpp(8,21): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+  Generating Code...
+  AndrésPérez_Practica4.vcxproj -> C:\Users\andres.perez\Documents\GitHub\C-\AndrésPérez_Practicas\Debug\AndrésPérez_Practica4.exe
