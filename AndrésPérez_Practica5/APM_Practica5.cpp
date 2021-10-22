@@ -9,14 +9,10 @@ int main()
 	pFile = reinterpret_cast<FILE*>(OpenFile(cFileName,"r"));
 	
 	char tCharsRead[30];
-	unsigned int iItemsRead = ReadFile()
-
-	
+	unsigned int iItemsRead = ReadFile(pFile, tCharsRead, 20);
 	
 	int iError = CloseFile(pFile);
 	
-
-
 	return 0;
 }
 
