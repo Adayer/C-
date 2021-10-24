@@ -1,5 +1,10 @@
 #pragma once
-void* OpenFile(const char* fileName, const char* mode);
-int CloseFile(void* file);
-unsigned int ReadFile(void* file, char* buffer, unsigned int n);
-unsigned int WriteFile(void* file, char* buffer, unsigned int n);
+#include "APM_Practica5y7.h"
+
+namespace Utilities //Este namespace tiene sus funciones definidas en APM_Practica5y7.cpp
+{
+	namespace Algorithms
+	{
+
+	}
+}
