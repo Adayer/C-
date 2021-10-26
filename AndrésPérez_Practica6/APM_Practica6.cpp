@@ -1,15 +1,16 @@
 #include "APM_Practica6.h"
 #include <stdio.h>
 
-FILE* pFile(nullptr);
-
 int main()
 {
 	//Ejemplo con ordenador clase: 
 	//const char* cFileName = "C:/Users/andres.perez/source/repos/Ejemplo.txt";
+	//Ejemplo con portatil: 
+	//const char* cFileName = "C:/Users/andre/Desktop/Ejemplo.txt";
 	//Ejemplo con ordenador casa: 
-	const char* cFileName = "C:/Users/andre/Desktop/Ejemplo.txt";
-	pFile = reinterpret_cast<FILE*>(FileUtilities::OpenFile(cFileName, "r"));
+	const char* cFileName = "C:/Users/ANDRES/Desktop/Ejemplo.txt";
+
+	FILE* pFile = reinterpret_cast<FILE*>(FileUtilities::OpenFile(cFileName, "r"));
 	if (pFile)
 	{
 		char tCharsRead[20];
@@ -39,6 +40,5 @@ int main()
 
 		iError = FileUtilities::CloseFile(pFile);
 	}
-
 	return 0;
 }
