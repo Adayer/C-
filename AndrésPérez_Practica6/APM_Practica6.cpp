@@ -4,28 +4,27 @@
 int main()
 {
 	//Ejemplo con ordenador clase: 
-	//const char* cFileName = "C:/Users/andres.perez/source/repos/Ejemplo.txt";
+	const char* cFileName = "C:/Users/andres.perez/source/repos/Ejemplo.txt";
 	//Ejemplo con portatil: 
 	//const char* cFileName = "C:/Users/andre/Desktop/Ejemplo.txt";
 	//Ejemplo con ordenador casa: 
-	const char* cFileName = "C:/Users/ANDRES/Desktop/Ejemplo.txt";
+	//const char* cFileName = "C:/Users/ANDRES/Desktop/Ejemplo.txt";
 
-	FILE* pFile = reinterpret_cast<FILE*>(FileUtilities::OpenFile(cFileName, "r"));
+	FILE* pFile = reinterpret_cast<FILE*>(FileUtilities::OpenFile(cFileName, "a"));
 	if (pFile)
 	{
 		char tCharsRead[20];
 		unsigned int iItemsRead = FileUtilities::ReadFile(pFile, tCharsRead, 20);
 		if (iItemsRead)
 		{
+			//Llamar a funcion que checkea cuantas veces se repite la cadena en el FILE
 			for (unsigned int i = 0; i < iItemsRead; ++i)
 			{
-				printf("%c", tCharsRead[i]);
+
 			}
 		}
 	}
 
-	int iError = FileUtilities::CloseFile(pFile);
-	pFile = reinterpret_cast<FILE*>(FileUtilities::OpenFile(cFileName, "a"));
 	if (pFile)
 	{
 		char tCharsToWrite[] = "\nHola buenos dias, esto es un ejemplo.";
@@ -38,7 +37,7 @@ int main()
 			}
 		}
 
-		iError = FileUtilities::CloseFile(pFile);
+		int iError = FileUtilities::CloseFile(pFile);
 	}
 	return 0;
 }
