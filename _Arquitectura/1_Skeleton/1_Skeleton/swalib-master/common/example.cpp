@@ -3,44 +3,23 @@
 #include "core.h"
 #include "font.h"
 #include "vector2d.h"
+#include "BallLogic.h"
+#include "Renderer.h"
 
 //-----------------------------------------------------------------------------
 // Logic Info.
-struct Ball	// Info Ball
-{
-	vec2   pos;	// Position.
-	vec2   vel;	// Velocity.
-	GLuint gfx;	// OpenGL for id. for visualization purposes. 
-	float  radius;	// Radius.
-
-	Ball() :
-		pos(0.0f),
-		vel(0.0f),
-		gfx(0),
-		radius(0.0f)
-	{}
-};
-const unsigned int NUM_BALLS = 10;	// Max. num balls.
-Ball balls[NUM_BALLS];	// Array of balls.
-
-const float MAX_BALL_SPEED = 8.f;	// Max vel. of ball. (pixels/?).
 
 //-----------------------------------------------------------------------------
 int Main(void)
 {
-	FONT_Init();	// Characters and symbols inicialization to draw on screen.
+	Init();
+	
 
-	// Load textures
-	GLuint texbkg        = CORE_LoadPNG("data/circle-bkg-128.png"   , true);
-	GLuint texsmallball  = CORE_LoadPNG("data/tyrian_ball.png"      , false);
+	//INIT
+		//INIT BALLS
+		//INIT RENDER
+	GLuint texbkg = CORE_LoadPNG("data/circle-bkg-128.png", true);
 
-	// Init game state.
-	for (int i = 0; i < NUM_BALLS; i++) {
-		balls[i].pos = vec2(CORE_FRand(0.0, SCR_WIDTH), CORE_FRand(0.0, SCR_HEIGHT));
-		balls[i].vel = vec2(CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED), CORE_FRand(-MAX_BALL_SPEED, +MAX_BALL_SPEED));
-		balls[i].radius = 16.f;
-		balls[i].gfx = texsmallball;
-	}
 
 	// Set up rendering.
 	glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT); // Sets up clipping.
@@ -76,51 +55,33 @@ int Main(void)
 		SYS_Show();
 
 		// Run balls
-		for (int i = 0; i < NUM_BALLS; i++) {
-			// New Pos.
-			vec2 newpos = balls[i].pos + balls[i].vel;
-
-			// Collision detection.
-			bool collision = false;
-			int colliding_ball = -1;
-			for (int j = 0; j < NUM_BALLS; j++) {
-				if (i != j) {
-					float limit2 = (balls[i].radius + balls[j].radius) * (balls[i].radius + balls[j].radius);
-					if (vlen2(newpos - balls[j].pos) <= limit2) {
-						collision = true;
-						colliding_ball = j;
-						break;
-					}
-				}
-			}
-
-			if (!collision) {
-				balls[i].pos = newpos;
-			}
-			else {
-				// Rebound!
-				balls[i].vel = balls[i].vel * -1.f;
-				balls[colliding_ball].vel = balls[colliding_ball].vel * -1.f;
-			}
-
-			// Rebound on margins.
-			if ((balls[i].pos.x > SCR_WIDTH) || (balls[i].pos.x < 0)) {
-				balls[i].vel.x *= -1.0;
-			}
-			if ((balls[i].pos.y > SCR_HEIGHT) || (balls[i].pos.y < 0)) {
-				balls[i].vel.y *= -1.0;
-			}
-		}
-		
+				
 		SYS_Pump();	// Process Windows messages.
 		SYS_Sleep(17);	// To force 60 fps
 	}
 
 	// End app.
 	// Unload textures.
+	
 	CORE_UnloadPNG(texbkg);
-	CORE_UnloadPNG(texsmallball);
 	FONT_End();
 
 	return 0;
 }
+
+void Init() 
+{
+	InitBalls();
+	FONT_Init();	// Characters and symbols inicialization to draw on screen.
+}
+
+void Update()
+{
+	UpdateBalls();
+}
+
+void Exit()
+{
+	ExitBall();
+}
+

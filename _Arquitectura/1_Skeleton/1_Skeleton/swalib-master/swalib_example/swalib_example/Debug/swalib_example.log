@@ -1,8 +1,32 @@
-﻿  core.cpp
+﻿  BallLogic.cpp
   example.cpp
-  font.cpp
-  lodepng.cpp
-  stdafx.cpp
-  sys_win.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(11,1): error C2011: 'Ball': 'struct' type redefinition
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallLogic.h(6): message : see declaration of 'Ball'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(25,6): error C2079: 'balls' uses undefined struct 'Ball'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(40,10): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(41,10): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(42,10): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(43,10): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(70,37): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(70,56): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(70,79): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(70,103): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(70,108): error C2660: 'CORE_RenderCenteredSprite': function does not take 2 arguments
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\core.h(61,8): message : see declaration of 'CORE_RenderCenteredSprite'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(82,25): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(82,40): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(89,29): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(89,47): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(89,67): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(89,85): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(90,9): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(99,12): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(103,12): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(103,27): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(104,25): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(104,53): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(108,7): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(109,12): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(111,7): error C2109: subscript requires array or pointer type
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\example.cpp(112,12): error C2109: subscript requires array or pointer type
   Generating Code...
-  swalib_example.vcxproj -> C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe
