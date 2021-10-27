@@ -10,7 +10,7 @@ int main()
 	//Ejemplo con ordenador casa: 
 	const char* cFileName = "C:/Users/ANDRES/Desktop/Ejemplo.txt";
 
-	FILE* pFile = reinterpret_cast<FILE*>(FileUtilities::OpenFile(cFileName,"a"));
+	void* pFile = FileUtilities::OpenFile(cFileName,"r+");
 	if(pFile)
 	{
 		char tCharsRead[20];

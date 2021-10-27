@@ -4,7 +4,7 @@
 void* FileUtilities::OpenFile(const char* fileName, const char* mode) 
 {
 	FILE* pFile = new FILE;
-	printf("%p", pFile);
+	//printf("%p", pFile);
 	if (!fopen_s(&pFile, fileName, mode))
 	{
 		printf("\nYou opened the file.\n");
@@ -17,7 +17,7 @@ void* FileUtilities::OpenFile(const char* fileName, const char* mode)
 	return pFile;
 }
 
-int FileUtilities::CloseFile(void* file)
+int FileUtilities::CloseFile(void*& file)
 {
 	FILE* temp = reinterpret_cast<FILE*>(file);
 	int err = 0;
@@ -47,6 +47,6 @@ unsigned int FileUtilities::ReadFile(void* file, char* buffer, unsigned int n)
 unsigned int FileUtilities::WriteFile(void* file, char* buffer, unsigned int n)
 {
 	FILE* temp = reinterpret_cast<FILE*>(file);
-	//fseek(temp, 0, SEEK_END); //Se posiciona el "cursor de escritura" al final del archivo
+	fseek(temp, 0, SEEK_END); //Se posiciona el "cursor de escritura" al final del archivo
 	return fwrite(buffer, sizeof(char), n, temp);
 }

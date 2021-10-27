@@ -1,9 +1,20 @@
 #include <iostream>
 #include <vector>
 
-int main() 
+
+class CPrueba 
 {
 
+};
+
+class CPruebaHijaPublic : public CPrueba 
+{
+	
+};
+
+
+int main() 
+{
 
 	return 0;
 }
