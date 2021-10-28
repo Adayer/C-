@@ -104,11 +104,14 @@ void Shapes::addArrow(Lines & lines, const vec3 & from, const vec3 & to, const v
 	float escalar = length(dir);
 	dir = normalise(dir);
 
-	if (dir.x == 0 && (dir.y == 1 || dir.y == -1) && dir.z == 0) {
+	vec3 initialDir = cross(dir, up);
+
+	if (length(initialDir) <= 0.1f) {
 		up = vec3(1, 0, 0);
+		initialDir = cross(dir, up);
 	}
 
-	vec3 initialDir = cross(dir, up);
+
 	initialDir = normalise(initialDir);
 
 	vec3 pointUp = from + (dir * escalar * 0.9f) + (initialDir * escalar *0.1f);
