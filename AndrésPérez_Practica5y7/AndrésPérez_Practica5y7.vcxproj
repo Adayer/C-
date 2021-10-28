@@ -141,14 +141,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AndrésPérez_Practica5y7.h" />
+    <ClInclude Include="FileUtilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AndrésPérez_Practica5y7.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AndrésPérez_Libraries\AndrésPérez_Practica5.vcxproj">
-      <Project>{b20eaaad-cefa-475a-989b-62565f88ef30}</Project>
-    </ProjectReference>
+    <ClCompile Include="FileUtilities.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

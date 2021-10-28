@@ -20,14 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="APM_Practica6.h" />
+    <ClInclude Include="FileUtilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="APM_Practica6.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AndrésPérez_Libraries\AndrésPérez_Practica5.vcxproj">
-      <Project>{b20eaaad-cefa-475a-989b-62565f88ef30}</Project>
-    </ProjectReference>
+    <ClCompile Include="FileUtilities.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

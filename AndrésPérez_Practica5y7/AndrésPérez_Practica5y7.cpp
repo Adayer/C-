@@ -22,12 +22,7 @@ int main()
 				printf("%c", tCharsRead[i]);
 			}
 		}
-	}
-	
-	//int iError = FileUtilities::CloseFile(pFile);
-	//pFile = reinterpret_cast<FILE*>(FileUtilities::OpenFile(cFileName,"a"));
-	if(pFile)
-	{
+
 		char tCharsToWrite[] = "\nHola buenos dias, esto es un ejemplo.";
 		unsigned int iItemsWritten = FileUtilities::WriteFile(pFile, tCharsToWrite, 20);
 		if (iItemsWritten)
@@ -40,5 +35,6 @@ int main()
 
 		int iError = FileUtilities::CloseFile(pFile);
 	}
+	
 	return 0;
 }
