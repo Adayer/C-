@@ -80,9 +80,9 @@ struct Exercise1 {
 		cubeMatrix = identity_mat4();
 		cubePosition = vec3(0, 0, 0);
 
-		Shapes::addArrow(referenceFrameLines, vec3(0, 0, 0), vec3(1, 0, 0), vec3(1, 0, 0));
-		Shapes::addArrow(referenceFrameLines, vec3(0, 0, 0), vec3(0, 1, 0), vec3(0, 1, 0));
-		Shapes::addArrow(referenceFrameLines, vec3(0, 0, 0), vec3(0, 0, 1), vec3(0, 0, 1));
+		Shapes::addArrow(referenceFrameLines, vec3(0, 0, 0), vec3(4, 0, 0), vec3(1, 0, 0));
+		Shapes::addArrow(referenceFrameLines, vec3(0, 0, 0), vec3(0, 4, 0), vec3(0, 1, 0));
+		Shapes::addArrow(referenceFrameLines, vec3(0, 0, 0), vec3(0, 0, 4), vec3(0, 0, 1));
 
 		referenceFrameLines.load_to_gpu();
 		referenceFrameLines.get_shader_locations(lines_shader_index);

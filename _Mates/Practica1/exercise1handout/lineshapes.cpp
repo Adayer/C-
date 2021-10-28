@@ -95,35 +95,56 @@ void Shapes::addArrow(Lines & lines, const vec3 & from, const vec3 & to, const v
 	// finally draw lines with indices arrow_indices
 
 	//Calcular el vertice donde comienza la arista de punta de flecha superior
-	vec3 pointUp;
-	//1ºSacar el vector perpendicular a (0,-1,0) y la recta. 
+	//1ºSacar el vector perpendicular a (0,1,0) y la recta. 
 	//2ºNormalizar el vector y ponerlo a la distancia pedida.
 	//3ºRestar vector de la recta - vector obtenido.
+	vec3 up = vec3(0, 1, 0);
 
+	vec3 dir = to - from;
+	float escalar = length(dir);
+	dir = normalise(dir);
 
-	vec3 pointDown;
-	vec3 pointLeft;
-	vec3 pointRight;
+	if (dir.x == 0 && (dir.y == 1 || dir.y == -1) && dir.z == 0) {
+		up = vec3(1, 0, 0);
+	}
+
+	vec3 initialDir = cross(dir, up);
+	initialDir = normalise(initialDir);
+
+	vec3 pointUp = from + (dir * escalar * 0.9f) + (initialDir * escalar *0.1f);
+	vec3 pointDown = from + (dir * escalar * 0.9f) + (initialDir * escalar * -0.1f);
+	vec3 otherAxisDir = cross(dir, pointUp);
+	otherAxisDir = normalise(otherAxisDir);
+	vec3 pointRight = from + (dir * escalar * 0.9f) + (otherAxisDir * escalar * 0.1f);
+	vec3 pointLeft = from + (dir * escalar * 0.9f) + (otherAxisDir * escalar * -0.1f);
 
 	vec3 arrow_vertices[] = {
 		from,
 		to,
 		pointUp, 
 		pointDown, 
-		pointLeft, 
 		pointRight,
+		pointLeft, 
 	};
 	
 	vec3 arrow_colors[] = {
 		color,
 		color,
+		color,
+		color,
+		color,
+		color,
 	};
 
 	unsigned int arrow_indices[] = {
-		0,1,2,3,4,5 // draw line from arrow_vertices[0] to arrow_vertices[1]
+		0,1,//draw line from arrow_vertices[0] to arrow_vertices[1]
+		2,1, 
+		3,1,
+		4,1,
+		5,1
 	};
 
-	lines.add(&arrow_vertices[0].v[0], &arrow_colors[0].v[0], 6, &arrow_indices[0], 6);
+	lines.add(&arrow_vertices[0].v[0], &arrow_colors[0].v[0], 6, &arrow_indices[0], 10);
 }
 
 void Shapes::addGrid(Lines& lines, const vec3& from, const vec3& to, const vec3& color, int divs) {
