@@ -1,0 +1,9 @@
+﻿  APM_Practica9.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\AndrésPérez_Practica9\APM_Practica9.h(12,7): error C2143: syntax error: missing ';' before '*'
+C:\Users\andres.perez\Documents\GitHub\C-\AndrésPérez_Practica9\APM_Practica9.h(12,7): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\andres.perez\Documents\GitHub\C-\AndrésPérez_Practica9\APM_Practica9.h(12,17): error C2238: unexpected token(s) preceding ';'
+C:\Users\andres.perez\Documents\GitHub\C-\AndrésPérez_Practica9\APM_Practica9.h(13,7): error C2143: syntax error: missing ';' before '*'
+C:\Users\andres.perez\Documents\GitHub\C-\AndrésPérez_Practica9\APM_Practica9.h(13,7): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\andres.perez\Documents\GitHub\C-\AndrésPérez_Practica9\APM_Practica9.h(13,19): error C2238: unexpected token(s) preceding ';'
+C:\Users\andres.perez\Documents\GitHub\C-\AndrésPérez_Practica9\APM_Practica9.h(25,7): warning C4200: nonstandard extension used: zero-sized array in struct/union
+C:\Users\andres.perez\Documents\GitHub\C-\AndrésPérez_Practica9\APM_Practica9.h(25,7): message : This member will be ignored by a defaulted constructor or copy/move assignment operator
