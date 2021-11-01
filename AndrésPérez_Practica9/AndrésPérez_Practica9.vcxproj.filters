@@ -18,9 +18,15 @@
     <ClInclude Include="APM_Practica9.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FileUtilitiesP9.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="APM_Practica9.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileUtilitiesP9.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

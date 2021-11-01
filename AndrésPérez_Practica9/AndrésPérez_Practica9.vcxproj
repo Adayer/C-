@@ -140,9 +140,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="APM_Practica9.h" />
+    <ClInclude Include="FileUtilitiesP9.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="APM_Practica9.cpp" />
+    <ClCompile Include="FileUtilitiesP9.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
