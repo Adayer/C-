@@ -2,6 +2,7 @@
 #include "sys.h"
 #include "core.h"
 #include "vector2d.h"
+#include "font.h"
 
 //=============================================================================
 // Font support
@@ -43,7 +44,7 @@ void FONT_Init()
   // Load texture
   FONT_Tex = CORE_LoadPNG("data/kromasky.png", false);
 
-  // Preapre coords
+  // Prepare coords
   for (int i = 0; i < FONT_ROWS; i++) // One iteration per row
   {
     for (int j = 0; j < FONT_COLS; j++) // Inside row
