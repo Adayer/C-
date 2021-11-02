@@ -1,8 +1,12 @@
 #pragma once
+#include "stdafx.h"
+#include "sys.h"
+#include "core.h"
+#include "vector2d.h"
 
-void InitBalls();
+void InitBalls(GLuint texture);
 void UpdateBalls();
-void ExitBall();
+void ExitBall(GLuint texture);
 
 struct Ball	// Info Ball
 {
@@ -20,7 +24,6 @@ struct Ball	// Info Ball
 };
 
 const unsigned int NUM_BALLS = 10;	// Max. num balls.
-Ball balls[NUM_BALLS];	// Array of balls.
 const float MAX_BALL_SPEED = 8.f;	// Max vel. of ball. (pixels/?).
 
-GLuint texsmallball;
+typedef Ball tBall[NUM_BALLS];
