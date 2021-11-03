@@ -97,7 +97,9 @@ b e h
 c f i */
 struct mat3 {
 	mat3();
-	mat3( float a, float b, float c, float d, float e, float f, float g, float h, float i );
+	mat3( float a, float b, float c, 
+		float d, float e, float f, 
+		float g, float h, float i );
 	union {
 		float m[9];
 		float c[3][3];
@@ -123,7 +125,10 @@ struct versor;
 struct mat4 {
 	mat4();
 	// note! this is entering components in ROW-major order
-	mat4( float a, float b, float c, float d, float e, float f, float g, float h, float i, float j, float k, float l, float mm, float n, float o, float p );
+	mat4( float a, float b, float c, float d, 
+		float e, float f, float g, float h, 
+		float i, float j, float k, float l,
+		float mm, float n, float o, float p );
 	explicit mat4(const mat3& rot) { setRotation(rot); }
 	vec4 operator*( const vec4 &rhs );
 	mat4 operator*( const mat4 &rhs );

@@ -10,11 +10,13 @@ Practica 2
   update() se ejecuta en cada frame
   
   1. comprueba que al ejecutar la cámara se encuentra por encima de una cuadrícula (grid)
+-> Hecho
   2. intenta mover la cámara hacia adelante y atras como en la práctica anterior usando las teclas para modificar cameraPosition y después:
   
 		cameraMatrix = translate(identity_mat4(), cameraPosition*-1.f);
    
-   ¿recuerdas por qué se multiplica cameraPosition por -1.f?
+   ¿recuerdas por qué se multiplica cameraPosition por -1.f? 
+-> Hecho
    
   3. vas a utilizar una jerarquía de transformaciones para poder mover la cámara y ver más elementos de la escena.
 	

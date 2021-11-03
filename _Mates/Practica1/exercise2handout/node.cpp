@@ -33,6 +33,14 @@ void  Node::updateLocal()
 { 
 	// todo: given position, rotation and scale, create T,R and S such that
 
+	//Matriz de escala
+	mat4 scaleMat = scaler(identity_mat4(), scale);
+
+	//Matriz de posicion
+	mat4 positionMat = translate(identity_mat4(), position * -1.f);
+	//Matriz de rotación
+
+
 	//localMatrix = T*R*S;
 
 	// todo: given all above, create Sinv, Rinv and Tinv such that

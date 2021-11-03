@@ -146,6 +146,28 @@ struct Exercise2 {
 		glfwGetCursorPos(window, &prevMousePosX, &prevMousePosY);
 		glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 		glfwSetWindowFocusCallback(window, onWindowsFocus);
+
+		//Ejercicio 1 -> Check si la camara se encuentra por encima de la malla
+		//(CameraPosition - MallaPosition) · normalDeLaMalla;
+
+		//Vector de un punto de la malla a la camara
+		vec3 vecToCamera = cameraPosition - grid.points[0];
+		
+		//Sacamos la normal al plano
+		vec3 vecDelPlano1 = grid.points[0] - grid.points[1];
+		vec3 vecDelPlano2 = grid.points[0] - grid.points[12];
+		vec3 vecNormalPlano = cross(vecDelPlano2, vecDelPlano1);
+		vecNormalPlano = normalise(vecNormalPlano);
+
+		//Miramos si estamos por encima o debajo
+		if (dot(vecNormalPlano, vecToCamera) > 0)
+		{
+			printf("La camara se encuentra por ENCIMA del plano.");
+		}
+		else
+		{
+			printf("La camara se encuentra por DEBAJO del plano.");
+		}
 	}
 
 	void update() {
@@ -177,8 +199,6 @@ struct Exercise2 {
 			camPitch += -mouseDeltaY * camera.yaw_speed * elapsed_seconds;
 		}
 		
-
-
 		if (glfwGetKey(window, GLFW_KEY_A)) {
 			camYaw += camera.yaw_speed * elapsed_seconds;
 		}
@@ -200,6 +220,14 @@ struct Exercise2 {
 		// camNode.rotation = quat_from_axis_deg(...)* ...;
 		
 		// TODO: use keys to modify cameraPosition here
+		if (glfwGetKey(window, GLFW_KEY_UP))
+		{
+			cameraPosition.z -= 2;
+		}
+		if (glfwGetKey(window, GLFW_KEY_DOWN))
+		{
+			cameraPosition.z += 2;
+		}
 
 		camNode.position = cameraPosition;
 
