@@ -67,8 +67,10 @@ Practica 2
 	  no debes utilizar inverse() para obtener la matriz local inversa en este ejercicio, pero la puedes utilizar para hacer debug -por ejemplo, puedes comparar los números de tu matriz resultado con el que retorna inverse()-.
 	  
 	  utiliza math_utils para ello.
+->Codigo completado (creo)
 	  
 	  3.3 comprobarás que te funciona cuando veas la malla de ejemplo.
+->Comprobado
 	  
 	  fíjate que hay un nodo para cada elemento involucrado en el render:
 	  
@@ -85,12 +87,14 @@ Practica 2
 		?
 			
 		¿la matriz de la cámara o su inversa? ¿por qué?
-		
+->La Inversa de la cámara porque no es el objeto padre
 		Acuérdate de actualizar en el método update() del ejercicio la cámara en los dos sitios donde se hace camera.set_shader_uniforms para el pintado, tanto de las líneas como de las mallas.
 	  
 	  permite que la camara mire con el ratón utilizando camNode.rotation
 	   - para ello utiliza la función  quat_from_axis_deg y camYaw y camPitch
 	  
 	  ¿sabrías rotar el diorama? ¿qué nodo tienes que rotar? ¿cómo se rota o transforma un nodo?
+-> Seria rotar el diorma utilizando MeshGroupNode como se hace en la linea 238 de "exercise2.h" o rotando el root, pero habria que tener en cuenta que eso aplicaria a todo la misma rotacion y por lo tanto no se percibiría la rotacion. 
+-> Para rotar un nodo se utiliza quat_from_axis_deg o quat_from_axis_rad, indicando como el primer valor el angulo de grado y los 3 siguientes indican el eje de giro.
 	  
 	  

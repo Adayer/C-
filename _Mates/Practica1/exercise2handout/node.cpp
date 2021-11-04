@@ -13,7 +13,8 @@ void Node::init() {
 	localMatrix = identity_mat4();
 	worldMatrix = identity_mat4();
 	localInverseMatrix = identity_mat4();
-	worldInverseMatrix = identity_mat4();
+	worldInverseMatrix = identity_mat4();	
+	
 }
 
 void Node::addChild(Node& node) { 
@@ -32,20 +33,31 @@ void Node::removeChild(Node& node) {
 void  Node::updateLocal() 
 { 
 	// todo: given position, rotation and scale, create T,R and S such that
-
-	//Matriz de escala
-	mat4 scaleMat = scaler(identity_mat4(), scale);
-
 	//Matriz de posicion
-	mat4 positionMat = translate(identity_mat4(), position * -1.f);
+	T = translate(identity_mat4(), position);
 	//Matriz de rotación
+	R = quat_to_mat4(rotation);
+	//Matriz de escala
+	S = scaler(identity_mat4(), scale);
 
-
-	//localMatrix = T*R*S;
+	localMatrix = T*R*S;
 
 	// todo: given all above, create Sinv, Rinv and Tinv such that
 
-	//localInverseMatrix = Sinv*Rinv*Tinv;
+	//Inversa de la posición
+	Tinv = translate(identity_mat4(), position * -1.f);
+
+	//Inversa de la rotación
+	Rinv = transpose(R);
+
+	//Inversa de la escala
+	Sinv = S;
+	for (unsigned int i = 0; i < 10; i += 5)
+	{
+		Sinv.m[i] = 1.f / S.m[i];
+	}
+	
+	localInverseMatrix = Sinv*Rinv*Tinv;
 }
 
 void  Node::updateHierarchy()

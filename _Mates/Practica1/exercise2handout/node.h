@@ -17,6 +17,22 @@ struct Node {
 	mat4 worldMatrix;
 	mat4 worldInverseMatrix;
 
+	//Matriz de traslacion
+	mat4 T;
+	//Matriz de rotación
+	mat4 R;
+	//Matriz de escala
+	mat4 S;
+
+	//Matriz inversa traslacion
+	mat4 Tinv;
+	//Matriz inversa rotacion
+	mat4 Rinv;
+	//Matriz inversa escala
+	mat4 Sinv;
+	
+
+
 	Node();
 
 	void init();
