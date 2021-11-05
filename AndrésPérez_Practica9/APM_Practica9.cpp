@@ -201,3 +201,22 @@ void TList::Reset()
 		delete pBuffer;
 	} while (pCurrent);
 }
+TList::TList(const TList& _rOther)
+{
+	m_iSize = _rOther.m_iSize;
+	m_pFirst = _rOther.m_pFirst;
+	m_pFirst = _rOther.m_pFirst;
+	m_pCurrent = _rOther.m_pCurrent;
+	CNode* pCurrent = _rOther.m_pFirst;
+
+
+	if (pCurrent)
+	{
+		m_pFirst->SetNext(pCurrent->GetNext());
+		pCurrent = m_pFirst->GetNext();
+		while (pCurrent)
+		{
+			pCurrent->SetNext(pCurrent->GetNext());
+		}
+	}
+}

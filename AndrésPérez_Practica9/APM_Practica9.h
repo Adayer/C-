@@ -13,8 +13,8 @@ private:
 };
 class TList
 {
-
 public:
+	TList(const TList& _rOther);
 	int Size() { return m_iSize; };
 	int Push(const char* pNewChar);
 	const char* First();
