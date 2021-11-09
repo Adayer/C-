@@ -83,37 +83,92 @@ int main()
 	//Esta parte demuestra la funcionalidad de la Practica 10
 #pragma region Practica10
 
-	
-	//Ejemplo con ordenador clase: 
-	//const char* cFileName = "C:/Users/andres.perez/source/repos/Ejemplo.txt";
-	//Ejemplo con portatil: 
-	//const char* cFileName = "C:/Users/andre/Desktop/Ejemplo.txt";
-	//Ejemplo con ordenador casa: 
-	const char* cFileName = "C:/Users/ANDRES/Desktop/Ejemplo.txt";
-	
-	void* pFile = FileUtilities::OpenFile(cFileName, "r+");
-	
-	if (pFile)
-	{
-		TList pNumbers = FileUtilities::Algorithms::FindNumbersInFile(pFile);
-		int iQuantityOfNumbersFound = pNumbers.Size();
-		int a = 0;
-		int bAStartsWith0 = false;
-		int bIsNegative = false;
-		printf("\n");
-		for (unsigned int i = 0; i < iQuantityOfNumbersFound; ++i)
-		{
-			const char* cReadChar = pNumbers.Pop();
-			char charRead = *cReadChar;
-			int num = static_cast<int>(charRead);
+	//
+	////Ejemplo con ordenador clase: 
+	////const char* cFileName = "C:/Users/andres.perez/source/repos/Ejemplo.txt";
+	////Ejemplo con portatil: 
+	////const char* cFileName = "C:/Users/andre/Desktop/Ejemplo.txt";
+	////Ejemplo con ordenador casa: 
+	//const char* cFileName = "C:/Users/ANDRES/Desktop/Ejemplo.txt";
+	//
+	//void* pFile = FileUtilities::OpenFile(cFileName, "r+");
+	//
+	//if (pFile)
+	//{
+	//	TList pNumbers = FileUtilities::Algorithms::FindNumbersInFile(pFile);
+	//	int iQuantityOfNumbersFound = pNumbers.Size();
+	//	int a = 0;
+	//	int bAStartsWith0 = false;
+	//	int bIsNegative = false;
+	//	printf("\n");
+	//	for (unsigned int i = 0; i < iQuantityOfNumbersFound; ++i)
+	//	{
+	//		const char* cReadChar = pNumbers.Pop();
+	//		char charRead = *cReadChar;
+	//		int num = static_cast<int>(charRead);
 
-			printf("%d, ", num);
-			delete cReadChar;
-		}
-	}
+	//		printf("%d, ", num);
+	//		delete cReadChar;
+	//	}
+	//}
 	
 
 #pragma endregion
+
+	//Esta parte demuestra la funcionalidad de la Practica 11
+#pragma region Practica11
+
+	//const char tWord1[] = "Hello";
+	//const char tWord2[] = "there!";
+	//const char tWord3[] = "General";
+	//const char tWord4[] = "Kenobi.";
+
+	//TList tWordList;
+
+	//if (tWordList.Push(tWord1))
+	//{
+	//	printf("%s\n", tWordList.GetCurrent());
+	//}
+	//if (tWordList.Push(tWord2))
+	//{
+	//	printf("%s\n", tWordList.Next());		
+	//}
+	//if (tWordList.Push(tWord3))
+	//{
+	//	printf("%s\n", tWordList.Next());
+	//}
+	//if (tWordList.Push(tWord4))
+	//{
+	//	printf("%s\n", tWordList.Next());
+	//}
+
+	//TList newList = tWordList; //Prueba constructor de copia
+
+	//printf("\nConstructor de copia\n");
+	//int iSize1 = newList.Size();
+
+	//for (unsigned int i = 0; i < iSize1; ++i)
+	//{
+	//	printf("%s\n", newList.GetCurrent());
+	//	newList.Next();
+	//}
+
+	//TList newListReversed; //Prueba inversion de lista
+
+	//printf("\nInversion de lista\n");
+	//newListReversed.GetReverseList(newList);	
+
+	//int iSize2 = newListReversed.Size();
+
+	//for (unsigned int i = 0; i < iSize2; ++i)
+	//{
+	//	printf("%s\n", newListReversed.GetCurrent());
+	//	newListReversed.Next();
+	//}
+
+
+#pragma endregion
+
 
 	return 0;
 }
@@ -121,26 +176,23 @@ int main()
 int TList::Push(const char* pNewChar)
 {
 	int iPreviousSize = m_iSize;
-	CNode* pCurrent = m_pFirst;
-	if (pCurrent) 
+	if (m_tail)
 	{
-		while (pCurrent->GetNext())
-		{
-			pCurrent = pCurrent->GetNext();
-		}
 		CNode* newNode = new CNode;
 		newNode->SetChar(pNewChar);
 
-		pCurrent->SetNext(newNode);
-		if (pCurrent->GetNext()) 
+		m_tail->SetNext(newNode);
+		if (m_tail->GetNext())
 		{
 			++m_iSize;
+			newNode->SetPreviousNode(m_tail);
+			m_tail = newNode;
 		}
 	}
 	else 
 	{
 		SetFirst(pNewChar);
-		if (m_pFirst) 
+		if (m_pFirst)
 		{
 			++m_iSize;
 		}
@@ -153,6 +205,8 @@ void TList::SetFirst(const char* _node)
 	m_pFirst = newFirst;
 	m_pFirst->SetChar(_node);
 	m_pFirst->SetNext(nullptr);
+	m_tail = newFirst;
+	m_pFirst->SetPreviousNode(nullptr);
 	SetNextToFirst();
 }
 const char* TList::First()
@@ -161,8 +215,15 @@ const char* TList::First()
 }
 const char* TList::Next()
 {
-	m_pCurrent = m_pCurrent->GetNext();
-	return m_pCurrent->GetChar();
+	if (m_pCurrent->GetNext()) 
+	{
+		m_pCurrent = m_pCurrent->GetNext();
+		return m_pCurrent->GetChar();
+	}
+	else 
+	{
+		return nullptr;
+	}
 }
 const char* TList::Pop()
 {
@@ -203,20 +264,21 @@ void TList::Reset()
 }
 TList::TList(const TList& _rOther)
 {
-	m_iSize = _rOther.m_iSize;
-	m_pFirst = _rOther.m_pFirst;
-	m_pFirst = _rOther.m_pFirst;
-	m_pCurrent = _rOther.m_pCurrent;
 	CNode* pCurrent = _rOther.m_pFirst;
 
-
-	if (pCurrent)
+	while (pCurrent)
 	{
-		m_pFirst->SetNext(pCurrent->GetNext());
-		pCurrent = m_pFirst->GetNext();
-		while (pCurrent)
-		{
-			pCurrent->SetNext(pCurrent->GetNext());
-		}
+		this->Push(pCurrent->GetChar());
+		pCurrent = pCurrent->GetNext();
+	}
+}
+void TList::GetReverseList(TList& _tSrc)
+{
+	CNode* pCurrent = _tSrc.m_tail;
+
+	while (pCurrent)
+	{
+		this->Push(pCurrent->GetChar());
+		pCurrent = pCurrent->GetPrevious();
 	}
 }

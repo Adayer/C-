@@ -1,3 +1,4 @@
-﻿  FileUtilitiesP9.cpp
-D:\U-Tad\Master\C-\AndrésPérez_Practica9\FileUtilitiesP9.cpp(99,30): warning C4018: '<': signed/unsigned mismatch
+﻿  APM_Practica9.cpp
+D:\U-Tad\Master\C-\AndrésPérez_Practica9\APM_Practica9.cpp(149,29): warning C4018: '<': signed/unsigned mismatch
+D:\U-Tad\Master\C-\AndrésPérez_Practica9\APM_Practica9.cpp(162,29): warning C4018: '<': signed/unsigned mismatch
   AndrésPérez_Practica9.vcxproj -> D:\U-Tad\Master\C-\AndrésPérez_Practicas\Debug\AndrésPérez_Practica9.exe
