@@ -1,0 +1,5 @@
+﻿  Time.cpp
+  main.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\plantilla\src\main.cpp(20,11): warning C4930: 'CTime timed(void)': prototyped function not called (was a variable definition intended?)
+  Generating Code...
+  programacion2d.vcxproj -> C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\plantilla\project\Debug\programacion2d.exe
