@@ -36,20 +36,30 @@ public:
 	TList(){}
 	~TList()
 	{
-		CNode* pCurrent = m_tail;
-		while (pCurrent->GetPrevious())
+		CNode* pCurrent = m_pTail;
+
+		if (pCurrent)
 		{
-			pCurrent = pCurrent->GetPrevious();
-			delete pCurrent->GetNext();
-			pCurrent->SetNext(nullptr);
+			while (pCurrent->GetPrevious())
+			{
+				pCurrent = pCurrent->GetPrevious();
+				delete pCurrent->GetNext();
+				pCurrent->SetNext(nullptr);
+			}
+			delete m_pTail;
 		}
+
 		if (m_pFirst)
 		{
 			delete m_pFirst;
-			m_pFirst = nullptr;
-			m_pCurrent = nullptr;
-			m_tail = nullptr;
 		}
+
+
+		m_pFirst = nullptr;
+		m_pCurrent = nullptr;
+		m_pTail = nullptr;
+
+
 		m_iSize = 0;
 	}
 	int Size() { return m_iSize; };
@@ -66,5 +76,5 @@ private:
 	void SetFirst(const char* _node);
 	CNode* m_pFirst = nullptr;
 	CNode* m_pCurrent = m_pFirst;
-	CNode* m_tail = nullptr;
+	CNode* m_pTail = nullptr;
 };

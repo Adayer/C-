@@ -1,4 +1,6 @@
-﻿  APM_Practica9.cpp
-D:\U-Tad\Master\C-\AndrésPérez_Practica9\APM_Practica9.cpp(149,29): warning C4018: '<': signed/unsigned mismatch
-D:\U-Tad\Master\C-\AndrésPérez_Practica9\APM_Practica9.cpp(162,29): warning C4018: '<': signed/unsigned mismatch
-  AndrésPérez_Practica9.vcxproj -> D:\U-Tad\Master\C-\AndrésPérez_Practicas\Debug\AndrésPérez_Practica9.exe
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: El directorio intermedio (Debug\) contiene archivos compartidos de otro proyecto (AndrésPérez_Practica9.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
+  APM_Practica9.cpp
+  FileUtilitiesP9.cpp
+C:\Users\andre\Desktop\Hellevator\C-\AndrésPérez_Practica9\FileUtilitiesP9.cpp(99,30): warning C4018: '<': no coinciden signed/unsigned
+  Generando código...
+  AndrésPérez_Practica9.vcxproj -> C:\Users\andre\Desktop\Hellevator\C-\AndrésPérez_Practicas\Debug\AndrésPérez_Practica9,10y11.exe

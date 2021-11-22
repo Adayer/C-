@@ -176,17 +176,17 @@ int main()
 int TList::Push(const char* pNewChar)
 {
 	int iPreviousSize = m_iSize;
-	if (m_tail)
+	if (m_pTail)
 	{
 		CNode* newNode = new CNode;
 		newNode->SetChar(pNewChar);
 
-		m_tail->SetNext(newNode);
-		if (m_tail->GetNext())
+		m_pTail->SetNext(newNode);
+		if (m_pTail->GetNext())
 		{
 			++m_iSize;
-			newNode->SetPreviousNode(m_tail);
-			m_tail = newNode;
+			newNode->SetPreviousNode(m_pTail);
+			m_pTail = newNode;
 		}
 	}
 	else 
@@ -205,7 +205,7 @@ void TList::SetFirst(const char* _node)
 	m_pFirst = newFirst;
 	m_pFirst->SetChar(_node);
 	m_pFirst->SetNext(nullptr);
-	m_tail = newFirst;
+	m_pTail = newFirst;
 	m_pFirst->SetPreviousNode(nullptr);
 	SetNextToFirst();
 }
@@ -230,19 +230,19 @@ const char* TList::Pop()
 	--m_iSize;
 	CNode* pBuffer = m_pFirst->GetNext();
 	const char* pWord = m_pFirst->GetChar();
-	delete m_pFirst;
+
 	if (m_iSize == 0)
 	{
-		printf("");
+		delete m_pTail;
+		m_pTail = nullptr;
+		m_pFirst = nullptr;
 	}
-	if (pWord) 
+
+	if (pBuffer)
 	{
 		m_pFirst = pBuffer;
 	}
-	else
-	{
-		m_pFirst = nullptr;
-	}
+
 	
 	return pWord;
 }
@@ -274,7 +274,7 @@ TList::TList(const TList& _rOther)
 }
 void TList::GetReverseList(TList& _tSrc)
 {
-	CNode* pCurrent = _tSrc.m_tail;
+	CNode* pCurrent = _tSrc.m_pTail;
 
 	while (pCurrent)
 	{
