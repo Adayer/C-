@@ -1,7 +1,9 @@
 #include "Time.h"
+#include <stdio.h>
+
 void CTime::UpdateDeltaTime()
 {
-	double currentTime = glfwGetTime();
+	currentTime = glfwGetTime();
 	deltaTime = currentTime - previousTime;
 	previousTime = currentTime;
 }

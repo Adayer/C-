@@ -1,5 +1,12 @@
 ﻿  Time.cpp
   main.cpp
-C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\plantilla\src\main.cpp(20,11): warning C4930: 'CTime timed(void)': prototyped function not called (was a variable definition intended?)
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\plantilla\src\main.cpp(60,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\plantilla\src\main.cpp(61,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\plantilla\src\main.cpp(75,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\plantilla\src\main.cpp(76,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\plantilla\src\main.cpp(101,38): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\plantilla\src\main.cpp(101,28): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\plantilla\src\main.cpp(105,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\plantilla\src\main.cpp(105,34): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Generating Code...
   programacion2d.vcxproj -> C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\plantilla\project\Debug\programacion2d.exe
