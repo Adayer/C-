@@ -1,0 +1,17 @@
+﻿  main.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica2\src\main.cpp(84,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica2\src\main.cpp(85,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica2\src\main.cpp(91,33): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica2\src\main.cpp(92,33): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica2\src\main.cpp(93,65): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica2\src\main.cpp(93,52): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica2\src\main.cpp(97,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica2\src\main.cpp(97,100): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica2\src\main.cpp(101,35): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica2\src\main.cpp(102,35): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica2\src\main.cpp(103,67): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica2\src\main.cpp(103,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica2\src\main.cpp(107,110): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica2\src\main.cpp(107,102): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica2\src\main.cpp(114,128): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  programacion2d.vcxproj -> C:\Users\andres.perez\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica2\project\Debug\programacion2d.exe
