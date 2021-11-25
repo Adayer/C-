@@ -1,4 +1,0 @@
-﻿  APM_Practica2.cpp
-C:\Users\andre\Desktop\Master\C-\AndrésPérez_Practicas\APM_Practica2.cpp(26,29): warning C4838: la conversión de 'unsigned int' en 'int' requiere una conversión de restricción
-C:\Users\andre\Desktop\Master\C-\AndrésPérez_Practicas\APM_Practica2.cpp(107,29): warning C4018: '<': no coinciden signed/unsigned
-  AndrésPérez_Practicas.vcxproj -> C:\Users\andre\Desktop\Master\C-\AndrésPérez_Practicas\Debug\AndrésPérez_Practica2.exe
