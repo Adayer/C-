@@ -1,5 +1,6 @@
 #include "BallLogic.h"
 
+
 tBall balls;
 
 void InitBalls(GLuint _texture)
@@ -13,11 +14,18 @@ void InitBalls(GLuint _texture)
 	}
 }
 
-void UpdateBalls() 
+
+
+void UpdateBalls(const double& _deltaTime) 
 {
+	
+
+	
+
+
 	for (int i = 0; i < NUM_BALLS; i++) {
 		// New Pos.
-		vec2 newpos = balls[i].pos + balls[i].vel;
+		vec2 newpos = balls[i].pos + balls[i].vel * _deltaTime;
 
 		// Collision detection.
 		bool collision = false;

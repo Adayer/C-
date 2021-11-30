@@ -47,12 +47,45 @@ struct Exercise3 {
 	
 	static vec3 getWorldMousePosition(float mouse_x, float mouse_y, float windowsWidth, float windowsHeight, const mat4& projMat, const mat4& viewMat) {
 
+		//Screen -> Cube
+		float halfWidth = windowsWidth / 2;
+		float xInCube(0.f);
+		if (mouse_x > halfWidth)
+		{
+			float xHalf = mouse_x - halfWidth;
+			xInCube = xHalf / halfWidth;
+		}
+		else
+		{
+			xInCube = -((halfWidth - mouse_x) / halfWidth);
+		}
+		
+		float halfHeigth = windowsHeight / 2;
+		float yInCube(0.f);
+		if (mouse_y > halfHeigth)
+		{
+			float yHalf = mouse_y - halfHeigth;
+			yInCube = -(yHalf / halfHeigth);
+		}
+		else
+		{
+			yInCube = ((halfHeigth - mouse_y) / halfHeigth);
+		}
+
+		vec4 cubePos(xInCube, yInCube, -1, 1);
+
+		//Cube-> View
+		vec4 viewPos = inverse(projMat) * cubePos;
+		homogeneous(viewPos);
+		printf("%f\n", viewPos.x);
+
+		//View-> World
+		mat4 viewMatP = viewMat;
+		vec4 worldPos = viewMatP * viewPos;
+		printf("(%.2f,%.2f,%.2f,%.2f) \n", worldPos.x, worldPos.y, worldPos.z, worldPos.w);
 
 
-
-
-		return vec3(0, 0, 0);
-
+		return worldPos;
 	}
 
 	/* check if a ray and a sphere intersect. if not hit, returns false. it rejects
@@ -139,12 +172,20 @@ struct Exercise3 {
 		Exercise3& exercise = *static_cast<Exercise3*>(glfwGetWindowUserPointer(window));
 
 		if (GLFW_PRESS == action) {
-			vec3 mouseWorldPos = getWorldMousePosition(static_cast<float>(exercise.mousePosX), static_cast<float>(exercise.mousePosY), static_cast<float>(exercise.windowsWidth), static_cast<float>(exercise.windowsHeight), exercise.camera.proj_mat, exercise.camNode.worldInverseMatrix);
+			vec3 mouseWorldPos = getWorldMousePosition(static_cast<float>(exercise.mousePosX), static_cast<float>(exercise.mousePosY),
+				static_cast<float>(exercise.windowsWidth), static_cast<float>(exercise.windowsHeight),
+				exercise.camera.proj_mat, exercise.camNode.worldInverseMatrix);
+			
+			printf("Mouse Pos: (%.2f, %.2f, %.2f)\n", mouseWorldPos.x, mouseWorldPos.y, mouseWorldPos.z);
 
 			const vec3 camPos = exercise.camNode.worldMatrix.getColumn(3);
 			Ray ray;
 			ray.origin = camPos;
-			ray.direction = normalise(mouseWorldPos - camPos);
+			ray.direction = mouseWorldPos - camPos;
+			//ray.direction.y = ray.direction.y - 9.f;
+			ray.direction.z= -10.f;
+			ray.direction = normalise(ray.direction);
+			printf("Ray normalized:(%.2f, %.2f, %.2f)\n\n", ray.direction.x, ray.direction.y, ray.direction.z);
 
 			// check ray against all spheres in scene
 			int closest_sphere_clicked = -1;

@@ -3,9 +3,10 @@
 #include "sys.h"
 #include "core.h"
 #include "vector2d.h"
+#include "font.h"
 
 void InitBalls(GLuint texture);
-void UpdateBalls();
+void UpdateBalls(const double& deltaTime);
 void ExitBall(GLuint texture);
 
 struct Ball	// Info Ball
@@ -24,6 +25,6 @@ struct Ball	// Info Ball
 };
 
 const unsigned int NUM_BALLS = 10;	// Max. num balls.
-const float MAX_BALL_SPEED = 8.f;	// Max vel. of ball. (pixels/?).
+const float MAX_BALL_SPEED = 40.f;	// Max vel. of ball. (pixels/?).
 
 typedef Ball tBall[NUM_BALLS];
