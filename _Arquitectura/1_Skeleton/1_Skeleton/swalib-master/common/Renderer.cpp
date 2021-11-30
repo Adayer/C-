@@ -1,6 +1,5 @@
 #include "Renderer.h"
 
-extern tBall balls;
 
 GLuint texbkg;
 void InitRenderer()
@@ -31,8 +30,10 @@ void UpdateRenderer()
 		}
 	}
 
+	
+
 	// Render balls
-	for (int i = 0; i < NUM_BALLS; i++) {
+	for (unsigned int i = 0; i < NUM_BALLS; i++) {
 		CORE_RenderCenteredSprite(balls[i].pos, vec2(balls[i].radius * 2.f, balls[i].radius * 2.f), balls[i].gfx);
 	}
 }

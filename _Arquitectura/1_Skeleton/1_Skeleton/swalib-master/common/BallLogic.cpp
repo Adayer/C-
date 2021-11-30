@@ -18,11 +18,6 @@ void InitBalls(GLuint _texture)
 
 void UpdateBalls(const double& _deltaTime) 
 {
-	
-
-	
-
-
 	for (int i = 0; i < NUM_BALLS; i++) {
 		// New Pos.
 		vec2 newpos = balls[i].pos + balls[i].vel * _deltaTime;

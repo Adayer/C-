@@ -5,8 +5,11 @@
 #include "core.h"
 #include "font.h"
 #include "vector2d.h"
-#include "BallLogic.h"
 #include "Renderer.h"
+#include <vector>
+#include "Ball.h"
+#include "Managers.h"
+
 
 
 //-----------------------------------------------------------------------------
@@ -43,12 +46,13 @@ char buffer[5];
 char buffer2[100];
 char buffer3[100];
 
-extern tBall balls;
 char bufferBalls[100];
 char buffer1Balls[100];
 
 double realTime = 0.;
 double logicRunTime = 0.;
+
+#define NUM_BALLS 16
 
 int Main(void)
 {
@@ -65,8 +69,14 @@ int Main(void)
 	return 0;
 }
 
+
+
 void Init() 
 {
+	for (unsigned int i = 0; i <= NUM_BALLS; ++i)
+	{
+
+	}
 	InitBalls(CORE_LoadPNG("data/tyrian_ball.png", false));
 	InitRenderer();
 	FONT_Init();
@@ -76,7 +86,6 @@ void Init()
 	sprintf(buffer3, "%.2f\n", logicRunTime);
 	previousCount = previousCountLarge.QuadPart;
 }
-
 
 
 void Update()
@@ -91,7 +100,9 @@ void Update()
 	while(elapsedTime >= fixedTick)
 	{
 		deltaTime = elapsedTime / deltaTimeRatio;
-		UpdateBalls(deltaTime);
+		
+		LogicManager::GetInstance().UpdateBalls(elapsedTime);
+
 		elapsedTime = elapsedTime - fixedTick;
 		logicRunTime += fixedTick;
 		SYS_Sleep(17); // To force 60 fps
@@ -111,8 +122,12 @@ void Update()
 
 	
 	//Debug Ball Speed with Delta vs Real Speed
-	sprintf(bufferBalls, "REAL:%.2f, %.2f\n", balls[0].vel.x, balls[0].vel.y);
-	sprintf(buffer1Balls, "SIMUL:%.2f, %.2f\n", balls[0].vel.x * deltaTime, balls[0].vel.y * deltaTime);
+	/*sprintf(bufferBalls, "REAL:%.2f, %.2f\n", 
+		LogicManager::GetInstance()->GetBalls()[0].GetVelocity().x, 
+		LogicManager::GetInstance()->GetBalls()[0].GetVelocity().y);*/
+	/*sprintf(buffer1Balls, "SIMUL:%.2f, %.2f\n",
+		LogicManager::GetInstance()->GetBalls()[0].GetVelocity().x * deltaTime,
+		LogicManager::GetInstance()->GetBalls()[0].GetVelocity().y * deltaTime);*/
 	FONT_DrawString(vec2(20, 60), bufferBalls); //Real velocity
 	FONT_DrawString(vec2(20, 30), buffer1Balls); //Real velocity
 
