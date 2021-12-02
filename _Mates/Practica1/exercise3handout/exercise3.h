@@ -1,3 +1,4 @@
+
 #pragma once
 
 #ifdef WIN32
@@ -72,18 +73,15 @@ struct Exercise3 {
 			yInCube = ((halfHeigth - mouse_y) / halfHeigth);
 		}
 
-		vec4 cubePos(xInCube, yInCube, -1, 1);
+		vec4 cubePos(xInCube, yInCube, -1.f, 1.f);
 
 		//Cube-> View
 		vec4 viewPos = inverse(projMat) * cubePos;
-		homogeneous(viewPos);
-		printf("%f\n", viewPos.x);
+		viewPos = vec4(viewPos.x, viewPos.y, -1.f, 0.f);
 
 		//View-> World
-		mat4 viewMatP = viewMat;
-		vec4 worldPos = viewMatP * viewPos;
-		printf("(%.2f,%.2f,%.2f,%.2f) \n", worldPos.x, worldPos.y, worldPos.z, worldPos.w);
-
+		vec4 worldPos =  inverse(viewMat) * viewPos;
+		normalise(worldPos);
 
 		return worldPos;
 	}
@@ -99,6 +97,7 @@ struct Exercise3 {
 
 	// as in http://viclw17.github.io/2018/07/16/raytracing-ray-sphere-intersection/
 	// also "Ray Sphere Intersection 1 Analytical.pdf"
+	
 	static bool raySphereIntersection(const Ray& ray, vec3 C, float r, float* intersection_distance) {
 
 		const vec3& A = ray.origin;
@@ -141,6 +140,18 @@ struct Exercise3 {
 		}
 		return false;
 	}
+	
+	static bool raySphereIntersectionMine(const Ray& ray, vec3 C, float r)
+	{
+		vec3 vectorCentroRayo = cross(C - ray.origin, ray.direction);
+		
+		if (length(vectorCentroRayo) <= r)
+		{
+			return true;
+		}
+
+		return false;
+	}
 
 	// as in https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-sphere-intersection
 	// also "Ray Sphere Intersection 2 Geometrical.pdf"
@@ -156,7 +167,7 @@ struct Exercise3 {
 			vec3 mouseWorldPos = getWorldMousePosition(static_cast<float>(mousePosX), static_cast<float>(mousePosY), static_cast<float>(exercise.windowsWidth), static_cast<float>(exercise.windowsHeight), exercise.camera.proj_mat, exercise.camNode.worldInverseMatrix);
 			const vec3 camPos = exercise.camNode.worldMatrix.getColumn(3);
 			Ray ray;
-			ray.origin = camPos;
+			ray.origin = camPos + mouseWorldPos;
 			ray.direction = normalise(mouseWorldPos - camPos);
 
 			exercise.axis.clear();
@@ -176,16 +187,18 @@ struct Exercise3 {
 				static_cast<float>(exercise.windowsWidth), static_cast<float>(exercise.windowsHeight),
 				exercise.camera.proj_mat, exercise.camNode.worldInverseMatrix);
 			
-			printf("Mouse Pos: (%.2f, %.2f, %.2f)\n", mouseWorldPos.x, mouseWorldPos.y, mouseWorldPos.z);
-
 			const vec3 camPos = exercise.camNode.worldMatrix.getColumn(3);
+			mouseWorldPos = mouseWorldPos + camPos; // SUMAMOS
 			Ray ray;
-			ray.origin = camPos;
+			ray.origin = mouseWorldPos;
 			ray.direction = mouseWorldPos - camPos;
-			//ray.direction.y = ray.direction.y - 9.f;
-			ray.direction.z= -10.f;
 			ray.direction = normalise(ray.direction);
-			printf("Ray normalized:(%.2f, %.2f, %.2f)\n\n", ray.direction.x, ray.direction.y, ray.direction.z);
+			
+			exercise.axis.clear();
+
+			Shapes::addArrow(exercise.axis, ray.origin, ray.origin + normalise(ray.direction), vec3(1, 0, 0));
+
+			exercise.axis.load_to_gpu();
 
 			// check ray against all spheres in scene
 			int closest_sphere_clicked = -1;
@@ -195,7 +208,7 @@ struct Exercise3 {
 
 				const vec3 spherePos = exercise.sphereNodes[i].worldMatrix.getColumn(3);
 			
-				if (raySphereIntersection(ray, spherePos, 1, &t_dist)) {
+				if (raySphereIntersectionMine(ray, spherePos, 1)) {
 					if (-1 == closest_sphere_clicked || t_dist < closest_intersection) {
 						closest_sphere_clicked = i;
 						closest_intersection = t_dist;
@@ -203,7 +216,6 @@ struct Exercise3 {
 				}
 			} // endfor
 			exercise.selectedSphereIndex = closest_sphere_clicked;
-			//printf("sphere %i was clicked\n", closest_sphere_clicked);
 		}
 	}
 
@@ -350,13 +362,13 @@ struct Exercise3 {
 		glfwPollEvents();
 		if (isInputEnabled) {
 			glfwGetCursorPos(window, &mousePosX, &mousePosY);
-			/*float mouseDeltaX = static_cast<float>(mousePosX - prevMousePosX);
+			float mouseDeltaX = static_cast<float>(mousePosX - prevMousePosX);
 			float mouseDeltaY = static_cast<float>(mousePosY - prevMousePosY);
 			prevMousePosX = mousePosX;
 			prevMousePosY = mousePosY;
 
 			camYaw += -mouseDeltaX * camera.yaw_speed * elapsed_seconds;
-			camPitch += -mouseDeltaY * camera.yaw_speed * elapsed_seconds;*/
+			camPitch += -mouseDeltaY * camera.yaw_speed * elapsed_seconds;
 		}
 
 		if (glfwGetKey(window, GLFW_KEY_A)) {
@@ -371,6 +383,7 @@ struct Exercise3 {
 		if (glfwGetKey(window, GLFW_KEY_S)) {
 			camPitch -= camera.yaw_speed * elapsed_seconds;
 		}
+		
 		const float PitchLimit = 80;
 		camPitch = camPitch > PitchLimit ? PitchLimit : camPitch;
 		camPitch = camPitch < -PitchLimit ? -PitchLimit : camPitch;
