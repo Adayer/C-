@@ -1,1 +1,15 @@
-﻿  swalib_example.vcxproj -> C:\Users\andre\Desktop\Hellevator\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\swalib_example\x64\Debug\swalib_example.exe
+﻿  Ball.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\Ball.cpp(10,46): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  core.cpp
+  example.cpp
+  font.cpp
+  lodepng.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\lodepng.cpp(798,34): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\lodepng.cpp(3478,46): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+  Renderer.cpp
+  Managers.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\Managers.cpp(26,2): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  stdafx.cpp
+  sys_win.cpp
+  Generating Code...
+  swalib_example.vcxproj -> C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\swalib_example\x64\Debug\swalib_example.exe
