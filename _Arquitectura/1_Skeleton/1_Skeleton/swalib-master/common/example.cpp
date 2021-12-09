@@ -73,18 +73,19 @@ int Main(void)
 
 void Init() 
 {
-	for (unsigned int i = 0; i <= NUM_BALLS; ++i)
-	{
-
-	}
-	InitBalls(CORE_LoadPNG("data/tyrian_ball.png", false));
+	LogicManager::GetInstance().InitBalls(NUM_BALLS);
 	InitRenderer();
+	
 	FONT_Init();
+
+	//Init Time values
 	QueryPerformanceCounter(&previousCountLarge);
+	previousCount = previousCountLarge.QuadPart;
+
+	//Debug Prints
 	sprintf(buffer, "%d\n", numFrames);
 	sprintf(buffer2, "%.2f\n", realTime);
 	sprintf(buffer3, "%.2f\n", logicRunTime);
-	previousCount = previousCountLarge.QuadPart;
 }
 
 
@@ -105,7 +106,7 @@ void Update()
 
 		elapsedTime = elapsedTime - fixedTick;
 		logicRunTime += fixedTick;
-		SYS_Sleep(17); // To force 60 fps
+		SYS_Sleep(17); 
 	}
 	UpdateRenderer();
 
@@ -139,7 +140,7 @@ void Update()
 
 void Exit()
 {
-	ExitBall(CORE_LoadPNG("data/tyrian_ball.png", false));
+	LogicManager::GetInstance().ExitBalls();
 	ExitRenderer();
 	FONT_End();
 }

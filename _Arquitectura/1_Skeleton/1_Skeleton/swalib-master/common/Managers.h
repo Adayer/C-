@@ -14,22 +14,14 @@ public:
 		static LogicManager instance;
 		return instance;
 	}
-	
-	/*static LogicManager* GetInstanceMal()
-	{
-		if (singleton != nullptr)
-		{
-			singleton = new LogicManager();
-		}
-		return singleton;
-	}*/
 
 	LogicManager(LogicManager& other) = delete;	
 	void operator=(const LogicManager&) = delete;
 
-
 	std::vector<CBall>& GetBalls() { return m_balls; }
 	CBall& GetFirstBalls() { return m_balls[0]; }
 
+	void InitBalls(const unsigned int _numBalls);
 	void UpdateBalls(double elapsedTime);
+	void ExitBalls();
 };

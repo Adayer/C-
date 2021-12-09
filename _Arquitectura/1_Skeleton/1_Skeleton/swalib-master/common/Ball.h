@@ -20,6 +20,7 @@ public:
 	float GetRadius() { return m_radius; }
 	vec2 GetPosition() { return m_currentPos; }
 	vec2 GetVelocity() { return m_currentVel; }
+	GLuint GetTexture() { return m_texture; }
 
 	CBall() :
 		m_currentPos(0.0f),
@@ -27,7 +28,11 @@ public:
 		m_maxSpeed(0.f),
 		m_texture(0),
 		m_radius(0.0f)
-	{}
+	{
+		Create();
+	}
+
+
 	void Create();
 	void Move(double _deltaTime, std::vector<CBall> &_otherBalls, size_t _thisIndex);
 	void Destroy();

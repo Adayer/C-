@@ -5,8 +5,7 @@ GLuint texbkg;
 void InitRenderer()
 {
 	texbkg = CORE_LoadPNG("data/circle-bkg-128.png", true);
-
-
+	
 	// Set up rendering.
 	glViewport(0, 0, SCR_WIDTH, SCR_HEIGHT); // Sets up clipping.
 	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);	// Specifies clear values for the color buffers.
@@ -30,11 +29,13 @@ void UpdateRenderer()
 		}
 	}
 
-	
-
 	// Render balls
-	for (unsigned int i = 0; i < NUM_BALLS; i++) {
-		CORE_RenderCenteredSprite(balls[i].pos, vec2(balls[i].radius * 2.f, balls[i].radius * 2.f), balls[i].gfx);
+	size_t numBalls = LogicManager::GetInstance().GetBalls().size();
+	for (unsigned int i = 0; i < numBalls; i++) 
+	{
+		CORE_RenderCenteredSprite(LogicManager::GetInstance().GetBalls()[i].GetPosition(),
+			vec2(LogicManager::GetInstance().GetBalls()[i].GetRadius() * 2.f, LogicManager::GetInstance().GetBalls()[i].GetRadius() * 2.f),
+			LogicManager::GetInstance().GetBalls()[i].GetTexture());
 	}
 }
 void ExitRenderer()

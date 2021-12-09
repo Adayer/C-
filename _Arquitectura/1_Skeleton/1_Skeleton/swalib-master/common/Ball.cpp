@@ -9,9 +9,6 @@ void CBall::Move(double _deltaTime, std::vector<CBall>& _otherBalls, size_t _thi
 {
 	vec2 newpos = m_currentPos + m_currentVel * _deltaTime;
 
-	//collisionManager.CheckCollision();
-
-
 	// Collision detection.
 	bool collision = false;
 	int colliding_ball = -1;
@@ -47,5 +44,5 @@ void CBall::Move(double _deltaTime, std::vector<CBall>& _otherBalls, size_t _thi
 }
 void CBall::Destroy()
 {
-
+	CORE_UnloadPNG(m_texture);
 }

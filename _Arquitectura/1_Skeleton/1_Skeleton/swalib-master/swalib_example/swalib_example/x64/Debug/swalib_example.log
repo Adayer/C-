@@ -1,9 +1,1 @@
-﻿  Renderer.cpp
-C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\Renderer.cpp(35,29): error C2065: 'balls': undeclared identifier
-C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\Renderer.cpp(35,48): error C2065: 'balls': undeclared identifier
-C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\Renderer.cpp(35,71): error C2065: 'balls': undeclared identifier
-C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\Renderer.cpp(35,95): error C2065: 'balls': undeclared identifier
-C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\Renderer.cpp(35,107): error C2660: 'CORE_RenderCenteredSprite': function does not take 2 arguments
-C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\core.h(61,8): message : see declaration of 'CORE_RenderCenteredSprite'
-  example.cpp
-  Generating Code...
+﻿  swalib_example.vcxproj -> C:\Users\andre\Desktop\Hellevator\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\swalib_example\x64\Debug\swalib_example.exe
