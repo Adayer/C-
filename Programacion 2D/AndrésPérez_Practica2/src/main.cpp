@@ -57,19 +57,19 @@ int main() {
 
     //La variable de acceso a ltex_t* se llama text + Indice (text1, text2,...), la otra es textChar + Indice
     GENERATE_TEXTURES
-    
 
-    CTime time;
+
+        CTime time;
     double xPos(0.);
     double yPos(0.);
-    vec2 mousePos(0.f,0.f);
+    vec2 mousePos(0.f, 0.f);
 
-    vec2 screenCenterLocation(screenHeight/2.f, screenHeight/2.f);
+    vec2 screenCenterLocation(screenHeight / 2.f, screenHeight / 2.f);
 
 
     while (glfwWindowShouldClose(mainWindow) == 0)
     {
-        time.UpdateDeltaTime(); 
+        time.UpdateDeltaTime();
 
         glfwPollEvents();
 
@@ -81,21 +81,22 @@ int main() {
 
         //Mouse position
         glfwGetCursorPos(mainWindow, &xPos, &yPos);
-        mousePos.x = xPos; 
-        mousePos.y = yPos; 
+        mousePos.x = xPos;
+        mousePos.y = yPos;
 
         //Renderizar cuadro en el centro de la pantalla
-        lgfx_clearcolorbuffer(1.f, 0.f, 0.f);
-        //Wall
+        lgfx_clearcolorbuffer(1.f, 1.f, 1.f);
+
+        ////Wall
         lgfx_setblend(lblend_t::BLEND_SOLID);
-        float escalaWallTilingX = screenWidth/ xWall;
+        float escalaWallTilingX = screenWidth / xWall;
         float escalaWallTilingY = screenHeight / yWall;
         ltex_drawrotsized(textWall, 0, 0, 0, 0, 0, screenWidth, screenHeight, 0, 0, escalaWallTilingY, escalaWallTilingX);
 
         //Fire
         lgfx_setblend(lblend_t::BLEND_ADD);
-        ltex_drawrotsized(textFire, mousePos.x - (xFire/2.f), mousePos.y - (yFire / 2.f), 0, 0, 0, xFire, yFire, 0, 0, 1, 1);
-        
+        ltex_drawrotsized(textFire, mousePos.x - (xFire / 2.f), mousePos.y - (yFire / 2.f), 0, 0, 0, xFire, yFire, 0, 0, 1, 1);
+
         //Grille
         lgfx_setblend(lblend_t::BLEND_ALPHA);
         float escalaGrilleTilingX = screenWidth / xGrille;
@@ -104,33 +105,38 @@ int main() {
 
         //Light
         lgfx_setblend(lblend_t::BLEND_MUL);
-        ltex_drawrotsized(textLight, mousePos.x - (xLight /2.f), mousePos.y - (yLight/2.f), 0, 0, 0, xLight, yLight, 0, 0, 1, 1);
+        ltex_drawrotsized(textLight, mousePos.x - (xLight / 2.f), mousePos.y - (yLight / 2.f), 0, 0, 0, xLight, yLight, 0, 0, 1, 1);
+
+
+
+
 
         //Side squares
-        //Left side square
-        if (mousePos.x < (xLight / 2.f))
-        {
-            lgfx_setcolor(0, 0, 0, 1);
-            lgfx_drawrect(mousePos.x + (xLight / 2.f), mousePos.y + (yLight / 2.f), screenWidth - mousePos.x - (xLight / 2.f), yLight);
+        lgfx_setblend(lblend_t::BLEND_SOLID);
+        lgfx_setcolor(0.f, 0.f, 0.f, 1.f);
 
-        }
         //Right side square
+        if (screenWidth - mousePos.x - (xLight / 2.f) > 0)
+        {
+            lgfx_drawrect(mousePos.x + (xLight / 2.f), mousePos.y - (yLight / 2.f), screenWidth - mousePos.x - (xLight /2.f), yLight);
+        }
+        //Left side square
         if (mousePos.x > (xLight / 2.f))
         {
-
+            lgfx_drawrect(mousePos.x - (xLight / 2.f), mousePos.y - (yLight / 2.f), -(mousePos.x - (xLight / 2.f)), yLight);
         }
         
-        //Top side square
-        if (mousePos.y < (yLight / 2.f))
-        {
-
-        }
         //Bot side square
+        if (screenHeight - mousePos.y - (yLight / 2.f) > 0)
+        {
+            lgfx_drawrect(0.f,mousePos.y + (yLight/2.f), screenWidth, screenHeight - mousePos.y - (yLight / 2.f));
+        }
+        //Top side square
         if (mousePos.y > (yLight / 2.f))
         {
-
+            lgfx_drawrect(0.f, mousePos.y - (yLight / 2.f),screenWidth, -(mousePos.y - (yLight / 2.f)));
         }
-
+        lgfx_setcolor(1.f, 1.f, 1.f, 1.f);
 
         glfwSwapBuffers(mainWindow);
     }
