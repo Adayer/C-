@@ -4,8 +4,10 @@ void CBall::Create()
 {
 	m_currentPos = vec2(CORE_FRand(0.0, SCR_WIDTH), CORE_FRand(0.0, SCR_HEIGHT));
 	m_currentVel = vec2(CORE_FRand(-m_maxSpeed, m_maxSpeed), CORE_FRand(-m_maxSpeed, m_maxSpeed));
+
+	//m_texture = CORE_LoadPNG("data/tyrian_ball.png", false);
 }
-void CBall::Move(double _deltaTime, std::vector<CBall>& _otherBalls, size_t _thisIndex)
+void CBall::Move(double _deltaTime, std::vector<CBall*> &_otherBalls, size_t _thisIndex)
 {
 	vec2 newpos = m_currentPos + m_currentVel * _deltaTime;
 
@@ -16,8 +18,8 @@ void CBall::Move(double _deltaTime, std::vector<CBall>& _otherBalls, size_t _thi
 	for (int j = 0; j < _otherBalls.size(); j++) {
 		if (j != _thisIndex)
 		{
-			float limit2 = (m_radius + _otherBalls[j].GetRadius()) * (m_radius + _otherBalls[j].GetRadius());
-			if (vlen2(newpos - _otherBalls[j].GetPosition()) <= limit2) {
+			float limit2 = (m_radius + _otherBalls[j]->GetRadius()) * (m_radius + _otherBalls[j]->GetRadius());
+			if (vlen2(newpos - _otherBalls[j]->GetPosition()) <= limit2) {
 				collision = true;
 				colliding_ball = j;
 				break;
@@ -44,5 +46,5 @@ void CBall::Move(double _deltaTime, std::vector<CBall>& _otherBalls, size_t _thi
 }
 void CBall::Destroy()
 {
-	CORE_UnloadPNG(m_texture);
+	
 }

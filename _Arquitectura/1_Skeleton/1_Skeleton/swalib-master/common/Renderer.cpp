@@ -16,6 +16,8 @@ void InitRenderer()
 	// NOTA: Mirar diferencias comentando las 2 siguientes funciones.
 	glEnable(GL_BLEND);	// Blend the incoming RGBA color values with the values in the color buffers.
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);	// Blend func. for alpha color.
+
+
 }
 void UpdateRenderer()
 {
@@ -30,12 +32,12 @@ void UpdateRenderer()
 	}
 
 	// Render balls
-	size_t numBalls = LogicManager::GetInstance().GetBalls().size();
+	size_t numBalls = LogicManager::GetInstance()->GetBalls().size();
 	for (unsigned int i = 0; i < numBalls; i++) 
 	{
-		CORE_RenderCenteredSprite(LogicManager::GetInstance().GetBalls()[i].GetPosition(),
-			vec2(LogicManager::GetInstance().GetBalls()[i].GetRadius() * 2.f, LogicManager::GetInstance().GetBalls()[i].GetRadius() * 2.f),
-			LogicManager::GetInstance().GetBalls()[i].GetTexture());
+		CORE_RenderCenteredSprite(LogicManager::GetInstance()->GetBalls()[i]->GetPosition(),
+			vec2(LogicManager::GetInstance()->GetBalls()[i]->GetRadius() * 2.f, LogicManager::GetInstance()->GetBalls()[i]->GetRadius() * 2.f),
+			LogicManager::GetInstance()->GetBalls()[i]->GetTexture());
 	}
 }
 void ExitRenderer()

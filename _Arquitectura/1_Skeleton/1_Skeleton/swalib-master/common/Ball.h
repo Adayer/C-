@@ -10,11 +10,11 @@
 class CBall
 {
 private:
-	vec2   m_currentPos;	// Position.
-	vec2   m_currentVel;	// Velocity.
-	float   m_maxSpeed;	// Velocity.
-	GLuint m_texture;	// OpenGL for id. for visualization purposes. 
-	float  m_radius = 16.f;	// Radius.
+	vec2   m_currentPos;
+	vec2   m_currentVel;
+	float   m_maxSpeed;
+	GLuint m_texture;
+	float  m_radius = 16.f;	
 public:
 
 	float GetRadius() { return m_radius; }
@@ -22,18 +22,18 @@ public:
 	vec2 GetVelocity() { return m_currentVel; }
 	GLuint GetTexture() { return m_texture; }
 
-	CBall() :
+	CBall(GLuint _texture) :
 		m_currentPos(0.0f),
-		m_currentVel(0,0),
-		m_maxSpeed(0.f),
-		m_texture(0),
-		m_radius(0.0f)
+		m_currentVel(0.f,0.f),
+		m_maxSpeed(80.f),
+		m_texture(_texture),
+		m_radius(16.0f)
 	{
 		Create();
 	}
 
 
 	void Create();
-	void Move(double _deltaTime, std::vector<CBall> &_otherBalls, size_t _thisIndex);
+	void Move(double _deltaTime, std::vector<CBall*> &_otherBalls, size_t _thisIndex);
 	void Destroy();
 };

@@ -1,31 +1,48 @@
 #include "Managers.h"
 
-void LogicManager::InitBalls(const unsigned int _numBalls)
+LogicManager* LogicManager::instance = nullptr;
+
+void LogicManager::Init(const unsigned int _numBalls)
 {
+	m_time.InitTime();
+
+
 	m_balls.reserve(_numBalls);
+	ballTexture = CORE_LoadPNG("data/tyrian_ball.png", false);
 	for (unsigned int i = 0; i < _numBalls; ++i)
 	{
-		m_balls.push_back(CBall());
+		CBall* newBall = new CBall(ballTexture);
+		m_balls.push_back(newBall);
 	}
 }
 
-void LogicManager::UpdateBalls(double elapsedTime)
+void LogicManager::Update()
 {
-	size_t numBalls = m_balls.size();
+	m_time.UpdateTime();
 
-	for (size_t i = 0; i < numBalls; ++i)
+	while (m_time.ProcessSlots())
 	{
-		m_balls[i].Move(elapsedTime, m_balls, i);
+		size_t numBalls = m_balls.size();
+
+		for (size_t i = 0; i < numBalls; ++i)
+		{
+			m_balls[i]->Move(m_time.DeltaTime(), m_balls, i);
+		}
+
+		SYS_Sleep(17);
 	}
+	
 }
 
-void LogicManager::ExitBalls()
+void LogicManager::Exit()
 {	
 	size_t numBalls = m_balls.size();
 	
-	for (unsigned int i = numBalls; i > 0; --i)
+	for (int i = (numBalls - 1); i >= 0; --i)
 	{
-		m_balls[i].Destroy();
+		m_balls[i]->Destroy();
 		m_balls.pop_back();
 	}
+
+	CORE_UnloadPNG(ballTexture);
 }
