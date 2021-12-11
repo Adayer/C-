@@ -1,2 +1,9 @@
-﻿  Time.cpp
-  swalib_example.vcxproj -> C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe
+﻿  Ball.cpp
+C:\Users\andre\Desktop\Hellevator\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\Ball.cpp(11,46): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\andre\Desktop\Hellevator\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\Ball.cpp(17,20): warning C4018: '<': no coinciden signed/unsigned
+  Managers.cpp
+  Renderer.cpp
+  Time.cpp
+  example.cpp
+  Generando código...
+  swalib_example.vcxproj -> C:\Users\andre\Desktop\Hellevator\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe

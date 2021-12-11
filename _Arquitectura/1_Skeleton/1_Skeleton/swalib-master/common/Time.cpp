@@ -9,6 +9,8 @@ void CTime::InitTime()
 
 void CTime::UpdateTime()
 {
+	m_elapsedTime += GetTime();
+
 	if (m_elapsedTime > ELAPSED_TIME_MAX)
 	{
 		m_elapsedTime = ELAPSED_TIME_MAX;
@@ -30,9 +32,4 @@ double  CTime::GetTime()
 bool CTime::ProcessSlots()
 {
 	return (m_elapsedTime >= m_fixedTick);
-}
-
-void CTime::LogicWorldSlot()
-{
-	m_elapsedTime = m_elapsedTime - m_fixedTick;
 }

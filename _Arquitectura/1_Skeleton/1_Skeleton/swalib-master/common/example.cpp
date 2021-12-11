@@ -19,31 +19,25 @@ void Init();
 void Update();
 void Exit();
 
-
-
 //Debug varibales
-double frameRateCurrentTimer = 0.;
-unsigned int numFrames = 0;
+//double frameRateCurrentTimer = 0.;
+//unsigned int numFrames = 0;
 
-char buffer[5];
-char buffer2[100];
-char buffer3[100];
+//char buffer[5];
+//char buffer2[100];
+//char buffer3[100];
+//
+//char bufferBalls[100];
+//char buffer1Balls[100];
 
-char bufferBalls[100];
-char buffer1Balls[100];
-
-double realTime = 0.;
-double logicRunTime = 0.;
+//double realTime = 0.;
+//double logicRunTime = 0.;
 
 #define NUM_BALLS 16
 
 int Main(void)
 {
-
 	Init();	
-	
-	//fixedTick = 1. / 60.; //A mayor denumerador más veces se actualiza
-	//previousTime = GetTime();
   
 	while (!SYS_GottaQuit()) {	// Controlling a request to terminate an application.
 		Update();
@@ -54,20 +48,16 @@ int Main(void)
 	return 0;
 }
 
-
-
 void Init() 
 {
 	LogicManager::GetInstance()->Init(NUM_BALLS);
 	InitRenderer();
-	
 	FONT_Init();
 
-
 	//Debug Prints
-	sprintf(buffer, "%d\n", numFrames);
-	sprintf(buffer2, "%.2f\n", realTime);
-	sprintf(buffer3, "%.2f\n", logicRunTime);
+	//sprintf(buffer, "%d\n", numFrames);
+	//sprintf(buffer2, "%.2f\n", realTime);
+	//sprintf(buffer3, "%.2f\n", logicRunTime);
 }
 
 

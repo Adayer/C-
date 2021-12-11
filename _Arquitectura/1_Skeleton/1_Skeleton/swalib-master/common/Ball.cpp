@@ -1,11 +1,10 @@
 #include "Ball.h"
 
+
 void CBall::Create()
 {
 	m_currentPos = vec2(CORE_FRand(0.0, SCR_WIDTH), CORE_FRand(0.0, SCR_HEIGHT));
 	m_currentVel = vec2(CORE_FRand(-m_maxSpeed, m_maxSpeed), CORE_FRand(-m_maxSpeed, m_maxSpeed));
-
-	//m_texture = CORE_LoadPNG("data/tyrian_ball.png", false);
 }
 void CBall::Move(double _deltaTime, std::vector<CBall*> &_otherBalls, size_t _thisIndex)
 {
@@ -46,5 +45,5 @@ void CBall::Move(double _deltaTime, std::vector<CBall*> &_otherBalls, size_t _th
 }
 void CBall::Destroy()
 {
-	
+	//Is not currently in used, but defined just in case
 }

@@ -10,11 +10,11 @@
 class CBall
 {
 private:
-	vec2   m_currentPos;
-	vec2   m_currentVel;
-	float   m_maxSpeed;
-	GLuint m_texture;
-	float  m_radius = 16.f;	
+	vec2   m_currentPos; //Position
+	vec2   m_currentVel; //Current Speed
+	float   m_maxSpeed; //Max value for speed on any axis
+	GLuint m_texture; //Ball texture
+	float  m_radius = 16.f;	//Radius of ball
 public:
 
 	float GetRadius() { return m_radius; }
@@ -33,7 +33,9 @@ public:
 	}
 
 
-	void Create();
+	void Create(); //Sets random values to position and speed on creation
+
+	//Updates the ball's position
 	void Move(double _deltaTime, std::vector<CBall*> &_otherBalls, size_t _thisIndex);
-	void Destroy();
+	void Destroy(); //Prepares the ball to be destroyed by Logic Manager
 };

@@ -4,6 +4,7 @@
 GLuint texbkg;
 void InitRenderer()
 {
+	//Load background PNG
 	texbkg = CORE_LoadPNG("data/circle-bkg-128.png", true);
 	
 	// Set up rendering.
@@ -32,16 +33,17 @@ void UpdateRenderer()
 	}
 
 	// Render balls
-	size_t numBalls = LogicManager::GetInstance()->GetBalls().size();
+	size_t numBalls = LOGIC_MANAGER_GET_BALLS.size();
 	for (unsigned int i = 0; i < numBalls; i++) 
 	{
-		CORE_RenderCenteredSprite(LogicManager::GetInstance()->GetBalls()[i]->GetPosition(),
-			vec2(LogicManager::GetInstance()->GetBalls()[i]->GetRadius() * 2.f, LogicManager::GetInstance()->GetBalls()[i]->GetRadius() * 2.f),
-			LogicManager::GetInstance()->GetBalls()[i]->GetTexture());
+		//The parameters are: (ball position, vec2(ball radius * 2, ball radius * 2), ball texture)
+		CORE_RenderCenteredSprite(LOGIC_MANAGER_GET_BALLS[i]->GetPosition(),
+			vec2(LOGIC_MANAGER_GET_BALLS[i]->GetRadius() * 2.f, LOGIC_MANAGER_GET_BALLS[i]->GetRadius() * 2.f),
+			LOGIC_MANAGER_GET_BALLS[i]->GetTexture());
 	}
 }
 void ExitRenderer()
 {
+	//Unload background PNG
 	CORE_UnloadPNG(texbkg);
-	
 }
