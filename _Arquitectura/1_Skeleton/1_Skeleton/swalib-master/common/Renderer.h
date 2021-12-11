@@ -1,5 +1,4 @@
 #pragma once
-
 #include "stdafx.h"
 #include "sys.h"
 #include "core.h"
@@ -9,3 +8,4 @@
 void InitRenderer();
 void UpdateRenderer();
 void ExitRenderer();
+

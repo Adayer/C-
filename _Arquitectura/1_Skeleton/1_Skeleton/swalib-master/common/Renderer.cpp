@@ -17,8 +17,6 @@ void InitRenderer()
 	// NOTA: Mirar diferencias comentando las 2 siguientes funciones.
 	glEnable(GL_BLEND);	// Blend the incoming RGBA color values with the values in the color buffers.
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);	// Blend func. for alpha color.
-
-
 }
 void UpdateRenderer()
 {
@@ -37,9 +35,9 @@ void UpdateRenderer()
 	for (unsigned int i = 0; i < numBalls; i++) 
 	{
 		//The parameters are: (ball position, vec2(ball radius * 2, ball radius * 2), ball texture)
-		CORE_RenderCenteredSprite(LOGIC_MANAGER_GET_BALLS[i]->GetPosition(),
+		/*CORE_RenderCenteredSprite(LOGIC_MANAGER_GET_BALLS[i]->GetPosition(),
 			vec2(LOGIC_MANAGER_GET_BALLS[i]->GetRadius() * 2.f, LOGIC_MANAGER_GET_BALLS[i]->GetRadius() * 2.f),
-			LOGIC_MANAGER_GET_BALLS[i]->GetTexture());
+			LOGIC_MANAGER_GET_BALLS[i]->*(GetTexture()));*/
 	}
 }
 void ExitRenderer()

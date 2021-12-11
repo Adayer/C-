@@ -5,11 +5,9 @@
 #include "core.h"
 #include "font.h"
 #include "vector2d.h"
-#include "Renderer.h"
+#include "EngineRenderer.h"
 #include <vector>
-#include "Ball.h"
 #include "Managers.h"
-#include "Time.h"
 
 //-----------------------------------------------------------------------------
 // Logic Info.
@@ -51,7 +49,7 @@ int Main(void)
 void Init() 
 {
 	LogicManager::GetInstance()->Init(NUM_BALLS);
-	InitRenderer();
+	EngineRenderer::GetInstance()->InitRenderEngine();
 	FONT_Init();
 
 	//Debug Prints
@@ -64,7 +62,6 @@ void Init()
 void Update()
 {
 	LogicManager::GetInstance()->Update();
-	UpdateRenderer();
 
 	//Debug FPS
 	//sprintf(buffer, "%.2f\n", 1./refreshTime);
@@ -97,6 +94,5 @@ void Update()
 void Exit()
 {
 	LogicManager::GetInstance()->Exit();
-	ExitRenderer();
 	FONT_End();
 }

@@ -33,16 +33,16 @@
     <ClCompile Include="..\..\common\font.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\common\Renderer.cpp">
+    <ClCompile Include="..\..\common\Managers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\Time.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\Ball.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\common\Managers.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\common\Time.cpp">
+    <ClCompile Include="..\..\common\EngineRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -65,16 +65,16 @@
     <ClInclude Include="..\..\common\vector2d.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\common\Renderer.h">
+    <ClInclude Include="..\..\common\Managers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\Time.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\Ball.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\common\Managers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\Time.h">
+    <ClInclude Include="..\..\common\EngineRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -122,10 +122,10 @@
   <ItemGroup>
     <ClCompile Include="..\..\common\Ball.cpp" />
     <ClCompile Include="..\..\common\core.cpp" />
+    <ClCompile Include="..\..\common\EngineRenderer.cpp" />
     <ClCompile Include="..\..\common\example.cpp" />
     <ClCompile Include="..\..\common\font.cpp" />
     <ClCompile Include="..\..\common\lodepng.cpp" />
-    <ClCompile Include="..\..\common\Renderer.cpp" />
     <ClCompile Include="..\..\common\Managers.cpp" />
     <ClCompile Include="..\..\common\stdafx.cpp" />
     <ClCompile Include="..\..\common\sys_win.cpp" />
@@ -134,9 +134,9 @@
   <ItemGroup>
     <ClInclude Include="..\..\common\Ball.h" />
     <ClInclude Include="..\..\common\core.h" />
+    <ClInclude Include="..\..\common\EngineRenderer.h" />
     <ClInclude Include="..\..\common\font.h" />
     <ClInclude Include="..\..\common\lodepng.h" />
-    <ClInclude Include="..\..\common\Renderer.h" />
     <ClInclude Include="..\..\common\Managers.h" />
     <ClInclude Include="..\..\common\stdafx.h" />
     <ClInclude Include="..\..\common\sys.h" />

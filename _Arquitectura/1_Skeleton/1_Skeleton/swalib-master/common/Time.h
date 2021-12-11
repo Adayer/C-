@@ -25,7 +25,7 @@ private:
 
 public: 
 
-	CTime() {}
+	CTime(){}
 
 	void InitTime();
 	void UpdateTime();
