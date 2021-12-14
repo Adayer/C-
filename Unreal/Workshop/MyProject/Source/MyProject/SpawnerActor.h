@@ -35,7 +35,7 @@ public:
 	bool GetIfActorSpawned() const { return (spawnedActor != nullptr); }
 
 	UFUNCTION(BlueprintImplementableEvent)
-	bool OnActorSpawnChanged();
+	void OnActorSpawnChanged(bool bSpawned);
 
 private:
 	UPROPERTY(EditAnywhere, Category="Spawner")

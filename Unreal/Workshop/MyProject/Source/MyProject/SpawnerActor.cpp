@@ -25,12 +25,14 @@ void ASpawnerActor::SpawnActor()
 {
 	FTransform spawnedTransform = offset * GetTransform();
 	spawnedActor = GetWorld()->SpawnActor<AActor>(classToSpawn, spawnedTransform);
+	OnActorSpawnChanged(true);
 }
 
 void ASpawnerActor::DestroySpawnedActor()
 {
 	if (spawnedActor)
 	{
+		OnActorSpawnChanged(false);
 		spawnedActor->Destroy();
 		spawnedActor = nullptr;
 	}

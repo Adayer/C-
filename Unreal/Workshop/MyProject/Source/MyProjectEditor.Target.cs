@@ -9,6 +9,6 @@ public class MyProjectEditorTarget : TargetRules
 	{
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
-		ExtraModuleNames.Add("MyProject");
+		ExtraModuleNames.Add("MyProjectEditor");
 	}
 }
