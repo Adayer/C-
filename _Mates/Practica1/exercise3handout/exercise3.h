@@ -360,7 +360,7 @@ struct Exercise3 {
 
 
 		glfwPollEvents();
-		if (isInputEnabled) {
+		/*if (isInputEnabled) {
 			glfwGetCursorPos(window, &mousePosX, &mousePosY);
 			float mouseDeltaX = static_cast<float>(mousePosX - prevMousePosX);
 			float mouseDeltaY = static_cast<float>(mousePosY - prevMousePosY);
@@ -369,7 +369,7 @@ struct Exercise3 {
 
 			camYaw += -mouseDeltaX * camera.yaw_speed * elapsed_seconds;
 			camPitch += -mouseDeltaY * camera.yaw_speed * elapsed_seconds;
-		}
+		}*/
 
 		if (glfwGetKey(window, GLFW_KEY_A)) {
 			camYaw += camera.yaw_speed * elapsed_seconds;

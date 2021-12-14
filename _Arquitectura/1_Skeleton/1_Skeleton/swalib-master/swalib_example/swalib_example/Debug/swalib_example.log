@@ -1,7 +1,5 @@
-﻿  EngineRenderer.cpp
-C:\Users\andre\Desktop\Hellevator\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\EngineRenderer.cpp(28,126): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\andre\Desktop\Hellevator\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\EngineRenderer.cpp(28,113): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+﻿  Managers.cpp
+  Time.cpp
   example.cpp
-  Managers.cpp
-  Generando código...
-  swalib_example.vcxproj -> C:\Users\andre\Desktop\Hellevator\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe
+  Generating Code...
+  swalib_example.vcxproj -> D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe
