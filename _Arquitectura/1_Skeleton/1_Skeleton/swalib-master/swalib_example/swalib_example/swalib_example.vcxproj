@@ -121,8 +121,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\Ball.cpp" />
+    <ClCompile Include="..\..\common\Component.cpp" />
     <ClCompile Include="..\..\common\core.cpp" />
     <ClCompile Include="..\..\common\EngineRenderer.cpp" />
+    <ClCompile Include="..\..\common\Entity.cpp" />
     <ClCompile Include="..\..\common\example.cpp" />
     <ClCompile Include="..\..\common\font.cpp" />
     <ClCompile Include="..\..\common\lodepng.cpp" />
@@ -133,8 +135,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\Ball.h" />
+    <ClInclude Include="..\..\common\Component.h" />
     <ClInclude Include="..\..\common\core.h" />
     <ClInclude Include="..\..\common\EngineRenderer.h" />
+    <ClInclude Include="..\..\common\Entity.h" />
     <ClInclude Include="..\..\common\font.h" />
     <ClInclude Include="..\..\common\lodepng.h" />
     <ClInclude Include="..\..\common\Managers.h" />
