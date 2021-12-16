@@ -11,6 +11,7 @@
 #include <string>
 
 
+
 #define TEXTURE_LIST(_ACTION)\
 _ACTION(Fire, png)\
 _ACTION(Grille,png)\
@@ -67,6 +68,19 @@ int main() {
     vec2 screenCenterLocation(screenHeight / 2.f, screenHeight / 2.f);
 
 
+    //Variables for light Rotation and Scale change
+    float currentLightRotation = 0.f;
+    float lightRotationSpeed = 10.f;
+    float maxRotation = 10.f;
+    bool rotatingRight = true;
+
+    float currentLightScale = 1.f;
+    float lightScaleChangeSpeed = 0.5f; 
+    float maxScale = 1.2f;
+    float minScale = 0.8f;
+    bool scalingUp = true;
+
+
     while (glfwWindowShouldClose(mainWindow) == 0)
     {
         time.UpdateDeltaTime();
@@ -93,9 +107,52 @@ int main() {
         float escalaWallTilingY = screenHeight / yWall;
         ltex_drawrotsized(textWall, 0, 0, 0, 0, 0, screenWidth, screenHeight, 0, 0, escalaWallTilingY, escalaWallTilingX);
 
+
+
         //Fire
+
+        //Rotation
+        if (rotatingRight)
+        {
+            currentLightRotation += (lightRotationSpeed * time.DeltaTime());
+            if (currentLightRotation > maxRotation)
+            {
+                currentLightRotation = maxRotation;
+                rotatingRight = false;
+            }
+        }
+        else
+        {
+            currentLightRotation -= (lightRotationSpeed * time.DeltaTime());
+            if (currentLightRotation < -maxRotation)
+            {
+                currentLightRotation = -maxRotation;
+                rotatingRight = true;
+            }
+        }
+
+        //Scale
+        if (scalingUp)
+        {
+            currentLightScale += (lightScaleChangeSpeed * time.DeltaTime());
+            if (currentLightScale > maxScale)
+            {
+                currentLightScale = maxScale;
+                scalingUp = false;
+            }
+        }
+        else
+        {
+            currentLightScale -= (lightScaleChangeSpeed * time.DeltaTime());
+            if (currentLightScale < minScale)
+            {
+                currentLightScale = minScale;
+                scalingUp = true;
+            }
+        }
+
         lgfx_setblend(lblend_t::BLEND_ADD);
-        ltex_drawrotsized(textFire, mousePos.x - (xFire / 2.f), mousePos.y - (yFire / 2.f), 0, 0, 0, xFire, yFire, 0, 0, 1, 1);
+        ltex_drawrotsized(textFire, (mousePos.x), (mousePos.y), currentLightRotation, 0.5f, 0.5f, xFire * currentLightScale, yFire * currentLightScale, 0, 0, 1, 1);
 
         //Grille
         lgfx_setblend(lblend_t::BLEND_ALPHA);
@@ -104,10 +161,10 @@ int main() {
         ltex_drawrotsized(textGrille, 0, 0, 0, 0, 0, screenWidth, screenHeight, 0, 0, escalaGrilleTilingX, escalaGrilleTilingX);
 
         //Light
+        
         lgfx_setblend(lblend_t::BLEND_MUL);
+
         ltex_drawrotsized(textLight, mousePos.x - (xLight / 2.f), mousePos.y - (yLight / 2.f), 0, 0, 0, xLight, yLight, 0, 0, 1, 1);
-
-
 
 
 
