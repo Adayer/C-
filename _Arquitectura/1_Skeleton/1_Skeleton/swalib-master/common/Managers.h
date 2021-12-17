@@ -1,7 +1,6 @@
 #pragma once
 #include "Time.h"
 #include <vector>
-#include "Ball.h"
 
 #define LOGIC_MANAGER_INSTANCE LogicManager::GetInstance()
 #define LOGIC_MANAGER_GET_BALLS LogicManager::GetInstance()->GetBalls()

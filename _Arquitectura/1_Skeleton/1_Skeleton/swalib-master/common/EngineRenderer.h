@@ -3,6 +3,20 @@
 #include "sys.h"
 #include "core.h"
 #include "vector2d.h"
+#include <vector>
+#include <map>
+#include <string>
+#include "SpriteRenderer.h"
+
+
+enum class RenderLayer
+{
+	Invalid = -1, 
+	Background, 
+	Default,
+	Foreground, 
+	Count
+};
 
 class EngineRenderer
 {
@@ -10,6 +24,15 @@ private:
 	//Singleton variables
 	static EngineRenderer* instance;
 	EngineRenderer() {}
+	
+	//Lists of sprites to update
+	std::vector<SpriteRenderer*> m_tBackgroundSprites;
+	std::vector<SpriteRenderer*> m_tDefaultSprites;
+	std::vector<SpriteRenderer*> m_tForegroundSprites;
+
+	//Textures Loaded
+	std::map<std::string, GLuint> m_textures;
+
 public:
 	//Singleton variables
 	static EngineRenderer* GetInstance()
@@ -27,48 +50,31 @@ public:
 
 	//Initialize render
 	void InitRenderEngine();
-};
+	void UpdateRenderer();
+	void ExitRenderer();
 
+	void LoadTexture(std::string _name);
 
-class CSprite
-{
-protected:
-	GLuint m_sprite; //The sprite's texture to represent
-	vec2 m_size; //Size
-	vec2 m_position; //Current screen position
-public:
-	CSprite(GLuint _texture, vec2 _size, vec2 _position) :
-		m_sprite(_texture), 
-		m_size(_size), 
-		m_position(_position) 
+	void AddSprite(SpriteRenderer*& _newSprite, RenderLayer _layer)
 	{
-		
-	}
-	GLuint GetTexture() { return m_sprite; }
-	void SetTexture(GLuint _sprite) { m_sprite = _sprite; }
-
-	const vec2 GetSize() { return m_size; }
-	void SetSize(const vec2 _size) { m_size = _size; }
-
-	const vec2 GetPosition() { return m_position; }
-	void SetPosition(const vec2 _position) { m_position = _position; }
-
-	void virtual UpdateSpriteRender(); //Render the sprite
-};
-
-//Class that renders sprites that can be tiled across the whole window
-class CTileableSprite : public CSprite
-{
-	int m_tileWidth = 0; //Tile width
-	int m_tileHeight = 0; //Tile height
-
-public:
-	CTileableSprite(GLuint _texture, vec2 _size, vec2 _position, int _width, int _height) : 
-		CSprite(_texture, _size, _position),
-		m_tileWidth(_width),
-		m_tileHeight(_height)
-	{
+		switch (_layer)
+		{
+			case(RenderLayer::Background):
+			{
+				m_tBackgroundSprites.push_back(_newSprite);
+				break;
+			}
+			case(RenderLayer::Default):
+			{
+				m_tDefaultSprites.push_back(_newSprite);
+				break;
+			}
+			case(RenderLayer::Foreground):
+			{
+				m_tForegroundSprites.push_back(_newSprite);
+				break;
+			}
+		}
 
 	}
-	void UpdateSpriteRender() override;
 };

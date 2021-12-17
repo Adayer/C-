@@ -120,7 +120,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\common\Ball.cpp" />
+    <ClCompile Include="..\..\common\BallComponent.cpp" />
     <ClCompile Include="..\..\common\Component.cpp" />
     <ClCompile Include="..\..\common\core.cpp" />
     <ClCompile Include="..\..\common\EngineRenderer.cpp" />
@@ -129,12 +129,13 @@
     <ClCompile Include="..\..\common\font.cpp" />
     <ClCompile Include="..\..\common\lodepng.cpp" />
     <ClCompile Include="..\..\common\Managers.cpp" />
+    <ClCompile Include="..\..\common\SpriteRenderer.cpp" />
     <ClCompile Include="..\..\common\stdafx.cpp" />
     <ClCompile Include="..\..\common\sys_win.cpp" />
     <ClCompile Include="..\..\common\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\common\Ball.h" />
+    <ClInclude Include="..\..\common\BallComponent.h" />
     <ClInclude Include="..\..\common\Component.h" />
     <ClInclude Include="..\..\common\core.h" />
     <ClInclude Include="..\..\common\EngineRenderer.h" />
@@ -142,6 +143,7 @@
     <ClInclude Include="..\..\common\font.h" />
     <ClInclude Include="..\..\common\lodepng.h" />
     <ClInclude Include="..\..\common\Managers.h" />
+    <ClInclude Include="..\..\common\SpriteRenderer.h" />
     <ClInclude Include="..\..\common\stdafx.h" />
     <ClInclude Include="..\..\common\sys.h" />
     <ClInclude Include="..\..\common\Time.h" />

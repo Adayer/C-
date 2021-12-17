@@ -15,17 +15,3 @@ void EngineRenderer::InitRenderEngine()
 	glEnable(GL_BLEND);	// Blend the incoming RGBA color values with the values in the color buffers.
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);	// Blend func. for alpha color.
 }
-
-void CSprite::UpdateSpriteRender()
-{
-	CORE_RenderCenteredSprite(m_position, m_size, m_sprite);
-}
-
-void CTileableSprite::UpdateSpriteRender()
-{
-	for (int i = 0; i <= SCR_WIDTH / m_tileWidth; i++) {
-		for (int j = 0; j <= SCR_HEIGHT / m_tileHeight; j++) {
-			CORE_RenderCenteredSprite(vec2(i * m_tileWidth + m_tileWidth/2.f, j * m_tileHeight + m_tileHeight/2.f), vec2(m_tileWidth, m_tileHeight), m_sprite);
-		}
-	}
-}
