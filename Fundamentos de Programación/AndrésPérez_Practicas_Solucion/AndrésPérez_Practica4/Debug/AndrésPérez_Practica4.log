@@ -1,0 +1,7 @@
+﻿  APM_Practica4.cpp
+  consola.cpp
+D:\U-Tad\Master\C-\Fundamentos de Programación\AndrésPérez_Practicas_Solucion\AndrésPérez_Practica4\consola.cpp(8,18): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+D:\U-Tad\Master\C-\Fundamentos de Programación\AndrésPérez_Practicas_Solucion\AndrésPérez_Practica4\consola.cpp(8,21): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+  Generating Code...
+  LINK : D:\U-Tad\Master\C-\Fundamentos de Programación\AndrésPérez_Practicas_Solucion\AndrésPérez_Practica4\Debug\AndrésPérez_Practica4.exe not found or not built by the last incremental link; performing full link
+  AndrésPérez_Practica4.vcxproj -> D:\U-Tad\Master\C-\Fundamentos de Programación\AndrésPérez_Practicas_Solucion\AndrésPérez_Practica4\Debug\AndrésPérez_Practica4.exe
