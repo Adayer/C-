@@ -1,0 +1,10 @@
+<Conversation name="Conversation test">
+	<Lines>
+		<Line duration="3" color="#99FF00" offset="1">Quien esta en la primera base</Line>
+		<Line duration="3" color="#FF9900" offset="1">Si</Line>
+		<Line duration="3" color="#99FF00" offset="1">Quiero decir el nombre del tipo</Line>
+		<Line duration="3" color="#FF9900" offset="1">Quien</Line>
+		<Line duration="3" color="#99FF00" offset="1">El que esta en primera</Line>
+		<Line duration="3" color="#FF9900" offset="-5">Quien</Line>
+	</Lines>
+</Conversation>
