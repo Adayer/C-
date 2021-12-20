@@ -8,7 +8,8 @@ void SpriteRenderer::Init(unsigned int _numArgs, va_list args)
 		m_sprite = va_arg(args, GLuint);
 		m_size = va_arg(args, vec2);
 	}
-	EngineRenderer::GetInstance()->AddSprite(this, );
+	EngineRenderer::GetInstance()->AddSprite(this, RenderLayer::Default );
+	//EngineRenderer::GetInstance()->AddSprite(this, );
 }
 
 void SpriteRenderer::UpdateRender()

@@ -45,11 +45,13 @@ C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\sw
 C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\EngineRenderer.h(58,17): error C2061: syntax error: identifier 'SpriteRenderer'
 C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\EngineRenderer.h(60,11): error C2065: '_layer': undeclared identifier
 C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\EngineRenderer.h(61,1): error C2050: switch expression not integral
-C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\EngineRenderer.h(64,37): error C2065: '_newSprite': undeclared identifier
-C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\EngineRenderer.h(69,34): error C2065: '_newSprite': undeclared identifier
-C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\EngineRenderer.h(74,37): error C2065: '_newSprite': undeclared identifier
-C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\SpriteRenderer.cpp(25,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\SpriteRenderer.cpp(26,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\SpriteRenderer.cpp(33,130): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\SpriteRenderer.cpp(33,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\EngineRenderer.h(64,36): error C2065: '_newSprite': undeclared identifier
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\EngineRenderer.h(69,33): error C2065: '_newSprite': undeclared identifier
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\EngineRenderer.h(74,36): error C2065: '_newSprite': undeclared identifier
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\SpriteRenderer.cpp(11,70): error C2660: 'EngineRenderer::AddSprite': function does not take 2 arguments
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\EngineRenderer.h(58,7): message : see declaration of 'EngineRenderer::AddSprite'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\SpriteRenderer.cpp(27,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\SpriteRenderer.cpp(28,18): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\SpriteRenderer.cpp(35,130): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\SpriteRenderer.cpp(35,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating Code...

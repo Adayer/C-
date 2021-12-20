@@ -55,7 +55,7 @@ public:
 
 	void LoadTexture(std::string _name);
 
-	void AddSprite(SpriteRenderer*& _newSprite, RenderLayer _layer)
+	void AddSprite(SpriteRenderer* _newSprite, RenderLayer _layer)
 	{
 		switch (_layer)
 		{
