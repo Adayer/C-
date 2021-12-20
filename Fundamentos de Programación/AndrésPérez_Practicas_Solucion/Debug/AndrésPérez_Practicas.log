@@ -1,0 +1,4 @@
+﻿  APM_Practica2.cpp
+D:\U-Tad\Master\C-\AndrésPérez_Practicas\APM_Practica2.cpp(26,29): warning C4838: conversion from 'unsigned int' to 'int' requires a narrowing conversion
+D:\U-Tad\Master\C-\AndrésPérez_Practicas\APM_Practica2.cpp(105,29): warning C4018: '<': signed/unsigned mismatch
+  AndrésPérez_Practicas.vcxproj -> D:\U-Tad\Master\C-\AndrésPérez_Practicas\Debug\AndrésPérez_Practica2.exe
