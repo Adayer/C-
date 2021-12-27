@@ -27,4 +27,10 @@ class UTAD2021EDITOR_API FConversationAssetAction : public FAssetTypeActions_Bas
 	{
 		return FText::FromString(AssetData.AssetName.ToString() + TEXT(" es un Conversation Asset"));
 	}
+
+	virtual bool HasActions(const TArray<UObject*>& InObjects) const override
+	{
+		return true;
+	}
+
 };

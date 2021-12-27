@@ -34,4 +34,6 @@ public:
 		FString Name;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Conversation")
 		TArray<FConversationLine> Lines;
+
+	void SwapLines();
 };
