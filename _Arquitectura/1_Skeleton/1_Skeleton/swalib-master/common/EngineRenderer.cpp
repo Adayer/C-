@@ -1,4 +1,5 @@
 #include "EngineRenderer.h"
+#include "SpriteRenderer.h"
 
 EngineRenderer* EngineRenderer::instance = nullptr;
 

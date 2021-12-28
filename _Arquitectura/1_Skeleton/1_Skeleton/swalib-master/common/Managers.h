@@ -8,10 +8,7 @@
 class LogicManager 
 {
 private:
-	std::vector<CBall*> m_balls; //Reference to all the balls controlled by the Logic Manager
-	GLuint ballTexture = 0; //Texture to apply to each of the balls
-	GLuint backgroundTexture = 0;
-	CTileableSprite* m_backgroundSprite;
+	//std::vector<CBall*> m_balls; //Reference to all the balls controlled by the Logic Manager
 	CTime m_time; //Time class for Logic Manager
 	LogicManager() {};
 	static LogicManager *instance;
@@ -30,8 +27,8 @@ public:
 	void operator=(const LogicManager&) = delete;
 
 
-	std::vector<CBall*> GetBalls() { return m_balls; }
-	CBall* GetFirstBalls() { return m_balls[0]; }
+	//std::vector<CBall*> GetBalls() { return m_balls; }
+	//CBall* GetFirstBalls() { return m_balls[0]; }
 
 	void Init(const unsigned int _numBalls);
 	void Update();

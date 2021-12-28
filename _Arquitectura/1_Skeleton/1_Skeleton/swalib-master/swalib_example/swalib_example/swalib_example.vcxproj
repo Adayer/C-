@@ -132,6 +132,7 @@
     <ClCompile Include="..\..\common\SpriteRenderer.cpp" />
     <ClCompile Include="..\..\common\stdafx.cpp" />
     <ClCompile Include="..\..\common\sys_win.cpp" />
+    <ClCompile Include="..\..\common\TextureBank.cpp" />
     <ClCompile Include="..\..\common\Time.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +147,7 @@
     <ClInclude Include="..\..\common\SpriteRenderer.h" />
     <ClInclude Include="..\..\common\stdafx.h" />
     <ClInclude Include="..\..\common\sys.h" />
+    <ClInclude Include="..\..\common\TextureBank.h" />
     <ClInclude Include="..\..\common\Time.h" />
     <ClInclude Include="..\..\common\vector2d.h" />
   </ItemGroup>

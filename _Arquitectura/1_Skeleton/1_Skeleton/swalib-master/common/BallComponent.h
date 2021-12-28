@@ -33,4 +33,6 @@ public:
 	virtual void Init(unsigned int _numArgs, va_list args) = 0;
 	virtual void Update() override;
 	virtual void Exit() override; //No implementation
+
+	void OnCollisionEnter();
 };

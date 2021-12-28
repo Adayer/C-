@@ -1,5 +1,6 @@
 #include "BallComponent.h"
 #include "Entity.h"
+#include "Time.h"
 
 void BallComponent::Init(unsigned int _numArgs, va_list args)
 {
@@ -11,7 +12,23 @@ void BallComponent::Init(unsigned int _numArgs, va_list args)
 void BallComponent::Update()
 {
 	m_bufferPosition = root->GetTransform()->GetPosition();
-	root->GetTransform()->SetPosition(m_bufferPosition + m_currentVel); //Delta time needs to be implemented
+	root->GetTransform()->SetPosition(m_bufferPosition + m_currentVel * TIME_DELTA_TIME);
+	
+	// Rebound on margins.
+	if ((root->GetTransform()->GetPosition().x > SCR_WIDTH) || (root->GetTransform()->GetPosition().x < 0))
+	{
+		m_currentVel.x *= -1.0;
+	}
+	if ((root->GetTransform()->GetPosition().y > SCR_HEIGHT) || (root->GetTransform()->GetPosition().y < 0))
+	{
+		m_currentVel.y *= -1.0;
+	}
+}
+
+void BallComponent::OnCollisionEnter()
+{
+	root->GetTransform()->SetPosition(m_bufferPosition);
+	m_currentVel = m_currentVel * -1.f;
 }
 
 void BallComponent::Exit()

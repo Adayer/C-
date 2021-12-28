@@ -1,5 +1,7 @@
 #include "Time.h"
 
+CTime* CTime::instance = nullptr;
+
 void CTime::InitTime()
 {
 	m_fixedTick = 1. / 60.;

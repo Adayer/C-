@@ -3,9 +3,15 @@
 #include "stdafx.h"
 #include "sys.h"
 
+#define TIME_DELTA_TIME CTime::GetInstance()->DeltaTime()
+
 class CTime
 {
 private:
+	//Singleton variables
+	static CTime* instance;
+	CTime() {}
+
 	//Variables needed to calculate time between frames
 	_int64 m_previousCount;
 	LARGE_INTEGER m_previousCountLarge;
@@ -25,7 +31,19 @@ private:
 
 public: 
 
-	CTime(){}
+	//Singleton variables
+	static CTime* GetInstance()
+	{
+		if (instance == nullptr)
+		{
+			instance = new CTime();
+		}
+		return instance;
+	}
+
+	//To assure singleton is not copied or created using a copy
+	CTime(CTime& other) = delete;
+	void operator=(const CTime&) = delete;
 
 	void InitTime();
 	void UpdateTime();

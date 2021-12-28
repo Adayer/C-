@@ -4,9 +4,8 @@
 #include "core.h"
 #include "vector2d.h"
 #include <vector>
-#include <map>
-#include <string>
-#include "SpriteRenderer.h"
+
+class SpriteRenderer;
 
 
 enum class RenderLayer
@@ -29,9 +28,6 @@ private:
 	std::vector<SpriteRenderer*> m_tBackgroundSprites;
 	std::vector<SpriteRenderer*> m_tDefaultSprites;
 	std::vector<SpriteRenderer*> m_tForegroundSprites;
-
-	//Textures Loaded
-	std::map<std::string, GLuint> m_textures;
 
 public:
 	//Singleton variables
