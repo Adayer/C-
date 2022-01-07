@@ -16,3 +16,12 @@ void EngineRenderer::InitRenderEngine()
 	glEnable(GL_BLEND);	// Blend the incoming RGBA color values with the values in the color buffers.
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);	// Blend func. for alpha color.
 }
+
+void EngineRenderer::UpdateRenderer()
+{
+	size_t numEntities = m_tBackgroundSprites.size();
+	for (size_t i = 0; i < numEntities; ++i)
+	{
+			
+	}
+}

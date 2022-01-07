@@ -2,6 +2,7 @@
 #include "vector2d.h"
 #include <stdarg.h>
 class Entity;
+class Message;
 
 class Component
 {
@@ -12,6 +13,8 @@ public:
 	virtual void Update() = 0;
 	virtual void Exit() = 0;
 	Component(Entity* _root): root(_root){}
+
+	virtual void RecieveMessage(Message* _message) = 0; //Recieves a message and acts acordingly
 };
 
 class Transform : public Component
@@ -39,6 +42,8 @@ public:
 
 	void Update() override {}
 	void Exit() override {}
+
+	virtual void RecieveMessage(Message* _message) override{}
 
 	const vec2 GetPosition() { return m_position; }
 	void SetPosition(vec2 _newPos) { m_position = _newPos; }

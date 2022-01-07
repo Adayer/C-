@@ -1,7 +1,7 @@
 #include "Entity.h"
-#include "Component.h"
+#include "Messages.h"
 #include <stdarg.h>
-
+#include <iterator>
 
 Entity::Entity()
 {
@@ -27,5 +27,14 @@ void Entity::Update(float deltaTime)
 		{
 			m_tComponents[i]->Update();
 		}
+	}
+}
+
+void Entity::SendMessage(Message* _message)
+{
+	std::vector<Component*>::iterator iter;
+	for (iter = m_tComponents.begin(); iter != m_tComponents.end(); ++iter)
+	{
+		(*iter)->RecieveMessage(_message);
 	}
 }

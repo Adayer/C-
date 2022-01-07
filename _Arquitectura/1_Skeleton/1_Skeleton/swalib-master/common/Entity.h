@@ -2,23 +2,29 @@
 #include <vector>
 #include <assert.h>
 #include <stdarg.h>
+#include "Component.h"
 
-class Component;
-class Transform;
+
+//class Component;
+//class Transform;
+
+class Message;
 
 class Entity
 {
 private:
 	std::vector<Component*> m_tComponents;
 	Transform* m_transform; // Al entities have a Transform component
-	~Entity();
 public:
 
 	void Init(); //Initialize the Entity
 	void Update(float _deltaTim); //Loops through all components and updates them all
-	void Exit(); //Prepares the Entity for destruction
+	void Exit() {}; //Prepares the Entity for destruction
+
+	void SendMessage(Message* _message); //Sends a message to all components
 
 	Entity();
+	~Entity();
 
 	Transform* const GetTransform() { return m_transform; }
 
@@ -38,17 +44,18 @@ public:
 		assert(0); //T was not a valid component
 	}
 
+	//NEEDS TO BE CHECKED;
 	//Add Component function and overloads
 	template <class T>
 	void AddComponent() //Adds a new component to the Entity
 	{
 		T* newComp = new T(this);
-		Component* pComp = dynamic_cast<CPadre*>(newComp);
+		Component* pComp = dynamic_cast<Component*>(newComp);
 
 		if (pComp)
 		{
 			m_tComponents.push_back(pComp);
-			pComp->Init();
+			pComp->Init(0);//INIT NEEDS TO BE CHECKED;
 		}
 		else
 		{
@@ -60,7 +67,7 @@ public:
 	void AddComponent(unsigned int _numArgs, ...) //Adds a new component to the Entity and initializes it with inputed values
 	{
 		T* newComp = new T(this);
-		Component* pComp = dynamic_cast<CPadre*>(newComp);
+		Component* pComp = dynamic_cast<Component*>(newComp);
 
 		if (pComp)
 		{
@@ -68,13 +75,13 @@ public:
 			va_start(valist, _numArgs);
 
 			m_tComponents.push_back(pComp);
-			pComp->Init();
+			pComp->Init(_numArgs, valist); //INIT NEEDS TO BE CHECKED;
 
 			va_end(valist);
 		}
 		else
 		{
-			assert(0) //T was not a component
+			assert(0); //T was not a component
 		}
 	}
 
@@ -87,6 +94,7 @@ public:
 		if (pComp)
 		{
 			m_tComponents.push_back(pComp);
+			pComp->Init(0);//INIT NEEDS TO BE CHECKED;
 		}
 		else
 		{
@@ -104,7 +112,14 @@ public:
 
 		if (pComp)
 		{
+			va_list valist;
+			va_start(valist, _numArgs);
+
 			m_tComponents.push_back(pComp);
+			pComp->Init(_numArgs, valist); //INIT NEEDS TO BE CHECKED;
+			
+			va_end(valist);
+
 		}
 		else
 		{

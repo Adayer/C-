@@ -31,6 +31,7 @@ public:
 	virtual void Exit() override {}
 
 	void virtual UpdateRender(); //Render the sprite (called by Engine)
+	virtual void RecieveMessage(Message* _message) override {}
 };
 
 //Class that renders sprites that can be tiled across the whole window
@@ -48,10 +49,11 @@ public:
 
 	}
 
-	//(4, m_sprite, m_size, RenderLayer ,m_tileWidth, m_tileHeight)
+	//(5, m_sprite, m_size, RenderLayer ,m_tileWidth, m_tileHeight)
 	virtual void Init(unsigned int _numArgs, va_list args) override;
 	virtual void Update() override {} //Does nothing as is updated by Engine
 	virtual void Exit() override {}
 
 	virtual void UpdateRender() override;
+	virtual void RecieveMessage(Message* _message) override{}
 };

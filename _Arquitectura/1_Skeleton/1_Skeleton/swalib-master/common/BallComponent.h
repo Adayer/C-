@@ -31,9 +31,11 @@ public:
 	};
 
 	//2 args =  m_maxSpeed, m_radius
-	virtual void Init(unsigned int _numArgs, va_list args) = 0;
+	virtual void Init(unsigned int _numArgs, va_list args) override;
 	virtual void Update() override;
 	virtual void Exit() override; //No implementation
+
+	virtual void RecieveMessage(Message* _message) override;
 
 	void OnCollisionEnter();
 };

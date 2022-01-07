@@ -6,6 +6,7 @@
 #include "core.h"
 #include "sys.h"
 #include "Component.h"
+#include "World.h"
 
 
 class Collider : public Component
@@ -18,8 +19,8 @@ public:
 		Component(_root),
 		m_radius(0.f)
 	{
-
-	};
+		World::GetInstance()->AddCollider(this);
+	}
 
 	float GetRadius() { return m_radius; }
 	void SetRadius(float _radius) 
@@ -32,7 +33,9 @@ public:
 	}
 
 	//NumArgs 1 = m_radius;
-	virtual void Init(unsigned int _numArgs, va_list args) = 0;
+	virtual void Init(unsigned int _numArgs, va_list args);
 	virtual void Update() override;
 	virtual void Exit() override; //No implementation
+
+	virtual void RecieveMessage(Message* _message) override{}
 };

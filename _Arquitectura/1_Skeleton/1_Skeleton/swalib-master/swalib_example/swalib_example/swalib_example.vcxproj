@@ -130,11 +130,13 @@
     <ClCompile Include="..\..\common\font.cpp" />
     <ClCompile Include="..\..\common\lodepng.cpp" />
     <ClCompile Include="..\..\common\Managers.cpp" />
+    <ClCompile Include="..\..\common\Messages.cpp" />
     <ClCompile Include="..\..\common\SpriteRenderer.cpp" />
     <ClCompile Include="..\..\common\stdafx.cpp" />
     <ClCompile Include="..\..\common\sys_win.cpp" />
     <ClCompile Include="..\..\common\TextureBank.cpp" />
     <ClCompile Include="..\..\common\Time.cpp" />
+    <ClCompile Include="..\..\common\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\BallComponent.h" />
@@ -146,12 +148,14 @@
     <ClInclude Include="..\..\common\font.h" />
     <ClInclude Include="..\..\common\lodepng.h" />
     <ClInclude Include="..\..\common\Managers.h" />
+    <ClInclude Include="..\..\common\Messages.h" />
     <ClInclude Include="..\..\common\SpriteRenderer.h" />
     <ClInclude Include="..\..\common\stdafx.h" />
     <ClInclude Include="..\..\common\sys.h" />
     <ClInclude Include="..\..\common\TextureBank.h" />
     <ClInclude Include="..\..\common\Time.h" />
     <ClInclude Include="..\..\common\vector2d.h" />
+    <ClInclude Include="..\..\common\World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

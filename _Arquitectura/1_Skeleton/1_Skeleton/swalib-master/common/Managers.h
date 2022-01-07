@@ -30,7 +30,7 @@ public:
 	//std::vector<CBall*> GetBalls() { return m_balls; }
 	//CBall* GetFirstBalls() { return m_balls[0]; }
 
-	void Init(const unsigned int _numBalls);
+	void Init();
 	void Update();
 	void Exit();
 };

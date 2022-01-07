@@ -7,13 +7,15 @@
 #include "vector2d.h"
 #include <vector>
 #include "Managers.h"
-
 #include "EngineRenderer.h"
-#include "TextureBank.h"
-#include "Entity.h"
-#include "BallComponent.h"
-#include "CollisionComponent.h"
-#include "SpriteRenderer.h"
+#include "World.h"
+
+//#include "EngineRenderer.h"
+//#include "TextureBank.h"
+//#include "Entity.h"
+//#include "BallComponent.h"
+//#include "CollisionComponent.h"
+//#include "SpriteRenderer.h"
 
 //-----------------------------------------------------------------------------
 // Logic Info.
@@ -37,41 +39,7 @@ void Exit();
 //double realTime = 0.;
 //double logicRunTime = 0.;
 
-class World
-{
-private:
-	World() {};
-	static World* instance;
-	
-	std::vector<Entity*> entities;
-
-public:
-	static World* GetInstance()
-	{
-		if (instance == nullptr)
-		{
-			instance = new World();
-		}
-		return instance;
-	}
-
-	//To assure Logic Manager is not copied or created using a copy
-	World(World& other) = delete;
-	void operator=(const World&) = delete;
-
-	std::vector<Entity*>* GetWorldEntities() { return &entities; }
-
-	//Entities created are created with new but there is currently no delete
-	void AddEntity(Entity* _newEntity) 
-	{
-		if (_newEntity)
-		{
-			entities.push_back(_newEntity);
-		}
-	}
-};
-
-#define NUM_BALLS 16
+//#define NUM_BALLS 16
 
 int Main(void)
 {
@@ -88,22 +56,9 @@ int Main(void)
 
 void Init() 
 {
-	//Generate all the balls
-	for (int i = 0; i < NUM_BALLS; ++i)
-	{
-		Entity* newEntity = new Entity();
-		newEntity->AddComponent<BallComponent>(2, 20.f, 16.f); //Add ball component
-		newEntity->AddComponent<Collider>(1, 16.f); //Add collider component
-
-		//Load sprite
-		const char* ballSpriteRoute = "data/tyrian_ball.png";
-		GLuint* ballSprite = TextureBank::GetInstance()->GetTexture(ballSpriteRoute);
-		newEntity->AddComponent<SpriteRenderer>(2,ballSprite, 16.f, RenderLayer::Default); //Add sprite renderer component
-
-		World::GetInstance()->AddEntity(newEntity);
-	}
-
-	//LogicManager::GetInstance()->Init(NUM_BALLS);
+	World::GetInstance()->Init();
+	LogicManager::GetInstance()->Init();
+	EngineRenderer::GetInstance()->InitRenderEngine();
 	//EngineRenderer::GetInstance()->InitRenderEngine();
 	FONT_Init();
 
@@ -117,6 +72,7 @@ void Init()
 void Update()
 {
 	LogicManager::GetInstance()->Update();
+	EngineRenderer::GetInstance()->UpdateRenderer();
 
 	//Debug FPS
 	//sprintf(buffer, "%.2f\n", 1./refreshTime);
@@ -148,6 +104,8 @@ void Update()
 
 void Exit()
 {
+	EngineRenderer::GetInstance()->ExitRenderer();
 	LogicManager::GetInstance()->Exit();
+	World::GetInstance()->Exit();
 	FONT_End();
 }

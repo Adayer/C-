@@ -1,5 +1,6 @@
 #include "CollisionComponent.h"
 #include "Entity.h"
+#include "Messages.h"
 
 void Collider::Init(unsigned int _numArgs, va_list args)
 {
@@ -13,49 +14,57 @@ void Collider::Init(unsigned int _numArgs, va_list args)
 void Collider::Update()
 {
 	//Check collision
+	// Collision detection. ---> Move to Collider Component
+	bool collision = false;
+	int colliding_ball = -1;
+	
+	std::vector<Collider*>* pOtherColliders = World::GetInstance()->GetWorldColliders();
+	if (!pOtherColliders)
+	{
+		return;
+		assert(0);
+	}
+	for (size_t j = 0; j < pOtherColliders->size(); j++)
+	{
+		if ((*pOtherColliders)[j] != this)
+		{
+			float limit2 = (m_radius + (*pOtherColliders)[j]->GetRadius() * (m_radius + (*pOtherColliders)[j]->GetRadius()));
+			if (vlen2(root->GetTransform()->GetPosition() 
+				- (*pOtherColliders)[j]->root->GetTransform()->GetPosition()) 
+				<= limit2)
+			{
+				collision = true;
+				colliding_ball = j;
+				break;
+			}
+		}
+	}
+
+	if (collision)
+	{
+		//Send collision message
+
+		EntCollisionMsg entityMessage(root, ((*pOtherColliders)[colliding_ball])->root);
+	}
+
+
+	// Rebound on margins.
+	if ((root->GetTransform()->GetPosition().x > SCR_WIDTH) || (root->GetTransform()->GetPosition().x < 0))
+	{
+		//Send collision message
+		LimitWorldCollMsg collXMessage(root);
+	}
+	if ((root->GetTransform()->GetPosition().y > SCR_HEIGHT) || (root->GetTransform()->GetPosition().y < 0))
+	{
+		//Send collision message
+		LimitWorldCollMsg collYMessage(root);
+	}
 }
 
 void Collider::Exit()
 {
 
 }
-	//// Collision detection. ---> Move to Collider Component
-	//bool collision = false;
-	//int colliding_ball = -1;
-	//
-	//for (int j = 0; j < _otherBalls.size(); j++) 
-	//{
-	//	if (j != _thisIndex)
-	//	{
-	//		float limit2 = (m_radius + _otherBalls[j]->GetRadius()) * (m_radius + _otherBalls[j]->GetRadius());
-	//		if (vlen2(newpos - _otherBalls[j]->GetPosition()) <= limit2) 
-	//		{
-	//			collision = true;
-	//			colliding_ball = j;
-	//			break;
-	//		}
-	//	}
-	//}
-
-	//if (!collision) 
-	//{
-	//	m_currentPos = newpos;
-	//}
-	//else 
-	//{
-	//	// Rebound!
-	//	m_currentVel = m_currentVel* -1.f;
-	//	//_otherBalls[colliding_ball].vel = balls[colliding_ball].vel * -1.f;
-	//}
-
-	//// Rebound on margins.
-	//if ((m_currentPos.x > SCR_WIDTH) || (m_currentPos.x < 0)) 
-	//{
-	//	m_currentVel.x *= -1.0;
-	//}
-	//if ((m_currentPos.y > SCR_HEIGHT) || (m_currentPos.y < 0)) 
-	//{
-	//	m_currentVel.y *= -1.0;
-	//}
+	
 
 
