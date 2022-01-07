@@ -3,13 +3,13 @@
 #include <vector>
 
 #define LOGIC_MANAGER_INSTANCE LogicManager::GetInstance()
-#define LOGIC_MANAGER_GET_BALLS LogicManager::GetInstance()->GetBalls()
+//#define LOGIC_MANAGER_GET_BALLS LogicManager::GetInstance()->GetBalls()
 
 class LogicManager 
 {
 private:
 	//std::vector<CBall*> m_balls; //Reference to all the balls controlled by the Logic Manager
-	CTime m_time; //Time class for Logic Manager
+	//CTime m_time; //Time class for Logic Manager
 	LogicManager() {};
 	static LogicManager *instance;
 public:

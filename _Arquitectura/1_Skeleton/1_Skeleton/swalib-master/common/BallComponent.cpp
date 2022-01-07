@@ -4,6 +4,11 @@
 
 void BallComponent::Init(unsigned int _numArgs, va_list args)
 {
+	if (_numArgs == 2)
+	{
+		m_maxSpeed = va_arg(args, float);
+		m_radius = va_arg(args, float);
+	}
 	root->GetTransform()->SetPosition(vec2(CORE_FRand(0.0, SCR_WIDTH), CORE_FRand(0.0, SCR_HEIGHT)));	//= ;
 	m_currentVel = vec2(CORE_FRand(-m_maxSpeed, m_maxSpeed), CORE_FRand(-m_maxSpeed, m_maxSpeed));
 }

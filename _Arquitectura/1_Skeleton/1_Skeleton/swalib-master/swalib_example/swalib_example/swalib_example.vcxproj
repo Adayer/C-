@@ -121,6 +121,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\common\BallComponent.cpp" />
+    <ClCompile Include="..\..\common\CollisionComponent.cpp" />
     <ClCompile Include="..\..\common\Component.cpp" />
     <ClCompile Include="..\..\common\core.cpp" />
     <ClCompile Include="..\..\common\EngineRenderer.cpp" />
@@ -137,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\BallComponent.h" />
+    <ClInclude Include="..\..\common\CollisionComponent.h" />
     <ClInclude Include="..\..\common\Component.h" />
     <ClInclude Include="..\..\common\core.h" />
     <ClInclude Include="..\..\common\EngineRenderer.h" />

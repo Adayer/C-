@@ -4,6 +4,7 @@
 #include "sys.h"
 
 #define TIME_DELTA_TIME CTime::GetInstance()->DeltaTime()
+#define TIME CTime::GetInstance()
 
 class CTime
 {

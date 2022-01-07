@@ -4,7 +4,7 @@ LogicManager* LogicManager::instance = nullptr;
 
 void LogicManager::Init(const unsigned int _numBalls)
 {
-	m_time.InitTime(); //Initialize time
+	TIME->InitTime(); //Initialize time
 
 	//Initialize balls
 	//m_balls.reserve(_numBalls);
@@ -17,7 +17,7 @@ void LogicManager::Init(const unsigned int _numBalls)
 
 void LogicManager::Update()
 {
-	m_time.UpdateTime();
+	TIME->UpdateTime();
 
 	//size_t numBalls = m_balls.size();
 	//while (m_time.ProcessSlots())

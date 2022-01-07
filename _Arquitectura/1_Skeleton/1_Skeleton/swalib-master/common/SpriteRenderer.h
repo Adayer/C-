@@ -25,7 +25,7 @@ public:
 	const vec2 GetSize() { return m_size; }
 	void SetSize(const vec2 _size) { m_size = _size; }
 
-	//(2, m_sprite, m_size, RenderLayer)
+	//(3, m_sprite, m_size, RenderLayer)
 	virtual void Init(unsigned int _numArgs, va_list args) override;
 	virtual void Update() override {} //Does nothing as is updated by Engine
 	virtual void Exit() override {}
