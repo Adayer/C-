@@ -72,7 +72,9 @@ void Init()
 void Update()
 {
 	LogicManager::GetInstance()->Update();
-	EngineRenderer::GetInstance()->UpdateRenderer();
+	EngineRenderer::GetInstance()->UpdateRenderer(); //We update the Engine separately to ensure it updates after the logic
+
+
 
 	//Debug FPS
 	//sprintf(buffer, "%.2f\n", 1./refreshTime);
@@ -97,9 +99,7 @@ void Update()
 	//FONT_DrawString(vec2(20, 30), buffer1Balls); //Real velocity
 
 	//GENERAL FUNCTIONS
-	// Exchanges the front and back buffers
-	SYS_Show();
-	SYS_Pump();	// Process Windows messages.
+	
 }
 
 void Exit()

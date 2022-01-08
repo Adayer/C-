@@ -3,8 +3,10 @@
 #include "Entity.h"
 #include "BallComponent.h"
 #include "Component.h"
+#include "CollisionComponent.h"
 
 LogicManager* LogicManager::instance = nullptr;
+#define COMPONENT_LIST (*((*tEntities)[i]->GetComponentList()))
 
 void LogicManager::Init()
 {
@@ -17,15 +19,15 @@ void LogicManager::Update()
 
 	while (TIME->ProcessSlots())
 	{
-		//Move each of the balls
+		//We update all components
 		std::vector<Entity*>* tEntities= World::GetInstance()->GetWorldEntities();
 		size_t numEntities = tEntities->size();
 		for (size_t i = 0; i < numEntities; ++i)
 		{
-			BallComponent* pBall = (*tEntities)[i]->FindComponent<BallComponent>();
-			if (pBall)
+			size_t numComponents = (*tEntities)[i]->GetComponentList()->size();
+			for (size_t j = 0; j < numComponents; ++j)
 			{
-				pBall->Update();
+				COMPONENT_LIST[j]->Update();
 			}
 		}
 		

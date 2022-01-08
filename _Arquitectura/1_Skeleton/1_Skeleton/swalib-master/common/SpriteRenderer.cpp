@@ -7,7 +7,8 @@ void SpriteRenderer::Init(unsigned int _numArgs, va_list args)
 	{
 		m_sprite = va_arg(args, GLuint*);
 		m_size = va_arg(args, vec2);
-		EngineRenderer::GetInstance()->AddSprite(this, va_arg(args, RenderLayer)); // RenderLayer::Default
+		RenderLayer layer = va_arg(args, RenderLayer);
+		EngineRenderer::GetInstance()->AddSprite(this, layer); // RenderLayer::Default
 	}
 }
 
@@ -22,10 +23,11 @@ void TileableSpriteRenderer::Init(unsigned int _numArgs, va_list args)
 	{
 		m_sprite = va_arg(args, GLuint*);
 		m_size = va_arg(args, vec2);
-		EngineRenderer::GetInstance()->AddSprite(this, va_arg(args, RenderLayer)); // RenderLayer::Default
+		RenderLayer layer = va_arg(args, RenderLayer);
+		EngineRenderer::GetInstance()->AddSprite(this, layer);
 
-		m_tileWidth = va_arg(args, float);
-		m_tileHeight = va_arg(args, float);
+		m_tileWidth = va_arg(args, double);
+		m_tileHeight = va_arg(args, double);
 	}
 }
 void TileableSpriteRenderer::UpdateRender()

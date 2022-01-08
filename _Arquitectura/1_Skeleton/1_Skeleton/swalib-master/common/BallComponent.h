@@ -14,10 +14,10 @@ private:
 	vec2 m_currentVel; //Current Speed
 	vec2 m_bufferPosition;
 	float m_maxSpeed; //Max value for speed on any axis
-	float m_radius = 16.f;	//Radius of ball
+	float m_radius;	//Radius of ball
 public:
 
-	float GetRadius() { return m_radius; }
+	double GetRadius() { return m_radius; }
 	vec2 GetVelocity() { return m_currentVel; }
 
 	BallComponent(Entity* _root) :
@@ -25,7 +25,7 @@ public:
 		m_currentVel(0.f, 0.f),
 		m_bufferPosition(0.f,0.f),
 		m_maxSpeed(0.0f),
-		m_radius(16.0f) 
+		m_radius(0.0f) 
 	{
 
 	};

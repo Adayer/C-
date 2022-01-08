@@ -1,1 +1,16 @@
-﻿  swalib_example.vcxproj -> D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe
+﻿  BallComponent.cpp
+C:\Users\andre\Desktop\Hellevator\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(10,16): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\andre\Desktop\Hellevator\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(11,14): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\andre\Desktop\Hellevator\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(22,50): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+  CollisionComponent.cpp
+C:\Users\andre\Desktop\Hellevator\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\CollisionComponent.cpp(9,14): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+  Component.cpp
+  Entity.cpp
+  Managers.cpp
+  Messages.cpp
+  SpriteRenderer.cpp
+C:\Users\andre\Desktop\Hellevator\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\SpriteRenderer.cpp(29,17): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\andre\Desktop\Hellevator\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\SpriteRenderer.cpp(30,18): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+  World.cpp
+  Generando código...
+  swalib_example.vcxproj -> C:\Users\andre\Desktop\Hellevator\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe

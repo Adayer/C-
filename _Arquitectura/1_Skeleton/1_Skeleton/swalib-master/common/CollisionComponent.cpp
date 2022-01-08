@@ -6,7 +6,7 @@ void Collider::Init(unsigned int _numArgs, va_list args)
 {
 	if(_numArgs == 1)
 	{
-		m_radius = va_arg(args, float);
+		m_radius = va_arg(args, double);
 	}
 }
 

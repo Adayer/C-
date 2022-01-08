@@ -28,6 +28,8 @@ public:
 
 	Transform* const GetTransform() { return m_transform; }
 
+	std::vector<Component*>* GetComponentList() { return &m_tComponents; }
+
 	template <class T>
 	T* const FindComponent() //Returns pointer to the first valid component of type T
 	{
@@ -41,7 +43,7 @@ public:
 			}
 		}
 
-		assert(0); //T was not a valid component
+		return nullptr; //T was not a valid component or T was not found
 	}
 
 	//NEEDS TO BE CHECKED;

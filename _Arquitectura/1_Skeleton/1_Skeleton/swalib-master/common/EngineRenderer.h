@@ -47,9 +47,7 @@ public:
 	//Initialize render
 	void InitRenderEngine();
 	void UpdateRenderer();
-	void ExitRenderer();
-
-	void LoadTexture(std::string _name);
+	void ExitRenderer(){}
 
 	void AddSprite(SpriteRenderer* _newSprite, RenderLayer _layer)
 	{

@@ -19,9 +19,26 @@ void EngineRenderer::InitRenderEngine()
 
 void EngineRenderer::UpdateRenderer()
 {
+	//We update the sprites from background to foreground to ensure they are render correctly
 	size_t numEntities = m_tBackgroundSprites.size();
 	for (size_t i = 0; i < numEntities; ++i)
 	{
-			
+		m_tBackgroundSprites[i]->UpdateRender();
 	}
+
+	numEntities = m_tDefaultSprites.size();
+	for (size_t i = 0; i < numEntities; ++i)
+	{
+		m_tDefaultSprites[i]->UpdateRender();
+	}
+
+	numEntities = m_tForegroundSprites.size();
+	for (size_t i = 0; i < numEntities; ++i)
+	{
+		m_tForegroundSprites[i]->UpdateRender();
+	}
+
+	// Exchanges the front and back buffers
+	SYS_Show();
+	SYS_Pump();	// Process Windows messages.
 }

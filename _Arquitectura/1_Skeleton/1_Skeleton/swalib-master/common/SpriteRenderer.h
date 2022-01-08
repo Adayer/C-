@@ -37,8 +37,8 @@ public:
 //Class that renders sprites that can be tiled across the whole window
 class TileableSpriteRenderer : public SpriteRenderer
 {
-	int m_tileWidth = 0; //Tile width
-	int m_tileHeight = 0; //Tile height
+	float m_tileWidth = 0; //Tile width
+	float m_tileHeight = 0; //Tile height
 
 public:
 	TileableSpriteRenderer(Entity* _root) :
