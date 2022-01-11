@@ -13,12 +13,12 @@ public:
 
 	}
 	//Overrides
-	void Init();
-	void Update();//Has bool that calls either MoveLeft or MoveRight
-	void Exit();
+	//virtual void Init() override;
+	//virtual void Update() override;//Has bool that calls either MoveLeft or MoveRight
+	//virtual void Exit() override;
 
-	void MoveLeft();
-	void MoveRight();
+	//virtual void MoveLeft() override;
+	//virtual void MoveRight() override;
 
 	//New
 	void Hit(Entity* _hitEntity);//Is called when Character is Hit

@@ -142,6 +142,7 @@
     <ClInclude Include="Resources\Bullet.h" />
     <ClInclude Include="Resources\Character.h" />
     <ClInclude Include="Resources\Enemy.h" />
+    <ClInclude Include="Resources\Entity.h" />
     <ClInclude Include="Resources\GameLogic.h" />
     <ClInclude Include="Resources\main.h" />
     <ClInclude Include="Resources\Player.h" />
@@ -151,6 +152,7 @@
     <ClCompile Include="Resources\Bullet.cpp" />
     <ClCompile Include="Resources\Character.cpp" />
     <ClCompile Include="Resources\Enemy.cpp" />
+    <ClCompile Include="Resources\Entity.cpp" />
     <ClCompile Include="Resources\GameLogic.cpp" />
     <ClCompile Include="Resources\main.cpp" />
     <ClCompile Include="Resources\Player.cpp" />

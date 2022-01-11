@@ -19,12 +19,12 @@ public:
 
 	}
 
-	virtual void Init() override;
+	//virtual void Init() override;
 	virtual void Update() override;
-	virtual void Exit() override;
+	//virtual void Exit() override;
 
-	virtual void MoveLeft() override;
-	virtual void MoveRight() override;
+	//virtual void MoveLeft() override;
+	//virtual void MoveRight() override;
 
 	virtual void Die() override;
 

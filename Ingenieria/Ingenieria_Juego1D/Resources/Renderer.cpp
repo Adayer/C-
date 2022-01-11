@@ -16,7 +16,7 @@ void Renderer::Update()
 	Clear();
 	MoveCursorToX(0);
 	const unsigned int sizeOfGame = GAME_MANAGER_INSTANCE->GetSize();
-	for (unsigned int i = 0; i < sizeOfGame; ++i)
+	for (unsigned int i = 0; i <= sizeOfGame; ++i)
 	{
 		printf("_");
 	}

@@ -2,10 +2,15 @@
 #include "GameLogic.h"
 #include "Renderer.h"
 
+#include <chrono>
+#include <thread>
+
+std::chrono::milliseconds timespan(330); // Time between frames
+
 int main()
 {
 	Init();
-	while (true)
+	while (GAME_MANAGER_INSTANCE->IsPlayerAlive())
 	{
 		Update();
 	}
@@ -15,14 +20,18 @@ int main()
 
 void Init()
 {
-
+	GAME_MANAGER_INSTANCE->Init();
+	RENDERER_INSTANCE->Init();
 }
 void Update()
 {
 	GAME_MANAGER_INSTANCE->Update();
 	RENDERER_INSTANCE->Update();
+
+	//std::this_thread::sleep_for(timespan);
 }
 void Exit()
 {
-
+	GAME_MANAGER_INSTANCE->Exit();
+	RENDERER_INSTANCE->Exit();
 }
