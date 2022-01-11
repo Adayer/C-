@@ -1,5 +1,6 @@
 #include "Time.h"
 #include <stdio.h>
+#include <glfw3.h>
 
 void CTime::UpdateDeltaTime()
 {

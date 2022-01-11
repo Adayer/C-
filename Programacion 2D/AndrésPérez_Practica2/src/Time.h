@@ -1,5 +1,5 @@
 #pragma once
-#include <glfw3.h>
+
 class CTime
 {
 	double previousTime;
