@@ -17,6 +17,10 @@ void APowerUp::BeginPlay()
 	Super::BeginPlay();
 
 	SphereTrigger->SetSphereRadius(20.f);
+
+	const FTransform& Transform = GetTransform();
+	const FVector& Location = Transform.GetLocation();
+	InitialZ = Location.Z;
 }
 
 // Called every frame
@@ -25,14 +29,30 @@ void APowerUp::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	FRotator Rotation = GetActorRotation();
-
-	FVector EulerAngles = Rotation.Euler();
-	EulerAngles.X += (180.f * DeltaTime);
-	EulerAngles.Y += (180.f * DeltaTime);
-	EulerAngles.Z += (180.f * DeltaTime);
-
-	FRotator RotationChanged;
-	RotationChanged.MakeFromEuler(EulerAngles);
-
+	Rotation.Yaw += (RotationSpeed * DeltaTime);
 	SetActorRotation(Rotation);
+
+
+	if (ensure(Curve))
+	{
+		ElapsedTime += DeltaTime;
+
+		float MaxTime, MinTime;
+		Curve->GetTimeRange(MinTime, MaxTime);
+
+		float TimeInRange = fmod(ElapsedTime * TranslationSpeed, MaxTime);
+		float Heigth = Curve->GetFloatValue(TimeInRange);
+
+		FVector Location(GetTransform().GetLocation());
+		Location.Z = Heigth * Amplitud + InitialZ;
+
+		SetActorLocation(Location);
+	}
+}
+
+void APowerUp::PickupPowerUp()
+{
+	++PorcionesComidas;
+	UE_LOG(LogTemp, Display, TEXT("Porciones de pizza: %d"), PorcionesComidas);
+	OnPickupPowerUpDoneEvent();
 }
