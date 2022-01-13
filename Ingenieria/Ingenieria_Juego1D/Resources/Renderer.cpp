@@ -20,7 +20,7 @@ void Renderer::Update()
 	{
 		printf("_");
 	}
-	printf(" 0 - 0\n");
+	printf(" %d - %d\n", GAME_MANAGER_INSTANCE->GetPlayerKills(), GAME_MANAGER_INSTANCE->GetPlayerDeaths());
 
 	std::vector<Entity*>* pToEntities = GAME_MANAGER_INSTANCE->GetEntities();
 	if (pToEntities)

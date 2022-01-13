@@ -1,9 +1,14 @@
 #include "Enemy.h"
 #include "GameLogic.h"
 
+
 void Enemy::Update()
 {
-	CheckCollision(); //Collision needs to be checked before and after movement just in case the player has already moved into the enmies position
+
+	if (!m_isActive)
+	{
+		return;
+	}
 	if(m_bMovingRight)
 	{
 		MoveRight();
@@ -16,9 +21,30 @@ void Enemy::Update()
 	CheckCollision();
 }
 
+void Enemy::Exit()
+{
+	Die();
+}
+
+void Enemy::Die()
+{
+	GAME_MANAGER_INSTANCE->RemoveEnemy(this);
+}
+
 void Enemy::CheckCollision()
 {
+
 	if (m_iCurrentPosition == GAME_MANAGER_INSTANCE->GetPlayerPosition())
+	{
+		GAME_MANAGER_INSTANCE->EndGame();
+	}
+	//Needs to check if previous position was ocupied by Enemy to ensure the enemy did not overlap with the bullet at anypoint
+	else if (m_bMovingRight && (m_iCurrentPosition - 1) == GAME_MANAGER_INSTANCE->GetPlayerPosition())
+	{
+		GAME_MANAGER_INSTANCE->EndGame();
+	}
+	//Needs to check if previous position was ocupied by Enemy to ensure the enemy did not overlap with the bullet at anypoint
+	else if (!m_bMovingRight && (m_iCurrentPosition + 1) == GAME_MANAGER_INSTANCE->GetPlayerPosition())
 	{
 		GAME_MANAGER_INSTANCE->EndGame();
 	}

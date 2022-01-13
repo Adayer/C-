@@ -10,7 +10,7 @@ std::chrono::milliseconds timespan(330); // Time between frames
 int main()
 {
 	Init();
-	while (GAME_MANAGER_INSTANCE->IsPlayerAlive())
+	while (GAME_MANAGER_INSTANCE->KeepPlaying())
 	{
 		Update();
 	}
@@ -28,7 +28,7 @@ void Update()
 	GAME_MANAGER_INSTANCE->Update();
 	RENDERER_INSTANCE->Update();
 
-	//std::this_thread::sleep_for(timespan);
+	std::this_thread::sleep_for(timespan);
 }
 void Exit()
 {

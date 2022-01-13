@@ -3,7 +3,8 @@
 
 #include "Entity.h"
 
-class Character : public Entity
+//This clas doesn't implement any code, it serves to create a new parent class for entities that include a DIE Method
+class Character : public Entity 
 {
 protected:
 public:
@@ -20,6 +21,6 @@ public:
 	//virtual void MoveLeft() override;
 	//virtual void MoveRight() override;
 
-	//New
-	virtual void Die() {}
+	//New 
+	virtual void Die() {} //Implements functionality for Entity death
 };

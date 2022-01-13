@@ -1,32 +1,85 @@
 #include "Player.h"
+#include "Bullet.h"
+#include "GameLogic.h"
 #include <Windows.h>
 
 void Player::Update()
 {
-	short aInput = GetKeyState(0x41);
-	short dInput = GetKeyState(0x44);
-	if((aInput & 0x8000) != 0)
+	if (!m_isActive)
+	{
+		return;
+	}
+	//Inut
+	//Movement variables
+	short hInput = GetKeyState(0x48);
+	short lInput = GetKeyState(0x4c);
+	//Shooting variables
+	short jInput = GetKeyState(0x4a);
+	short kInput = GetKeyState(0x4b);
+	if((hInput & 0x8000) != 0)
 	{
 		MoveLeft();
 	}
-	else if((dInput & 0x8000) != 0)
+	else if((lInput & 0x8000) != 0)
 	{
 		MoveRight();
 	}
+	else if ((jInput & 0x8000) != 0)
+	{
+		ShootLeft();
+	}
+	else if ((kInput & 0x8000) != 0)
+	{
+		ShootRight();
+	}
+	//Stop play input
+	short escInput = GetKeyState(0x1b);
+	if ((escInput & 0x8000) != 0)
+	{
+		GAME_MANAGER_INSTANCE->StopPlay();
+	}
+	
+}
+
+void Player::Exit()
+{
+	Die();
 }
 
 //Overrides
 void Player::Die()
 {
-
+	
 }
 
 //New
-void Player::ShootLeft()
+void Player::ShootLeft() //Creates the bullet and adds it to Entities
 {
-
+	if (m_iNumLeftBullets < MAX_NUMBER_OF_BULLETS_PER_SIDE)
+	{
+		++m_iNumLeftBullets;
+		Bullet* newBullet = new Bullet(m_iCurrentPosition  - 1,'<', false, this); //Memory deleted when Entity is removed
+		GAME_MANAGER_INSTANCE->AddEntity(newBullet);
+	}
 }
-void Player::ShootRight() 
+void Player::ShootRight() //Creates the bullet and adds it to Entities 
 {
+	if (m_iNumRightBullets < MAX_NUMBER_OF_BULLETS_PER_SIDE)
+	{
+		++m_iNumRightBullets;
+		Bullet* newBullet = new Bullet(m_iCurrentPosition  + 1,'>', true, this); //Memory deleted when Entity is removed
+		GAME_MANAGER_INSTANCE->AddEntity(newBullet);
+	}
+}
 
+void Player::DestroyBullet(bool _fromRight) //Reduces pertinet counter
+{
+	if (_fromRight)
+	{
+		--m_iNumRightBullets;
+	}
+	else
+	{
+		--m_iNumLeftBullets;
+	}
 }
