@@ -3,13 +3,20 @@
 #include <vector>
 
 #define LOGIC_MANAGER_INSTANCE LogicManager::GetInstance()
-//#define LOGIC_MANAGER_GET_BALLS LogicManager::GetInstance()->GetBalls()
 
+class Entity;
 class LogicManager 
 {
+public:
+	enum class Size
+	{
+		Invalid = -1,
+		Big,
+		Medium,
+		Small
+	};
+
 private:
-	//std::vector<CBall*> m_balls; //Reference to all the balls controlled by the Logic Manager
-	//CTime m_time; //Time class for Logic Manager
 	LogicManager() {};
 	static LogicManager *instance;
 public:
@@ -26,11 +33,10 @@ public:
 	LogicManager(LogicManager& other) = delete;	
 	void operator=(const LogicManager&) = delete;
 
-
-	//std::vector<CBall*> GetBalls() { return m_balls; }
-	//CBall* GetFirstBalls() { return m_balls[0]; }
-
 	void Init();
 	void Update();
 	void Exit();
+
+	void DivideBall(Entity* _ballToBreak, LogicManager::Size _sizeOfBall);
+	void DestroyBall(Entity* _ballToDestroy);
 };

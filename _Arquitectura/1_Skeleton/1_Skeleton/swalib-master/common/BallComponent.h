@@ -1,11 +1,10 @@
 #pragma once
 #include "vector2d.h"
 #include "stdafx.h"
-#include "vector2d.h"
-#include "stdafx.h"
 #include "core.h"
 #include "sys.h"
 #include "Component.h"
+#include "Managers.h"
 
 
 class BallComponent : public Component
@@ -16,7 +15,9 @@ private:
 	float m_maxSpeed; //Max value for speed on any axis
 	float m_speed;
 	float m_radius;	//Radius of ball
+	LogicManager::Size m_ballSize;
 public:
+
 
 	double GetRadius() { return m_radius; }
 	vec2 GetVelocity() { return m_currentVel; }
@@ -27,15 +28,18 @@ public:
 		m_bufferPosition(0.f,0.f),
 		m_maxSpeed(0.0f),
 		m_speed(0.f),
-		m_radius(0.0f) 
+		m_radius(0.0f),
+		m_ballSize(LogicManager::Size::Invalid)
 	{
 
 	};
 
-	//2 args =  m_maxSpeed, m_radius
+	//3 args =  m_maxSpeed, m_radius, m_ballSize
 	virtual void Init(unsigned int _numArgs, va_list args) override;
 	virtual void Update() override;
 	virtual void Exit() override; //No implementation
+
+	void Explode();
 
 	virtual void RecieveMessage(Message* _message, Message::MessageType _typeOfMessage) override;
 

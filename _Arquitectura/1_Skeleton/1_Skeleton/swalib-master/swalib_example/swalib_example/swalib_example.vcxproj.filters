@@ -102,6 +102,9 @@
     <ClCompile Include="..\..\common\InputManager.cpp">
       <Filter>Source Files\Singletons</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\common\EntityBank.cpp">
+      <Filter>Source Files\Singletons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\BallComponent.h">
@@ -159,6 +162,9 @@
       <Filter>Header Files\Entity</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\InputManager.h">
+      <Filter>Header Files\Singletons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\EntityBank.h">
       <Filter>Header Files\Singletons</Filter>
     </ClInclude>
   </ItemGroup>

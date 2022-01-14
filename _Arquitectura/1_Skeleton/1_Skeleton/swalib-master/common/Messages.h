@@ -5,7 +5,7 @@ class Message
 public:
 	enum class MessageType
 	{
-		Invalid,
+		Invalid = -1,
 		EntCollision,
 		WorldLimit,
 		Count

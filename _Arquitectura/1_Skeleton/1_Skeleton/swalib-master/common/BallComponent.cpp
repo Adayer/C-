@@ -5,10 +5,11 @@
 
 void BallComponent::Init(unsigned int _numArgs, va_list args)
 {
-	if (_numArgs == 2)
+	if (_numArgs == 3)
 	{
 		m_maxSpeed = va_arg(args, double);
 		m_radius = va_arg(args, double);
+		m_ballSize = va_arg(args, LogicManager::Size);
 	}
 	root->GetTransform()->SetPosition(vec2(CORE_FRand(0.0, SCR_WIDTH), CORE_FRand(0.0, SCR_HEIGHT)));	
 	m_speed = CORE_FRand(m_maxSpeed / 2, m_maxSpeed);
@@ -52,6 +53,28 @@ void BallComponent::OnLimitCollisionEnter(bool isYAxis)
 void BallComponent::Exit()
 {
 
+}
+
+void BallComponent::Explode()
+{
+	switch (m_ballSize)
+	{
+	case LogicManager::Size::Big:
+		{
+			LOGIC_MANAGER_INSTANCE->DivideBall(root, m_ballSize);
+			break;
+		}
+		case LogicManager::Size::Medium:
+		{
+			LOGIC_MANAGER_INSTANCE->DivideBall(root, m_ballSize);
+			break;
+		}
+		case LogicManager::Size::Small:
+		{
+			LOGIC_MANAGER_INSTANCE->DestroyBall(root);
+			break;
+		}
+	}
 }
 
 void BallComponent::RecieveMessage(Message* _message, Message::MessageType _typeOfMessage)

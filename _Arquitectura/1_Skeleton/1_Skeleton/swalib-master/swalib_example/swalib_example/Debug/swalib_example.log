@@ -1,7 +1,2 @@
-﻿  BallComponent.cpp
-D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(10,16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(11,14): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(24,60): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(34,85): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(56,80): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  swalib_example.vcxproj -> D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe
+﻿  World.cpp
+  swalib_example.vcxproj -> C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\swalib_example\Debug\swalib_example.exe

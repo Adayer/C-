@@ -1,7 +1,76 @@
-﻿  PlayerComponent.cpp
-D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\PlayerComponent.cpp(13,20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\PlayerComponent.cpp(24,56): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\PlayerComponent.cpp(29,56): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+﻿  BallComponent.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(32,2): error C2011: 'BallComponent::Size': 'enum' type redefinition
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(13): message : see declaration of 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(51,20): error C2027: use of undefined type 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(13): message : see declaration of 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(51,1): error C2065: 'Invalid': undeclared identifier
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(11,16): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(12,14): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(26,60): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(36,85): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(50,80): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(63,14): error C2027: use of undefined type 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(13): message : see declaration of 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(63,17): error C2065: 'Big': undeclared identifier
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(68,14): error C2027: use of undefined type 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(13): message : see declaration of 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(68,20): error C2065: 'Medium': undeclared identifier
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(73,14): error C2027: use of undefined type 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(13): message : see declaration of 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(73,19): error C2065: 'Small': undeclared identifier
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(63,1): error C2051: case expression not constant
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(68,1): error C2051: case expression not constant
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(73,1): error C2051: case expression not constant
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.cpp(78,2): warning C4060: switch statement contains no 'case' or 'default' labels
+  CollisionComponent.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\CollisionComponent.cpp(9,14): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\CollisionComponent.cpp(37,23): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  Component.cpp
+  core.cpp
+  EngineRenderer.cpp
+  Entity.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\Entity.cpp(12,34): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  example.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(32,2): error C2011: 'BallComponent::Size': 'enum' type redefinition
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(13): message : see declaration of 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(51,20): error C2027: use of undefined type 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(13): message : see declaration of 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(51,1): error C2065: 'Invalid': undeclared identifier
+  font.cpp
+  InputManager.cpp
+  lodepng.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\lodepng.cpp(798,34): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\lodepng.cpp(3478,46): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+  Managers.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(32,2): error C2011: 'BallComponent::Size': 'enum' type redefinition
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(13): message : see declaration of 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(51,20): error C2027: use of undefined type 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(13): message : see declaration of 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(51,1): error C2065: 'Invalid': undeclared identifier
+  Messages.cpp
+  PlayerComponent.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(32,2): error C2011: 'BallComponent::Size': 'enum' type redefinition
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(13): message : see declaration of 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(51,20): error C2027: use of undefined type 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(13): message : see declaration of 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(51,1): error C2065: 'Invalid': undeclared identifier
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\PlayerComponent.cpp(16,20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\PlayerComponent.cpp(47,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\PlayerComponent.cpp(59,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  SpriteRenderer.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\SpriteRenderer.cpp(29,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\SpriteRenderer.cpp(30,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  stdafx.cpp
+  sys_win.cpp
+  TextureBank.cpp
+  Time.cpp
   World.cpp
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(32,2): error C2011: 'BallComponent::Size': 'enum' type redefinition
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(13): message : see declaration of 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(51,20): error C2027: use of undefined type 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(13): message : see declaration of 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(51,1): error C2065: 'Invalid': undeclared identifier
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\World.cpp(38,78): error C2027: use of undefined type 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\BallComponent.h(13): message : see declaration of 'BallComponent::Size'
+C:\Users\andres.perez\Documents\GitHub\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\World.cpp(38,81): error C2065: 'Big': undeclared identifier
   Generating Code...
-  swalib_example.vcxproj -> D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\swalib_example\x64\Debug\swalib_example.exe

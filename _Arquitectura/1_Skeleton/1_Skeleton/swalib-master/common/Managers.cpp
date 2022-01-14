@@ -41,3 +41,13 @@ void LogicManager::Exit()
 {	
 	//PENDING?
 }
+
+void LogicManager::DivideBall(Entity* _ballToBreak, LogicManager::Size _sizeOfBall)
+{
+
+}
+
+void LogicManager::DestroyBall(Entity* _ballToDestroy)
+{
+
+}

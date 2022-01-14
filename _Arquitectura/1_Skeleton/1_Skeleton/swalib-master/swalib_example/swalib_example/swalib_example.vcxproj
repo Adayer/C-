@@ -126,6 +126,7 @@
     <ClCompile Include="..\..\common\core.cpp" />
     <ClCompile Include="..\..\common\EngineRenderer.cpp" />
     <ClCompile Include="..\..\common\Entity.cpp" />
+    <ClCompile Include="..\..\common\EntityBank.cpp" />
     <ClCompile Include="..\..\common\example.cpp" />
     <ClCompile Include="..\..\common\font.cpp" />
     <ClCompile Include="..\..\common\InputManager.cpp" />
@@ -147,6 +148,7 @@
     <ClInclude Include="..\..\common\core.h" />
     <ClInclude Include="..\..\common\EngineRenderer.h" />
     <ClInclude Include="..\..\common\Entity.h" />
+    <ClInclude Include="..\..\common\EntityBank.h" />
     <ClInclude Include="..\..\common\font.h" />
     <ClInclude Include="..\..\common\InputManager.h" />
     <ClInclude Include="..\..\common\lodepng.h" />
