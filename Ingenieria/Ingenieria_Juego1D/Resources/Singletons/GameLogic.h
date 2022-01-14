@@ -30,7 +30,7 @@ private:
 
 	//Functions
 public:
-	//Singleton funcionts
+	//Singleton functions
 	static GameLogic* GetInstance()
 	{
 		if (instance == nullptr)

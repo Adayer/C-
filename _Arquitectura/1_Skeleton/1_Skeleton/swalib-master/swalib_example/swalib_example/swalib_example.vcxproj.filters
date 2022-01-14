@@ -13,111 +13,153 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Singletons">
+      <UniqueIdentifier>{6f34e98e-ff8f-420e-bdb8-afe9b39b913e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Messages">
+      <UniqueIdentifier>{e10d1289-2d44-45c9-89c3-66df32bb432c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Miscellaneous">
+      <UniqueIdentifier>{87562a28-3e59-4586-80c1-9e34e70b39a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entity">
+      <UniqueIdentifier>{aef69e23-4457-4a02-8765-4393b3e46877}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entity\Components">
+      <UniqueIdentifier>{bf863fd1-5c3f-4665-8268-33bf1825f61b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity">
+      <UniqueIdentifier>{f8012209-397c-44d1-a9ba-e1aef9c26e39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity\Components">
+      <UniqueIdentifier>{0f32447c-6b41-458e-baf2-75bdd3ef7b79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Singletons">
+      <UniqueIdentifier>{b2c96a7b-d8dd-4a94-9b26-d109353c18e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Miscellaneous">
+      <UniqueIdentifier>{fb4c6d4d-250f-462e-8280-a485b9734198}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Messages">
+      <UniqueIdentifier>{93cf4b0c-4b7c-464a-99ff-1e9ceceaa0a1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\common\core.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\common\lodepng.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\common\stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\common\sys_win.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\common\example.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\common\font.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\common\Managers.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\common\Time.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\common\EngineRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\common\Component.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\common\Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\common\BallComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\common\SpriteRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\common\TextureBank.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Entity\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\CollisionComponent.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Entity\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\Component.cpp">
+      <Filter>Source Files\Entity\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\PlayerComponent.cpp">
+      <Filter>Source Files\Entity\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\SpriteRenderer.cpp">
+      <Filter>Source Files\Entity\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\Entity.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\EngineRenderer.cpp">
+      <Filter>Source Files\Singletons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\TextureBank.cpp">
+      <Filter>Source Files\Singletons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\Managers.cpp">
+      <Filter>Source Files\Singletons</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\World.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Singletons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\Time.cpp">
+      <Filter>Source Files\Singletons</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\core.cpp">
+      <Filter>Source Files\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\font.cpp">
+      <Filter>Source Files\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\lodepng.cpp">
+      <Filter>Source Files\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\stdafx.cpp">
+      <Filter>Source Files\Miscellaneous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\sys_win.cpp">
+      <Filter>Source Files\Miscellaneous</Filter>
     </ClCompile>
     <ClCompile Include="..\..\common\Messages.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\common\InputManager.cpp">
+      <Filter>Source Files\Singletons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\common\core.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\lodepng.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\sys.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\font.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\vector2d.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\Managers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\Time.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\EngineRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\Component.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\common\BallComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\SpriteRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\common\TextureBank.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Entity\Components</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\CollisionComponent.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Entity\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\Component.h">
+      <Filter>Header Files\Entity\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\PlayerComponent.h">
+      <Filter>Header Files\Entity\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\SpriteRenderer.h">
+      <Filter>Header Files\Entity\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\EngineRenderer.h">
+      <Filter>Header Files\Singletons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\Managers.h">
+      <Filter>Header Files\Singletons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\TextureBank.h">
+      <Filter>Header Files\Singletons</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\World.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Singletons</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\Messages.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\Time.h">
+      <Filter>Header Files\Singletons</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\core.h">
+      <Filter>Header Files\Miscellaneous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\font.h">
+      <Filter>Header Files\Miscellaneous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\lodepng.h">
+      <Filter>Header Files\Miscellaneous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\stdafx.h">
+      <Filter>Header Files\Miscellaneous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\sys.h">
+      <Filter>Header Files\Miscellaneous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\vector2d.h">
+      <Filter>Header Files\Miscellaneous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\Entity.h">
+      <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\InputManager.h">
+      <Filter>Header Files\Singletons</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

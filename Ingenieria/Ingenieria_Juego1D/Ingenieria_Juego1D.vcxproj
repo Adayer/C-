@@ -120,6 +120,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -139,24 +140,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Resources\Bullet.h" />
-    <ClInclude Include="Resources\Character.h" />
-    <ClInclude Include="Resources\Enemy.h" />
-    <ClInclude Include="Resources\Entity.h" />
-    <ClInclude Include="Resources\GameLogic.h" />
+    <ClInclude Include="Resources\Entities\Bullet.h" />
+    <ClInclude Include="Resources\Entities\Character.h" />
+    <ClInclude Include="Resources\Entities\Enemy.h" />
+    <ClInclude Include="Resources\Entities\Entity.h" />
+    <ClInclude Include="Resources\Entities\Player.h" />
     <ClInclude Include="Resources\main.h" />
-    <ClInclude Include="Resources\Player.h" />
-    <ClInclude Include="Resources\Renderer.h" />
+    <ClInclude Include="Resources\Singletons\GameLogic.h" />
+    <ClInclude Include="Resources\Singletons\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Resources\Bullet.cpp" />
-    <ClCompile Include="Resources\Character.cpp" />
-    <ClCompile Include="Resources\Enemy.cpp" />
-    <ClCompile Include="Resources\Entity.cpp" />
-    <ClCompile Include="Resources\GameLogic.cpp" />
+    <ClCompile Include="Resources\Entities\Bullet.cpp" />
+    <ClCompile Include="Resources\Entities\Character.cpp" />
+    <ClCompile Include="Resources\Entities\Enemy.cpp" />
+    <ClCompile Include="Resources\Entities\Entity.cpp" />
+    <ClCompile Include="Resources\Entities\Player.cpp" />
     <ClCompile Include="Resources\main.cpp" />
-    <ClCompile Include="Resources\Player.cpp" />
-    <ClCompile Include="Resources\Renderer.cpp" />
+    <ClCompile Include="Resources\Singletons\GameLogic.cpp" />
+    <ClCompile Include="Resources\Singletons\Renderer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

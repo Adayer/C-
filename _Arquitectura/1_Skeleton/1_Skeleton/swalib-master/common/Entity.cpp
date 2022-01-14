@@ -30,11 +30,11 @@ void Entity::Update(float deltaTime)
 	}
 }
 
-void Entity::SendMessage(Message* _message)
+void Entity::SendMessage(Message* _message, Message::MessageType _messageType)
 {
 	std::vector<Component*>::iterator iter;
 	for (iter = m_tComponents.begin(); iter != m_tComponents.end(); ++iter)
 	{
-		(*iter)->RecieveMessage(_message);
+		(*iter)->RecieveMessage(_message, _messageType);
 	}
 }

@@ -1,16 +1,21 @@
 #include "GameLogic.h"
-#include "Entity.h"
-#include "Player.h"
-#include "Enemy.h"
 #include "Renderer.h"
+
+#include "../Entities/Enemy.h"
+#include "../Entities/Entity.h"
+#include "../Entities/Player.h"
 
 #include <time.h>
 #include <random>
+#include <Windows.h>
+#include <Mmsystem.h>
 
 GameLogic* GameLogic::instance = nullptr;
 
 void GameLogic::Init()
 {
+	PlaySound(TEXT("Data/musica.wav"), NULL, SND_ASYNC | SND_LOOP); //Music loop starts
+
 	srand(time(nullptr)); //Random seed generation
 
 	//Player generation
@@ -70,8 +75,8 @@ void GameLogic::RemoveEntity(Entity* _entityToRemove)
 	_entityToRemove->m_isActive = false;
 }
 
-void GameLogic::ClearEntities()
-{
+void GameLogic::ClearEntities() 
+{ 
 	int numToDelete = m_tEntitiesPreparedForDeletion.size();
 	for (int i = (numToDelete - 1); i >= 0; --i)
 	{
@@ -89,7 +94,7 @@ void GameLogic::ClearEntities()
 	}
 }
 
-void GameLogic::RemoveEnemy(Entity* _enemyToRemove)
+void GameLogic::RemoveEnemy(Entity* _enemyToRemove) //CAN'T DELETE ENTITY FROM HEAP
 {
 	size_t numEnemies = m_tEnemies.size();
 
@@ -139,7 +144,7 @@ void GameLogic::StopPlay()
 	m_bKeepPlaying = false;
 }
 
-void GameLogic::ResetGame()
+void GameLogic::ResetGame() //Eliminates all entities and initializes the game logic , but keeps the score and renderer
 {
 	size_t numEnemies = m_tEnemies.size();
 	for (size_t i = 0; i < numEnemies; ++i)

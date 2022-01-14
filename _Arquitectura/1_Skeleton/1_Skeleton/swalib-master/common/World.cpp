@@ -4,12 +4,32 @@
 #include "Entity.h"
 #include "BallComponent.h"
 #include "CollisionComponent.h"
+#include "PlayerComponent.h"
 #include "SpriteRenderer.h"
+#include "sys.h"
 
 World* World::instance = nullptr;
 
 void World::Init()
 {
+	//Generate Player
+	Entity* newPlayer = new Entity();
+	newPlayer->AddComponent<PlayerComponent>(2, vec2(SCR_HEIGHT/2, 40), 100.f);
+	//Collider
+	newPlayer->AddComponent<Collider>(1, 26.f);
+	//Sprite
+	const char* playerSpriteRoute = "data/mario.png"; //Sprite route
+	//We get the sprite from the TextureBank which will load it if it isn't already loaded
+	GLuint* playerSprite = TextureBank::GetInstance()->GetTexture(playerSpriteRoute);
+	newPlayer->AddComponent<SpriteRenderer>(3, playerSprite, vec2(40, 40), RenderLayer::Default); //Add sprite renderer component
+	
+	//DEBUG PLAYER COLLISION
+	//const char* debugSpriteRoute = "data/tyrian_ball.png"; //Sprite route
+	//GLuint* debugSprite = TextureBank::GetInstance()->GetTexture(debugSpriteRoute);
+	//newPlayer->AddComponent<SpriteRenderer>(3, debugSprite, vec2(36, 36), RenderLayer::Foreground); //Add sprite renderer component
+
+	World::GetInstance()->AddEntity(newPlayer);
+
 	//Generate all the balls
 	for (int i = 0; i < NUM_BALLS; ++i)
 	{

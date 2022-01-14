@@ -1,18 +1,7 @@
-﻿  Ball.cpp
-D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\Ball.cpp(12,46): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  core.cpp
-  EngineRenderer.cpp
-D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\EngineRenderer.cpp(28,126): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\EngineRenderer.cpp(28,113): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  example.cpp
-  font.cpp
-  lodepng.cpp
-D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\lodepng.cpp(798,34): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
-D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\lodepng.cpp(3478,46): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
-  Managers.cpp
-D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\Managers.cpp(53,2): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  stdafx.cpp
-  sys_win.cpp
-  Time.cpp
+﻿  PlayerComponent.cpp
+D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\PlayerComponent.cpp(13,20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\PlayerComponent.cpp(24,56): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\common\PlayerComponent.cpp(29,56): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  World.cpp
   Generating Code...
   swalib_example.vcxproj -> D:\U-Tad\Master\C-\_Arquitectura\1_Skeleton\1_Skeleton\swalib-master\swalib_example\x64\Debug\swalib_example.exe

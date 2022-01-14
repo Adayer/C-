@@ -1,5 +1,5 @@
 #include "Enemy.h"
-#include "GameLogic.h"
+#include "../Singletons/GameLogic.h"
 
 
 void Enemy::Update()

@@ -37,5 +37,5 @@ public:
 	virtual void Update() override;
 	virtual void Exit() override; //No implementation
 
-	virtual void RecieveMessage(Message* _message) override{}
+	virtual void RecieveMessage(Message* _message, Message::MessageType _messageType) override{}
 };

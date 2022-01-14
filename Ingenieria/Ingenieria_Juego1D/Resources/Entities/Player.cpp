@@ -1,7 +1,10 @@
-#include "Player.h"
 #include "Bullet.h"
-#include "GameLogic.h"
+#include "Player.h"
+
+#include "../Singletons/GameLogic.h"
+
 #include <Windows.h>
+#include <Mmsystem.h>
 
 void Player::Update()
 {
@@ -44,12 +47,13 @@ void Player::Update()
 void Player::Exit()
 {
 	Die();
+
 }
 
 //Overrides
 void Player::Die()
 {
-	
+	PlaySound(TEXT("Data/muerte.wav"), NULL, SND_SYNC); //SND_SYNC to stop the game so the player realizes he has died
 }
 
 //New

@@ -21,7 +21,7 @@ public:
 	void Update(float _deltaTim); //Loops through all components and updates them all
 	void Exit() {}; //Prepares the Entity for destruction
 
-	void SendMessage(Message* _message); //Sends a message to all components
+	void SendMessage(Message* _message, Message::MessageType _messageType); //Sends a message to all components
 
 	Entity();
 	~Entity();

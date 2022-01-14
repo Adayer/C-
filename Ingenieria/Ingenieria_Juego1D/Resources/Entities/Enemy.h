@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Character.h"
-#include "GameLogic.h"
 
 class Enemy: public Character
 {

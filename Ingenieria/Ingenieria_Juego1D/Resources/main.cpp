@@ -1,6 +1,7 @@
 #include "main.h"
-#include "GameLogic.h"
-#include "Renderer.h"
+
+#include "Singletons/GameLogic.h"
+#include "Singletons/Renderer.h"
 
 #include <chrono>
 #include <thread>

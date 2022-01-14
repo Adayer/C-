@@ -1,6 +1,7 @@
 #include "Bullet.h"
-#include "GameLogic.h"
 #include "Player.h"
+
+#include "../Singletons/GameLogic.h"
 
 void Bullet::Update()
 {

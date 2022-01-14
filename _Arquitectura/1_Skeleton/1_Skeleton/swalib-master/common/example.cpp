@@ -9,6 +9,7 @@
 #include "Managers.h"
 #include "EngineRenderer.h"
 #include "World.h"
+#include "InputManager.h"
 
 //#include "EngineRenderer.h"
 //#include "TextureBank.h"
@@ -57,6 +58,7 @@ int Main(void)
 void Init() 
 {
 	World::GetInstance()->Init();
+	InputManager::GetInstance()->Init();
 	LogicManager::GetInstance()->Init();
 	EngineRenderer::GetInstance()->InitRenderEngine();
 	//EngineRenderer::GetInstance()->InitRenderEngine();
@@ -106,6 +108,7 @@ void Exit()
 {
 	EngineRenderer::GetInstance()->ExitRenderer();
 	LogicManager::GetInstance()->Exit();
+	InputManager::GetInstance()->Exit();
 	World::GetInstance()->Exit();
 	FONT_End();
 }

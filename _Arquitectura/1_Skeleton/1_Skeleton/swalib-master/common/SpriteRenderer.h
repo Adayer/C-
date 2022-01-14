@@ -31,7 +31,7 @@ public:
 	virtual void Exit() override {}
 
 	void virtual UpdateRender(); //Render the sprite (called by Engine)
-	virtual void RecieveMessage(Message* _message) override {}
+	virtual void RecieveMessage(Message* _message, Message::MessageType _typeOfMessage) override {}
 };
 
 //Class that renders sprites that can be tiled across the whole window
@@ -55,5 +55,5 @@ public:
 	virtual void Exit() override {}
 
 	virtual void UpdateRender() override;
-	virtual void RecieveMessage(Message* _message) override{}
+	//virtual void RecieveMessage(Message* _message, Message::MessageType _typeOfMessage) override;
 };

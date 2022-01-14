@@ -5,12 +5,13 @@ EntCollisionMsg::EntCollisionMsg(Entity* _a, Entity* _b) :
 	ballA(_a),
 	ballB(_b)
 {
-	ballA->SendMessage(this);
-	ballB->SendMessage(this);
+	ballA->SendMessage(this, MessageType::EntCollision);
+	ballB->SendMessage(this, MessageType::EntCollision);
 }
 
-LimitWorldCollMsg::LimitWorldCollMsg(Entity* _ball) :
-	ball(_ball)
+LimitWorldCollMsg::LimitWorldCollMsg(Entity* _ball, bool _yAxis) :
+	ball(_ball),
+	yAxisCollision(_yAxis)
 {
-	ball->SendMessage(this);
+	ball->SendMessage(this, MessageType::WorldLimit);
 }

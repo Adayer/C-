@@ -13,57 +13,69 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de encabezado\Entities">
+      <UniqueIdentifier>{d579ab12-def3-4480-b0b3-8c73c004e9aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Singletons">
+      <UniqueIdentifier>{a5c2b1c2-df91-48ad-9eff-ab4c03ef6eec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Entities">
+      <UniqueIdentifier>{96efcc2b-b794-4ad4-8fac-6879e70904a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Singletons">
+      <UniqueIdentifier>{6ad8150a-875c-4a03-b260-d89c15b0855c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Resources\main.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Resources\GameLogic.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Resources\Entities\Bullet.h">
+      <Filter>Archivos de encabezado\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Resources\Bullet.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Resources\Entities\Character.h">
+      <Filter>Archivos de encabezado\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Resources\Character.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Resources\Entities\Enemy.h">
+      <Filter>Archivos de encabezado\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Resources\Enemy.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Resources\Entities\Entity.h">
+      <Filter>Archivos de encabezado\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Resources\Player.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Resources\Entities\Player.h">
+      <Filter>Archivos de encabezado\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Resources\Renderer.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Resources\Singletons\GameLogic.h">
+      <Filter>Archivos de encabezado\Singletons</Filter>
     </ClInclude>
-    <ClInclude Include="Resources\Entity.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="Resources\Singletons\Renderer.h">
+      <Filter>Archivos de encabezado\Singletons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Resources\main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Resources\GameLogic.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="Resources\Entities\Player.cpp">
+      <Filter>Archivos de origen\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="Resources\Bullet.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="Resources\Entities\Bullet.cpp">
+      <Filter>Archivos de origen\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="Resources\Character.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="Resources\Entities\Character.cpp">
+      <Filter>Archivos de origen\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="Resources\Enemy.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="Resources\Entities\Enemy.cpp">
+      <Filter>Archivos de origen\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="Resources\Player.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="Resources\Entities\Entity.cpp">
+      <Filter>Archivos de origen\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="Resources\Renderer.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="Resources\Singletons\GameLogic.cpp">
+      <Filter>Archivos de origen\Singletons</Filter>
     </ClCompile>
-    <ClCompile Include="Resources\Entity.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="Resources\Singletons\Renderer.cpp">
+      <Filter>Archivos de origen\Singletons</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

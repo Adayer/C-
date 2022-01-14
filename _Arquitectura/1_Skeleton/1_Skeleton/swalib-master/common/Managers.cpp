@@ -4,6 +4,7 @@
 #include "BallComponent.h"
 #include "Component.h"
 #include "CollisionComponent.h"
+#include "InputManager.h"
 
 LogicManager* LogicManager::instance = nullptr;
 #define COMPONENT_LIST (*((*tEntities)[i]->GetComponentList()))
@@ -19,6 +20,7 @@ void LogicManager::Update()
 
 	while (TIME->ProcessSlots())
 	{
+		InputManager::GetInstance()->Update();
 		//We update all components
 		std::vector<Entity*>* tEntities= World::GetInstance()->GetWorldEntities();
 		size_t numEntities = tEntities->size();

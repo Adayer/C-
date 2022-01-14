@@ -2,26 +2,30 @@
 
 #include "Renderer.h"
 #include "GameLogic.h"
-#include "Entity.h"
+
+#include "../Entities/Entity.h"
 
 
 Renderer* Renderer::instance = nullptr;
 
 void Renderer::Init()
 {
-	
+	//Currently no values need to be initialized
 }
 void Renderer::Update()
 {
 	Clear();
+	//Draw the Game field
 	MoveCursorToX(0);
 	const unsigned int sizeOfGame = GAME_MANAGER_INSTANCE->GetSize();
 	for (unsigned int i = 0; i <= sizeOfGame; ++i)
 	{
 		printf("_");
 	}
+	//Draw the score
 	printf(" %d - %d\n", GAME_MANAGER_INSTANCE->GetPlayerKills(), GAME_MANAGER_INSTANCE->GetPlayerDeaths());
 
+	//Draw each of the entities
 	std::vector<Entity*>* pToEntities = GAME_MANAGER_INSTANCE->GetEntities();
 	if (pToEntities)
 	{
@@ -35,7 +39,7 @@ void Renderer::Update()
 }
 void Renderer::Exit()
 {
-
+	//Currently no exit configuration is needed
 }
 
 void Renderer::MoveCursorToX(int x)
@@ -43,14 +47,6 @@ void Renderer::MoveCursorToX(int x)
 	COORD pos = { x, 1 };
 	HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleCursorPosition(output, pos);
-}
-
-void Renderer::HideCursor(void) {
-	HANDLE hdl;
-	hdl = GetStdHandle(STD_OUTPUT_HANDLE);
-	CONSOLE_CURSOR_INFO t;
-	t.bVisible = false;
-	SetConsoleCursorInfo(hdl, &t);
 }
 
 void Renderer::Clear()

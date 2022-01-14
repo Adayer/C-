@@ -2,7 +2,14 @@
 class Entity;
 class Message
 {
-
+public:
+	enum class MessageType
+	{
+		Invalid,
+		EntCollision,
+		WorldLimit,
+		Count
+	};
 };
 
 class CollisionMsg : public Message
@@ -20,10 +27,12 @@ public:
 	Entity* GetBallB() const { return ballB; }
 };
 
-class LimitWorldCollMsg : CollisionMsg
+class LimitWorldCollMsg : public CollisionMsg
 {
 	Entity* ball = nullptr;
+	bool yAxisCollision = false;
 public:
-	LimitWorldCollMsg(Entity* _ball);
+	LimitWorldCollMsg(Entity* _ball, bool _yAxis);
 	Entity* GetBall() const { return ball; }
+	bool GetYAxis() { return yAxisCollision; }
 };

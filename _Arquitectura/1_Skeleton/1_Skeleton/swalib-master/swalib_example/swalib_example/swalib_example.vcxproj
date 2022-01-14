@@ -128,9 +128,11 @@
     <ClCompile Include="..\..\common\Entity.cpp" />
     <ClCompile Include="..\..\common\example.cpp" />
     <ClCompile Include="..\..\common\font.cpp" />
+    <ClCompile Include="..\..\common\InputManager.cpp" />
     <ClCompile Include="..\..\common\lodepng.cpp" />
     <ClCompile Include="..\..\common\Managers.cpp" />
     <ClCompile Include="..\..\common\Messages.cpp" />
+    <ClCompile Include="..\..\common\PlayerComponent.cpp" />
     <ClCompile Include="..\..\common\SpriteRenderer.cpp" />
     <ClCompile Include="..\..\common\stdafx.cpp" />
     <ClCompile Include="..\..\common\sys_win.cpp" />
@@ -146,9 +148,11 @@
     <ClInclude Include="..\..\common\EngineRenderer.h" />
     <ClInclude Include="..\..\common\Entity.h" />
     <ClInclude Include="..\..\common\font.h" />
+    <ClInclude Include="..\..\common\InputManager.h" />
     <ClInclude Include="..\..\common\lodepng.h" />
     <ClInclude Include="..\..\common\Managers.h" />
     <ClInclude Include="..\..\common\Messages.h" />
+    <ClInclude Include="..\..\common\PlayerComponent.h" />
     <ClInclude Include="..\..\common\SpriteRenderer.h" />
     <ClInclude Include="..\..\common\stdafx.h" />
     <ClInclude Include="..\..\common\sys.h" />

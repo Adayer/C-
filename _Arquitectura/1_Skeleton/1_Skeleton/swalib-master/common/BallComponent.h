@@ -14,6 +14,7 @@ private:
 	vec2 m_currentVel; //Current Speed
 	vec2 m_bufferPosition;
 	float m_maxSpeed; //Max value for speed on any axis
+	float m_speed;
 	float m_radius;	//Radius of ball
 public:
 
@@ -25,6 +26,7 @@ public:
 		m_currentVel(0.f, 0.f),
 		m_bufferPosition(0.f,0.f),
 		m_maxSpeed(0.0f),
+		m_speed(0.f),
 		m_radius(0.0f) 
 	{
 
@@ -35,7 +37,8 @@ public:
 	virtual void Update() override;
 	virtual void Exit() override; //No implementation
 
-	virtual void RecieveMessage(Message* _message) override;
+	virtual void RecieveMessage(Message* _message, Message::MessageType _typeOfMessage) override;
 
-	void OnCollisionEnter();
+	void OnEntityCollisionEnter(Entity* _otherEntity);
+	void OnLimitCollisionEnter(bool _yAxis);
 };

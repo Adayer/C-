@@ -43,7 +43,6 @@ void Collider::Update()
 	if (collision)
 	{
 		//Send collision message
-
 		EntCollisionMsg entityMessage(root, ((*pOtherColliders)[colliding_ball])->root);
 	}
 
@@ -52,12 +51,12 @@ void Collider::Update()
 	if ((root->GetTransform()->GetPosition().x > SCR_WIDTH) || (root->GetTransform()->GetPosition().x < 0))
 	{
 		//Send collision message
-		LimitWorldCollMsg collXMessage(root);
+		LimitWorldCollMsg collXMessage(root, false);//
 	}
 	if ((root->GetTransform()->GetPosition().y > SCR_HEIGHT) || (root->GetTransform()->GetPosition().y < 0))
 	{
 		//Send collision message
-		LimitWorldCollMsg collYMessage(root);
+		LimitWorldCollMsg collYMessage(root, true);//
 	}
 }
 
