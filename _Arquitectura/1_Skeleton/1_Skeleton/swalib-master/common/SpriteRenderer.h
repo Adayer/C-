@@ -27,6 +27,7 @@ public:
 
 	//(3, m_sprite, m_size, RenderLayer)
 	virtual void Init(unsigned int _numArgs, va_list args) override;
+	virtual void Init(unsigned int _numArgs, ...) override;
 	virtual void Init() override {}
 	virtual void Update() override {} //Does nothing as is updated by Engine
 	virtual void Exit() override {}
@@ -52,6 +53,7 @@ public:
 
 	//(5, m_sprite, m_size, RenderLayer ,m_tileWidth, m_tileHeight)
 	virtual void Init(unsigned int _numArgs, va_list args) override;
+	virtual void Init(unsigned int _numArgs, ...) override;
 	virtual void Init() override {}
 	virtual void Update() override {} //Does nothing as is updated by Engine
 	virtual void Exit() override {}

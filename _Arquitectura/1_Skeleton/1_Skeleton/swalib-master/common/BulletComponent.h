@@ -11,19 +11,18 @@ class BulletComponent : public Component
 {
 private:
 	float m_speed; //Current bullet Y speed
-	float m_radius;	//Radius of ball
 
 public:
 	BulletComponent(Entity* _root) :
 		Component(_root),
-		m_speed(0.f),
-		m_radius(0.0f)
+		m_speed(0.f)
 	{
 
 	};
 
 	//2 args =  m_speed, m_radius
 	virtual void Init(unsigned int _numArgs, va_list args) override;
+	virtual void Init(unsigned int _numArgs, ...) override;
 	virtual void Init() override {}
 	virtual void Update() override;
 	virtual void Exit() override; //No implementation

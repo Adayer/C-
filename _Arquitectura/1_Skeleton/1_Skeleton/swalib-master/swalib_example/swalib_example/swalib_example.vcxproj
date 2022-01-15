@@ -130,6 +130,7 @@
     <ClCompile Include="..\..\common\EntityBank.cpp" />
     <ClCompile Include="..\..\common\example.cpp" />
     <ClCompile Include="..\..\common\font.cpp" />
+    <ClCompile Include="..\..\common\GunComponent.cpp" />
     <ClCompile Include="..\..\common\InputManager.cpp" />
     <ClCompile Include="..\..\common\lodepng.cpp" />
     <ClCompile Include="..\..\common\Managers.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="..\..\common\Entity.h" />
     <ClInclude Include="..\..\common\EntityBank.h" />
     <ClInclude Include="..\..\common\font.h" />
+    <ClInclude Include="..\..\common\GunComponent.h" />
     <ClInclude Include="..\..\common\InputManager.h" />
     <ClInclude Include="..\..\common\lodepng.h" />
     <ClInclude Include="..\..\common\Managers.h" />

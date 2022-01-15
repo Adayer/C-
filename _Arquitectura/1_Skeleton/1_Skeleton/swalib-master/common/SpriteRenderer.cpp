@@ -11,6 +11,13 @@ void SpriteRenderer::Init(unsigned int _numArgs, va_list args)
 		EngineRenderer::GetInstance()->AddSprite(this, layer); // RenderLayer::Default
 	}
 }
+void SpriteRenderer::Init(unsigned int _numArgs, ...)
+{
+	va_list valist;
+	va_start(valist, _numArgs);
+	Init(_numArgs, valist);
+	va_end(valist);
+}
 
 void SpriteRenderer::UpdateRender()
 {
@@ -30,6 +37,14 @@ void TileableSpriteRenderer::Init(unsigned int _numArgs, va_list args)
 		m_tileHeight = va_arg(args, double);
 	}
 }
+void TileableSpriteRenderer::Init(unsigned int _numArgs, ...)
+{
+	va_list valist;
+	va_start(valist, _numArgs);
+	Init(_numArgs, valist);
+	va_end(valist);
+}
+
 void TileableSpriteRenderer::UpdateRender()
 {
 	for (int i = 0; i <= SCR_WIDTH / m_tileWidth; i++) {

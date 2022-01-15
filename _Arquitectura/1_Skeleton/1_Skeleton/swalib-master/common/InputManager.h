@@ -46,5 +46,12 @@ public:
 	{
 		m_tEventsRightPressed.push_back(_cb);
 	}
-
+	
+	//Space
+	using OnSpacePressed = std::function<void()>;
+	std::vector<OnSpacePressed> m_tEventsSpacePressed;
+	void RegisterOnSpacePressed(OnSpacePressed _cb)
+	{
+		m_tEventsSpacePressed.push_back(_cb);
+	}
 };

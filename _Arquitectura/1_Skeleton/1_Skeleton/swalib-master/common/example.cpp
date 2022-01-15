@@ -10,6 +10,7 @@
 #include "EngineRenderer.h"
 #include "World.h"
 #include "InputManager.h"
+#include "EntityBank.h"
 
 //#include "EngineRenderer.h"
 //#include "TextureBank.h"
@@ -57,6 +58,7 @@ int Main(void)
 
 void Init() 
 {
+	EntityBank::GetInstance()->Init();
 	World::GetInstance()->Init();
 	InputManager::GetInstance()->Init();
 	LogicManager::GetInstance()->Init();
@@ -74,6 +76,7 @@ void Init()
 void Update()
 {
 	LogicManager::GetInstance()->Update();
+	World::GetInstance()->Update();
 	EngineRenderer::GetInstance()->UpdateRenderer(); //We update the Engine separately to ensure it updates after the logic
 
 
@@ -106,9 +109,10 @@ void Update()
 
 void Exit()
 {
+	FONT_End();
 	EngineRenderer::GetInstance()->ExitRenderer();
 	LogicManager::GetInstance()->Exit();
 	InputManager::GetInstance()->Exit();
 	World::GetInstance()->Exit();
-	FONT_End();
+	EntityBank::GetInstance()->Exit();
 }

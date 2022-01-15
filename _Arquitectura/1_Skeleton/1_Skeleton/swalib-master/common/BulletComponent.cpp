@@ -2,14 +2,22 @@
 #include "Entity.h"
 #include "Time.h"
 #include "Messages.h"
+#include "BallComponent.h"
+#include "World.h"
 
 void BulletComponent::Init(unsigned int _numArgs, va_list args)
 {
-	if (_numArgs == 2)
+	if (_numArgs == 1)
 	{
 		m_speed = va_arg(args, double);
-		m_radius = va_arg(args, double);
 	}
+}
+void BulletComponent::Init(unsigned int _numArgs, ...)
+{
+	va_list valist;
+	va_start(valist, _numArgs);
+	Init(_numArgs, valist);
+	va_end(valist);
 }
 
 void BulletComponent::Update()
@@ -19,17 +27,21 @@ void BulletComponent::Update()
 
 void BulletComponent::OnEntityCollisionEnter(Entity* _otherEntity)
 {
-	
+	if (_otherEntity->FindComponent<BallComponent>())
+	{
+		_otherEntity->FindComponent<BallComponent>()->Explode();
+		World::GetInstance()->RemoveEntity(root);
+	}
 }
 
 void BulletComponent::OnLimitCollisionEnter(bool isYAxis)
 {
-
+	World::GetInstance()->RemoveEntity(root);
 }
 
 void BulletComponent::Exit()
 {
-
+	
 }
 
 void BulletComponent::RecieveMessage(Message* _message, Message::MessageType _typeOfMessage)

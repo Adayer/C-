@@ -15,11 +15,12 @@ class Entity
 private:
 	std::vector<Component*> m_tComponents;
 	Transform* m_transform; // Al entities have a Transform component
+	bool m_isActive = false;
 public:
 
-	void Init(); //Initialize the Entity
+	void Init() {} //Initialize the Entity
 	void Update(float _deltaTim); //Loops through all components and updates them all
-	void Exit() {}; //Prepares the Entity for destruction
+	void Exit(); //Prepares the Entity for destruction
 
 	void SendMessage(Message* _message, Message::MessageType _messageType); //Sends a message to all components
 
@@ -29,6 +30,9 @@ public:
 	Transform* const GetTransform() { return m_transform; }
 
 	std::vector<Component*>* GetComponentList() { return &m_tComponents; }
+
+	bool GetIsActive() { return m_isActive; }
+	void SetActive(bool _isActive) { m_isActive = _isActive; }
 
 	template <class T>
 	T* const FindComponent() //Returns pointer to the first valid component of type T

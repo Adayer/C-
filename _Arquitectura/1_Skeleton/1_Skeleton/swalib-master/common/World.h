@@ -3,6 +3,8 @@
 
 
 #define NUM_BALLS 16
+#define BIG_BALL_DIAMETER 64.f
+#define BIG_BALL_COL_RADIUS 44.f
 
 class Entity;
 class Collider;
@@ -15,6 +17,10 @@ private:
 
 	std::vector<Entity*> entities;
 	std::vector<Collider*> colliders;
+
+	std::vector<Entity*> entitiesToRemoveAtEndOfFrame;
+
+	Entity* m_backgroundEntity;
 
 public:
 	static World* GetInstance()
@@ -32,15 +38,12 @@ public:
 
 	std::vector<Entity*>* GetWorldEntities() { return &entities; }
 	//Entities created are created with new but there is currently no delete
-	void AddEntity(Entity* _newEntity)
-	{
-		if (_newEntity)
-		{
-			entities.push_back(_newEntity);
-		}
-	}
+	void AddEntity(Entity* _newEntity);
 	void RemoveEntity(Entity* _entityToRemove);
-	
+	void ClearEntities(); //Clears all inactive entities from entity vector
+private:
+	void ClearEntityFromList(int _numEntsToClear); //Clears all inactive entities from entity vector
+public:
 	std::vector<Collider*>* GetWorldColliders() { return &colliders; }
 	//Entities created are created with new but there is currently no delete
 	void AddCollider(Collider* _newCollider)
@@ -53,5 +56,6 @@ public:
 	void RemoveCollider(Collider* _colliderToRemove);
 
 	void Init(); //Initialize scene
+	void Update();
 	void Exit(); //Pending
 };

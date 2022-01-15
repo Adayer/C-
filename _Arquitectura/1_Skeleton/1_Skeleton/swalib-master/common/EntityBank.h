@@ -16,6 +16,8 @@ private:
 	const unsigned int BULLET_POOL_SIZE = 16;
 	std::vector<Entity*> m_tBulletPool;
 
+	Entity* m_playerEntity;
+
 public:
 	static EntityBank* GetInstance()
 	{
@@ -34,4 +36,8 @@ public:
 
 	void Init();
 	void Exit();
+
+	Entity* GetBallEntity();
+	Entity* GetBulletEntity();
+	Entity* GetPlayerEntity() { return m_playerEntity; }
 };

@@ -1,15 +1,23 @@
 #include "CollisionComponent.h"
 #include "Entity.h"
 #include "Messages.h"
+#include "World.h"
 
 void Collider::Init(unsigned int _numArgs, va_list args)
 {
 	if(_numArgs == 1)
 	{
 		m_radius = va_arg(args, double);
+		World::GetInstance()->AddCollider(this);
 	}
 }
-
+void Collider::Init(unsigned int _numArgs, ...)
+{
+	va_list valist;
+	va_start(valist, _numArgs);
+	Init(_numArgs, valist);
+	va_end(valist);
+}
 
 void Collider::Update()
 {
@@ -62,7 +70,7 @@ void Collider::Update()
 
 void Collider::Exit()
 {
-
+	World::GetInstance()->RemoveCollider(this);
 }
 	
 

@@ -108,6 +108,9 @@
     <ClCompile Include="..\..\common\BulletComponent.cpp">
       <Filter>Source Files\Entity\Components</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\common\GunComponent.cpp">
+      <Filter>Source Files\Entity\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\common\BallComponent.h">
@@ -171,6 +174,9 @@
       <Filter>Header Files\Singletons</Filter>
     </ClInclude>
     <ClInclude Include="..\..\common\BulletComponent.h">
+      <Filter>Header Files\Entity\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\common\GunComponent.h">
       <Filter>Header Files\Entity\Components</Filter>
     </ClInclude>
   </ItemGroup>

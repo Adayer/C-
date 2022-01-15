@@ -11,18 +11,42 @@ void BallComponent::Init(unsigned int _numArgs, va_list args)
 		m_radius = va_arg(args, double);
 		m_ballSize = va_arg(args, LogicManager::Size);
 	}
-	root->GetTransform()->SetPosition(vec2(CORE_FRand(0.0, SCR_WIDTH), CORE_FRand(0.0, SCR_HEIGHT)));	
-	m_speed = CORE_FRand(m_maxSpeed / 2, m_maxSpeed);
-	m_currentVel = vec2(CORE_FRand(-m_maxSpeed, m_maxSpeed), CORE_FRand(-m_maxSpeed, m_maxSpeed));
-	m_currentVel = m_currentVel / vlen(m_currentVel);
+	root->GetTransform()->SetPosition(vec2(CORE_FRand(80.0, SCR_WIDTH - 80.0), CORE_FRand(100.0, SCR_HEIGHT-100.0)));	
+	float yMult = (CORE_FRand > 0) ? 1.f : -1.f;
+	float xMult = (CORE_FRand > 0) ? 1.f : -1.f;
+	
+	m_currentVel = vec2(m_maxSpeed * xMult, m_maxSpeed * yMult);
 }
+void BallComponent::Init(unsigned int _numArgs, ...)
+{
+	va_list valist;
+	va_start(valist, _numArgs);
+	Init(_numArgs, valist);
+	va_end(valist);
+}
+void BallComponent::InitExplodedBall(unsigned int _numArgs,...)
+{
+	va_list valist;
+	va_start(valist, _numArgs);
+	if (_numArgs == 4)
+	{
+		m_maxSpeed = va_arg(valist, double);
+		m_radius = va_arg(valist, double);
+		m_ballSize = va_arg(valist, LogicManager::Size);
+		int isLeftBall = va_arg(valist, int);
 
+		float xMult = isLeftBall ? -1.f : 1.f;
+
+		m_currentVel = vec2(m_maxSpeed * xMult, m_maxSpeed);
+	}
+	va_end(valist);
+}
 
 void BallComponent::Update()
 {
 	m_bufferPosition = root->GetTransform()->GetPosition();
 	double deltaTime = TIME_DELTA_TIME;
-	vec2 newPos = m_bufferPosition + m_currentVel * m_speed * TIME_DELTA_TIME;
+	vec2 newPos = m_bufferPosition + m_currentVel * TIME_DELTA_TIME;
 	root->GetTransform()->SetPosition(newPos);	
 }
 
@@ -31,8 +55,8 @@ void BallComponent::OnEntityCollisionEnter(Entity* _otherEntity)
 	vec2 vecBetweenPosUnit(root->GetTransform()->GetPosition() - _otherEntity->GetTransform()->GetPosition());
 	vecBetweenPosUnit = vecBetweenPosUnit / (vlen(vecBetweenPosUnit));
 
-	m_currentVel = vecBetweenPosUnit;
-	root->GetTransform()->SetPosition(m_bufferPosition + vecBetweenPosUnit * m_speed * TIME_DELTA_TIME);
+	m_currentVel = vecBetweenPosUnit * m_maxSpeed;
+	root->GetTransform()->SetPosition(m_bufferPosition + vecBetweenPosUnit * TIME_DELTA_TIME);
 }
 
 void BallComponent::OnLimitCollisionEnter(bool isYAxis)
@@ -46,7 +70,7 @@ void BallComponent::OnLimitCollisionEnter(bool isYAxis)
 		m_currentVel = vec2(m_currentVel.x * -1.f, m_currentVel.y );
 	}
 	
-	root->GetTransform()->SetPosition(m_bufferPosition + m_currentVel * m_speed * TIME_DELTA_TIME);
+	root->GetTransform()->SetPosition(m_bufferPosition + m_currentVel * TIME_DELTA_TIME);
 }
 
 

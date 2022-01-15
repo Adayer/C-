@@ -20,6 +20,13 @@ void PlayerComponent::Init(unsigned int _numArgs, va_list args)
 	InputManager::GetInstance()->RegisterOnLeftPressed(std::bind(&PlayerComponent::MoveLeft,this));
 	InputManager::GetInstance()->RegisterOnRightPressed(std::bind(&PlayerComponent::MoveRight,this));
 }
+void PlayerComponent::Init(unsigned int _numArgs, ...)
+{
+	va_list valist;
+	va_start(valist, _numArgs);
+	Init(_numArgs, valist);
+	va_end(valist);
+}
 
 
 void PlayerComponent::Update()

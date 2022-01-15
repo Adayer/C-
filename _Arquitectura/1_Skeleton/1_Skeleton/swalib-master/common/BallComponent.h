@@ -13,7 +13,6 @@ private:
 	vec2 m_currentVel; //Current Speed
 	vec2 m_bufferPosition;
 	float m_maxSpeed; //Max value for speed on any axis
-	float m_speed;
 	float m_radius;	//Radius of ball
 	LogicManager::Size m_ballSize;
 public:
@@ -27,7 +26,6 @@ public:
 		m_currentVel(0.f, 0.f),
 		m_bufferPosition(0.f,0.f),
 		m_maxSpeed(0.0f),
-		m_speed(0.f),
 		m_radius(0.0f),
 		m_ballSize(LogicManager::Size::Invalid)
 	{
@@ -36,11 +34,13 @@ public:
 
 	//3 args =  m_maxSpeed, m_radius, m_ballSize
 	virtual void Init(unsigned int _numArgs, va_list args) override;
+	virtual void Init(unsigned int _numArgs, ...) override;
 	virtual void Init() override {}
 	virtual void Update() override;
 	virtual void Exit() override; //No implementation
 
 	void Explode();
+	void InitExplodedBall(unsigned int _numArgs, ...);
 
 	virtual void RecieveMessage(Message* _message, Message::MessageType _typeOfMessage) override;
 
