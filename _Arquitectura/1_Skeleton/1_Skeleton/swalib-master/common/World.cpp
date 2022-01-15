@@ -24,9 +24,9 @@ void World::Init()
 	newPlayer->AddComponent<SpriteRenderer>(3, playerSprite, vec2(40, 40), RenderLayer::Default); //Add sprite renderer component
 	
 	//DEBUG PLAYER COLLISION
-	const char* debugSpriteRoute = "data/tyrian_ball.png"; //Sprite route
-	GLuint* debugSprite = TextureBank::GetInstance()->GetTexture(debugSpriteRoute);
-	newPlayer->AddComponent<SpriteRenderer>(3, debugSprite, vec2(52, 52), RenderLayer::Foreground); //Add sprite renderer component
+	//const char* debugSpriteRoute = "data/tyrian_ball.png"; //Sprite route
+	//GLuint* debugSprite = TextureBank::GetInstance()->GetTexture(debugSpriteRoute);
+	//newPlayer->AddComponent<SpriteRenderer>(3, debugSprite, vec2(52, 52), RenderLayer::Foreground); //Add sprite renderer component
 
 	World::GetInstance()->AddEntity(newPlayer);
 

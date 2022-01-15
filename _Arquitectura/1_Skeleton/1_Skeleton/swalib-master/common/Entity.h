@@ -57,11 +57,11 @@ public:
 		if (pComp)
 		{
 			m_tComponents.push_back(pComp);
-			pComp->Init(0);//INIT NEEDS TO BE CHECKED;
+			pComp->Init();//INIT NEEDS TO BE CHECKED;
 		}
 		else
 		{
-			assert(0) //T was not a component
+			assert(0); //T was not a component
 		}
 	}
 	
@@ -96,7 +96,7 @@ public:
 		if (pComp)
 		{
 			m_tComponents.push_back(pComp);
-			pComp->Init(0);//INIT NEEDS TO BE CHECKED;
+			pComp->Init();//INIT NEEDS TO BE CHECKED;
 		}
 		else
 		{

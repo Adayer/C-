@@ -1,15 +1,1 @@
-﻿  Bullet.cpp
-D:\U-Tad\Master\C-\Ingenieria\Ingenieria_Juego1D\Resources\Entities\Bullet.cpp(66,51): warning C4018: '>': signed/unsigned mismatch
-  Enemy.cpp
-  Player.cpp
-D:\U-Tad\Master\C-\Ingenieria\Ingenieria_Juego1D\Resources\Entities\Player.cpp(62,24): warning C4018: '<': signed/unsigned mismatch
-D:\U-Tad\Master\C-\Ingenieria\Ingenieria_Juego1D\Resources\Entities\Player.cpp(71,25): warning C4018: '<': signed/unsigned mismatch
-  GameLogic.cpp
-D:\U-Tad\Master\C-\Ingenieria\Ingenieria_Juego1D\Resources\Singletons\GameLogic.cpp(19,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\U-Tad\Master\C-\Ingenieria\Ingenieria_Juego1D\Resources\Singletons\GameLogic.cpp(80,57): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Ingenieria\Ingenieria_Juego1D\Resources\Singletons\GameLogic.cpp(161,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Renderer.cpp
-D:\U-Tad\Master\C-\Ingenieria\Ingenieria_Juego1D\Resources\Singletons\Renderer.cpp(44,16): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
-  main.cpp
-  Generating Code...
-  Ingenieria_Juego1D.vcxproj -> D:\U-Tad\Master\C-\Ingenieria\Ingenieria_Juego1D\x64\Debug\Ingenieria_Juego1D.exe
+﻿  Ingenieria_Juego1D.vcxproj -> C:\Users\andre\Desktop\Hellevator\C-\Ingenieria\Ingenieria_Juego1D\x64\Debug\Ingenieria_Juego1D.exe

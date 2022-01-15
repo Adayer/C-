@@ -10,6 +10,7 @@ protected:
 	Entity* root; //El padre
 public:
 	virtual void Init(unsigned int _numArgs, va_list args) = 0;
+	virtual void Init() = 0;
 	virtual void Update() = 0;
 	virtual void Exit() = 0;
 	Component(Entity* _root): root(_root){}
@@ -39,7 +40,7 @@ public:
 			m_rotation = va_arg(args, float);
 		}
 	}
-
+	virtual void Init() override {}
 	void Update() override {}
 	void Exit() override {}
 

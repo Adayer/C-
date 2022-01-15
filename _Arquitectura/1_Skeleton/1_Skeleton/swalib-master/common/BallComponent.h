@@ -36,6 +36,7 @@ public:
 
 	//3 args =  m_maxSpeed, m_radius, m_ballSize
 	virtual void Init(unsigned int _numArgs, va_list args) override;
+	virtual void Init() override {}
 	virtual void Update() override;
 	virtual void Exit() override; //No implementation
 

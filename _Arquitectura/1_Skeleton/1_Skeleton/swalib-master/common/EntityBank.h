@@ -3,12 +3,19 @@
 
 #define ENTITY_BANK EntityBank::GetInstance()
 
+class Entity;
 class EntityBank
 {
-
 private:
 	EntityBank() {};
 	static EntityBank* instance;
+
+	const unsigned int BALL_POOL_SIZE = 64;
+	std::vector<Entity*> m_tBallPool;
+
+	const unsigned int BULLET_POOL_SIZE = 16;
+	std::vector<Entity*> m_tBulletPool;
+
 public:
 	static EntityBank* GetInstance()
 	{
@@ -26,6 +33,5 @@ public:
 	void operator=(const EntityBank&) = delete;
 
 	void Init();
-	void Update();
 	void Exit();
 };

@@ -33,7 +33,8 @@ public:
 	}
 
 	//NumArgs 1 = m_radius;
-	virtual void Init(unsigned int _numArgs, va_list args);
+	virtual void Init(unsigned int _numArgs, va_list args) override;
+	virtual void Init() {}
 	virtual void Update() override;
 	virtual void Exit() override; //No implementation
 
