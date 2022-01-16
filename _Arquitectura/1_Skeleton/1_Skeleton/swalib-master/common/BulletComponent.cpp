@@ -27,14 +27,14 @@ void BulletComponent::Update()
 
 void BulletComponent::OnEntityCollisionEnter(Entity* _otherEntity)
 {
-	if (_otherEntity->FindComponent<BallComponent>())
+	if (_otherEntity->FindComponent<BallComponent>()) //Checks if collided with ball
 	{
 		_otherEntity->FindComponent<BallComponent>()->Explode();
 		World::GetInstance()->RemoveEntity(root);
 	}
 }
 
-void BulletComponent::OnLimitCollisionEnter(bool isYAxis)
+void BulletComponent::OnLimitCollisionEnter(bool isYAxis) //Destroys the entity
 {
 	World::GetInstance()->RemoveEntity(root);
 }

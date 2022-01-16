@@ -20,6 +20,7 @@ void GunComponent::Init(unsigned int _numArgs, va_list args)
 	m_isReloading = false;
 	m_currentReloadTimer = 0;
 
+	//Bind Shoot to InputManager(Space)
 	InputManager::GetInstance()->RegisterOnSpacePressed(std::bind(&GunComponent::Shoot, this));
 }
 void GunComponent::Init(unsigned int _numArgs, ...)
@@ -68,8 +69,8 @@ void GunComponent::Shoot()
 	newBullet->GetTransform()->SetPosition(vec2(root->GetTransform()->GetPosition().x, root->GetTransform()->GetPosition().y + m_yBulletOffset));
 	newBullet->SetActive(true);
 
-	newBullet->FindComponent<BulletComponent>()->Init(1,100.f);
-	newBullet->FindComponent<Collider>()->Init(7.f);
+	newBullet->FindComponent<BulletComponent>()->Init(1,500.f);
+	newBullet->FindComponent<Collider>()->Init(5.f);
 
 	const char* bulletSpriteRoute = "data/tyrian_ball.png"; //Sprite route
 	GLuint* bulletSprite = TextureBank::GetInstance()->GetTexture(bulletSpriteRoute);

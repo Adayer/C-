@@ -1,0 +1,10 @@
+Controles: 
+
+A-Moverse a la Izquierda
+D-Moverse a la Derecha
+
+Spacio - Disparar
+
+Si destruyes todas las pelotas hay que cerrar el juego. No hay forma de seguir. 
+
+Si pierdes todas las vidas el juego se termina inmediatamente.

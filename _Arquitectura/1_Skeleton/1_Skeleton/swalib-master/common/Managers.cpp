@@ -15,6 +15,7 @@ LogicManager* LogicManager::instance = nullptr;
 void LogicManager::Init()
 {
 	TIME->InitTime(); //Initialize time
+	m_bEndGame = false;
 }
 
 void LogicManager::Update()
@@ -47,26 +48,17 @@ void LogicManager::Exit()
 
 void LogicManager::DivideBall(Entity* _ballToBreak, LogicManager::Size _sizeOfBall)
 {
-
-
 	switch (_sizeOfBall)
 	{
 		case LogicManager::Size::Big:
 		{
-			const char* ballSpriteRoute = "data/tyrian_ball.png"; //Sprite route
+			const char* ballSpriteRoute = "data/medium_ball.png"; //Sprite route
 			GLuint* ballSprite = TextureBank::GetInstance()->GetTexture(ballSpriteRoute);
 			for (int i = 0; i < 2; ++i)
 			{
 				Entity* newBall = EntityBank::GetInstance()->GetBallEntity();
 				if (newBall)
 				{
-					newBall->FindComponent<BallComponent>()->InitExplodedBall(4,40.f,BIG_BALL_DIAMETER / 2, LogicManager::Size::Medium, i);
-					newBall->FindComponent<Collider>()->Init(1, BIG_BALL_COL_RADIUS / 2);
-					newBall->FindComponent<SpriteRenderer>()->Init(3, ballSprite, vec2(BIG_BALL_DIAMETER/2, BIG_BALL_DIAMETER/2), RenderLayer::Default);
-
-					newBall->SetActive(true);
-					World::GetInstance()->AddEntity(newBall);
-
 					if (i == 0)
 					{
 						vec2 ballToBreakPos = _ballToBreak->GetTransform()->GetPosition();
@@ -77,25 +69,26 @@ void LogicManager::DivideBall(Entity* _ballToBreak, LogicManager::Size _sizeOfBa
 						vec2 ballToBreakPos = _ballToBreak->GetTransform()->GetPosition();
 						newBall->GetTransform()->SetPosition(vec2(ballToBreakPos.x - BIG_BALL_DIAMETER / 4.f, ballToBreakPos.y));
 					}
+
+					newBall->FindComponent<BallComponent>()->InitExplodedBall(4,70.f,BIG_BALL_DIAMETER / 2, LogicManager::Size::Medium, i);
+					newBall->FindComponent<Collider>()->Init(1, BIG_BALL_COL_RADIUS / 2.f);
+					newBall->FindComponent<SpriteRenderer>()->Init(3, ballSprite, vec2(BIG_BALL_DIAMETER/2, BIG_BALL_DIAMETER/2), RenderLayer::Default);
+
+					newBall->SetActive(true);
+					World::GetInstance()->AddEntity(newBall);
 				}
 			}
 			break;
 		}
 		case LogicManager::Size::Medium:
 		{
-			const char* ballSpriteRoute = "data/tyrian_ball.png"; //Sprite route
+			const char* ballSpriteRoute = "data/small_ball.png"; //Sprite route
 			GLuint* ballSprite = TextureBank::GetInstance()->GetTexture(ballSpriteRoute);
 			for (int i = 0; i < 2; ++i)
 			{
 				Entity* newBall = EntityBank::GetInstance()->GetBallEntity();
 				if (newBall)
-				{
-					newBall->FindComponent<BallComponent>()->InitExplodedBall(4, 40.f, BIG_BALL_DIAMETER / 4.f, LogicManager::Size::Small,i);
-					newBall->FindComponent<Collider>()->Init(1, BIG_BALL_COL_RADIUS / 4.f);
-					newBall->FindComponent<SpriteRenderer>()->Init(3, ballSprite, vec2(BIG_BALL_DIAMETER / 4.f, BIG_BALL_DIAMETER / 4.f), RenderLayer::Default);
-
-					newBall->SetActive(true);
-					World::GetInstance()->AddEntity(newBall);
+				{	
 					if (i == 0)
 					{
 						vec2 ballToBreakPos = _ballToBreak->GetTransform()->GetPosition();
@@ -106,6 +99,12 @@ void LogicManager::DivideBall(Entity* _ballToBreak, LogicManager::Size _sizeOfBa
 						vec2 ballToBreakPos = _ballToBreak->GetTransform()->GetPosition();
 						newBall->GetTransform()->SetPosition(vec2(ballToBreakPos.x - BIG_BALL_DIAMETER / 8.f, ballToBreakPos.y));
 					}
+
+					newBall->FindComponent<BallComponent>()->InitExplodedBall(4, 70.f, BIG_BALL_DIAMETER / 4.f, LogicManager::Size::Small, i);
+					newBall->FindComponent<Collider>()->Init(1, BIG_BALL_COL_RADIUS / 4.f);
+					newBall->FindComponent<SpriteRenderer>()->Init(3, ballSprite, vec2(BIG_BALL_DIAMETER / 4.f, BIG_BALL_DIAMETER / 4.f), RenderLayer::Default);
+
+					World::GetInstance()->AddEntity(newBall);
 				}
 			}
 			break;

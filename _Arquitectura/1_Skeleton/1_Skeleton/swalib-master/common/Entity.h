@@ -14,7 +14,7 @@ class Entity
 {
 private:
 	std::vector<Component*> m_tComponents;
-	Transform* m_transform; // Al entities have a Transform component
+	Transform* m_transform; // All entities have a Transform component
 	bool m_isActive = false;
 public:
 

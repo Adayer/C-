@@ -2,20 +2,25 @@
 #include "Entity.h"
 #include "Time.h"
 #include "Messages.h"
+#include "PlayerComponent.h"
 
 void BallComponent::Init(unsigned int _numArgs, va_list args)
 {
-	if (_numArgs == 3)
+	if (_numArgs == 4)
 	{
 		m_maxSpeed = va_arg(args, double);
 		m_radius = va_arg(args, double);
 		m_ballSize = va_arg(args, LogicManager::Size);
+		vec2 initPos = va_arg(args, vec2);
+
+		float xMax = (SCR_WIDTH - 200.0);
+		float yMax = (SCR_HEIGHT - 200.0);
+
+		root->GetTransform()->SetPosition(initPos);
+		m_bufferPosition = initPos;
+
+		m_currentVel = vec2(m_maxSpeed, m_maxSpeed);
 	}
-	root->GetTransform()->SetPosition(vec2(CORE_FRand(80.0, SCR_WIDTH - 80.0), CORE_FRand(100.0, SCR_HEIGHT-100.0)));	
-	float yMult = (CORE_FRand > 0) ? 1.f : -1.f;
-	float xMult = (CORE_FRand > 0) ? 1.f : -1.f;
-	
-	m_currentVel = vec2(m_maxSpeed * xMult, m_maxSpeed * yMult);
 }
 void BallComponent::Init(unsigned int _numArgs, ...)
 {
@@ -35,21 +40,23 @@ void BallComponent::InitExplodedBall(unsigned int _numArgs,...)
 		m_ballSize = va_arg(valist, LogicManager::Size);
 		int isLeftBall = va_arg(valist, int);
 
-		float xMult = isLeftBall ? -1.f : 1.f;
+		float xMult = isLeftBall ? -1.f : 1.f; //If is left ball moves to the left
 
 		m_currentVel = vec2(m_maxSpeed * xMult, m_maxSpeed);
+		m_bufferPosition = root->GetTransform()->GetPosition();
 	}
 	va_end(valist);
 }
 
 void BallComponent::Update()
 {
-	m_bufferPosition = root->GetTransform()->GetPosition();
+	m_bufferPosition = root->GetTransform()->GetPosition(); //Buffer position is saved in case of collision
 	double deltaTime = TIME_DELTA_TIME;
 	vec2 newPos = m_bufferPosition + m_currentVel * TIME_DELTA_TIME;
 	root->GetTransform()->SetPosition(newPos);	
 }
 
+//Moves the ball in the opposite direction of the entity it collided with
 void BallComponent::OnEntityCollisionEnter(Entity* _otherEntity)
 {
 	vec2 vecBetweenPosUnit(root->GetTransform()->GetPosition() - _otherEntity->GetTransform()->GetPosition());
@@ -59,6 +66,7 @@ void BallComponent::OnEntityCollisionEnter(Entity* _otherEntity)
 	root->GetTransform()->SetPosition(m_bufferPosition + vecBetweenPosUnit * TIME_DELTA_TIME);
 }
 
+//Reflect velocity with the axis it collided into
 void BallComponent::OnLimitCollisionEnter(bool isYAxis)
 {
 	if (isYAxis)
@@ -79,6 +87,7 @@ void BallComponent::Exit()
 
 }
 
+//Breaks the ball in two if Size == (Big or Medium), Destroys the ball if size == Small
 void BallComponent::Explode()
 {
 	switch (m_ballSize)
@@ -111,11 +120,25 @@ void BallComponent::RecieveMessage(Message* _message, Message::MessageType _type
 			EntCollisionMsg* entMsg = static_cast<EntCollisionMsg*>(_message);
 			if (entMsg->GetBallA() != root)
 			{
-				OnEntityCollisionEnter(entMsg->GetBallA());
+				if (entMsg->GetBallA()->FindComponent<PlayerComponent>()) //Checks if collided with player
+				{
+					Explode();
+				}
+				else 
+				{
+					OnEntityCollisionEnter(entMsg->GetBallA());
+				}
 			}
 			else
 			{
-				OnEntityCollisionEnter(entMsg->GetBallB());
+				if (entMsg->GetBallB()->FindComponent<PlayerComponent>()) //Checks if collided with player
+				{
+					Explode();
+				}
+				else
+				{
+					OnEntityCollisionEnter(entMsg->GetBallB());
+				}
 			}
 			break;
 		}

@@ -1,7 +1,6 @@
 #pragma once
 #include "vector2d.h"
 #include "stdafx.h"
-#include "core.h"
 #include "sys.h"
 #include "Component.h"
 #include "Managers.h"
@@ -29,6 +28,6 @@ public:
 
 	virtual void RecieveMessage(Message* _message, Message::MessageType _typeOfMessage) override;
 
-	void OnEntityCollisionEnter(Entity* _otherEntity);
-	void OnLimitCollisionEnter(bool _yAxis);
+	void OnEntityCollisionEnter(Entity* _otherEntity); //Called if collided with Entity
+	void OnLimitCollisionEnter(bool _yAxis); //Called if collided with Limit
 };

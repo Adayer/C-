@@ -36,6 +36,7 @@ public:
 	virtual void RecieveMessage(Message* _message, Message::MessageType _typeOfMessage) override {}
 };
 
+//I think currently unused afte background sprite change
 //Class that renders sprites that can be tiled across the whole window
 class TileableSpriteRenderer : public SpriteRenderer
 {

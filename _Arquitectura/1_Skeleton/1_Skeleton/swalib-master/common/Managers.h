@@ -19,6 +19,7 @@ public:
 private:
 	LogicManager() {};
 	static LogicManager *instance;
+	bool m_bEndGame = false;
 public:
 	static LogicManager* GetInstance()
 	{
@@ -37,6 +38,9 @@ public:
 	void Update();
 	void Exit();
 
-	void DivideBall(Entity* _ballToBreak, LogicManager::Size _sizeOfBall);
-	void DestroyBall(Entity* _ballToDestroy);
+	void DivideBall(Entity* _ballToBreak, LogicManager::Size _sizeOfBall); //Destroys a ball and spawns two smaller one on its place
+	void DestroyBall(Entity* _ballToDestroy); //Destroys a ball
+
+	void EndGame() { m_bEndGame = true; } 
+	bool GetEndGame() { return m_bEndGame; }
 };

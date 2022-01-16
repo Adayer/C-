@@ -9,7 +9,7 @@ class Component
 protected:
 	Entity* root; //El padre
 public:
-	virtual void Init(unsigned int _numArgs, va_list args) = 0;
+	virtual void Init(unsigned int _numArgs, va_list args) = 0; //initializes component values
 	virtual void Init(unsigned int _numArgs, ...) = 0;
 	virtual void Init() = 0;
 	virtual void Update() = 0;
@@ -19,7 +19,7 @@ public:
 	virtual void RecieveMessage(Message* _message, Message::MessageType _typeOfMessage) = 0; //Recieves a message and acts acordingly
 };
 
-class Transform : public Component
+class Transform : public Component //All entities have a Transform component
 {
 private:
 	vec2 m_position;

@@ -13,6 +13,7 @@ EntityBank* EntityBank::instance = nullptr;
 
 void EntityBank::Init()
 {
+	//Player creation
 	Entity* newPlayer = new Entity();
 	newPlayer->AddComponent<PlayerComponent>(); //2, vec2(SCR_HEIGHT / 2, 40), 100.f
 	newPlayer->AddComponent<GunComponent>();
@@ -21,6 +22,7 @@ void EntityBank::Init()
 
 	m_playerEntity = newPlayer;
 
+	//Ball creation
 	for (unsigned int i = 0; i < BALL_POOL_SIZE; ++i)
 	{
 		Entity* newBall = new Entity();
@@ -30,6 +32,7 @@ void EntityBank::Init()
 
 		m_tBallPool.push_back(newBall);
 	}
+	//Bullet creation
 	for(unsigned int i = 0; i < BULLET_POOL_SIZE; ++i)
 	{
 		Entity* newBullet = new Entity();

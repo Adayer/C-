@@ -3,7 +3,6 @@
 #include "stdafx.h"
 #include "vector2d.h"
 #include "stdafx.h"
-#include "core.h"
 #include "sys.h"
 #include "Component.h"
 

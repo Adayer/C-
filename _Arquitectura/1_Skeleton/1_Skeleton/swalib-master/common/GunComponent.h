@@ -13,7 +13,7 @@ private:
 	float m_yBulletOffset;
 	float m_reloadTime;
 
-	bool m_isReloading = false;
+	bool m_isReloading = false; //If false, player can't shoot
 	float m_currentReloadTimer;
 public:
 	GunComponent(Entity* _root) :
@@ -33,5 +33,5 @@ public:
 	virtual void Exit() override; //No implementation
 	virtual void RecieveMessage(Message* _message, Message::MessageType _typeOfMessage) override;
 	
-	void Shoot();
+	void Shoot();//Spawns a bullets
 };

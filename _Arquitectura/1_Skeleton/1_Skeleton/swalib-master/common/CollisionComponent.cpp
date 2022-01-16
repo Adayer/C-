@@ -36,10 +36,12 @@ void Collider::Update()
 	{
 		if ((*pOtherColliders)[j] != this)
 		{
-			float limit2 = (m_radius + (*pOtherColliders)[j]->GetRadius() * (m_radius + (*pOtherColliders)[j]->GetRadius()));
-			if (vlen2(root->GetTransform()->GetPosition() 
-				- (*pOtherColliders)[j]->root->GetTransform()->GetPosition()) 
-				<= limit2)
+			float limit2 = (m_radius + (*pOtherColliders)[j]->GetRadius());
+			vec2 vecDist = root->GetTransform()->GetPosition()
+				- (*pOtherColliders)[j]->root->GetTransform()->GetPosition();
+			float distBetween = vlen(vecDist);
+			distBetween = abs(distBetween);
+			if (distBetween <= limit2)
 			{
 				collision = true;
 				colliding_ball = j;
@@ -56,12 +58,12 @@ void Collider::Update()
 
 
 	// Rebound on margins.
-	if ((root->GetTransform()->GetPosition().x > SCR_WIDTH) || (root->GetTransform()->GetPosition().x < 0))
+	if (((root->GetTransform()->GetPosition().x + m_radius) > (SCR_WIDTH - 13)) || ((root->GetTransform()->GetPosition().x - m_radius) < 13))
 	{
 		//Send collision message
 		LimitWorldCollMsg collXMessage(root, false);//
 	}
-	if ((root->GetTransform()->GetPosition().y > SCR_HEIGHT) || (root->GetTransform()->GetPosition().y < 0))
+	if (((root->GetTransform()->GetPosition().y + m_radius) > SCR_HEIGHT - 17) || ((root->GetTransform()->GetPosition().y - m_radius) < 17))
 	{
 		//Send collision message
 		LimitWorldCollMsg collYMessage(root, true);//

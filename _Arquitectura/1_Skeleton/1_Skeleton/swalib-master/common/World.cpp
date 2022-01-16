@@ -14,45 +14,60 @@ World* World::instance = nullptr;
 
 void World::Init()
 {
+	const char* fullLifeSpriteRoute = "data/heart_full.png";
+	GLuint* fullLifeSprite = TextureBank::GetInstance()->GetTexture(fullLifeSpriteRoute);
+	const char* emptyLifeSpriteRoute = "data/heart_empty.png";
+	GLuint* emptyLifeSprite = TextureBank::GetInstance()->GetTexture(emptyLifeSpriteRoute);
+
 	//Generate Player
 	Entity* newPlayer = EntityBank::GetInstance()->GetPlayerEntity();
-	newPlayer->FindComponent<PlayerComponent>()->Init(2, vec2(SCR_HEIGHT / 2, 40), 100.f);
-	newPlayer->FindComponent<Collider>()->Init(1, 24.f);
-	newPlayer->FindComponent<GunComponent>()->Init(2, 20.f, 2.f);
+	newPlayer->FindComponent<PlayerComponent>()->Init(5, vec2(SCR_WIDTH / 2, 38), 3, 200.f, fullLifeSprite, emptyLifeSprite);
+	PlayerComponent* playerCmp = newPlayer->FindComponent<PlayerComponent>();
+	newPlayer->FindComponent<Collider>()->Init(1, 20.f);
+	newPlayer->FindComponent<GunComponent>()->Init(2, 15.f, 0.5f);
 
-	const char* playerSpriteRoute = "data/mario.png"; //Sprite route
+	const char* playerSpriteRoute = "data/player.png"; //Sprite route
 	//We get the sprite from the TextureBank which will load it if it isn't already loaded
 	GLuint* playerSprite = TextureBank::GetInstance()->GetTexture(playerSpriteRoute);
 	newPlayer->FindComponent<SpriteRenderer>()->Init(3, playerSprite, vec2(40,40), RenderLayer::Default);
 	
-	//DEBUG PLAYER COLLISION
-	//const char* debugSpriteRoute = "data/tyrian_ball.png"; //Sprite route
-	//GLuint* debugSprite = TextureBank::GetInstance()->GetTexture(debugSpriteRoute);
-	//newPlayer->AddComponent<SpriteRenderer>(3, debugSprite, vec2(52, 52), RenderLayer::Foreground); //Add sprite renderer component
+	AddEntity(newPlayer);
 
-	World::GetInstance()->AddEntity(newPlayer);
+	for (unsigned int i = 0; i < 3; ++i)
+	{
+		Entity* newLife = new Entity();
+		SpriteRenderer* cmpSprite = nullptr;
+		newLife->AddComponent<SpriteRenderer>(cmpSprite ,3, fullLifeSprite, vec2(32, 32), RenderLayer::Foreground);
+		playerCmp->AddLifeSpriteReference(cmpSprite);
+		newLife->GetTransform()->SetPosition(vec2((SCR_WIDTH / 2) - 48  + 48 * i, SCR_HEIGHT - 50));
+		AddEntity(newLife);
+	}
 
-	const char* ballSpriteRoute = "data/tyrian_ball.png"; //Sprite route
+
+	const char* ballSpriteRoute = "data/big_ball.png"; //Sprite route
 	GLuint* ballSprite = TextureBank::GetInstance()->GetTexture(ballSpriteRoute);
 	//Generate all the balls
 	for (int i = 0; i < NUM_BALLS; ++i)
 	{
 		//We add the components in a specific order so they update that way (Ball -> Collider -> Sprite)
 		Entity* newEntity = EntityBank::GetInstance()->GetBallEntity();
-		newEntity->FindComponent<BallComponent>()->Init(3, 40.f, BIG_BALL_DIAMETER, LogicManager::Size::Big); //Add ball component
+		vec2 initBallPos(SCR_WIDTH / 2 - 82 * (NUM_BALLS / 2) + 82 * i,
+			SCR_HEIGHT / 2 - 32 + (i % 2) * 32);
+		newEntity->FindComponent<BallComponent>()->Init(4,70.f, BIG_BALL_DIAMETER, LogicManager::Size::Big, initBallPos); //Add ball component
 		newEntity->FindComponent<Collider>()->Init(1, BIG_BALL_COL_RADIUS); //Add collider component
 		newEntity->FindComponent<SpriteRenderer>()->Init(3, ballSprite, vec2(BIG_BALL_DIAMETER, BIG_BALL_DIAMETER), RenderLayer::Default); //Add sprite renderer component
 
-		World::GetInstance()->AddEntity(newEntity);
+		AddEntity(newEntity);
 	}
 
 	//Generate background -- NOT IN ENTITY BANK
 	Entity* newBackground = new Entity();
-	const char* backgroundSpriteRoute = "data/circle-bkg-128.png";//Sprite route
+	const char* backgroundSpriteRoute = "data/background.png";//Sprite route
 	//We get the sprite from the TextureBank which will load it if it isn't already loaded
 	GLuint* backgroundSprite = TextureBank::GetInstance()->GetTexture(backgroundSpriteRoute);
-	newBackground->AddComponent<TileableSpriteRenderer>(5, backgroundSprite, vec2(128,128), RenderLayer::Background, 128.f, 128.f);
-	World::GetInstance()->AddEntity(newBackground);
+	newBackground->AddComponent<SpriteRenderer>(3, backgroundSprite, vec2(SCR_WIDTH, SCR_HEIGHT), RenderLayer::Background);
+	newBackground->GetTransform()->SetPosition(vec2(SCR_WIDTH / 2.f, SCR_HEIGHT / 2.f));
+	AddEntity(newBackground);
 	m_backgroundEntity = newBackground;
 }
 

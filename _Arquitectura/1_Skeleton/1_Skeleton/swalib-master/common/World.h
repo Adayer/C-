@@ -2,9 +2,9 @@
 #include <vector>
 
 
-#define NUM_BALLS 16
+#define NUM_BALLS 7
 #define BIG_BALL_DIAMETER 64.f
-#define BIG_BALL_COL_RADIUS 44.f
+#define BIG_BALL_COL_RADIUS 32.f
 
 class Entity;
 class Collider;
@@ -40,9 +40,9 @@ public:
 	//Entities created are created with new but there is currently no delete
 	void AddEntity(Entity* _newEntity);
 	void RemoveEntity(Entity* _entityToRemove);
-	void ClearEntities(); //Clears all inactive entities from entity vector
+	void ClearEntities(); //Counts numberOfEntities to remove
 private:
-	void ClearEntityFromList(int _numEntsToClear); //Clears all inactive entities from entity vector
+	void ClearEntityFromList(int _numEntsToClear); //Clears first inactive entities from entity vector and calls itself untill there are 0 left
 public:
 	std::vector<Collider*>* GetWorldColliders() { return &colliders; }
 	//Entities created are created with new but there is currently no delete

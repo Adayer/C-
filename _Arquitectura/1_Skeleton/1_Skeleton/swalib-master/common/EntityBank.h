@@ -4,6 +4,9 @@
 #define ENTITY_BANK EntityBank::GetInstance()
 
 class Entity;
+
+//This class creates Entities with preconfigured component structures but no values initialized
+//This class is also in charge of those entity's deletion
 class EntityBank
 {
 private:
