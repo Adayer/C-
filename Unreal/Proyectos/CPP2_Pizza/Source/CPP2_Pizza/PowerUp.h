@@ -49,7 +49,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION(BlueprintCallable, Category = "Damage")
-		void PickupPowerUp();
+		void PickupPowerUp(AActor* OtherActor);
 	UFUNCTION(BlueprintImplementableEvent, Category = Damage)
 		void OnPickupPowerUpDoneEvent();
 };

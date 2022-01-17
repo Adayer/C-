@@ -1,0 +1,13 @@
+{
+	"RemapUnityFiles": 
+	{
+		"Module.UMBEditorUtility.cpp.obj": [
+			"ArrangeEditorUtilityWidget.cpp.obj",
+			"UMBEditorUtility.cpp.obj"
+		],
+		"Module.UMBEditorUtility.gen.cpp.obj": [
+			"ArrangeEditorUtilityWidget.gen.cpp.obj",
+			"UMBEditorUtility.init.gen.cpp.obj"
+		]
+	}
+}

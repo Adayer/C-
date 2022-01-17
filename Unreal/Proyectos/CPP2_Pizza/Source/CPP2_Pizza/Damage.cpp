@@ -2,7 +2,7 @@
 
 
 #include "Damage.h"
-#include "GameFramework/Character.h"
+#include "CPP2_PizzaCharacter.h"
 
 // Sets default values
 ADamage::ADamage()
@@ -26,7 +26,6 @@ void ADamage::BeginPlay()
 	Super::BeginPlay();
 
 	SphereTrigger->OnComponentBeginOverlap.AddDynamic(this, &ADamage::TriggerEnter);
-	
 }
 
 // Called every frame
@@ -40,9 +39,11 @@ void ADamage::TriggerEnter(UPrimitiveComponent* OverlappedComponent, AActor* Oth
 {
 	UE_LOG(LogTemp, Display, TEXT("Damage Player"));
 
-	if (Cast<ACharacter>(OtherActor))
+	ACPP2_PizzaCharacter* otherChar = Cast<ACPP2_PizzaCharacter>(OtherActor);
+
+	if (otherChar)
 	{
-		OtherActor->Destroy();
+		otherChar->ModifyEnergy(-2);
 	}
 }
 

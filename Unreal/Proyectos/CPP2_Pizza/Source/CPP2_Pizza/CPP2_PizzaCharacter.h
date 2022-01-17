@@ -19,6 +19,9 @@ class ACPP2_PizzaCharacter : public ACharacter
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* CameraBoom;
 
+	UPROPERTY(VisibleAnywhere)
+		int Energy = 0;
+
 protected:
 
 	/** Called for side to side input */
@@ -42,4 +45,7 @@ public:
 	FORCEINLINE class UCameraComponent* GetSideViewCameraComponent() const { return SideViewCameraComponent; }
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
+
+	void ModifyEnergy(int _Amount);
+	int GetEnergy();
 };

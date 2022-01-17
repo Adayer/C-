@@ -76,3 +76,17 @@ void ACPP2_PizzaCharacter::TouchStopped(const ETouchIndex::Type FingerIndex, con
 	StopJumping();
 }
 
+void ACPP2_PizzaCharacter::ModifyEnergy(int _Amount)
+{
+	Energy += _Amount;
+	if (Energy <= 0)
+	{
+		Destroy();
+	}
+}
+
+int ACPP2_PizzaCharacter::GetEnergy()
+{
+	return Energy;
+}
+

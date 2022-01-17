@@ -1,0 +1,2 @@
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Unreal\Proyectos\ToolIntro\Plugins\UMBEditorUtility\Intermediate\Build\Win64\UE4Editor\Development\UMBEditorUtility\Definitions.UMBEditorUtility.h
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Unreal\Proyectos\ToolIntro\Plugins\UMBEditorUtility\Source\UMBEditorUtility\Public\UMBEditorUtility.h

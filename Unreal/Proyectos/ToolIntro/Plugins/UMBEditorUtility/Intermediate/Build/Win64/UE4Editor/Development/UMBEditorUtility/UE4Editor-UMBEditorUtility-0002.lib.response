@@ -1,0 +1,13 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-UMBEditorUtility-0002.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Unreal\Proyectos\ToolIntro\Intermediate\Build\Win64\ToolIntroEditor\Development\UnrealEd\SharedPCH.UnrealEd.ShadowErrors.h.obj"
+"C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Unreal\Proyectos\ToolIntro\Plugins\UMBEditorUtility\Intermediate\Build\Win64\UE4Editor\Development\UMBEditorUtility\Module.UMBEditorUtility.cpp.obj"
+"C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Unreal\Proyectos\ToolIntro\Plugins\UMBEditorUtility\Intermediate\Build\Win64\UE4Editor\Development\UMBEditorUtility\Module.UMBEditorUtility.gen.cpp.obj"
+"C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Unreal\Proyectos\ToolIntro\Plugins\UMBEditorUtility\Intermediate\Build\Win64\UE4Editor\Development\UMBEditorUtility\Default.rc2.res"
+/OUT:"C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Unreal\Proyectos\ToolIntro\Plugins\UMBEditorUtility\Intermediate\Build\Win64\UE4Editor\Development\UMBEditorUtility\UE4Editor-UMBEditorUtility-0002.lib"

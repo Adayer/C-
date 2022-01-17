@@ -1,4 +1,5 @@
 #include "PowerUp.h"
+#include "CPP2_PizzaCharacter.h"
 
 // Sets default values
 APowerUp::APowerUp()
@@ -50,9 +51,17 @@ void APowerUp::Tick(float DeltaTime)
 	}
 }
 
-void APowerUp::PickupPowerUp()
+void APowerUp::PickupPowerUp(AActor* OtherActor)
 {
 	++PorcionesComidas;
-	UE_LOG(LogTemp, Display, TEXT("Porciones de pizza: %d"), PorcionesComidas);
+	//UE_LOG(LogTemp, Display, TEXT("Porciones de pizza: %d"), PorcionesComidas);
+
+	ACPP2_PizzaCharacter* otherChar = Cast<ACPP2_PizzaCharacter>(OtherActor);
+
+	if (otherChar)
+	{
+		otherChar->ModifyEnergy(1);
+	}
+
 	OnPickupPowerUpDoneEvent();
 }
