@@ -24,7 +24,7 @@ void AMyKey::BeginPlay()
 {
 	Super::BeginPlay();
 
-	SphereTrigger->OnComponentBeginOverlap.AddDynamic(this, &AMyKey::Broadcast);
+	SphereTrigger->OnComponentBeginOverlap.AddDynamic(this, &AMyKey::OnPickUp);
 }
 
 // Called every frame
@@ -34,7 +34,7 @@ void AMyKey::Tick(float DeltaTime)
 
 }
 
-void AMyKey::Broadcast(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void AMyKey::OnPickUp(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-
+	PickUpEvent.Broadcast();
 }

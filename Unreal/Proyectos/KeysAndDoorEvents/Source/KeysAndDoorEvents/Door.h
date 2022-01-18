@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "MyKey.h"
+
 #include "Door.generated.h"
 
 UCLASS()
@@ -15,6 +17,9 @@ public:
 	// Sets default values for this actor's properties
 	ADoor();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Key")
+		AMyKey* KeySender;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -22,5 +27,8 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	UFUNCTION()
+		void OnKeyPickUp();
 
 };

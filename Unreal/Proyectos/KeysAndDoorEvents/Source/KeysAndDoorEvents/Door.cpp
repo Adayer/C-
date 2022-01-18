@@ -15,6 +15,10 @@ ADoor::ADoor()
 void ADoor::BeginPlay()
 {
 	Super::BeginPlay();
+	if (KeySender)
+	{
+		KeySender->PickUpEvent.AddDynamic(this, &ADoor::OnKeyPickUp);
+	}
 	
 }
 
@@ -22,6 +26,11 @@ void ADoor::BeginPlay()
 void ADoor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+}
+
+void ADoor::OnKeyPickUp()
+{
 
 }
 

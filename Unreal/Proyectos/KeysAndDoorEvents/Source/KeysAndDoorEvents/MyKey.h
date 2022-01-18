@@ -6,6 +6,7 @@
 #include "GameFramework/Actor.h"
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "Delegates/DelegateCombinations.h"
 #include "MyKey.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FKeyPickUpSignature);
@@ -26,6 +27,8 @@ public:
 		USphereComponent* SphereTrigger;
 	UPROPERTY()
 		UStaticMeshComponent* StaticMesh;
+	UPROPERTY(BlueprintAssignable, Category = "Key")
+		FKeyPickUpSignature PickUpEvent;
 
 
 protected:
@@ -37,6 +40,6 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	UFUNCTION()
-		void Broadcast(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+		void OnPickUp(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
 
 };
