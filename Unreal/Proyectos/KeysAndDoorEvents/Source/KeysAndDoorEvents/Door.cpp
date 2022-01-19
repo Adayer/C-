@@ -15,11 +15,8 @@ ADoor::ADoor()
 void ADoor::BeginPlay()
 {
 	Super::BeginPlay();
-	if (KeySender)
-	{
-		KeySender->PickUpEvent.AddDynamic(this, &ADoor::OnKeyPickUp);
-	}
-	
+	EventSender = (AKeysAndDoorEventsGameModeBase*)GetWorld()->GetAuthGameMode();
+	EventSender->LevelCompleteEvent.AddDynamic(this, &ADoor::OnKeyPickUp);
 }
 
 // Called every frame
@@ -31,6 +28,6 @@ void ADoor::Tick(float DeltaTime)
 
 void ADoor::OnKeyPickUp()
 {
-
+	IsOpen = !IsOpen;
 }
 

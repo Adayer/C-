@@ -21,11 +21,11 @@ public:
 	// Sets default values for this actor's properties
 	AMyKey();
 	
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 		USceneComponent* DefaultRoot;
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 		USphereComponent* SphereTrigger;
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 		UStaticMeshComponent* StaticMesh;
 	UPROPERTY(BlueprintAssignable, Category = "Key")
 		FKeyPickUpSignature PickUpEvent;

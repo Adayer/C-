@@ -4,7 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "MyKey.h"
+#include "KeysAndDoorEventsGameModeBase.h"
+#include "Kismet/GameplayStatics.h"
 
 #include "Door.generated.h"
 
@@ -16,9 +17,12 @@ class KEYSANDDOOREVENTS_API ADoor : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ADoor();
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Door")
+		bool IsOpen;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Key")
-		AMyKey* KeySender;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Door")
+		AKeysAndDoorEventsGameModeBase* EventSender;
 
 protected:
 	// Called when the game starts or when spawned
@@ -30,5 +34,4 @@ public:
 
 	UFUNCTION()
 		void OnKeyPickUp();
-
 };

@@ -3,3 +3,7 @@
 
 #include "KeysAndDoorEventsGameModeBase.h"
 
+void AKeysAndDoorEventsGameModeBase::OnLevelComplete()
+{
+	LevelCompleteEvent.Broadcast();
+}
