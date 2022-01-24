@@ -1,0 +1,6 @@
+﻿  main.cpp
+  Time.cpp
+  vector2.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  programacion2d.vcxproj -> C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica3\project\Debug\programacion2d.exe
