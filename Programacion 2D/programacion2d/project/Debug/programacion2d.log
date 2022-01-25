@@ -1,6 +1,6 @@
-﻿  main.cpp
-C:\Users\andres.perez.LIVEU-TAD\Desktop\programacion2d\lib\litegfx.h(322,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Desktop\programacion2d\lib\litegfx.h(322,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Desktop\programacion2d\lib\litegfx.h(372,70): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Desktop\programacion2d\lib\litegfx.h(372,58): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-  programacion2d.vcxproj -> C:\Users\andres.perez.LIVEU-TAD\Desktop\programacion2d\project\Debug\programacion2d.exe
+﻿  Font.cpp
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\project\Font.cpp(26,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\project\Font.cpp(34,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\project\Font.cpp(37,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\project\Font.cpp(42,37): warning C4018: '<': signed/unsigned mismatch
+  programacion2d.vcxproj -> C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\project\Debug\programacion2d.exe

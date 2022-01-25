@@ -1,11 +1,101 @@
 ﻿  main.cpp
-C:\Users\andres.perez.LIVEU-TAD\Desktop\programacion2d\lib\litegfx.h(322,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Desktop\programacion2d\lib\litegfx.h(322,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Desktop\programacion2d\lib\litegfx.h(372,70): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Desktop\programacion2d\lib\litegfx.h(372,58): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-  CTime.cpp
-  vec2.cpp
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\lib\litegfx.h(322,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\lib\litegfx.h(322,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\lib\litegfx.h(372,70): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\lib\litegfx.h(372,58): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+  Font.cpp
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\lib\litegfx.h(322,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\lib\litegfx.h(322,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\lib\litegfx.h(372,70): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\lib\litegfx.h(372,58): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\project\Font.cpp(28,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\project\Font.cpp(36,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\project\Font.cpp(41,37): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
+Font.obj : error LNK2005: lgfx_clearcolorbuffer already defined in main.obj
+Font.obj : error LNK2005: lgfx_cleardepthbuffer already defined in main.obj
+Font.obj : error LNK2005: lgfx_drawline already defined in main.obj
+Font.obj : error LNK2005: lgfx_drawoval already defined in main.obj
+Font.obj : error LNK2005: lgfx_drawpoint already defined in main.obj
+Font.obj : error LNK2005: lgfx_drawrect already defined in main.obj
+Font.obj : error LNK2005: lgfx_setambient already defined in main.obj
+Font.obj : error LNK2005: lgfx_setblend already defined in main.obj
+Font.obj : error LNK2005: lgfx_setcolor already defined in main.obj
+Font.obj : error LNK2005: lgfx_setculling already defined in main.obj
+Font.obj : error LNK2005: lgfx_setdepthwrite already defined in main.obj
+Font.obj : error LNK2005: lgfx_setfog already defined in main.obj
+Font.obj : error LNK2005: lgfx_setlight already defined in main.obj
+Font.obj : error LNK2005: lgfx_setlighting already defined in main.obj
+Font.obj : error LNK2005: lgfx_setmodelview already defined in main.obj
+Font.obj : error LNK2005: lgfx_setorigin already defined in main.obj
+Font.obj : error LNK2005: lgfx_setprojection already defined in main.obj
+Font.obj : error LNK2005: lgfx_setresolution already defined in main.obj
+Font.obj : error LNK2005: lgfx_setup2d already defined in main.obj
+Font.obj : error LNK2005: lgfx_setup3d already defined in main.obj
+Font.obj : error LNK2005: lgfx_setusevertexcolor already defined in main.obj
+Font.obj : error LNK2005: lgfx_setviewport already defined in main.obj
+Font.obj : error LNK2005: ltex_alloc already defined in main.obj
+Font.obj : error LNK2005: ltex_bindcolor already defined in main.obj
+Font.obj : error LNK2005: ltex_draw already defined in main.obj
+Font.obj : error LNK2005: ltex_drawrot already defined in main.obj
+Font.obj : error LNK2005: ltex_drawrotsized already defined in main.obj
+Font.obj : error LNK2005: ltex_free already defined in main.obj
+Font.obj : error LNK2005: ltex_getpixels already defined in main.obj
+Font.obj : error LNK2005: ltex_setpixels already defined in main.obj
+Font.obj : error LNK2005: lvert already defined in main.obj
+Font.obj : error LNK2005: lvert_draw already defined in main.obj
+Font.obj : error LNK2005: lvert_drawindexed already defined in main.obj
+Font.obj : error LNK2005: stbtt_BakeFontBitmap already defined in main.obj
+Font.obj : error LNK2005: stbtt_CompareUTF8toUTF16_bigendian already defined in main.obj
+Font.obj : error LNK2005: stbtt_FindGlyphIndex already defined in main.obj
+Font.obj : error LNK2005: stbtt_FindMatchingFont already defined in main.obj
+Font.obj : error LNK2005: stbtt_FreeBitmap already defined in main.obj
+Font.obj : error LNK2005: stbtt_FreeSDF already defined in main.obj
+Font.obj : error LNK2005: stbtt_FreeShape already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetBakedQuad already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetCodepointBitmap already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetCodepointBitmapBox already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetCodepointBitmapBoxSubpixel already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetCodepointBitmapSubpixel already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetCodepointBox already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetCodepointHMetrics already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetCodepointKernAdvance already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetCodepointSDF already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetCodepointShape already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetFontBoundingBox already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetFontNameString already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetFontOffsetForIndex already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetFontVMetrics already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetFontVMetricsOS2 already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetGlyphBitmap already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetGlyphBitmapBox already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetGlyphBitmapBoxSubpixel already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetGlyphBitmapSubpixel already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetGlyphBox already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetGlyphHMetrics already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetGlyphKernAdvance already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetGlyphSDF already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetGlyphShape already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetNumberOfFonts already defined in main.obj
+Font.obj : error LNK2005: stbtt_GetPackedQuad already defined in main.obj
+Font.obj : error LNK2005: stbtt_InitFont already defined in main.obj
+Font.obj : error LNK2005: stbtt_IsGlyphEmpty already defined in main.obj
+Font.obj : error LNK2005: stbtt_MakeCodepointBitmap already defined in main.obj
+Font.obj : error LNK2005: stbtt_MakeCodepointBitmapSubpixel already defined in main.obj
+Font.obj : error LNK2005: stbtt_MakeGlyphBitmap already defined in main.obj
+Font.obj : error LNK2005: stbtt_MakeGlyphBitmapSubpixel already defined in main.obj
+Font.obj : error LNK2005: stbtt_MakeGlyphBitmapSubpixelPrefilter already defined in main.obj
+Font.obj : error LNK2005: stbtt_PackBegin already defined in main.obj
+Font.obj : error LNK2005: stbtt_PackEnd already defined in main.obj
+Font.obj : error LNK2005: stbtt_PackFontRange already defined in main.obj
+Font.obj : error LNK2005: stbtt_PackFontRanges already defined in main.obj
+Font.obj : error LNK2005: stbtt_PackFontRangesGatherRects already defined in main.obj
+Font.obj : error LNK2005: stbtt_PackFontRangesPackRects already defined in main.obj
+Font.obj : error LNK2005: stbtt_PackFontRangesRenderIntoRects already defined in main.obj
+Font.obj : error LNK2005: stbtt_PackSetOversampling already defined in main.obj
+Font.obj : error LNK2005: stbtt_Rasterize already defined in main.obj
+Font.obj : error LNK2005: stbtt_ScaleForMappingEmToPixels already defined in main.obj
+Font.obj : error LNK2005: stbtt_ScaleForPixelHeight already defined in main.obj
 main.obj : error LNK2019: unresolved external symbol glfwInit referenced in function main
 main.obj : error LNK2019: unresolved external symbol glfwTerminate referenced in function main
 main.obj : error LNK2019: unresolved external symbol glfwCreateWindow referenced in function main
@@ -14,6 +104,7 @@ main.obj : error LNK2019: unresolved external symbol glfwSetWindowShouldClose re
 main.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function main
 main.obj : error LNK2019: unresolved external symbol glfwGetKey referenced in function main
 main.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwSwapBuffers referenced in function main
 CTime.obj : error LNK2019: unresolved external symbol glfwGetTime referenced in function "public: void __cdecl CTime::UpdateDeltaTime(void)" (?UpdateDeltaTime@CTime@@QEAAXXZ)
 ..\lib\glfw3.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-C:\Users\andres.perez.LIVEU-TAD\Desktop\programacion2d\project\x64\Debug\programacion2d.exe : fatal error LNK1120: 9 unresolved externals
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\programacion2d\project\x64\Debug\programacion2d.exe : fatal error LNK1120: 10 unresolved externals

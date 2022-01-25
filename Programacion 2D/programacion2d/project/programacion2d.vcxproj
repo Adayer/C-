@@ -21,12 +21,16 @@
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="CTime.cpp" />
+    <ClCompile Include="Font.cpp" />
     <ClCompile Include="vec2.cpp" />
+    <ClCompile Include="WordRender.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\litegfx.h" />
     <ClInclude Include="CTime.h" />
+    <ClInclude Include="Font.h" />
     <ClInclude Include="vec2.h" />
+    <ClInclude Include="WordRender.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
