@@ -16,4 +16,6 @@ class PRACTICA3_API AWaypointAIController : public AAIController
 public:
 	UFUNCTION(BlueprintCallable, Category = "Waypoints")
 		void UpdateNextTargetPoint();
+	UFUNCTION(BlueprintCallable, Category = "Waypoints")
+		void CheckNearbyEnemy();
 };

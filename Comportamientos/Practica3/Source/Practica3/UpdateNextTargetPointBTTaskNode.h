@@ -15,4 +15,6 @@ class PRACTICA3_API UUpdateNextTargetPointBTTaskNode : public UBTTaskNode
 	GENERATED_BODY()
 	virtual EBTNodeResult::Type ExecuteTask(UBehaviorTreeComponent& OwnerComp, uint8* NodeMemory);
 	virtual FString GetStaticDescription() const override;
+public:
+	virtual void OnGameplayTaskActivated(UGameplayTask& Task) override {}
 };
