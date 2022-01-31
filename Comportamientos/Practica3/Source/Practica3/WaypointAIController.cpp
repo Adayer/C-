@@ -7,6 +7,8 @@
 #include "BrainComponent.h"
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
+#include "Kismet/GameplayStatics.h"
+#include "Practica3Character.h"
 
 void AWaypointAIController::UpdateNextTargetPoint()
 {
@@ -55,4 +57,22 @@ void AWaypointAIController::CheckNearbyEnemy()
 			OutHits,
 			true);
 	//TODO: Put value in bb and check if player has been hit
+
+	if (ResultOfTrace)
+	{
+		for (int32 i = 0; i < OutHits.Num(); ++i)
+		{
+			FHitResult HitInfo = OutHits[i];
+
+			if (Cast<APractica3Character>(HitInfo.GetActor()))
+			{
+				Blackboard->SetValueAsObject("TargetToFollow", HitInfo.GetActor());
+				break;
+			}
+		}
+	}
+	else
+	{
+		Blackboard->SetValueAsObject("TargetToFollow", NULL);
+	}
 }
