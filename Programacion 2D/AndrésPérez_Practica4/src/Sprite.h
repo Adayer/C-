@@ -49,7 +49,7 @@ public:
 	{}
 
 	void Update(float deltaTime);
-	void Draw() //const;
+	void Draw(); //const;
 
 	//Seteo de puntero a la funcion
 	void SetCallback(CallbackFunc func) { callback = func; }
