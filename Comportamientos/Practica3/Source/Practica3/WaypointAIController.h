@@ -18,4 +18,6 @@ public:
 		void UpdateNextTargetPoint();
 	UFUNCTION(BlueprintCallable, Category = "Waypoints")
 		void CheckNearbyEnemy();
+	UFUNCTION(BlueprintCallable, Category = "Waypoints")
+		EPathFollowingRequestResult::Type MoveToEnemy();
 };

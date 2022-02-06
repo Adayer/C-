@@ -8,6 +8,7 @@
 #include "BehaviorTree/BlackboardComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Kismet/GameplayStatics.h"
+#include "Engine/World.h"
 #include "Practica3Character.h"
 
 void AWaypointAIController::UpdateNextTargetPoint()
@@ -36,7 +37,7 @@ void AWaypointAIController::CheckNearbyEnemy()
 	APawn* thisPawn = GetPawn();
 	FVector sphereTraceStart = thisPawn->GetActorLocation();
 	FVector sphereTraceEnd(sphereTraceStart.X, sphereTraceStart.Y, sphereTraceStart.Z + 15.f);
-	float Radius = 1500.f;
+	float Radius = 1000.f;
 
 	TArray<TEnumAsByte<EObjectTypeQuery>> ObjectTypes;
 	ObjectTypes.Add(UEngineTypes::ConvertToObjectType(ECC_Pawn));
@@ -66,13 +67,52 @@ void AWaypointAIController::CheckNearbyEnemy()
 
 			if (Cast<APractica3Character>(HitInfo.GetActor()))
 			{
-				Blackboard->SetValueAsObject("TargetToFollow", HitInfo.GetActor());
-				break;
+				FHitResult OutHitRay;
+				bool ResultOfRayTrace =
+					GetWorld()->LineTraceSingleByChannel(
+						OutHitRay,
+						thisPawn->GetActorLocation(),
+						HitInfo.GetActor()->GetActorLocation(),
+						ECC_Camera
+					);
+
+				if (ResultOfRayTrace)
+				{
+					if (Cast<APractica3Character>(OutHitRay.GetActor()))
+					{
+						if (Blackboard->GetValueAsObject("TargetActorToFollow"))
+						{
+							Blackboard->SetValueAsObject("TargetActorToFollow", HitInfo.GetActor());
+							break;
+						}
+						else
+						{
+							FVector DistanceToTarget(thisPawn->GetActorLocation() - HitInfo.GetActor()->GetActorLocation());
+							if (DistanceToTarget.Size() <= 1000.f)
+							{
+								Blackboard->SetValueAsObject("TargetActorToFollow", HitInfo.GetActor());
+								break;
+							}
+						}
+					}
+				}
+				Blackboard->SetValueAsObject("TargetActorToFollow", NULL);
 			}
 		}
 	}
 	else
 	{
-		Blackboard->SetValueAsObject("TargetToFollow", NULL);
+		Blackboard->SetValueAsObject("TargetActorToFollow", NULL);
 	}
+}
+
+EPathFollowingRequestResult::Type AWaypointAIController::MoveToEnemy()
+{
+	UBlackboardComponent* BlackboardComponent = BrainComponent->GetBlackboardComponent();
+
+	AActor* HeroCharcterActor = Cast<AActor>(BlackboardComponent->GetValueAsObject("TargetActorToFollow"));
+
+	EPathFollowingRequestResult::Type MoveToActorResult = MoveToActor(HeroCharcterActor);
+	
+	return MoveToActorResult;
 }
