@@ -37,6 +37,10 @@ _ACTION(Bee, png)
 using namespace std;
 
 
+constexpr float SPEED = 128.f; 
+constexpr float ROTATION_SPEED = 32.f;
+constexpr float MAX_ROTATION = 15.f;
+
 void UpdateSprite(CSprite& _sprite, float _deltaTime);
 
 int main() {
@@ -59,7 +63,9 @@ int main() {
 
     CSprite* beeSprite = new CSprite(textBee,8,1);
     beeSprite->SetBlendMode(lblend_t::BLEND_ALPHA);
-    beeSprite->SetFPS(8);
+    beeSprite->SetFPS(8.f);
+    beeSprite->SetScale(1.5f, 1.5f);
+
     beeSprite->SetCallback(&UpdateSprite);
     
 
@@ -201,6 +207,7 @@ int main() {
         //lgfx_setcolor(1.f, 1.f, 1.f, 1.f);
 #pragma endregion
        
+        beeSprite->SetUserData(&mousePos);
         beeSprite->Update(time.DeltaTime());
         beeSprite->Draw();
 
@@ -213,5 +220,57 @@ int main() {
 
 void UpdateSprite(CSprite& _sprite, float _deltaTime)
 {
+    //Update Position
+    vec2 currentTargetPos(*(static_cast<vec2*>(_sprite.GetUserData())));
+    vec2 currentPos(_sprite.GetPosition());
 
+    vec2 direction(currentTargetPos - currentPos);
+
+    float xNormi = Normalize(direction).x;
+    vec2 normalizedDirection(Normalize(direction));
+    //direction = ;
+    float x = (currentPos + normalizedDirection * SPEED * _deltaTime).x;
+    float y = (currentPos + normalizedDirection * SPEED * _deltaTime).y;
+    _sprite.SetPosition(x, y);
+
+
+    //Rotate
+    if (direction.x > 0.2f)
+    {
+        float currentRotation = _sprite.GetRotation() + -ROTATION_SPEED * _deltaTime;
+        if (currentRotation < -MAX_ROTATION)
+        {
+            currentRotation = -MAX_ROTATION;
+        }
+        _sprite.SetRotation(currentRotation);
+    }
+    else if(direction.x < 0.2f)
+    {
+        float currentRotation = _sprite.GetRotation() + ROTATION_SPEED * _deltaTime;
+        if (currentRotation > MAX_ROTATION)
+        {
+            currentRotation = MAX_ROTATION;
+        }
+        _sprite.SetRotation(currentRotation);
+    }
+    else
+    {
+        //+ ROTATION_SPEED * _deltaTime;
+        float bufferRotation = _sprite.GetRotation();
+        float currentRotation = _sprite.GetRotation() != 0 ? 
+            (_sprite.GetRotation() < 0 
+                ? _sprite.GetRotation() + ROTATION_SPEED * _deltaTime 
+                : _sprite.GetRotation() - ROTATION_SPEED * _deltaTime) 
+            : (0);
+       
+        if (bufferRotation < 0 && currentRotation > 0)
+        {
+            currentRotation = 0;
+        }
+        else if (bufferRotation > 0 && currentRotation < 0)
+        {
+            currentRotation = 0;
+        }
+        _sprite.SetRotation(currentRotation);
+    }
 }

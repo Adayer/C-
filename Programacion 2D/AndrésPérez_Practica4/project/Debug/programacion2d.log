@@ -1,4 +1,7 @@
-﻿  Sprite.cpp
-C:\Users\andre\Desktop\Hellevator\C-\Programacion 2D\AndrésPérez_Practica4\src\Sprite.cpp(27,16): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-C:\Users\andre\Desktop\Hellevator\C-\Programacion 2D\AndrésPérez_Practica4\src\Sprite.cpp(28,17): warning C4244: '=': conversión de 'int' a 'float'; posible pérdida de datos
-  programacion2d.vcxproj -> C:\Users\andre\Desktop\Hellevator\C-\Programacion 2D\AndrésPérez_Practica4\project\Debug\programacion2d.exe
+﻿  main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(107,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(108,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(211,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  programacion2d.vcxproj -> C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\project\Debug\programacion2d.exe

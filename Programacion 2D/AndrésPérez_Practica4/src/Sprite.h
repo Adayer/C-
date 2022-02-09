@@ -21,7 +21,7 @@ private:
 	vec2 uv1;//Esquina inferior dcha
 
 	int numFrames = hFrames * vFrames;
-	int FPS = 0; 
+	float FPS = 0; 
 	int currentFrame;
 	float elapsedTime = 0;
 
@@ -45,7 +45,8 @@ public:
 		int _vframes = 1) :
 		texture(tex),
 		hFrames(_hframes),
-		vFrames(_vframes)
+		vFrames(_vframes),
+		position(100.f, 100.f)
 	{}
 
 	void Update(float deltaTime);
@@ -79,10 +80,10 @@ public:
 	}
 
 	const vec2& GetPosition() const { return position; }
-	void SetPosition(vec2& _pos) { position = _pos; }
+	void SetPosition(float x, float y) { position.x = x; position.y = y;}
 
 	const vec2& GetScale() const { return scale; }
-	void SetScale(vec2& _scale) { scale = _scale; }
+	void SetScale(float x, float y) { scale.x = x; scale.y = y; }
 
 	const float GetRotation() const { return rotation; }
 	void SetRotation(float& _rotation) { rotation = _rotation; }
@@ -96,8 +97,8 @@ public:
 	const int GetHFrames() const { return hFrames; }
 	const int GetVFrames() const { return vFrames; }
 
-	const int GetFPS() const { return FPS; }
-	void SetFPS(int _FPS) { FPS = FPS; }
+	const float GetFPS() const { return FPS; }
+	void SetFPS(float _FPS) { FPS = _FPS; }
 	
 	const int GetCurrentFrame() const { return currentFrame; }
 	void SetCurrentFrame(int _currentFrame) { currentFrame = _currentFrame; }

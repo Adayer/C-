@@ -1,0 +1,13 @@
+﻿  main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(101,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(102,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(205,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(233,25): error C2065: 'buffer': undeclared identifier
+  Sprite.cpp
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\Sprite.cpp(27,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\Sprite.cpp(28,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Time.cpp
+  vector2.cpp
+  Generating Code...

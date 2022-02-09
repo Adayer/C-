@@ -9,7 +9,11 @@ public:
 
 	vec2(float _x, float _y) :x(_x), y(_y)  {};
 	vec2() :x(0.f), y(0.f)  {};
-	vec2(const vec2& _other) { x = _other.x; y = _other.y; };
+	
+	vec2(const vec2& _other) :
+		x(_other.x), 
+		y(_other.y)
+	{};
 
 
 	vec2 operator+ (const vec2& _leftSide) const;	
