@@ -22,7 +22,7 @@ public:
 	vec2 operator* (float _leftSide)const;
 	vec2 operator/ (const vec2& _leftSide) const;
 	vec2 operator/ (float _leftSide) const;
-	vec2 operator= (const vec2& _vec) const;
+	vec2& operator= (const vec2& _vec); // const;
 	vec2 absolute(const vec2& _vec) const;
 	float length() const;
 	vec2 normalise(const vec2& _vec) const;

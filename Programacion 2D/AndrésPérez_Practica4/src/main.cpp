@@ -233,6 +233,8 @@ void UpdateSprite(CSprite& _sprite, float _deltaTime)
     float y = (currentPos + normalizedDirection * SPEED * _deltaTime).y;
     _sprite.SetPosition(x, y);
 
+    currentPos = currentTargetPos;
+
 
     //Rotate
     if (direction.x > 0.2f)

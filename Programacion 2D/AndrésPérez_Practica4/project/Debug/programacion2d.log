@@ -4,4 +4,11 @@ C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPére
 C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(107,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(108,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(211,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Sprite.cpp
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\Sprite.cpp(26,14): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\Sprite.cpp(27,15): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\Sprite.cpp(31,22): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  vector2.cpp
+  Generating Code...
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\vector2.cpp(32): warning C4172: returning address of local variable or temporary
   programacion2d.vcxproj -> C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\project\Debug\programacion2d.exe

@@ -25,9 +25,11 @@ vec2 vec2::operator/ (float _leftSide) const
 {
 	return vec2(x / _leftSide, y / _leftSide);
 }
-vec2 vec2::operator= (const vec2& _vec) const
+vec2& vec2::operator= (const vec2& _vec) //const
 {
-	return vec2(_vec.x, _vec.y);
+	x = _vec.x; 
+	y = _vec.x; 
+	return *this;
 }
 vec2 vec2::absolute(const vec2& _vec) const
 {
