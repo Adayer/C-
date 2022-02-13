@@ -80,10 +80,10 @@ public:
 	}
 
 	const vec2& GetPosition() const { return position; }
-	void SetPosition(float x, float y) { position.x = x; position.y = y;}
+	void SetPosition(vec2& _pos) { position = _pos;}
 
 	const vec2& GetScale() const { return scale; }
-	void SetScale(float x, float y) { scale.x = x; scale.y = y; }
+	void SetScale(vec2& _scale) { scale = _scale; }
 
 	const float GetRotation() const { return rotation; }
 	void SetRotation(float& _rotation) { rotation = _rotation; }

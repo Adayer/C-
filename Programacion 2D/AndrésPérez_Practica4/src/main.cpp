@@ -61,10 +61,11 @@ int main() {
     //La variable de acceso a ltex_t* se llama text + Indice (text1, text2,...), la otra es textChar + Indice
     GENERATE_TEXTURES
 
+    //Sprite Initialization
     CSprite* beeSprite = new CSprite(textBee,8,1);
     beeSprite->SetBlendMode(lblend_t::BLEND_ALPHA);
     beeSprite->SetFPS(8.f);
-    beeSprite->SetScale(1.5f, 1.5f);
+    beeSprite->SetScale(vec2(1.5f, 1.5f));
 
     beeSprite->SetCallback(&UpdateSprite);
     
@@ -75,19 +76,6 @@ int main() {
     vec2 mousePos(0.f, 0.f);
 
     vec2 screenCenterLocation(screenHeight / 2.f, screenHeight / 2.f);
-
-
-    //Variables for light Rotation and Scale change
-    float currentLightRotation = 0.f;
-    float lightRotationSpeed = 10.f;
-    float maxRotation = 10.f;
-    bool rotatingRight = true;
-
-    float currentLightScale = 1.f;
-    float lightScaleChangeSpeed = 0.5f; 
-    float maxScale = 1.2f;
-    float minScale = 0.8f;
-    bool scalingUp = true;
 
 
     while (glfwWindowShouldClose(mainWindow) == 0)
@@ -109,104 +97,8 @@ int main() {
 
         //Renderizar cuadro en el centro de la pantalla
         lgfx_clearcolorbuffer(1.f, 1.f, 1.f);
-
-#pragma region Practica2Comentada
-
-        ////Wall
-        //lgfx_setblend(lblend_t::BLEND_SOLID);
-        //float escalaWallTilingX = screenWidth / xWall;
-        //float escalaWallTilingY = screenHeight / yWall;
-        //ltex_drawrotsized(textWall, 0, 0, 0, 0, 0, screenWidth, screenHeight, 0, 0, escalaWallTilingY, escalaWallTilingX);
-
-
-
-        ////Fire
-
-        ////Rotation
-        //if (rotatingRight)
-        //{
-        //    currentLightRotation += (lightRotationSpeed * time.DeltaTime());
-        //    if (currentLightRotation > maxRotation)
-        //    {
-        //        currentLightRotation = maxRotation;
-        //        rotatingRight = false;
-        //    }
-        //}
-        //else
-        //{
-        //    currentLightRotation -= (lightRotationSpeed * time.DeltaTime());
-        //    if (currentLightRotation < -maxRotation)
-        //    {
-        //        currentLightRotation = -maxRotation;
-        //        rotatingRight = true;
-        //    }
-        //}
-
-        ////Scale
-        //if (scalingUp)
-        //{
-        //    currentLightScale += (lightScaleChangeSpeed * time.DeltaTime());
-        //    if (currentLightScale > maxScale)
-        //    {
-        //        currentLightScale = maxScale;
-        //        scalingUp = false;
-        //    }
-        //}
-        //else
-        //{
-        //    currentLightScale -= (lightScaleChangeSpeed * time.DeltaTime());
-        //    if (currentLightScale < minScale)
-        //    {
-        //        currentLightScale = minScale;
-        //        scalingUp = true;
-        //    }
-        //}
-
-        //lgfx_setblend(lblend_t::BLEND_ADD);
-        //ltex_drawrotsized(textFire, (mousePos.x), (mousePos.y), currentLightRotation, 0.5f, 0.5f, xFire * currentLightScale, yFire * currentLightScale, 0, 0, 1, 1);
-
-        ////Grille
-        //lgfx_setblend(lblend_t::BLEND_ALPHA);
-        //float escalaGrilleTilingX = screenWidth / xGrille;
-        //float escalaGrilleTilingY = screenHeight / yGrille;
-        //ltex_drawrotsized(textGrille, 0, 0, 0, 0, 0, screenWidth, screenHeight, 0, 0, escalaGrilleTilingX, escalaGrilleTilingX);
-
-        ////Light
-        //
-        //lgfx_setblend(lblend_t::BLEND_MUL);
-
-        //ltex_drawrotsized(textLight, mousePos.x - (xLight / 2.f), mousePos.y - (yLight / 2.f), 0, 0, 0, xLight, yLight, 0, 0, 1, 1);
-
-
-
-        ////Side squares
-        //lgfx_setblend(lblend_t::BLEND_SOLID);
-        //lgfx_setcolor(0.f, 0.f, 0.f, 1.f);
-
-        ////Right side square
-        //if (screenWidth - mousePos.x - (xLight / 2.f) > 0)
-        //{
-        //    lgfx_drawrect(mousePos.x + (xLight / 2.f), mousePos.y - (yLight / 2.f), screenWidth - mousePos.x - (xLight /2.f), yLight);
-        //}
-        ////Left side square
-        //if (mousePos.x > (xLight / 2.f))
-        //{
-        //    lgfx_drawrect(mousePos.x - (xLight / 2.f), mousePos.y - (yLight / 2.f), -(mousePos.x - (xLight / 2.f)), yLight);
-        //}
-        //
-        ////Bot side square
-        //if (screenHeight - mousePos.y - (yLight / 2.f) > 0)
-        //{
-        //    lgfx_drawrect(0.f,mousePos.y + (yLight/2.f), screenWidth, screenHeight - mousePos.y - (yLight / 2.f));
-        //}
-        ////Top side square
-        //if (mousePos.y > (yLight / 2.f))
-        //{
-        //    lgfx_drawrect(0.f, mousePos.y - (yLight / 2.f),screenWidth, -(mousePos.y - (yLight / 2.f)));
-        //}
-        //lgfx_setcolor(1.f, 1.f, 1.f, 1.f);
-#pragma endregion
        
+        //Sprite Update
         beeSprite->SetUserData(&mousePos);
         beeSprite->Update(time.DeltaTime());
         beeSprite->Draw();
@@ -225,16 +117,10 @@ void UpdateSprite(CSprite& _sprite, float _deltaTime)
     vec2 currentPos(_sprite.GetPosition());
 
     vec2 direction(currentTargetPos - currentPos);
-
-    float xNormi = Normalize(direction).x;
     vec2 normalizedDirection(Normalize(direction));
-    //direction = ;
-    float x = (currentPos + normalizedDirection * SPEED * _deltaTime).x;
-    float y = (currentPos + normalizedDirection * SPEED * _deltaTime).y;
-    _sprite.SetPosition(x, y);
 
-    currentPos = currentTargetPos;
-
+    currentPos = currentPos + normalizedDirection * (SPEED * _deltaTime);
+    _sprite.SetPosition(currentPos);
 
     //Rotate
     if (direction.x > 0.2f)
@@ -257,7 +143,6 @@ void UpdateSprite(CSprite& _sprite, float _deltaTime)
     }
     else
     {
-        //+ ROTATION_SPEED * _deltaTime;
         float bufferRotation = _sprite.GetRotation();
         float currentRotation = _sprite.GetRotation() != 0 ? 
             (_sprite.GetRotation() < 0 

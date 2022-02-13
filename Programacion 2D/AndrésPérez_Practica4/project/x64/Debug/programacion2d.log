@@ -1,13 +1,21 @@
 ﻿  main.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(101,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(102,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(205,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(233,25): error C2065: 'buffer': undeclared identifier
-  Sprite.cpp
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\Sprite.cpp(27,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica4\src\Sprite.cpp(28,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Time.cpp
+D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica4\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
+D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(107,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(108,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica4\src\main.cpp(211,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   vector2.cpp
   Generating Code...
+main.obj : error LNK2019: unresolved external symbol glfwInit referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwTerminate referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwCreateWindow referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwWindowShouldClose referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwSetWindowShouldClose referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwGetKey referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwGetCursorPos referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwSwapBuffers referenced in function main
+Time.obj : error LNK2019: unresolved external symbol glfwGetTime referenced in function "public: void __cdecl CTime::UpdateDeltaTime(void)" (?UpdateDeltaTime@CTime@@QEAAXXZ)
+..\lib\glfw3.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica4\project\x64\Debug\programacion2d.exe : fatal error LNK1120: 11 unresolved externals

@@ -28,7 +28,7 @@ vec2 vec2::operator/ (float _leftSide) const
 vec2& vec2::operator= (const vec2& _vec) //const
 {
 	x = _vec.x; 
-	y = _vec.x; 
+	y = _vec.y; 
 	return *this;
 }
 vec2 vec2::absolute(const vec2& _vec) const
