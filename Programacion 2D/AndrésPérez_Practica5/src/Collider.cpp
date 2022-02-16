@@ -2,8 +2,17 @@
 #include <algorithm>
 #include <vector>
 
-float Clamp(float n, float lower, float upper) {
+float Clamp(float n, float lower, float upper) 
+{
 	return std::max(lower, std::min(n, upper));
+}
+bool IsBetween(float _value, float _min, float _max)
+{
+	if (_min > _max)
+	{
+		return (_value <= _min && _value >= _max);
+	}
+	return (_value >= _min && _value <= _max);
 }
 
 bool Collider::CheckCircleCircle(const vec2& _pos1, float _radius1,
@@ -19,196 +28,73 @@ bool Collider::CheckCircleCircle(const vec2& _pos1, float _radius1,
 bool Collider::CheckCircleRect(const vec2& _circlePos, float _radius, 
 	const vec2& _rectPos, const vec2& _rectSize) const
 {
-	if (_circlePos.x > (_rectPos.x + _rectSize.x / 2.f))
+	float xClosest = Clamp(_circlePos.x, _rectPos.x - _rectSize.x, _rectPos.x + _rectSize.x);
+	float yClosest = Clamp(_circlePos.y, _rectPos.y - _rectSize.y, _rectPos.y + _rectSize.y);
+	
+	if (Distance(_circlePos, vec2(xClosest, yClosest)) <= _radius)
 	{
-		if (_circlePos.y > (_rectPos.y + _rectSize.y / 2.f))
-		{
-			if (Distance(_circlePos, vec2(_rectPos.x + _rectSize.x / 2.f, _rectPos.y + _rectSize.y / 2.f)) <= _radius)
-			{
-				return true;
-			}
-		}
-		else if (_circlePos.y < (_rectPos.y + _rectSize.y / 2.f))
-		{
-			if (Distance(_circlePos, vec2(_rectPos.x + _rectSize.x / 2.f, _rectPos.y - _rectSize.y / 2.f)) <= _radius)
-			{
-				return true;
-			}
-		}
-		else
-		{
-			if (Distance(_circlePos, vec2(_rectPos.x + _rectSize.x / 2.f, _rectPos.y)) <= _radius)
-			{
-				return true;
-			}
-		}
+		return true;
 	}
-	else if (_circlePos.x < (_rectPos.x + _rectSize.x / 2.f))
-	{
-		if (_circlePos.y > (_rectPos.y + _rectSize.y / 2.f))
-		{
-			if (Distance(_circlePos, vec2(_rectPos.x - _rectSize.x / 2.f, _rectPos.y + _rectSize.y / 2.f)) <= _radius)
-			{
-				return true;
-			}
-		}
-		else if (_circlePos.y < (_rectPos.y + _rectSize.y / 2.f))
-		{
-			if (Distance(_circlePos, vec2(_rectPos.x - _rectSize.x / 2.f, _rectPos.y - _rectSize.y / 2.f)) <= _radius)
-			{
-				return true;
-			}
-		}
-		else
-		{
-			if (Distance(_circlePos, vec2(_rectPos.x - _rectSize.x / 2.f, _rectPos.y)) <= _radius)
-			{
-				return true;
-			}
-		}
-	}
-	else
-	{
-		if (_circlePos.y > (_rectPos.y + _rectSize.y / 2.f))
-		{
-			if (Distance(_circlePos, vec2(_rectPos.x, _rectPos.y + _rectSize.y / 2.f)) <= _radius)
-			{
-				return true;
-			}
-		}
-		else if (_circlePos.y < (_rectPos.y + _rectSize.y / 2.f))
-		{
-			if (Distance(_circlePos, vec2(_rectPos.x, _rectPos.y -_rectSize.y / 2.f)) <= _radius)
-			{
-				return true;
-			}
-		}
-		else
-		{
-			return true;
-		}
-	}
+
 	return false;
 }
 bool Collider::CheckCirclePixels(const vec2& _circlePos, float _radius,
 	const vec2& _pixelPos, const vec2& _pixelsSize, const uint8_t* _pixels) const
 {
-	if (_circlePos.x > (_pixelPos.x + _pixelsSize.x / 2.f))
+	if (CheckCircleRect(_circlePos, _radius, _pixelPos, _pixelsSize))
 	{
-		if (_circlePos.y > (_pixelPos.y + _pixelsSize.y / 2.f))
-		{
-			if (Distance(_circlePos, vec2(_pixelPos.x + _pixelsSize.x / 2.f, _pixelPos.y + _pixelsSize.y / 2.f)) <= _radius)
-			{
-				int i = 0; 
-				vec2 crossY(_pixelPos.x + _pixelsSize.x / 2.f, _pixelPos.y);
-				while (true)
-				{
-					if (Distance(crossY + vec2(0.f, i), _circlePos) < _radius)
-					{
-						crossY = crossY + vec2(0.f, i);
-						break;
-					}
-					++i;
-				};
-				
-				i = 0;
-				vec2 crossX(_pixelPos.x, _pixelPos.y + _pixelsSize.y / 2.f);
-				while (true)
-				{
-					if (Distance(crossX + vec2(i, 0.f), _circlePos) < _radius)
-					{
-						crossX = crossX + vec2(i, 0.f);
-						break;
-					}
-					++i;
-				};
 
-				float xPixelStart = (crossX.x - _pixelPos.x) + _pixelsSize.x / 2.f;
-				float yPixelEnd= _pixelsSize.y / 2.f - crossY.y;
-
-				for (int i = 0; i <= yPixelEnd; ++i)
-				{
-					for (int j = xPixelStart; j < _pixelsSize.x; ++j)
-					{
-						int pixelAlpha = ((i * _pixelsSize.x + j) * 4) - 1;
-					}
-				}
-
-				return false;
-			}
-		}
-		else if (_circlePos.y < (_pixelPos.y + _pixelsSize.y / 2.f))
-		{
-			if (Distance(_circlePos, vec2(_pixelPos.x + _pixelsSize.x / 2.f, _pixelPos.y - _pixelsSize.y / 2.f)) <= _radius)
-			{
-				return true;
-			}
-		}
-		else
-		{
-			if (Distance(_circlePos, vec2(_pixelPos.x + _pixelsSize.x / 2.f, _pixelPos.y)) <= _radius)
-			{
-				return true;
-			}
-		}
-	}
-	else if (_circlePos.x < (_pixelPos.x + _pixelsSize.x / 2.f))
-	{
-		if (_circlePos.y > (_pixelPos.y + _pixelsSize.y / 2.f))
-		{
-			if (Distance(_circlePos, vec2(_pixelPos.x - _pixelsSize.x / 2.f, _pixelPos.y + _pixelsSize.y / 2.f)) <= _radius)
-			{
-				return true;
-			}
-		}
-		else if (_circlePos.y < (_pixelPos.y + _pixelsSize.y / 2.f))
-		{
-			if (Distance(_circlePos, vec2(_pixelPos.x - _pixelsSize.x / 2.f, _pixelPos.y - _pixelsSize.y / 2.f)) <= _radius)
-			{
-				return true;
-			}
-		}
-		else
-		{
-			if (Distance(_circlePos, vec2(_pixelPos.x - _pixelsSize.x / 2.f, _pixelPos.y)) <= _radius)
-			{
-				return true;
-			}
-		}
-	}
-	else
-	{
-		if (_circlePos.y > (_pixelPos.y + _pixelsSize.y / 2.f))
-		{
-			if (Distance(_circlePos, vec2(_pixelPos.x, _pixelPos.y + _pixelsSize.y / 2.f)) <= _radius)
-			{
-				return true;
-			}
-		}
-		else if (_circlePos.y < (_pixelPos.y + _pixelsSize.y / 2.f))
-		{
-			if (Distance(_circlePos, vec2(_pixelPos.x, _pixelPos.y - _pixelsSize.y / 2.f)) <= _radius)
-			{
-				return true;
-			}
-		}
-		else
-		{
-			return true;
-		}
 	}
 
+	/*int i = 0;
+	vec2 crossY(_pixelPos.x + _pixelsSize.x / 2.f, _pixelPos.y);
+	while (true)
+	{
+		if (Distance(crossY + vec2(0.f, i), _circlePos) < _radius)
+		{
+			crossY = crossY + vec2(0.f, i);
+			break;
+		}
+		++i;
+	};
+
+	i = 0;
+	vec2 crossX(_pixelPos.x, _pixelPos.y + _pixelsSize.y / 2.f);
+	while (true)
+	{
+		if (Distance(crossX + vec2(i, 0.f), _circlePos) < _radius)
+		{
+			crossX = crossX + vec2(i, 0.f);
+			break;
+		}
+		++i;
+	};
+
+	float xPixelStart = (crossX.x - _pixelPos.x) + _pixelsSize.x / 2.f;
+	float yPixelEnd = _pixelsSize.y / 2.f - crossY.y;
+
+	for (int i = 0; i <= yPixelEnd; ++i)
+	{
+		for (int j = xPixelStart; j < _pixelsSize.x; ++j)
+		{
+			int pixelAlpha = ((i * _pixelsSize.x + j) * 4) - 1;
+		}
+	}*/
+	
 	return false;
 }
 bool Collider::CheckRectRect(const vec2& _pos1, const vec2& _size1, 
 	const vec2& _pos2, const vec2& _size2) const
 {
-	if ((_pos1.x < (_pos2.x + _size2.x / 2.f) && _pos1.x >(_pos2.x + _size2.x / 2.f) && 
-		_pos1.y < (_pos2.y + _size2.y / 2.f) && _pos1.y >(_pos2.y + _size2.y / 2.f))
-		||
-		(_pos2.x < (_pos1.x + _size1.x / 2.f) && _pos2.x >(_pos1.x + _size1.x / 2.f) &&
-			_pos2.y < (_pos1.y + _size1.y / 2.f) && _pos2.y >(_pos1.y + _size1.y / 2.f)))
-
+	//Rect 1 inside of rect 2
+	if (IsBetween(_pos1.x - _size1.x,_pos2.x - _size2.x, _pos2.x + _size2.x) || IsBetween(_pos1.x + _size1.x, _pos2.x - _size2.x, _pos2.x + _size2.x) &&
+		IsBetween(_pos1.y - _size1.y, _pos2.y - _size2.y, _pos2.y + _size2.y) || IsBetween(_pos1.y + _size1.y, _pos2.y - _size2.y, _pos2.y + _size2.y))
+	{
+		return true;
+	}
+	//Rect 2 inside of rect 1
+	else if (IsBetween(_pos2.x - _size2.x, _pos1.x - _size1.x, _pos1.x + _size1.x) || IsBetween(_pos2.x + _size2.x, _pos1.x - _size1.x, _pos1.x + _size1.x) &&
+		IsBetween(_pos2.y - _size2.y, _pos1.y - _size1.y, _pos1.y + _size1.y) || IsBetween(_pos2.y + _size2.y, _pos1.y - _size1.y, _pos1.y + _size1.y))
 	{
 		return true;
 	}
@@ -218,12 +104,7 @@ bool Collider::CheckRectRect(const vec2& _pos1, const vec2& _size1,
 bool Collider::CheckRectPixels(const vec2& _rectPos, const vec2& _rectSize, 
 	const vec2& _pixelPos, const vec2& _pixelsSize, const uint8_t* _pixels) const
 {
-	if (((_rectPos.x < (_pixelPos.x + _pixelsSize.x / 2.f) && _rectPos.x >(_pixelPos.x + _pixelsSize.x / 2.f)) &&
-		(_rectPos.y < (_pixelPos.y + _pixelsSize.y / 2.f) && _rectPos.y >(_pixelPos.y + _pixelsSize.y / 2.f)))
-		||
-		((_pixelPos.x < (_rectPos.x + _rectSize.x / 2.f) && _pixelPos.x >(_rectPos.x + _rectSize.x / 2.f))&&
-			(_pixelPos.y < (_rectPos.y + _rectSize.y / 2.f) && _pixelPos.y >(_rectPos.y + _rectSize.y / 2.f))))
-
+	if (CheckRectRect(_rectPos, _rectSize, _pixelPos, _pixelsSize))
 	{
 		//x values
 		std::vector<float> xCrossPossible;
@@ -237,7 +118,7 @@ bool Collider::CheckRectPixels(const vec2& _rectPos, const vec2& _rectSize,
 		//Min & Max X del punto de corte
 		float minX = xCrossPossible[1];
 		float maxX = xCrossPossible[2];
-		
+
 		//y values
 		std::vector<float> yCrossPossible;
 		//RectPossible Values
