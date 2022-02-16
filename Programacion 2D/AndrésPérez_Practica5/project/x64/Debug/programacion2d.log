@@ -1,14 +1,18 @@
 ﻿  Collider.cpp
-  main.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica5\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica5\src\main.cpp(95,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica5\src\main.cpp(96,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica5\src\main.cpp(103,41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(139,23): warning C4244: 'initializing': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(141,24): warning C4244: 'initializing': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(143,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(202,21): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(203,21): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   Sprite.cpp
 C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(27,14): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
 C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(28,15): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
 C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(32,22): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica5\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica5\src\main.cpp(86,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica5\src\main.cpp(87,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Generating Code...
 main.obj : error LNK2019: unresolved external symbol glfwInit referenced in function main
 main.obj : error LNK2019: unresolved external symbol glfwTerminate referenced in function main

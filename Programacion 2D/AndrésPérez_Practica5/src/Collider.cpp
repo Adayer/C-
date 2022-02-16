@@ -153,6 +153,62 @@ bool Collider::CheckRectPixels(const vec2& _rectPos, const vec2& _rectSize,
 bool Collider::CheckPixelsPixels(const vec2& _pos1, const vec2& _size1, const uint8_t* _pixels1,
 	const vec2& _pos2, const vec2& _size2, const uint8_t* _pixels2) const
 {
+	if (CheckRectRect(_pos1, _size1, _pos2, _size2))
+	{
+		//x values
+		std::vector<float> xCrossPossible;
+		//RectPossible Values
+		xCrossPossible.push_back(_pos1.x - _size1.x);
+		xCrossPossible.push_back(_pos1.x + _size1.x);
+		//Pixels possible values
+		xCrossPossible.push_back(_pos2.x - _size2.x);
+		xCrossPossible.push_back(_pos2.x + _size2.x);
+		std::sort(xCrossPossible.begin(), xCrossPossible.end()); //Index 1 & 2 are the good values
+		
+
+		//Min & Max X del punto de corte
+		float minX = xCrossPossible[1];
+		float maxX = xCrossPossible[2];
+
+		//y values
+		std::vector<float> yCrossPossible;
+		//RectPossible Values
+		yCrossPossible.push_back(_pos1.y - _size1.y);
+		yCrossPossible.push_back(_pos1.y + _size1.y);
+		//Pixels possible values
+		yCrossPossible.push_back(_pos2.y - _size2.y);
+		yCrossPossible.push_back(_pos2.y + _size2.y);
+		std::sort(yCrossPossible.begin(), yCrossPossible.end()); //Index 1 & 2 are the good values
+
+		//Min & Max Y del punto de corte en valor absoluto de pantalla
+		float minY = yCrossPossible[1];
+		float maxY = yCrossPossible[2];
+
+		//Tamaño en pixeles de la zona overlapeada
+		vec2 sizeOfOverlapSquare(maxX - minX, maxY - minY);
+
+		//Pixels1 relative start position of overlap
+		vec2 pixels1Start(minX - _size1.x, minY - _size1.y);
+		vec2 pixels1End(maxX - _size1.x, maxY - _size1.y);
+		
+		//Pixels2 relative start position of overlap
+		vec2 pixels2Start(minX - _size2.x, minY - _size2.y);
+		vec2 pixels2End(maxX - _size2.x, maxY - _size2.y);
+
+		for (unsigned int y = 0; y <= sizeOfOverlapSquare.y; ++y)
+		{
+			for (unsigned int x = 0; x <= sizeOfOverlapSquare.x; ++x)
+			{
+				int pixelAlpha1 = (((y + pixels1Start.y) * _size1.x + (x + pixels1Start.x)) * 4) - 1;
+				int pixelAlpha2 = (((y + pixels2Start.y) * _size2.x + (x + pixels2Start.x)) * 4) - 1;
+
+				if (_pixels1[pixelAlpha1] != 0 && _pixels2[pixelAlpha2] != 0)
+				{
+					return true;
+				}
+			}
+		}
+	}
 	return false;
 }
 
