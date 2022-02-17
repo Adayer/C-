@@ -49,29 +49,8 @@ struct Exercise3 {
 	static vec3 getWorldMousePosition(float mouse_x, float mouse_y, float windowsWidth, float windowsHeight, const mat4& projMat, const mat4& viewMat) {
 
 		//Screen -> Cube
-		float halfWidth = windowsWidth / 2;
-		float xInCube(0.f);
-		if (mouse_x > halfWidth)
-		{
-			float xHalf = mouse_x - halfWidth;
-			xInCube = xHalf / halfWidth;
-		}
-		else
-		{
-			xInCube = -((halfWidth - mouse_x) / halfWidth);
-		}
-		
-		float halfHeigth = windowsHeight / 2;
-		float yInCube(0.f);
-		if (mouse_y > halfHeigth)
-		{
-			float yHalf = mouse_y - halfHeigth;
-			yInCube = -(yHalf / halfHeigth);
-		}
-		else
-		{
-			yInCube = ((halfHeigth - mouse_y) / halfHeigth);
-		}
+		float xInCube = 2.f * (mouse_x / windowsWidth) - 1.f;
+		float yInCube = -2.f * (mouse_y / windowsHeight) + 1.f;
 
 		vec4 cubePos(xInCube, yInCube, -1.f, 1.f);
 
@@ -81,7 +60,7 @@ struct Exercise3 {
 
 		//View-> World
 		vec4 worldPos =  inverse(viewMat) * viewPos;
-		normalise(worldPos);
+		//normalise(worldPos);
 
 		return worldPos;
 	}
@@ -97,51 +76,50 @@ struct Exercise3 {
 
 	// as in http://viclw17.github.io/2018/07/16/raytracing-ray-sphere-intersection/
 	// also "Ray Sphere Intersection 1 Analytical.pdf"
-	
-	static bool raySphereIntersection(const Ray& ray, vec3 C, float r, float* intersection_distance) {
+	//static bool raySphereIntersection(const Ray& ray, vec3 C, float r, float* intersection_distance) {
 
-		const vec3& A = ray.origin;
-		const vec3& B = ray.direction;
-		
-		assert(fabsf(length(B) - 1) < 1e-03);
-		
-		// work out components of quadratic
-		vec3 A_C = A - C;
-		float a = 1;
-		float b = 2*dot(B, A_C);
-		float c = dot(A_C, A_C) - r * r;
-		float discriminant = b * b - 4*a*c;
-		
-		if (discriminant < 0.0f) { // ray misses
-			return false; 
-		}
-		if (discriminant > 0.0f) { // ray hits at two points
-			// get the 2 intersection distances along ray
-			float t_a = -b + sqrtf(discriminant);
-			float t_b = -b - sqrtf(discriminant);
-			*intersection_distance = t_b;
-			// if behind viewer, throw one or both away
-			if (t_a < 0.0) {
-				if (t_b < 0.0) { return false; }
-			}
-			else if (t_b < 0.0) {
-				*intersection_distance = t_a;
-			}
+	//	const vec3& A = ray.origin;
+	//	const vec3& B = ray.direction;
+	//	
+	//	assert(fabsf(length(B) - 1) < 1e-03);
+	//	
+	//	// work out components of quadratic
+	//	vec3 A_C = A - C;
+	//	float a = 1;
+	//	float b = 2*dot(B, A_C);
+	//	float c = dot(A_C, A_C) - r * r;
+	//	float discriminant = b * b - 4*a*c;
+	//	
+	//	if (discriminant < 0.0f) { // ray misses
+	//		return false; 
+	//	}
+	//	if (discriminant > 0.0f) { // ray hits at two points
+	//		// get the 2 intersection distances along ray
+	//		float t_a = -b + sqrtf(discriminant);
+	//		float t_b = -b - sqrtf(discriminant);
+	//		*intersection_distance = t_b;
+	//		// if behind viewer, throw one or both away
+	//		if (t_a < 0.0) {
+	//			if (t_b < 0.0) { return false; }
+	//		}
+	//		else if (t_b < 0.0) {
+	//			*intersection_distance = t_a;
+	//		}
 
-			return true;
-		}
-		// check for ray hitting once (skimming the surface)
-		if (0.0f == discriminant) {
-			// if behind viewer, throw away
-			float t = -b + sqrtf(discriminant);
-			if (t < 0.0f) { return false; }
-			*intersection_distance = t;
-			return true;
-		}
-		return false;
-	}
+	//		return true;
+	//	}
+	//	// check for ray hitting once (skimming the surface)
+	//	if (0.0f == discriminant) {
+	//		// if behind viewer, throw away
+	//		float t = -b + sqrtf(discriminant);
+	//		if (t < 0.0f) { return false; }
+	//		*intersection_distance = t;
+	//		return true;
+	//	}
+	//	return false;
+	//}
 	
-	static bool raySphereIntersectionMine(const Ray& ray, vec3 C, float r)
+	/*static bool raySphereIntersectionMine(const Ray& ray, vec3 C, float r) // WRONG
 	{
 		vec3 vectorCentroRayo = cross(C - ray.origin, ray.direction);
 		
@@ -151,13 +129,52 @@ struct Exercise3 {
 		}
 
 		return false;
+	}*/
+
+	 //as in https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-sphere-intersection
+	 //also "Ray Sphere Intersection 2 Geometrical.pdf"
+	static bool raySphereIntersection(const Ray& ray, vec3 C, float r, float* intersection_distance) {
+		 const vec3& Origin = ray.origin;
+		 const vec3& Direction = ray.direction;
+		 vec3 RayOriginToCenter = C - Origin; 
+
+		 float Projection(dot(RayOriginToCenter, Direction));  
+		 float MinDistance(dot(RayOriginToCenter, RayOriginToCenter) - Projection * Projection); 
+		 
+		 if (MinDistance > r * r) { return false; }
+		 
+		 float thc(sqrtf(r * r - MinDistance));
+		 float t0(Projection - thc), t1(Projection + thc);
+
+		 if (t0 < 0)//If t0 is negative t1 needs to be either positive (only one intersection) or it will be an impossible case
+		 {
+			 if (t1 < 0)
+			 {
+				 return false; 
+			 }
+			 else
+			 {
+				 *intersection_distance = t1; 
+			 }
+		 }
+		 else if (t1 < 0) //As t0 will always be an intersection this checks if there is 1 or 2 intersection points
+		 {
+			 *intersection_distance = t0;
+		 }
+		 else //If both are > 0 then both are correct and the closest one needs to be returned
+		 {
+			 if (t0 < t1)
+			 {
+				 *intersection_distance = t0;
+			 }
+			 else
+			 {
+				 *intersection_distance = t1;
+			 }
+		 }
+		 return true;
+
 	}
-
-	// as in https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-sphere-intersection
-	// also "Ray Sphere Intersection 2 Geometrical.pdf"
-	//static bool raySphereIntersection(const Ray& ray, vec3 C, float r, float* intersection_distance) {
-
-	//}
 
 	static void onKeyPressed(GLFWwindow* window, int key, int scancode, int action, int mods){
 
@@ -208,7 +225,7 @@ struct Exercise3 {
 
 				const vec3 spherePos = exercise.sphereNodes[i].worldMatrix.getColumn(3);
 			
-				if (raySphereIntersectionMine(ray, spherePos, 1)) {
+				if (raySphereIntersection(ray, spherePos, 1, &t_dist)) {
 					if (-1 == closest_sphere_clicked || t_dist < closest_intersection) {
 						closest_sphere_clicked = i;
 						closest_intersection = t_dist;
