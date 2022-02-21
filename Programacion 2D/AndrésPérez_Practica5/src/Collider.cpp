@@ -43,44 +43,46 @@ bool Collider::CheckCirclePixels(const vec2& _circlePos, float _radius,
 {
 	if (CheckCircleRect(_circlePos, _radius, _pixelPos, _pixelsSize))
 	{
+		float xOffsetNegative = ((_circlePos.x - _radius) < (_pixelPos.x - _pixelsSize.x / 2.f)) ?
+			(_pixelPos.x - _pixelsSize.x / 2.f) : (_circlePos.x - _radius);
+		float xOffsetPositive = ((_circlePos.x + _radius) > (_pixelPos.x + _pixelsSize.x / 2.f)) ?
+			(_pixelPos.x + _pixelsSize.x / 2.f) : (_circlePos.x + _radius);
+		float yOffsetNegative = ((_circlePos.y - _radius) < (_pixelPos.y - _pixelsSize.y / 2.f)) ?
+			(_pixelPos.y - _pixelsSize.y / 2.f) : (_circlePos.y - _radius);
+		float yOffsetPositive = ((_circlePos.y + _radius) < (_pixelPos.y + _pixelsSize.y / 2.f)) ?
+			(_pixelPos.y + _pixelsSize.y / 2.f) : (_circlePos.y + _radius);
 
+		vec2 squareStartPos(xOffsetNegative, yOffsetNegative); //Bottom Left Corner
+		vec2 squareEndPos(xOffsetPositive, yOffsetPositive); //Top Right Corner
+		float squareXSize(xOffsetPositive - xOffsetNegative); //Base
+		float squareYSize(yOffsetPositive - yOffsetNegative); //Altura
+		//Centro del cuadrado, me parece lo optimo empezar a buscar desde el centro del cuadrado hacia fuera, 
+		//ya que hay areas en las cuales los pixeles no estan dentro del circulo en los bordes del cuadrado
+		vec2 centerOfSquare(squareStartPos.x + squareXSize, squareStartPos.y + squareYSize);
+
+		for (unsigned int y = squareYSize / 2.f; y <= squareYSize; ++y)
+		{
+			for (unsigned int x = squareXSize / 2.f; x <= squareXSize; ++x)
+			{
+				int xNeg = (squareXSize / 2.f) - x;
+				int yNeg = (squareYSize / 2.f) - y;
+
+				vec2 buffer(centerOfSquare.x + x, centerOfSquare.y + y);
+				vec2 pixelPosRelativeOffset(buffer - _pixelPos); //Posicion relativa del pixel
+				
+				int alphaPosPos = ((y * _pixelsSize.x + x) * 4) + 3;// +x, +y
+				
+
+				int alphaPosNeg = ((y * _pixelsSize.x + xNeg) * 4) + 3;//-x, +y
+				int alphaNegPos = ((yNeg * _pixelsSize.x + x) * 4) + 3;//+x, -y
+				int alphaNegNeg = ((yNeg * _pixelsSize.x + xNeg) * 4) + 3;//-x, -y
+				if (_pixels[alphaPosPos] != 0 || _pixels[alphaPosNeg] != 0 || _pixels[alphaNegPos] != 0 || _pixels[alphaNegNeg] != 0)
+				{
+					return true;
+				}
+			}
+		}
 	}
-
-	/*int i = 0;
-	vec2 crossY(_pixelPos.x + _pixelsSize.x / 2.f, _pixelPos.y);
-	while (true)
-	{
-		if (Distance(crossY + vec2(0.f, i), _circlePos) < _radius)
-		{
-			crossY = crossY + vec2(0.f, i);
-			break;
-		}
-		++i;
-	};
-
-	i = 0;
-	vec2 crossX(_pixelPos.x, _pixelPos.y + _pixelsSize.y / 2.f);
-	while (true)
-	{
-		if (Distance(crossX + vec2(i, 0.f), _circlePos) < _radius)
-		{
-			crossX = crossX + vec2(i, 0.f);
-			break;
-		}
-		++i;
-	};
-
-	float xPixelStart = (crossX.x - _pixelPos.x) + _pixelsSize.x / 2.f;
-	float yPixelEnd = _pixelsSize.y / 2.f - crossY.y;
-
-	for (int i = 0; i <= yPixelEnd; ++i)
-	{
-		for (int j = xPixelStart; j < _pixelsSize.x; ++j)
-		{
-			int pixelAlpha = ((i * _pixelsSize.x + j) * 4) - 1;
-		}
-	}*/
-	
 	return false;
 }
 bool Collider::CheckRectRect(const vec2& _pos1, const vec2& _size1, 
@@ -140,7 +142,7 @@ bool Collider::CheckRectPixels(const vec2& _rectPos, const vec2& _rectSize,
 		{
 			for (unsigned int x = minCrossing.x; x <= maxCrossing.x; ++x)
 			{
-				int pixelAlpha = ((y * _pixelsSize.x + x) * 4) - 1;
+				int pixelAlpha = ((y * _pixelsSize.x + x) * 4) + 3;
 				if (_pixels[pixelAlpha] != 0)
 				{
 					return true;
@@ -199,8 +201,8 @@ bool Collider::CheckPixelsPixels(const vec2& _pos1, const vec2& _size1, const ui
 		{
 			for (unsigned int x = 0; x <= sizeOfOverlapSquare.x; ++x)
 			{
-				int pixelAlpha1 = (((y + pixels1Start.y) * _size1.x + (x + pixels1Start.x)) * 4) - 1;
-				int pixelAlpha2 = (((y + pixels2Start.y) * _size2.x + (x + pixels2Start.x)) * 4) - 1;
+				int pixelAlpha1 = (((y + pixels1Start.y) * _size1.x + (x + pixels1Start.x)) * 4) + 3;
+				int pixelAlpha2 = (((y + pixels2Start.y) * _size2.x + (x + pixels2Start.x)) * 4) + 3;
 
 				if (_pixels1[pixelAlpha1] != 0 && _pixels2[pixelAlpha2] != 0)
 				{

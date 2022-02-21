@@ -9,9 +9,14 @@
 #include <stb_image.h>
 #include <string>
 #include "Sprite.h"
+#include <vector>
 
 #define TEXTURE_LIST(_ACTION)\
-_ACTION(Bee, png)
+_ACTION(Bee, png)\
+_ACTION(Ball, png)\
+_ACTION(Box, png)\
+_ACTION(Circle, png)\
+_ACTION(Rect, png)
 
 #define LOAD_TEXTURE(_FILE_NAME, _TYPE)\
     int x##_FILE_NAME = 0;\
@@ -61,6 +66,45 @@ int main() {
     //La variable de acceso a ltex_t* se llama text + Indice (text1, text2,...), la otra es textChar + Indice
     GENERATE_TEXTURES
 
+
+    CSprite* mouseSprite = new CSprite(textCircle, CollisionType::COLLISION_CIRCLE);
+    mouseSprite->SetColor(1.f, 1.f, 1.f);
+    mouseSprite->SetBlendMode(BLEND_ALPHA);
+    mouseSprite->SetScale(vec2(1.f, 1.f));
+    mouseSprite->SetPivot(vec2(0.5f, 0.5f));
+    std::vector<CSprite*> spriteList;
+    spriteList.push_back(new CSprite(textBee, CollisionType::COLLISION_PIXELS));
+    spriteList.push_back(new CSprite(textBox, CollisionType::COLLISION_RECT));
+    spriteList.push_back(new CSprite(textBall, CollisionType::COLLISION_CIRCLE));
+
+    for (unsigned int i = 0; i < 3; ++i)
+    {
+        spriteList[i]->SetColor(1.f, 1.f, 1.f);
+        spriteList[i]->SetBlendMode(BLEND_ALPHA);
+        spriteList[i]->SetScale(vec2(1.f, 1.f));
+        spriteList[i]->SetPivot(vec2(0.5f, 0.5f));
+
+        switch(i)
+        {
+        case 0:
+        {
+            spriteList[i]->SetPosition(vec2(screenHeight / 2.f - 200, screenHeight / 2.f));
+            break;
+        }
+        case 1:
+        {
+            spriteList[i]->SetPosition(vec2(screenHeight / 2.f , screenHeight / 2.f));
+            break;
+        }
+        case 2:
+        {
+            spriteList[i]->SetPosition(vec2(screenHeight / 2.f + 200, screenHeight / 2.f));
+            break;
+        }
+        }
+       
+    }
+
     CTime time;
     double xPos(0.);
     double yPos(0.);
@@ -87,9 +131,38 @@ int main() {
         mousePos.y = yPos;
 
         //Renderizar cuadro en el centro de la pantalla
-        lgfx_clearcolorbuffer(1.f, 1.f, 1.f);
+        
        
-        //Sprite Update
+        //Render Sprites
+        
+        //Render static sprites
+        lgfx_clearcolorbuffer(0.f, 0.f, 0.f);
+        
+        //lgfx_setcolor(0.f, 0.f, 0.f, 255.f);
+        for(int i = 0; i < spriteList.size(); ++i)
+        {
+            spriteList[i]->Draw();
+        }
+        
+        bool mouseSpriteIsColliding = false;
+        for (int i = 0; i < spriteList.size(); ++i)
+        {
+            if (spriteList[i]->Collides(*mouseSprite))
+            {
+                mouseSpriteIsColliding = true;
+                break;
+            }
+            break;
+        }
+        
+        mouseSprite->SetColor(1.f, 1.f, 1.f);
+        if (mouseSpriteIsColliding)
+        {
+            mouseSprite->SetColor(1.f, 0.f, 0.f);
+        }
+        mouseSprite->SetPosition(mousePos);
+        mouseSprite->Draw();
+
         
         glfwSwapBuffers(mainWindow);
     }

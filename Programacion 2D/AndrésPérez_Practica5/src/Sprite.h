@@ -1,8 +1,17 @@
 #pragma once
 #include <litegfx.h>
 #include "vector2.h"
+#include "Collider.h"
 
-class Collider;
+//class Collider;
+
+enum CollisionType
+{
+	COLLISION_NONE,
+	COLLISION_CIRCLE,
+	COLLISION_RECT,
+	COLLISION_PIXELS
+};
 
 class CSprite
 {
@@ -10,6 +19,8 @@ public:
 	//Tipo de la funcion de Callback
 	typedef void(*CallbackFunc)(CSprite&, float);
 private:
+	bool hasAnimation = false;
+
 	CallbackFunc callback;
 
 	const ltex_t* texture;
@@ -24,7 +35,7 @@ private:
 
 	int numFrames = hFrames * vFrames;
 	float FPS = 0; 
-	int currentFrame;
+	int currentFrame = 0;
 	float elapsedTime = 0;
 
 	void* data;
@@ -40,16 +51,17 @@ private:
 	float rotation;
 	vec2 pivot;
 
+	CollisionType collisionType = CollisionType::COLLISION_NONE;
+	Collider* spriteCollider = nullptr;
+	
+
 public:
 	//Numero frames en horizontal y vertical
 	CSprite(const ltex_t* tex,
+		CollisionType _type,
 		int _hframes = 1,
-		int _vframes = 1) :
-		texture(tex),
-		hFrames(_hframes),
-		vFrames(_vframes),
-		position(100.f, 100.f)
-	{}
+		int _vframes = 1,
+		bool _hasAnim = false);
 
 	void Update(float deltaTime);
 	void Draw(); //const;
@@ -60,6 +72,9 @@ public:
 	//Properties
 	void* GetUserData() { return data; };
 	void SetUserData(void* _data) { data = _data; };
+	
+	bool GetHasAnimation() { return hasAnimation; };
+	void SetHasAnimation(bool _hasAnimation) { hasAnimation = _hasAnimation; };
 
 	const ltex_t* GetTexture() const { return texture; };
 	void SetTexture(const ltex_t* _tex, int _hframes = 1, int _vframes = 1)
@@ -104,5 +119,13 @@ public:
 	
 	const int GetCurrentFrame() const { return currentFrame; }
 	void SetCurrentFrame(int _currentFrame) { currentFrame = _currentFrame; }
+
+	//Collision
+	void SetCollisionType(CollisionType type) { collisionType = type; }
+	CollisionType GetCollisionType() const { return collisionType; }
+
+	const Collider* GetCollider() const { return spriteCollider; }
+
+	bool Collides(const CSprite& other) const;
 
 };
