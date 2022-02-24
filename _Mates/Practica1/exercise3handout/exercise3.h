@@ -1,4 +1,3 @@
-
 #pragma once
 
 #ifdef WIN32
@@ -13,14 +12,14 @@
 #include "node.h"
 #include "camera.h"
 #include "lineshapes.h"
-	
+
 constexpr int NumSpheres = 4;
 
 struct Exercise3 {
 
-	GLFWwindow *window = NULL;
+	GLFWwindow* window = NULL;
 
-	static bool isInputEnabled ;
+	static bool isInputEnabled;
 	static double mousePosX, mousePosY;
 	static double prevMousePosX, prevMousePosY;
 	int windowsWidth, windowsHeight;
@@ -45,25 +44,26 @@ struct Exercise3 {
 	// get world mouse position
 	// ray sphere intersection for selection 
 
-	
+
 	static vec3 getWorldMousePosition(float mouse_x, float mouse_y, float windowsWidth, float windowsHeight, const mat4& projMat, const mat4& viewMat) {
 
 		//Screen -> Cube
-		float xInCube = 2.f * (mouse_x / windowsWidth) - 1.f;
-		float yInCube = -2.f * (mouse_y / windowsHeight) + 1.f;
+		mouse_x = (2.f * mouse_x - windowsWidth) / windowsWidth;
+		mouse_y = -(2.f * mouse_y - windowsHeight) / windowsHeight;
 
-		vec4 cubePos(xInCube, yInCube, -1.f, 1.f);
+		vec4 cubePos(mouse_x, mouse_y, -1, 1);
 
 		//Cube-> View
 		vec4 viewPos = inverse(projMat) * cubePos;
-		viewPos = vec4(viewPos.x, viewPos.y, -1.f, 0.f);
+		viewPos = vec4(viewPos.x, viewPos.y, viewPos.z, 1);
 
 		//View-> World
-		vec4 worldPos =  inverse(viewMat) * viewPos;
+		vec4 worldPos = inverse(viewMat) * viewPos;
 		//normalise(worldPos);
 
-		return worldPos;
+		return vec3(worldPos.x, worldPos.y, worldPos.z);
 	}
+
 
 	/* check if a ray and a sphere intersect. if not hit, returns false. it rejects
 	intersections behind the ray caster's origin, and sets intersection_distance to
@@ -76,115 +76,100 @@ struct Exercise3 {
 
 	// as in http://viclw17.github.io/2018/07/16/raytracing-ray-sphere-intersection/
 	// also "Ray Sphere Intersection 1 Analytical.pdf"
-	//static bool raySphereIntersection(const Ray& ray, vec3 C, float r, float* intersection_distance) {
+	/*static bool raySphereIntersection(const Ray& ray, vec3 C, float r, float* intersection_distance) {
 
-	//	const vec3& A = ray.origin;
-	//	const vec3& B = ray.direction;
-	//	
-	//	assert(fabsf(length(B) - 1) < 1e-03);
-	//	
-	//	// work out components of quadratic
-	//	vec3 A_C = A - C;
-	//	float a = 1;
-	//	float b = 2*dot(B, A_C);
-	//	float c = dot(A_C, A_C) - r * r;
-	//	float discriminant = b * b - 4*a*c;
-	//	
-	//	if (discriminant < 0.0f) { // ray misses
-	//		return false; 
-	//	}
-	//	if (discriminant > 0.0f) { // ray hits at two points
-	//		// get the 2 intersection distances along ray
-	//		float t_a = -b + sqrtf(discriminant);
-	//		float t_b = -b - sqrtf(discriminant);
-	//		*intersection_distance = t_b;
-	//		// if behind viewer, throw one or both away
-	//		if (t_a < 0.0) {
-	//			if (t_b < 0.0) { return false; }
-	//		}
-	//		else if (t_b < 0.0) {
-	//			*intersection_distance = t_a;
-	//		}
+		const vec3& A = ray.origin;
+		const vec3& B = ray.direction;
 
-	//		return true;
-	//	}
-	//	// check for ray hitting once (skimming the surface)
-	//	if (0.0f == discriminant) {
-	//		// if behind viewer, throw away
-	//		float t = -b + sqrtf(discriminant);
-	//		if (t < 0.0f) { return false; }
-	//		*intersection_distance = t;
-	//		return true;
-	//	}
-	//	return false;
-	//}
-	
-	/*static bool raySphereIntersectionMine(const Ray& ray, vec3 C, float r) // WRONG
-	{
-		vec3 vectorCentroRayo = cross(C - ray.origin, ray.direction);
-		
-		if (length(vectorCentroRayo) <= r)
-		{
+		assert(fabsf(length(B) - 1) < 1e-03);
+
+		// work out components of quadratic
+		vec3 A_C = A - C;
+		float a = 1;
+		float b = 2*dot(B, A_C);
+		float c = dot(A_C, A_C) - r * r;
+		float discriminant = b * b - 4*a*c;
+
+		if (discriminant < 0.0f) { // ray misses
+			return false;
+		}
+		if (discriminant > 0.0f) { // ray hits at two points
+			// get the 2 intersection distances along ray
+			float t_a = -b + sqrtf(discriminant);
+			float t_b = -b - sqrtf(discriminant);
+			*intersection_distance = t_b;
+			// if behind viewer, throw one or both away
+			if (t_a < 0.0) {
+				if (t_b < 0.0) { return false; }
+			}
+			else if (t_b < 0.0) {
+				*intersection_distance = t_a;
+			}
+
 			return true;
 		}
-
+		// check for ray hitting once (skimming the surface)
+		if (0.0f == discriminant) {
+			// if behind viewer, throw away
+			float t = -b + sqrtf(discriminant);
+			if (t < 0.0f) { return false; }
+			*intersection_distance = t;
+			return true;
+		}
 		return false;
 	}*/
 
-	 //as in https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-sphere-intersection
-	 //also "Ray Sphere Intersection 2 Geometrical.pdf"
+	// as in https://www.scratchapixel.com/lessons/3d-basic-rendering/minimal-ray-tracer-rendering-simple-shapes/ray-sphere-intersection
+	// also "Ray Sphere Intersection 2 Geometrical.pdf"
+
 	static bool raySphereIntersection(const Ray& ray, vec3 C, float r, float* intersection_distance) {
-		 const vec3& Origin = ray.origin;
-		 const vec3& Direction = ray.direction;
-		 vec3 RayOriginToCenter = C - Origin; 
+		const vec3& Origin = ray.origin;
+		const vec3& Direction = ray.direction;
+		assert(fabsf(length(Direction) - 1) < 1e-03);
+		vec3 RayOriginToCenter = C - Origin;
 
-		 float Projection(dot(RayOriginToCenter, Direction));  
-		 float MinDistance(dot(RayOriginToCenter, RayOriginToCenter) - Projection * Projection); 
-		 
-		 if (MinDistance > r * r) { return false; }
-		 
-		 float thc(sqrtf(r * r - MinDistance));
-		 float t0(Projection - thc), t1(Projection + thc);
+		float Projection = dot(RayOriginToCenter, Direction);
+		float MinDistance = dot(RayOriginToCenter, RayOriginToCenter) - Projection * Projection;
 
-		 if (t0 < 0)//If t0 is negative t1 needs to be either positive (only one intersection) or it will be an impossible case
-		 {
-			 if (t1 < 0)
-			 {
-				 return false; 
-			 }
-			 else
-			 {
-				 *intersection_distance = t1; 
-			 }
-		 }
-		 else if (t1 < 0) //As t0 will always be an intersection this checks if there is 1 or 2 intersection points
-		 {
-			 *intersection_distance = t0;
-		 }
-		 else //If both are > 0 then both are correct and the closest one needs to be returned
-		 {
-			 if (t0 < t1)
-			 {
-				 *intersection_distance = t0;
-			 }
-			 else
-			 {
-				 *intersection_distance = t1;
-			 }
-		 }
-		 return true;
+		if (MinDistance > r * r) { return false; }
+
+		float thc(sqrtf(r * r - MinDistance));
+		float t0(Projection - thc);
+		float t1(Projection + thc);
+
+		if (t0 < 0)//If t0 is negative t1 needs to be either positive (only one intersection) or it will be an impossible case
+		{
+			if (t1 < 0)
+			{
+				return false;
+			}
+			else
+			{
+				*intersection_distance = t1;
+			}
+		}
+		else if (t1 < 0) //As t0 will always be an intersection this checks if there is 1 or 2 intersection points
+		{
+			*intersection_distance = t0;
+		}
+		else //If both are > 0 then both are correct and the closest one needs to be returned
+		{
+			*intersection_distance = (t0 < t1) ? t0 : t1;
+		}
+		return true;
 
 	}
 
-	static void onKeyPressed(GLFWwindow* window, int key, int scancode, int action, int mods){
+
+	static void onKeyPressed(GLFWwindow* window, int key, int scancode, int action, int mods) {
 
 		Exercise3& exercise = *static_cast<Exercise3*>(glfwGetWindowUserPointer(window));
 		if (key == GLFW_KEY_0) {
-		
+
 			vec3 mouseWorldPos = getWorldMousePosition(static_cast<float>(mousePosX), static_cast<float>(mousePosY), static_cast<float>(exercise.windowsWidth), static_cast<float>(exercise.windowsHeight), exercise.camera.proj_mat, exercise.camNode.worldInverseMatrix);
 			const vec3 camPos = exercise.camNode.worldMatrix.getColumn(3);
 			Ray ray;
-			ray.origin = camPos + mouseWorldPos;
+			ray.origin = camPos;
 			ray.direction = normalise(mouseWorldPos - camPos);
 
 			exercise.axis.clear();
@@ -200,31 +185,28 @@ struct Exercise3 {
 		Exercise3& exercise = *static_cast<Exercise3*>(glfwGetWindowUserPointer(window));
 
 		if (GLFW_PRESS == action) {
-			vec3 mouseWorldPos = getWorldMousePosition(static_cast<float>(exercise.mousePosX), static_cast<float>(exercise.mousePosY),
-				static_cast<float>(exercise.windowsWidth), static_cast<float>(exercise.windowsHeight),
-				exercise.camera.proj_mat, exercise.camNode.worldInverseMatrix);
-			
+			vec3 mouseWorldPos = getWorldMousePosition(static_cast<float>(exercise.mousePosX), static_cast<float>(exercise.mousePosY), static_cast<float>(exercise.windowsWidth), static_cast<float>(exercise.windowsHeight), exercise.camera.proj_mat, exercise.camNode.worldInverseMatrix);
+
 			const vec3 camPos = exercise.camNode.worldMatrix.getColumn(3);
-			mouseWorldPos = mouseWorldPos + camPos; // SUMAMOS
 			Ray ray;
-			ray.origin = mouseWorldPos;
-			ray.direction = mouseWorldPos - camPos;
-			ray.direction = normalise(ray.direction);
+			ray.origin = camPos;
+			ray.direction = normalise(mouseWorldPos - camPos);
+
+			// check ray against all spheres in scene
+			int closest_sphere_clicked = -1;
+			float closest_intersection = 0.0f;
 			
 			exercise.axis.clear();
 
 			Shapes::addArrow(exercise.axis, ray.origin, ray.origin + normalise(ray.direction), vec3(1, 0, 0));
 
 			exercise.axis.load_to_gpu();
-
-			// check ray against all spheres in scene
-			int closest_sphere_clicked = -1;
-			float closest_intersection = 0.0f;
+			
 			for (int i = 0; i < NumSpheres; i++) {
 				float t_dist = 0.0f;
 
 				const vec3 spherePos = exercise.sphereNodes[i].worldMatrix.getColumn(3);
-			
+
 				if (raySphereIntersection(ray, spherePos, 1, &t_dist)) {
 					if (-1 == closest_sphere_clicked || t_dist < closest_intersection) {
 						closest_sphere_clicked = i;
@@ -233,6 +215,7 @@ struct Exercise3 {
 				}
 			} // endfor
 			exercise.selectedSphereIndex = closest_sphere_clicked;
+			//printf("sphere %i was clicked\n", closest_sphere_clicked);
 		}
 	}
 
@@ -243,9 +226,9 @@ struct Exercise3 {
 	std::vector<Meshgroup::Mesh*> gulls;
 
 	std::array<Node, NumSpheres> sphereNodes;
-	std::array<vec3, NumSpheres> spherePositions = {vec3(0,0,1),vec3(2,0,0),vec3(-2,0,0), vec3(-2,0,-2)};
-	std::array<vec3, NumSpheres> sphereScales = {vec3(1,1,1),vec3(1,1,1),vec3(1,1,1), vec3(1,1,1)};
-	std::array<vec3, NumSpheres> sphereColor = {vec3(1,0,0),vec3(0,1,0),vec3(0,0,1), vec3(1,1,0)};
+	std::array<vec3, NumSpheres> spherePositions = { vec3(0,0,1),vec3(2,0,0),vec3(-2,0,0), vec3(-2,0,-2) };
+	std::array<vec3, NumSpheres> sphereScales = { vec3(1,1,1),vec3(1,1,1),vec3(1,1,1), vec3(1,1,1) };
+	std::array<vec3, NumSpheres> sphereColor = { vec3(1,0,0),vec3(0,1,0),vec3(0,0,1), vec3(1,1,0) };
 	int selectedSphereIndex = NumSpheres + 1;
 
 	Node meshGroupNode;
@@ -258,7 +241,7 @@ struct Exercise3 {
 	Camera camera;
 	Node camNode;
 	vec3 cameraPosition;
-		
+
 	Node sceneRoot;
 	GLuint mesh_shader_index;
 	GLuint lines_shader_index;
@@ -289,7 +272,7 @@ struct Exercise3 {
 
 		meshGroupNode.init();
 		sceneRoot.addChild(meshGroupNode);
-		
+
 		for (int i = 0; i < NumSpheres; ++i) {
 			sphereNodes[i].init();
 			sphereNodes[i].position = spherePositions[i];
@@ -306,10 +289,10 @@ struct Exercise3 {
 
 		//_chdir("../data/DamagedHelmet/");
 		//meshGroup.load_from_file("DamagedHelmet.gltf");
-		
+
 		//_chdir("../data/tiki_treasure/");
 		//meshGroup.load_from_file("scene.gltf");
-		
+
 		_chdir("../data/sphere/");
 		meshGroup.load_from_file("sphere.obj");
 		meshGroup.load_to_gpu();
@@ -321,7 +304,7 @@ struct Exercise3 {
 		meshGroupNode.addChild(meshGroup.nodes[0]);
 
 
-	
+
 		vec3 gridColor(fmodf(ambientColor.v[0] + 0.5f, 1.f), fmodf(ambientColor.v[1] + 0.5f, 1.f), fmodf(ambientColor.v[2] + 0.5f, 1.f));
 		Shapes::addGrid(grid, vec3(-5, 0, -5), vec3(5, 0, 5), gridColor, 10);
 		grid.load_to_gpu();
@@ -377,7 +360,7 @@ struct Exercise3 {
 
 
 		glfwPollEvents();
-		/*if (isInputEnabled) {
+		if (isInputEnabled) {
 			glfwGetCursorPos(window, &mousePosX, &mousePosY);
 			float mouseDeltaX = static_cast<float>(mousePosX - prevMousePosX);
 			float mouseDeltaY = static_cast<float>(mousePosY - prevMousePosY);
@@ -386,7 +369,7 @@ struct Exercise3 {
 
 			camYaw += -mouseDeltaX * camera.yaw_speed * elapsed_seconds;
 			camPitch += -mouseDeltaY * camera.yaw_speed * elapsed_seconds;
-		}*/
+		}
 
 		if (glfwGetKey(window, GLFW_KEY_A)) {
 			camYaw += camera.yaw_speed * elapsed_seconds;
@@ -400,13 +383,12 @@ struct Exercise3 {
 		if (glfwGetKey(window, GLFW_KEY_S)) {
 			camPitch -= camera.yaw_speed * elapsed_seconds;
 		}
-		
 		const float PitchLimit = 80;
 		camPitch = camPitch > PitchLimit ? PitchLimit : camPitch;
 		camPitch = camPitch < -PitchLimit ? -PitchLimit : camPitch;
 		camYaw = fmodf(camYaw, 360);
 
-		camNode.rotation = quat_from_axis_deg(camYaw, 0, 1, 0)*quat_from_axis_deg(camPitch, 1, 0, 0);
+		camNode.rotation = quat_from_axis_deg(camYaw, 0, 1, 0) * quat_from_axis_deg(camPitch, 1, 0, 0);
 
 		if (glfwGetKey(window, GLFW_KEY_PAGE_UP)) {
 			camNode.position.v[1] += camera.speed * elapsed_seconds;
@@ -429,8 +411,8 @@ struct Exercise3 {
 		if (GLFW_PRESS == glfwGetKey(window, GLFW_KEY_ESCAPE)) {
 			glfwSetWindowShouldClose(window, 1);
 		}
-		mat4 cameraMatrix = translate(identity_mat4(), cameraPosition*-1.f);
-		mat4 gridMatrix = translate(identity_mat4(), vec3(0,0,0));
+		mat4 cameraMatrix = translate(identity_mat4(), cameraPosition * -1.f);
+		mat4 gridMatrix = translate(identity_mat4(), vec3(0, 0, 0));
 
 		meshGroupNode.rotation = quat_from_axis_deg(meshYaw += elapsed_seconds * 10, 0, 1, 0);
 
@@ -442,12 +424,12 @@ struct Exercise3 {
 		camera.set_shader_uniforms(mesh_shader_index, camNode.worldInverseMatrix);
 		//camera.set_shader_uniforms(mesh_shader_index, cameraMatrix );
 
-		meshGroup.set_shader_uniforms(mesh_shader_index,  ambientColor);
+		meshGroup.set_shader_uniforms(mesh_shader_index, ambientColor);
 
 		for (int i = 0; i < NumSpheres; ++i) {
-			meshGroup.meshes[0].render(mesh_shader_index, sphereNodes[i].worldMatrix, i == selectedSphereIndex ? vec3(1, 1, 1): sphereColor[i]);
+			meshGroup.meshes[0].render(mesh_shader_index, sphereNodes[i].worldMatrix, i == selectedSphereIndex ? vec3(1, 1, 1) : sphereColor[i]);
 		}
-	
+
 		glUseProgram(0);
 
 		glUseProgram(lines_shader_index);
