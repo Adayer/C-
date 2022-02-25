@@ -61,6 +61,30 @@ void CSprite::Update(float deltaTime)
 	{
 		(*callback)(*this, deltaTime);
 	}
+	if (spriteCollider)
+	{
+		switch (collisionType)
+		{
+		case CollisionType::COLLISION_CIRCLE:
+		{
+			//CircleCollider* pCollider= reinterpret_cast<CircleCollider*>(spriteCollider);
+			//pCollider->SetRadius((texture->width /2.f) * scale.x);
+			break;
+		}
+		case CollisionType::COLLISION_RECT:
+		{
+			RectCollider* pCollider = reinterpret_cast<RectCollider*>(spriteCollider);
+			pCollider->SetSize(vec2(texture->width * scale.x, texture->height * scale.y));
+			break;
+		}
+		case CollisionType::COLLISION_PIXELS:
+		{
+			break;
+		}
+		default:
+			break;
+		}
+	}
 }
 
 void CSprite::Draw() //const

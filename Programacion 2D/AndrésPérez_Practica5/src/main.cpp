@@ -67,6 +67,12 @@ int main() {
     GENERATE_TEXTURES
 
 
+    float scaleChangeSpeed = 0.1f;
+    float scaleMax = 1.1f;
+    float scaleMin = 0.9f;
+    float currentScaleMod = 1.f; 
+    bool isIncreasing = false;
+
     CSprite* mouseSprite = new CSprite(textCircle, CollisionType::COLLISION_CIRCLE);
     mouseSprite->SetColor(1.f, 1.f, 1.f);
     mouseSprite->SetBlendMode(BLEND_ALPHA);
@@ -112,7 +118,6 @@ int main() {
 
     vec2 screenCenterLocation(screenHeight / 2.f, screenHeight / 2.f);
 
-
     while (glfwWindowShouldClose(mainWindow) == 0)
     {
         time.UpdateDeltaTime();
@@ -125,6 +130,35 @@ int main() {
             glfwSetWindowShouldClose(mainWindow, 1);
         }
 
+        if(glfwGetMouseButton(mainWindow, GLFW_MOUSE_BUTTON_LEFT))
+        {
+            delete mouseSprite;
+            mouseSprite = new CSprite(textCircle, CollisionType::COLLISION_CIRCLE);
+            mouseSprite->SetColor(1.f, 1.f, 1.f);
+            mouseSprite->SetBlendMode(BLEND_ALPHA);
+            mouseSprite->SetScale(vec2(1.f, 1.f));
+            mouseSprite->SetPivot(vec2(0.5f, 0.5f));
+        }
+        else if(glfwGetMouseButton(mainWindow, GLFW_MOUSE_BUTTON_RIGHT))
+        {
+            delete mouseSprite;
+            mouseSprite = new CSprite(textRect, CollisionType::COLLISION_RECT);
+            mouseSprite->SetColor(1.f, 1.f, 1.f);
+            mouseSprite->SetBlendMode(BLEND_ALPHA);
+            mouseSprite->SetScale(vec2(1.f, 1.f));
+            mouseSprite->SetPivot(vec2(0.5f, 0.5f));
+        }
+        else if(glfwGetMouseButton(mainWindow, GLFW_MOUSE_BUTTON_MIDDLE))
+        {
+            delete mouseSprite;
+            mouseSprite = new CSprite(textBee, CollisionType::COLLISION_PIXELS);
+            mouseSprite->SetColor(1.f, 1.f, 1.f);
+            mouseSprite->SetBlendMode(BLEND_ALPHA);
+            mouseSprite->SetScale(vec2(1.f, 1.f));
+            mouseSprite->SetPivot(vec2(0.5f, 0.5f));
+        }
+
+
         //Mouse position
         glfwGetCursorPos(mainWindow, &xPos, &yPos);
         mousePos.x = xPos;
@@ -136,9 +170,33 @@ int main() {
         //Render Sprites
         
         //Render static sprites
-        lgfx_clearcolorbuffer(0.f, 0.f, 0.f);
+        lgfx_clearcolorbuffer(0.f, 0.f, 1.f);
         
-        //lgfx_setcolor(0.f, 0.f, 0.f, 255.f);
+        if (isIncreasing)
+        {
+            currentScaleMod = currentScaleMod + (scaleChangeSpeed * time.DeltaTime());
+            if (currentScaleMod > scaleMax)
+            {
+                currentScaleMod = scaleMax;
+                isIncreasing = false;
+            }
+        }
+        else
+        {
+            currentScaleMod = currentScaleMod - (scaleChangeSpeed * time.DeltaTime());
+            if (currentScaleMod < scaleMin)
+            {
+                currentScaleMod = scaleMin;
+                isIncreasing = true;
+            }
+        }
+        spriteList[1]->SetScale(vec2(currentScaleMod, currentScaleMod));
+        //spriteList[2]->SetScale(vec2(currentScaleMod, currentScaleMod));
+        for (int i = 0; i < spriteList.size(); ++i)
+        {
+            spriteList[i]->Update(time.DeltaTime());
+        }
+
         for(int i = 0; i < spriteList.size(); ++i)
         {
             spriteList[i]->Draw();
@@ -152,7 +210,6 @@ int main() {
                 mouseSpriteIsColliding = true;
                 break;
             }
-            break;
         }
         
         mouseSprite->SetColor(1.f, 1.f, 1.f);

@@ -40,7 +40,7 @@ public:
 	virtual bool Collides(const Collider& _other) const override;
 
 	float GetRadius() const { return m_radius; }
-	void SetSize(float _radius) { m_radius = _radius; }
+	void SetRadius(float _radius) { m_radius = _radius; }
 
 protected:
 	virtual bool Collides(const vec2& _circlePos, float _radius) const override;

@@ -28,8 +28,8 @@ bool Collider::CheckCircleCircle(const vec2& _pos1, float _radius1,
 bool Collider::CheckCircleRect(const vec2& _circlePos, float _radius, 
 	const vec2& _rectPos, const vec2& _rectSize) const
 {
-	float xClosest = Clamp(_circlePos.x, _rectPos.x - _rectSize.x, _rectPos.x + _rectSize.x);
-	float yClosest = Clamp(_circlePos.y, _rectPos.y - _rectSize.y, _rectPos.y + _rectSize.y);
+	float xClosest = Clamp(_circlePos.x, _rectPos.x - (_rectSize.x / 2.f), _rectPos.x + (_rectSize.x / 2.f));
+	float yClosest = Clamp(_circlePos.y, _rectPos.y - (_rectSize.y / 2.f), _rectPos.y + (_rectSize.y / 2.f));
 	
 	if (Distance(_circlePos, vec2(xClosest, yClosest)) <= _radius)
 	{
@@ -43,42 +43,39 @@ bool Collider::CheckCirclePixels(const vec2& _circlePos, float _radius,
 {
 	if (CheckCircleRect(_circlePos, _radius, _pixelPos, _pixelsSize))
 	{
-		float xOffsetNegative = ((_circlePos.x - _radius) < (_pixelPos.x - _pixelsSize.x / 2.f)) ?
-			(_pixelPos.x - _pixelsSize.x / 2.f) : (_circlePos.x - _radius);
-		float xOffsetPositive = ((_circlePos.x + _radius) > (_pixelPos.x + _pixelsSize.x / 2.f)) ?
-			(_pixelPos.x + _pixelsSize.x / 2.f) : (_circlePos.x + _radius);
-		float yOffsetNegative = ((_circlePos.y - _radius) < (_pixelPos.y - _pixelsSize.y / 2.f)) ?
-			(_pixelPos.y - _pixelsSize.y / 2.f) : (_circlePos.y - _radius);
-		float yOffsetPositive = ((_circlePos.y + _radius) < (_pixelPos.y + _pixelsSize.y / 2.f)) ?
-			(_pixelPos.y + _pixelsSize.y / 2.f) : (_circlePos.y + _radius);
+		float minX = ((_circlePos.x - _radius) < (_pixelPos.x - (_pixelsSize.x / 2.f))) ?
+			(_pixelPos.x - (_pixelsSize.x / 2.f)) : (_circlePos.x - _radius);
+		float maxX = ((_circlePos.x + _radius) > (_pixelPos.x + (_pixelsSize.x / 2.f))) ?
+			(_pixelPos.x + (_pixelsSize.x / 2.f)) : (_circlePos.x + _radius);
+		float minY = ((_circlePos.y - _radius) < (_pixelPos.y - (_pixelsSize.y / 2.f))) ?
+			(_pixelPos.y - (_pixelsSize.y / 2.f)) : (_circlePos.y - _radius);
+		float maxY = ((_circlePos.y + _radius) < (_pixelPos.y + (_pixelsSize.y / 2.f))) ?
+			(_pixelPos.y + (_pixelsSize.y / 2.f)) : (_circlePos.y + _radius);
 
-		vec2 squareStartPos(xOffsetNegative, yOffsetNegative); //Bottom Left Corner
-		vec2 squareEndPos(xOffsetPositive, yOffsetPositive); //Top Right Corner
-		float squareXSize(xOffsetPositive - xOffsetNegative); //Base
-		float squareYSize(yOffsetPositive - yOffsetNegative); //Altura
-		//Centro del cuadrado, me parece lo optimo empezar a buscar desde el centro del cuadrado hacia fuera, 
-		//ya que hay areas en las cuales los pixeles no estan dentro del circulo en los bordes del cuadrado
-		vec2 centerOfSquare(squareStartPos.x + squareXSize, squareStartPos.y + squareYSize);
+		vec2 minCrossing(minX, minY);
+		vec2 maxCrossing(maxX, maxY);
 
-		for (unsigned int y = squareYSize / 2.f; y <= squareYSize; ++y)
+		int xMinPixelOffset = minCrossing.x - (_pixelPos.x - (_pixelsSize.x / 2.f));
+		int yMinPixelOffset = minCrossing.y - (_pixelPos.y - (_pixelsSize.y / 2.f));
+
+		int xMaxPixelOffset = maxCrossing.x - (_pixelPos.x - (_pixelsSize.x / 2.f));
+		int yMaxPixelOffset = maxCrossing.y - (_pixelPos.y - (_pixelsSize.y / 2.f));
+
+		for (unsigned int y = 0; y < (yMaxPixelOffset - yMinPixelOffset); ++y)
 		{
-			for (unsigned int x = squareXSize / 2.f; x <= squareXSize; ++x)
+			int yPixelIndex = y + yMinPixelOffset;
+			for (unsigned int x = 0; x < (xMaxPixelOffset - xMinPixelOffset); ++x)
 			{
-				int xNeg = (squareXSize / 2.f) - x;
-				int yNeg = (squareYSize / 2.f) - y;
+				int xPixelIndex = x + xMinPixelOffset;
 
-				vec2 buffer(centerOfSquare.x + x, centerOfSquare.y + y);
-				vec2 pixelPosRelativeOffset(buffer - _pixelPos); //Posicion relativa del pixel
-				
-				int alphaPosPos = ((y * _pixelsSize.x + x) * 4) + 3;// +x, +y
-				
-
-				int alphaPosNeg = ((y * _pixelsSize.x + xNeg) * 4) + 3;//-x, +y
-				int alphaNegPos = ((yNeg * _pixelsSize.x + x) * 4) + 3;//+x, -y
-				int alphaNegNeg = ((yNeg * _pixelsSize.x + xNeg) * 4) + 3;//-x, -y
-				if (_pixels[alphaPosPos] != 0 || _pixels[alphaPosNeg] != 0 || _pixels[alphaNegPos] != 0 || _pixels[alphaNegNeg] != 0)
+				vec2 pixelWorldPos(minCrossing.x + x, minCrossing.y + y);
+				if (Distance(pixelWorldPos, _circlePos) <= _radius)
 				{
-					return true;
+					int pixelAlphaIndex = ((yPixelIndex * _pixelsSize.x + xPixelIndex) * 4) + 3;
+					if (_pixels[pixelAlphaIndex] != 0)
+					{
+						return true;
+					}
 				}
 			}
 		}
@@ -88,15 +85,22 @@ bool Collider::CheckCirclePixels(const vec2& _circlePos, float _radius,
 bool Collider::CheckRectRect(const vec2& _pos1, const vec2& _size1, 
 	const vec2& _pos2, const vec2& _size2) const
 {
+	bool Rect1InsideOfXRect2 = (IsBetween(_pos1.x - (_size1.x / 2.f), _pos2.x - (_size2.x / 2.f), _pos2.x + (_size2.x / 2.f))
+		|| IsBetween(_pos1.x + (_size1.x / 2.f), _pos2.x - (_size2.x / 2.f), _pos2.x + (_size2.x / 2.f)));
+	bool Rect1InsideOfYRect2 = (IsBetween(_pos1.y - (_size1.y / 2.f), _pos2.y - (_size2.y / 2.f), _pos2.y + (_size2.y / 2.f))
+		|| IsBetween(_pos1.y + (_size1.y / 2.f), _pos2.y - (_size2.y / 2.f), _pos2.y + (_size2.y / 2.f)));
+	
+	bool Rect2InsideOfXRect1 = (IsBetween(_pos2.x - (_size2.x / 2.f), _pos1.x - (_size1.x / 2.f), _pos1.x + (_size1.x / 2.f)) 
+		|| IsBetween(_pos2.x + (_size2.x / 2.f), _pos1.x - (_size1.x / 2.f), _pos1.x + (_size1.x / 2.f)));
+	bool Rect2InsideOfYRect1 = (IsBetween(_pos2.y - (_size2.y / 2.f), _pos1.y - (_size1.y / 2.f), _pos1.y + (_size1.y / 2.f)) 
+		|| IsBetween(_pos2.y + (_size2.y / 2.f), _pos1.y - (_size1.y / 2.f), _pos1.y + (_size1.y / 2.f)));
 	//Rect 1 inside of rect 2
-	if (IsBetween(_pos1.x - _size1.x,_pos2.x - _size2.x, _pos2.x + _size2.x) || IsBetween(_pos1.x + _size1.x, _pos2.x - _size2.x, _pos2.x + _size2.x) &&
-		IsBetween(_pos1.y - _size1.y, _pos2.y - _size2.y, _pos2.y + _size2.y) || IsBetween(_pos1.y + _size1.y, _pos2.y - _size2.y, _pos2.y + _size2.y))
+	if (Rect1InsideOfXRect2 && Rect1InsideOfYRect2)
 	{
 		return true;
 	}
-	//Rect 2 inside of rect 1
-	else if (IsBetween(_pos2.x - _size2.x, _pos1.x - _size1.x, _pos1.x + _size1.x) || IsBetween(_pos2.x + _size2.x, _pos1.x - _size1.x, _pos1.x + _size1.x) &&
-		IsBetween(_pos2.y - _size2.y, _pos1.y - _size1.y, _pos1.y + _size1.y) || IsBetween(_pos2.y + _size2.y, _pos1.y - _size1.y, _pos1.y + _size1.y))
+	////Rect 2 inside of rect 1
+	else if (Rect2InsideOfXRect1 && Rect2InsideOfYRect1)
 	{
 		return true;
 	}
@@ -111,11 +115,11 @@ bool Collider::CheckRectPixels(const vec2& _rectPos, const vec2& _rectSize,
 		//x values
 		std::vector<float> xCrossPossible;
 		//RectPossible Values
-		xCrossPossible.push_back(_rectPos.x - _rectSize.x);
-		xCrossPossible.push_back(_rectPos.x + _rectSize.x);
+		xCrossPossible.push_back(_rectPos.x - (_rectSize.x / 2.f));
+		xCrossPossible.push_back(_rectPos.x + (_rectSize.x / 2.f));
 		//Pixels possible values
-		xCrossPossible.push_back(_pixelPos.x - _pixelsSize.x);
-		xCrossPossible.push_back(_pixelPos.x + _pixelsSize.x);
+		xCrossPossible.push_back(_pixelPos.x - (_pixelsSize.x / 2.f));
+		xCrossPossible.push_back(_pixelPos.x + (_pixelsSize.x / 2.f));
 		std::sort(xCrossPossible.begin(), xCrossPossible.end()); //Index 1 & 2 are the good values
 		//Min & Max X del punto de corte
 		float minX = xCrossPossible[1];
@@ -124,26 +128,35 @@ bool Collider::CheckRectPixels(const vec2& _rectPos, const vec2& _rectSize,
 		//y values
 		std::vector<float> yCrossPossible;
 		//RectPossible Values
-		yCrossPossible.push_back(_rectPos.y - _rectSize.y);
-		yCrossPossible.push_back(_rectPos.y + _rectSize.y);
+		yCrossPossible.push_back(_rectPos.y - (_rectSize.y / 2.f));
+		yCrossPossible.push_back(_rectPos.y + (_rectSize.y / 2.f));
 		//Pixels possible values
-		yCrossPossible.push_back(_pixelPos.y - _pixelsSize.y);
-		yCrossPossible.push_back(_pixelPos.y + _pixelsSize.y);
+		yCrossPossible.push_back(_pixelPos.y - (_pixelsSize.y / 2.f));
+		yCrossPossible.push_back(_pixelPos.y + (_pixelsSize.y / 2.f));
 		std::sort(yCrossPossible.begin(), yCrossPossible.end()); //Index 1 & 2 are the good values
 		//Min & Max Y del punto de corte en valor absoluto de pantalla
 		float minY = yCrossPossible[1];
 		float maxY = yCrossPossible[2];
 
 		//Puntos de corte finales en valor relativo al centro de los pixeles
-		vec2 minCrossing(minX - _pixelsSize.x, minY - _pixelsSize.y);
-		vec2 maxCrossing(maxX - _pixelsSize.x, maxY - _pixelsSize.y);
+		vec2 minCrossing(minX, minY);
+		vec2 maxCrossing(maxX, maxY);
 
-		for (unsigned int y = minCrossing.y; y <= maxCrossing.y; ++y)
+		int xMinPixelOffset = minCrossing.x - (_pixelPos.x - (_pixelsSize.x / 2.f));
+		int yMinPixelOffset = minCrossing.y - (_pixelPos.y - (_pixelsSize.y / 2.f));
+		
+		int xMaxPixelOffset = maxCrossing.x - (_pixelPos.x - (_pixelsSize.x / 2.f));
+		int yMaxPixelOffset = maxCrossing.y - (_pixelPos.y - (_pixelsSize.y / 2.f));
+
+		for (unsigned int y = 0; y < (yMaxPixelOffset - yMinPixelOffset); ++y)
 		{
-			for (unsigned int x = minCrossing.x; x <= maxCrossing.x; ++x)
+			int yPixelIndex = y + yMinPixelOffset;
+			for (unsigned int x = 0; x < (xMaxPixelOffset - xMinPixelOffset); ++x)
 			{
-				int pixelAlpha = ((y * _pixelsSize.x + x) * 4) + 3;
-				if (_pixels[pixelAlpha] != 0)
+				int xPixelIndex = x + xMinPixelOffset;
+				
+				int pixelAlphaIndex = ((yPixelIndex * _pixelsSize.x + xPixelIndex) * 4) + 3;
+				if (_pixels[pixelAlphaIndex] != 0)
 				{
 					return true;
 				}
@@ -160,14 +173,13 @@ bool Collider::CheckPixelsPixels(const vec2& _pos1, const vec2& _size1, const ui
 		//x values
 		std::vector<float> xCrossPossible;
 		//RectPossible Values
-		xCrossPossible.push_back(_pos1.x - _size1.x);
-		xCrossPossible.push_back(_pos1.x + _size1.x);
+		xCrossPossible.push_back(_pos1.x - (_size1.x / 2.f));
+		xCrossPossible.push_back(_pos1.x + (_size1.x / 2.f));
 		//Pixels possible values
-		xCrossPossible.push_back(_pos2.x - _size2.x);
-		xCrossPossible.push_back(_pos2.x + _size2.x);
+		xCrossPossible.push_back(_pos2.x - (_size2.x / 2.f));
+		xCrossPossible.push_back(_pos2.x + (_size2.x / 2.f));
 		std::sort(xCrossPossible.begin(), xCrossPossible.end()); //Index 1 & 2 are the good values
 		
-
 		//Min & Max X del punto de corte
 		float minX = xCrossPossible[1];
 		float maxX = xCrossPossible[2];
@@ -175,41 +187,56 @@ bool Collider::CheckPixelsPixels(const vec2& _pos1, const vec2& _size1, const ui
 		//y values
 		std::vector<float> yCrossPossible;
 		//RectPossible Values
-		yCrossPossible.push_back(_pos1.y - _size1.y);
-		yCrossPossible.push_back(_pos1.y + _size1.y);
+		yCrossPossible.push_back(_pos1.y - (_size1.y / 2.f));
+		yCrossPossible.push_back(_pos1.y + (_size1.y / 2.f));
 		//Pixels possible values
-		yCrossPossible.push_back(_pos2.y - _size2.y);
-		yCrossPossible.push_back(_pos2.y + _size2.y);
+		yCrossPossible.push_back(_pos2.y - (_size2.y / 2.f));
+		yCrossPossible.push_back(_pos2.y + (_size2.y / 2.f));
 		std::sort(yCrossPossible.begin(), yCrossPossible.end()); //Index 1 & 2 are the good values
 
 		//Min & Max Y del punto de corte en valor absoluto de pantalla
 		float minY = yCrossPossible[1];
 		float maxY = yCrossPossible[2];
 
-		//Tamaño en pixeles de la zona overlapeada
-		vec2 sizeOfOverlapSquare(maxX - minX, maxY - minY);
 
-		//Pixels1 relative start position of overlap
-		vec2 pixels1Start(minX - _size1.x, minY - _size1.y);
-		vec2 pixels1End(maxX - _size1.x, maxY - _size1.y);
+		//Puntos de corte finales en valor relativo al centro de los pixeles
+		vec2 minCrossing(minX, minY);
+		vec2 maxCrossing(maxX, maxY);
+
+		//Pixels 1
+		int xMinPixelOffset1 = minCrossing.x - (_pos1.x - (_size1.x / 2.f));
+		int yMinPixelOffset1 = minCrossing.y - (_pos1.y - (_size2.y / 2.f));
+
+		int xMaxPixelOffset1 = maxCrossing.x - (_pos1.x - (_size2.x / 2.f));
+		int yMaxPixelOffset1 = maxCrossing.y - (_pos1.y - (_size2.y / 2.f));
 		
-		//Pixels2 relative start position of overlap
-		vec2 pixels2Start(minX - _size2.x, minY - _size2.y);
-		vec2 pixels2End(maxX - _size2.x, maxY - _size2.y);
+		//Pixels 2
+		int xMinPixelOffset2 = minCrossing.x - (_pos2.x - (_size2.x / 2.f));
+		int yMinPixelOffset2 = minCrossing.y - (_pos2.y - (_size2.y / 2.f));
 
-		for (unsigned int y = 0; y <= sizeOfOverlapSquare.y; ++y)
+		int xMaxPixelOffset2 = maxCrossing.x - (_pos2.x - (_size2.x / 2.f));
+		int yMaxPixelOffset2 = maxCrossing.y - (_pos2.y - (_size2.y / 2.f));
+
+		for (unsigned int y = 0; y < (yMaxPixelOffset1 - yMinPixelOffset1); ++y)
 		{
-			for (unsigned int x = 0; x <= sizeOfOverlapSquare.x; ++x)
+			int yPixelIndex1 = y + yMinPixelOffset1;
+			int yPixelIndex2 = y + yMinPixelOffset2;
+			for (unsigned int x = 0; x < (xMaxPixelOffset1 - xMinPixelOffset1); ++x)
 			{
-				int pixelAlpha1 = (((y + pixels1Start.y) * _size1.x + (x + pixels1Start.x)) * 4) + 3;
-				int pixelAlpha2 = (((y + pixels2Start.y) * _size2.x + (x + pixels2Start.x)) * 4) + 3;
+				int xPixelIndex1 = x + xMinPixelOffset1;
+				int xPixelIndex2 = x + xMinPixelOffset2;
 
-				if (_pixels1[pixelAlpha1] != 0 && _pixels2[pixelAlpha2] != 0)
+				int pixelAlphaIndex1 = ((yPixelIndex1 * _size1.x + xPixelIndex1) * 4) + 3;
+				int pixelAlphaIndex2 = ((yPixelIndex2 * _size2.x + xPixelIndex2) * 4) + 3;
+
+				if (_pixels1[pixelAlphaIndex1] != 0 && _pixels2[pixelAlphaIndex2] != 0)
 				{
 					return true;
 				}
 			}
 		}
+
+		
 	}
 	return false;
 }
