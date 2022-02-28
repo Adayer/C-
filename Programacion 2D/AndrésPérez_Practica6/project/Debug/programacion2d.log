@@ -1,9 +1,9 @@
-﻿  Sprite.cpp
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(22,75): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(22,59): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(29,77): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(29,61): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(93,14): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(94,15): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(98,22): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  programacion2d.vcxproj -> D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\project\Debug\programacion2d.exe
+﻿  main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\main.cpp(105,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\main.cpp(106,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\main.cpp(113,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\main.cpp(118,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\main.cpp(118,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  programacion2d.vcxproj -> C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\project\Debug\programacion2d.exe

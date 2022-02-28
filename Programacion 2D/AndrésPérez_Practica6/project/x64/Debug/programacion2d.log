@@ -1,48 +1,46 @@
 ﻿  Collider.cpp
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(58,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(59,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(61,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(62,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(64,30): warning C4018: '<': signed/unsigned mismatch
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(67,31): warning C4018: '<': signed/unsigned mismatch
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(74,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(145,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(146,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(148,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(149,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(151,30): warning C4018: '<': signed/unsigned mismatch
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(154,31): warning C4018: '<': signed/unsigned mismatch
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(158,25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(207,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(208,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(210,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(211,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(214,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(215,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(217,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(218,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(220,30): warning C4018: '<': signed/unsigned mismatch
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(224,31): warning C4018: '<': signed/unsigned mismatch
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(229,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Collider.cpp(230,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(75,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(76,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(78,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(79,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(81,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(84,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(91,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(162,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(163,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(165,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(166,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(168,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(171,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(175,25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(224,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(225,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(227,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(228,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(231,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(232,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(234,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(235,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(237,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(241,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(246,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Collider.cpp(247,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   main.cpp
 C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\main.cpp(164,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\main.cpp(165,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\main.cpp(177,47): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\main.cpp(186,47): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\main.cpp(197,49): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\main.cpp(99,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\main.cpp(100,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Sprite.cpp
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(22,75): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(22,59): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(29,77): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(29,61): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(93,14): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(94,15): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\src\Sprite.cpp(98,22): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Sprite.cpp(22,75): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Sprite.cpp(22,59): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Sprite.cpp(29,77): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Sprite.cpp(29,61): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Sprite.cpp(93,14): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Sprite.cpp(94,15): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\src\Sprite.cpp(98,22): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   Time.cpp
   vector2.cpp
+  World.cpp
   Generating Code...
 main.obj : error LNK2019: unresolved external symbol glfwInit referenced in function main
 main.obj : error LNK2019: unresolved external symbol glfwTerminate referenced in function main
@@ -51,10 +49,9 @@ main.obj : error LNK2019: unresolved external symbol glfwWindowShouldClose refer
 main.obj : error LNK2019: unresolved external symbol glfwSetWindowShouldClose referenced in function main
 main.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function main
 main.obj : error LNK2019: unresolved external symbol glfwGetKey referenced in function main
-main.obj : error LNK2019: unresolved external symbol glfwGetMouseButton referenced in function main
 main.obj : error LNK2019: unresolved external symbol glfwGetCursorPos referenced in function main
 main.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function main
 main.obj : error LNK2019: unresolved external symbol glfwSwapBuffers referenced in function main
 Time.obj : error LNK2019: unresolved external symbol glfwGetTime referenced in function "public: void __cdecl CTime::UpdateDeltaTime(void)" (?UpdateDeltaTime@CTime@@QEAAXXZ)
 ..\lib\glfw3.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-D:\U-Tad\Master\C-\Programacion 2D\AndrésPérez_Practica5\project\x64\Debug\programacion2d.exe : fatal error LNK1120: 12 unresolved externals
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica6\project\x64\Debug\programacion2d.exe : fatal error LNK1120: 11 unresolved externals

@@ -19,19 +19,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\Background.cpp" />
     <ClCompile Include="..\src\Collider.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\Sprite.cpp" />
     <ClCompile Include="..\src\Time.cpp" />
     <ClCompile Include="..\src\vector2.cpp" />
+    <ClCompile Include="..\src\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\lib\litegfx.h" />
+    <ClInclude Include="..\src\Background.h" />
     <ClInclude Include="..\src\Collider.h" />
     <ClInclude Include="..\src\main.h" />
     <ClInclude Include="..\src\Sprite.h" />
     <ClInclude Include="..\src\Time.h" />
     <ClInclude Include="..\src\vector2.h" />
+    <ClInclude Include="..\src\World.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

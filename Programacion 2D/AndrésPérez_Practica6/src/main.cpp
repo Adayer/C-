@@ -10,13 +10,14 @@
 #include <string>
 #include "Sprite.h"
 #include <vector>
+#include "World.h"
 
 #define TEXTURE_LIST(_ACTION)\
 _ACTION(Bee, png)\
-_ACTION(Ball, png)\
-_ACTION(Box, png)\
-_ACTION(Circle, png)\
-_ACTION(Rect, png)
+_ACTION(Clouds, png)\
+_ACTION(Level, png)\
+_ACTION(Trees1, png)\
+_ACTION(Trees2, png)
 
 #define LOAD_TEXTURE(_FILE_NAME, _TYPE)\
     int x##_FILE_NAME = 0;\
@@ -67,49 +68,18 @@ int main() {
     GENERATE_TEXTURES
 
 
-    float scaleChangeSpeed = 0.1f;
-    float scaleMax = 1.1f;
-    float scaleMin = 0.9f;
-    float currentScaleMod = 1.f; 
-    bool isIncreasing = false;
+    World* world = new World(1.f, 0.f, 0.f, textClouds, textTrees2, textTrees1, textLevel);
 
-    CSprite* mouseSprite = new CSprite(textCircle, CollisionType::COLLISION_CIRCLE);
-    mouseSprite->SetColor(1.f, 1.f, 1.f);
-    mouseSprite->SetBlendMode(BLEND_ALPHA);
-    mouseSprite->SetScale(vec2(1.f, 1.f));
-    mouseSprite->SetPivot(vec2(0.5f, 0.5f));
-    std::vector<CSprite*> spriteList;
-    spriteList.push_back(new CSprite(textBee, CollisionType::COLLISION_PIXELS));
-    spriteList.push_back(new CSprite(textBox, CollisionType::COLLISION_RECT));
-    spriteList.push_back(new CSprite(textBall, CollisionType::COLLISION_CIRCLE));
+    //Bee init
+    CSprite* beeSprite = new CSprite(textBee, CollisionType::COLLISION_RECT, 8, 1, true);
+    beeSprite->SetBlendMode(lblend_t::BLEND_ALPHA);
+    beeSprite->SetFPS(8.f);
+    beeSprite->SetScale(vec2(1.5f, 1.5f));
+    beeSprite->SetColor(1.f, 1.f, 1.f);
+    beeSprite->SetCallback(&UpdateSprite);
 
-    for (unsigned int i = 0; i < 3; ++i)
-    {
-        spriteList[i]->SetColor(1.f, 1.f, 1.f);
-        spriteList[i]->SetBlendMode(BLEND_ALPHA);
-        spriteList[i]->SetScale(vec2(1.f, 1.f));
-        spriteList[i]->SetPivot(vec2(0.5f, 0.5f));
+    world->AddSprite(*beeSprite);
 
-        switch(i)
-        {
-        case 0:
-        {
-            spriteList[i]->SetPosition(vec2(screenHeight / 2.f - 200, screenHeight / 2.f));
-            break;
-        }
-        case 1:
-        {
-            spriteList[i]->SetPosition(vec2(screenHeight / 2.f , screenHeight / 2.f));
-            break;
-        }
-        case 2:
-        {
-            spriteList[i]->SetPosition(vec2(screenHeight / 2.f + 200, screenHeight / 2.f));
-            break;
-        }
-        }
-       
-    }
 
     CTime time;
     double xPos(0.);
@@ -130,91 +100,24 @@ int main() {
             glfwSetWindowShouldClose(mainWindow, 1);
         }
 
-        if(glfwGetMouseButton(mainWindow, GLFW_MOUSE_BUTTON_LEFT))
-        {
-            delete mouseSprite;
-            mouseSprite = new CSprite(textCircle, CollisionType::COLLISION_CIRCLE);
-            mouseSprite->SetColor(1.f, 1.f, 1.f);
-            mouseSprite->SetBlendMode(BLEND_ALPHA);
-            mouseSprite->SetScale(vec2(1.f, 1.f));
-            mouseSprite->SetPivot(vec2(0.5f, 0.5f));
-        }
-        else if(glfwGetMouseButton(mainWindow, GLFW_MOUSE_BUTTON_RIGHT))
-        {
-            delete mouseSprite;
-            mouseSprite = new CSprite(textRect, CollisionType::COLLISION_RECT);
-            mouseSprite->SetColor(1.f, 1.f, 1.f);
-            mouseSprite->SetBlendMode(BLEND_ALPHA);
-            mouseSprite->SetScale(vec2(1.f, 1.f));
-            mouseSprite->SetPivot(vec2(0.5f, 0.5f));
-        }
-        else if(glfwGetMouseButton(mainWindow, GLFW_MOUSE_BUTTON_MIDDLE))
-        {
-            delete mouseSprite;
-            mouseSprite = new CSprite(textBee, CollisionType::COLLISION_PIXELS);
-            mouseSprite->SetColor(1.f, 1.f, 1.f);
-            mouseSprite->SetBlendMode(BLEND_ALPHA);
-            mouseSprite->SetScale(vec2(1.f, 1.f));
-            mouseSprite->SetPivot(vec2(0.5f, 0.5f));
-        }
-
-
         //Mouse position
         glfwGetCursorPos(mainWindow, &xPos, &yPos);
         mousePos.x = xPos;
         mousePos.y = yPos;
+        
+        lgfx_clearcolorbuffer(0.f, 0.f, 1.f);
+
+        //Update Logic
+        beeSprite->SetUserData(&mousePos);
+        
+        world->Update(time.DeltaTime());
+        //CheckCollision
+        //TODO: Collisions?
+
+        //Render
+        world->Draw(vec2(screenWidth, screenHeight));
 
         //Render static sprites
-        lgfx_clearcolorbuffer(0.f, 0.f, 1.f);
-        
-        if (isIncreasing)
-        {
-            currentScaleMod = currentScaleMod + (scaleChangeSpeed * time.DeltaTime());
-            if (currentScaleMod > scaleMax)
-            {
-                currentScaleMod = scaleMax;
-                isIncreasing = false;
-            }
-        }
-        else
-        {
-            currentScaleMod = currentScaleMod - (scaleChangeSpeed * time.DeltaTime());
-            if (currentScaleMod < scaleMin)
-            {
-                currentScaleMod = scaleMin;
-                isIncreasing = true;
-            }
-        }
-        spriteList[1]->SetScale(vec2(currentScaleMod, currentScaleMod));
-        spriteList[2]->SetScale(vec2(currentScaleMod, currentScaleMod));
-        for (int i = 0; i < spriteList.size(); ++i)
-        {
-            spriteList[i]->Update(time.DeltaTime());
-        }
-
-        for(int i = 0; i < spriteList.size(); ++i)
-        {
-            spriteList[i]->Draw();
-        }
-        
-        bool mouseSpriteIsColliding = false;
-        for (int i = 0; i < spriteList.size(); ++i)
-        {
-            if (spriteList[i]->Collides(*mouseSprite))
-            {
-                mouseSpriteIsColliding = true;
-                break;
-            }
-        }
-        
-        mouseSprite->SetColor(1.f, 1.f, 1.f);
-        if (mouseSpriteIsColliding)
-        {
-            mouseSprite->SetColor(1.f, 0.f, 0.f);
-        }
-        mouseSprite->SetPosition(mousePos);
-        mouseSprite->Draw();
-
         
         glfwSwapBuffers(mainWindow);
     }
