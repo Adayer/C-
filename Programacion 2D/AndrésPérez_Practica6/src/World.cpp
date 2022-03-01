@@ -2,15 +2,15 @@
 #include <iterator>
 
 #define BACKGROUND_LIST(_ACTION)\
-_ACTION(back0, 0)\
-_ACTION(back1, 1)\
-_ACTION(back2, 2)\
-_ACTION(back3, 3)
+_ACTION(back0, 0, 0.4, 4, 4)\
+_ACTION(back1, 1, 0.6, 4, 1)\
+_ACTION(back2, 2, 0.8, 4, 1)\
+_ACTION(back3, 3, 1, 1, 1)
 
-#define CHECK_AND_CREATE(back, index)\
+#define CHECK_AND_CREATE(back, index, ratio, repsX, repsY)\
 if (back)\
 {\
-    m_backgrounds[index] = new Background(back);\
+    m_backgrounds[index] = new Background(back, ratio, repsX, repsY);\
 }
 
 #define ADD_BACKGROUNDS BACKGROUND_LIST(CHECK_AND_CREATE)
@@ -23,9 +23,11 @@ World::World(float clearRed, float clearGreen, float clearBlue,
     const ltex_t* back3) :
     m_clearRed(clearRed),
     m_clearGreen(clearGreen),
-    m_clearBlue(clearBlue)
+    m_clearBlue(clearBlue),
+    m_cameraPosition(0.f, 0.f)
 {
     ADD_BACKGROUNDS
+    m_backgrounds[0]->SetScrollSpeed(vec2(-16.f, -8.f));
 }
 
 void World::DestroyTickedSprites()
@@ -55,14 +57,13 @@ void World::DestroySprite()
 
 void World::Update(float _deltaTime)
 {
-    for (unsigned int i = 0; i < 4; ++i)
-    {
-        m_backgrounds[i]->Update(_deltaTime);
-    }
-
     for (size_t i = 0; i < m_spritesToRender.size(); ++i)
     {
         m_spritesToRender[i]->Update(_deltaTime);
+    }
+    for (unsigned int i = 0; i < 4; ++i)
+    {
+        m_backgrounds[i]->Update(_deltaTime, m_cameraPosition);
     }
 }
 
@@ -73,8 +74,10 @@ void World::Draw(const vec2& _screenSize)
 
     for (unsigned int i = 0; i < 4; ++i)
     {
-        m_backgrounds[i]->Draw(_screenSize);
+        m_backgrounds[i]->Draw(_screenSize, m_cameraPosition);
     }
+
+    lgfx_setorigin(m_cameraPosition.x, m_cameraPosition.y);
 
     for (size_t i = 0; i < m_spritesToRender.size(); ++i)
     {

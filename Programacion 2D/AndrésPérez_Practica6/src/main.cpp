@@ -44,7 +44,7 @@ using namespace std;
 
 
 constexpr float SPEED = 128.f; 
-constexpr float ROTATION_SPEED = 32.f;
+constexpr float ROTATION_SPEED = 128.f;
 constexpr float MAX_ROTATION = 15.f;
 
 void UpdateSprite(CSprite& _sprite, float _deltaTime);
@@ -56,7 +56,7 @@ int main() {
     }
 
     int screenWidth = 800;
-    int screenHeight = 800;
+    int screenHeight = 600;
 
     GLFWwindow* mainWindow(glfwCreateWindow(screenWidth, screenHeight, "Practica 1", nullptr, nullptr));
 
@@ -68,7 +68,7 @@ int main() {
     GENERATE_TEXTURES
 
 
-    World* world = new World(1.f, 0.f, 0.f, textClouds, textTrees2, textTrees1, textLevel);
+    World* world = new World(0.f, 0.5f, 0.75f, textClouds, textTrees2, textTrees1, textLevel);
 
     //Bee init
     CSprite* beeSprite = new CSprite(textBee, CollisionType::COLLISION_RECT, 8, 1, true);
@@ -77,6 +77,7 @@ int main() {
     beeSprite->SetScale(vec2(1.5f, 1.5f));
     beeSprite->SetColor(1.f, 1.f, 1.f);
     beeSprite->SetCallback(&UpdateSprite);
+    beeSprite->SetPosition(vec2(400.f, 300.f));
 
     world->AddSprite(*beeSprite);
 
@@ -105,11 +106,11 @@ int main() {
         mousePos.x = xPos;
         mousePos.y = yPos;
         
-        lgfx_clearcolorbuffer(0.f, 0.f, 1.f);
+        /*lgfx_clearcolorbuffer(0.f, 0.f, 1.f);*/
 
         //Update Logic
-        beeSprite->SetUserData(&mousePos);
-        
+        beeSprite->SetUserData(&vec2(mousePos.x + world->GetCameraPosition().x, mousePos.y + world->GetCameraPosition().y));
+        world->SetCameraPosition(vec2(beeSprite->GetPosition().x - screenWidth / 2.f , beeSprite->GetPosition().y - screenHeight / 2.f));
         world->Update(time.DeltaTime());
         //CheckCollision
         //TODO: Collisions?

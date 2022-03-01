@@ -17,7 +17,8 @@ private:
 
     std::vector<CSprite*> m_spritesToRender;
     std::vector<CSprite*> m_spritesToRemove;
-
+    
+    vec2 m_cameraPosition;
     //FUNCTIONS
 public:
     World(float clearRed = 0.15f, float clearGreen = 0.15f, float clearBlue = 0.15f,
@@ -41,8 +42,20 @@ public:
     const vec2& GetScrollSpeed(size_t layer) const { return m_backgrounds[layer]->GetScrollSpeed(); }
     void SetScrollSpeed(size_t layer, const vec2& speed) { m_backgrounds[layer]->SetScrollSpeed(speed); }
 
-    const vec2& GetCameraPosition() const;
-    void SetCameraPosition(const vec2& pos);
+    const vec2& GetCameraPosition() const { return m_cameraPosition; }
+    void SetCameraPosition(const vec2& pos) 
+    {
+        m_cameraPosition = pos; 
+        if (m_cameraPosition.x < 400)
+        {
+            m_cameraPosition.x = 400; 
+        }
+        else if (m_cameraPosition.x + 400 > m_backgrounds[3]->GetTexture()->width)
+        {
+            m_cameraPosition.x = (m_backgrounds[3]->GetTexture()->width - 400);
+        }
+        m_cameraPosition.y = 0;
+    }
 
     void AddSprite(CSprite& sprite) { m_spritesToRender.push_back(&sprite); }
     void RemoveSprite(CSprite& sprite) { m_spritesToRemove.push_back(&sprite); }
