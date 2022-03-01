@@ -1,0 +1,11 @@
+﻿  Client.cpp
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Redes\Chat\Source\Client\Client.cpp(74,69): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+LINK : warning LNK4098: defaultlib 'LIBCMTD' conflicts with use of other libs; use /NODEFAULTLIB:library
+net.lib(win32.obj) : warning LNK4099: PDB 'enet.pdb' was not found with 'net.lib(win32.obj)' or at 'C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Redes\Chat\x64\Debug\enet.pdb'; linking object as if no debug info
+net.lib(protocol.obj) : warning LNK4099: PDB 'enet.pdb' was not found with 'net.lib(protocol.obj)' or at 'C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Redes\Chat\x64\Debug\enet.pdb'; linking object as if no debug info
+net.lib(peer.obj) : warning LNK4099: PDB 'enet.pdb' was not found with 'net.lib(peer.obj)' or at 'C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Redes\Chat\x64\Debug\enet.pdb'; linking object as if no debug info
+net.lib(packet.obj) : warning LNK4099: PDB 'enet.pdb' was not found with 'net.lib(packet.obj)' or at 'C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Redes\Chat\x64\Debug\enet.pdb'; linking object as if no debug info
+net.lib(list.obj) : warning LNK4099: PDB 'enet.pdb' was not found with 'net.lib(list.obj)' or at 'C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Redes\Chat\x64\Debug\enet.pdb'; linking object as if no debug info
+net.lib(host.obj) : warning LNK4099: PDB 'enet.pdb' was not found with 'net.lib(host.obj)' or at 'C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Redes\Chat\x64\Debug\enet.pdb'; linking object as if no debug info
+net.lib(callbacks.obj) : warning LNK4099: PDB 'enet.pdb' was not found with 'net.lib(callbacks.obj)' or at 'C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Redes\Chat\x64\Debug\enet.pdb'; linking object as if no debug info
+  Client.vcxproj -> C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Redes\Chat\x64\Debug\Client.exe
