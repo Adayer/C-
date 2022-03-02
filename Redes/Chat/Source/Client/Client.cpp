@@ -57,8 +57,6 @@ int main()
 		}
 		aPackets.clear();
 
-
-
 	} while (!bIDSet);
 
 	std::cout << "Please type your name: ";

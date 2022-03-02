@@ -50,7 +50,7 @@ int main()
 				++m_xNextID;
 				oData.write(&m_xNextID, sizeof(m_xNextID));
 				
-				Net::CPacket oIDPacket(Net::DATA, (Net::byte*)&oData, oData.getSize(), pPacket->getConnection(), 0);
+				Net::CPacket oIDPacket(Net::DATA, (Net::byte*)oData.getData(), oData.getSize(), pPacket->getConnection(), 0);
 				pServer->sendData(oIDPacket.getConnection(), oIDPacket.getData(), oIDPacket.getDataLength(), 0, true);
 
 				break;

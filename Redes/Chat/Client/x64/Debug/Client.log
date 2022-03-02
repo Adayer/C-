@@ -1,4 +1,4 @@
 ﻿  Client.cpp
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Redes\Chat\Source\Client\Client.cpp(75,74): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Redes\Chat\Source\Client\Client.cpp(139,75): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Redes\Chat\Source\Client\Client.cpp(76,74): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Redes\Chat\Source\Client\Client.cpp(140,75): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   Client.vcxproj -> C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Redes\Chat\x64\Debug\Client.exe
