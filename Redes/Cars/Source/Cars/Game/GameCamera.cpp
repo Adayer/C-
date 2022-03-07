@@ -2,6 +2,7 @@
 
 #include "GameCamera.h"
 #include "Kismet/GameplayStatics.h"
+#include "Car.h"
 
 // Sets default values
 AGameCamera::AGameCamera()
@@ -18,11 +19,22 @@ void AGameCamera::BeginPlay()
   if (OurPC)
   {
     OurPC->SetViewTarget(this);
+    m_pTarget = OurPC->GetPawn<ACar>();
   }
+
+
 }
 
 // Called every frame
 void AGameCamera::Tick(float DeltaTime)
 {
   Super::Tick(DeltaTime);
+
+  if (m_pTarget)
+  {
+      FVector vNewPos(m_pTarget->GetActorLocation());
+      vNewPos.Z += m_fMinDistance + m_fDistanceFromVelocityFactor * m_pTarget->GetCarMovementComponent()->GetVelocityMagnitude();
+      SetActorLocation(vNewPos);
+  }
+
 }

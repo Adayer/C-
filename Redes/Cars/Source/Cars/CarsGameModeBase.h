@@ -16,6 +16,6 @@ class CARS_API ACarsGameModeBase : public AGameModeBase
 public:
   ACarsGameModeBase(const class FObjectInitializer& ObjectInitializer);
   virtual APawn* SpawnDefaultPawnFor_Implementation(AController* NewPlayer, AActor* StartSpot) override;
-	
+  virtual void Tick(float DeltaTime) override;
 	
 };

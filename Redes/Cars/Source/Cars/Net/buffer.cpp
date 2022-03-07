@@ -54,13 +54,27 @@ namespace Net {
 		memcpy(_current,data,datalength);
 		_current+=datalength;
 		_size+=datalength;
-  }
+	}
+
+	void CBuffer::write(char* data)
+	{
+		size_t iSize = strlen(data);
+		write(iSize);
+		write(data, iSize);
+	}
 
 	void CBuffer::read(void* data,size_t datalength)
 	{
 		memcpy(data,_current,datalength);
 		_current+=datalength;
-  }
+	}
+	void CBuffer::read(char* data)
+	{
+		size_t iSize = 0;
+		read(iSize);
+		read(data, iSize);
+		data[iSize] = '\0';
+	}
 
 	void CBuffer::realloc()
 	{

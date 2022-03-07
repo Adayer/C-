@@ -61,6 +61,10 @@ public:
 	 * @param datalenght es el tamaño de los datos a escribir (número de bytes)
 	 */
 	void write(const void* data, size_t datalength);
+	
+	template<typename T> 
+	void write(const T& data) { write(&data, sizeof(data)); }
+	void write(char* data);
 
 	/**
 	 * Lee datos del buffer.
@@ -69,7 +73,9 @@ public:
 	 * \param datalength es el número de datos (bytes) a leer
 	 */
   void read(void* data, size_t datalength);
-
+  template<typename T>
+  void read(T& data) { read(&data, sizeof(data)); }
+  void read(char* data);
 
 protected:
 	void realloc();

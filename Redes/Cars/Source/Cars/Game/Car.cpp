@@ -27,6 +27,8 @@ ACar::ACar()
   SetActorRotation(FRotator(0.f, 270.f, 0.f));
   AutoPossessPlayer = EAutoReceiveInput::Player0;
   AutoPossessAI = EAutoPossessAI::Disabled;
+  
+  m_pCarMovement = CreateDefaultSubobject<UCarMovementComponent>(TEXT("CarMovement"));
 }
 
 // Called when the game starts or when spawned
@@ -48,6 +50,7 @@ void ACar::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void ACar::Move(float AxisValue)
 {
   m_vMovementInput.Y = FMath::Clamp<float>(AxisValue, -1.0f, 1.0f);
+  
 }
 
 void ACar::Turn(float AxisValue)
@@ -59,5 +62,6 @@ void ACar::Turn(float AxisValue)
 void ACar::Tick(float DeltaTime)
 {
   Super::Tick(DeltaTime);
+  m_pCarMovement->SetInput(m_vMovementInput);
 }
 

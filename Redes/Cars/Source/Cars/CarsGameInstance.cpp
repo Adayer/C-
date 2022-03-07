@@ -3,6 +3,14 @@
 
 #include "CarsGameInstance.h"
 #include "Blueprint/UserWidget.h"
+
+UCarsGameInstance::UCarsGameInstance(const FObjectInitializer& ObjectInitializer)
+    :Super(ObjectInitializer),
+    m_oGameNetMgr(this)
+{
+    m_pManager = Net::CManager::getSingletonPtr();
+}
+
 void UCarsGameInstance::OnStart()
 {
   Super::OnStart();
@@ -27,10 +35,13 @@ void UCarsGameInstance::ChangeMenuWidget(TSubclassOf<UUserWidget> NewWidgetClass
 
 void UCarsGameInstance::OnServerButtonClick(FString sPort)
 {
+    m_pManager->activateAsServer(FCString::Atoi(*sPort));
 }
 
 void UCarsGameInstance::OnClientButtonClick(FString sIP, FString sPort)
 {
+    m_pManager->activateAsClient();
+    m_pManager->connectTo(TCHAR_TO_ANSI(*sIP), FCString::Atoi(*sPort));
 }
 
 void UCarsGameInstance::OnServerStartButtonClick()

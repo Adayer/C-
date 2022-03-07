@@ -15,20 +15,21 @@ class CARS_API UCarMovementComponent : public UActorComponent
 public:	
 	// Sets default values for this component's properties
 	UCarMovementComponent();
+	// Called every frame
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	void SetInput(const FVector2D& _vInput) { m_vMovementInput = _vInput; }
+	float GetVelocityMagnitude() const { return m_vVelocity.Size(); }
 
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	
 	FVector CalculateAcceleration() const;
 	FVector CalculateAverageVelocity(const FVector& _vAccel, float _fDeltaTime);
 	void ClampVelocity(FVector& _vVelocity_) const;
+	void MoveActor(const FVector& _vVelocity, float _fDeltaTime);
 
-	void SetInput(const FVector2D& _vInput) { m_vMovementInput = _vInput; }
-
+protected:
 	UPROPERTY(EditAnywhere)
 		float m_fAccel = 120.f;
 	UPROPERTY(EditAnywhere)
@@ -42,4 +43,5 @@ public:
 
 	FVector2D m_vMovementInput;
 	FVector m_vVelocity = FVector::ZeroVector;
+
 };

@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Camera/CameraActor.h"
 #include "GameCamera.generated.h"
+class ACar;
 
 UCLASS()
 class CARS_API AGameCamera : public ACameraActor
@@ -18,4 +19,13 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+public:
+	UPROPERTY(EditAnywhere)
+		float m_fMinDistance = 200.f;
+	UPROPERTY(EditAnywhere)
+		float m_fDistanceFromVelocityFactor = 0.6f;
+protected:
+	UPROPERTY()
+		ACar* m_pTarget;
 };

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
+#include "CarMovementComponent.h"
 #include "Car.generated.h"
 
 UCLASS()
@@ -18,6 +19,7 @@ public:
   virtual void Tick(float DeltaTime) override;
   // Called to bind functionality to input
   virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
+  UCarMovementComponent* GetCarMovementComponent() const { return m_pCarMovement; }
 
 protected:
   // Called when the game starts or when spawned
@@ -30,6 +32,8 @@ protected:
   //Mesh
   UPROPERTY(EditAnywhere)
     UStaticMeshComponent* m_pMesh;
+  UPROPERTY(EditAnywhere)
+    UCarMovementComponent* m_pCarMovement;
   //Input variables
   FVector2D m_vMovementInput = FVector2D::ZeroVector;
 };

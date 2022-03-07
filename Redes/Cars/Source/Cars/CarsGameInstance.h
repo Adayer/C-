@@ -4,17 +4,19 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "GameNet/GameNetMgr.h"
 #include "CarsGameInstance.generated.h"
 
-/**
- *
- */
 UCLASS()
 class CARS_API UCarsGameInstance : public UGameInstance
 {
   GENERATED_BODY()
 
 public:
+    UCarsGameInstance(const FObjectInitializer& ObjectInitializer);
+    CGameNetMgr m_oGameNetMgr;
+    
+
   UFUNCTION(BlueprintCallable, Category = CarsNet)
     void ChangeMenuWidget(TSubclassOf<UUserWidget> NewWidgetClass);
   UFUNCTION(BlueprintCallable, Category = CarsNet)
@@ -23,6 +25,7 @@ public:
     void OnClientButtonClick(FString sIP, FString sPort);
   UFUNCTION(BlueprintCallable, Category = CarsNet)
     void OnServerStartButtonClick();
+
 
 protected:
   /** Called when the game starts. */
@@ -33,4 +36,7 @@ protected:
     TSubclassOf<UUserWidget> StartingWidgetClass;
   UPROPERTY()
     UUserWidget* CurrentWidget;
+    
+  Net::CManager* m_pManager;
+
 };
