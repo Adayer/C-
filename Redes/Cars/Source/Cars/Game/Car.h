@@ -7,6 +7,7 @@
 #include "CarMovementComponent.h"
 #include "Car.generated.h"
 
+class UNetComponent;
 UCLASS()
 class CARS_API ACar : public APawn
 {
@@ -20,6 +21,7 @@ public:
   // Called to bind functionality to input
   virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
   UCarMovementComponent* GetCarMovementComponent() const { return m_pCarMovement; }
+  UNetComponent* GetNetComponent() { return m_pNetComponent; }
 
 protected:
   // Called when the game starts or when spawned
@@ -34,6 +36,8 @@ protected:
     UStaticMeshComponent* m_pMesh;
   UPROPERTY(EditAnywhere)
     UCarMovementComponent* m_pCarMovement;
+  UPROPERTY(EditAnywhere)
+    UNetComponent* m_pNetComponent;
   //Input variables
   FVector2D m_vMovementInput = FVector2D::ZeroVector;
 };

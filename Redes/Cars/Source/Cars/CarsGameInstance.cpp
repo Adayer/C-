@@ -3,6 +3,8 @@
 
 #include "CarsGameInstance.h"
 #include "Blueprint/UserWidget.h"
+#include "Kismet/GameplayStatics.h"
+#include "GameNet/GameBuffer.h"
 
 UCarsGameInstance::UCarsGameInstance(const FObjectInitializer& ObjectInitializer)
     :Super(ObjectInitializer),
@@ -46,4 +48,11 @@ void UCarsGameInstance::OnClientButtonClick(FString sIP, FString sPort)
 
 void UCarsGameInstance::OnServerStartButtonClick()
 {
+    const char* sLevel = "circuit1";
+    UGameplayStatics::OpenLevel(GetWorld(), sLevel);
+    Net::NetMessageType iID = Net::LOAD_MAP;
+    CGameBuffer oData;
+    oData.write(iID);
+    oData.write(sLevel);
+    m_pManager->send(&oData, true);
 }

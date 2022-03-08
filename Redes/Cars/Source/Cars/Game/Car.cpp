@@ -5,6 +5,7 @@
 #include "Components/BoxComponent.h"
 #include "ConstructorHelpers.h"
 #include "Components/InputComponent.h"
+#include "GameNet/NetComponent.h"
 
 
 // Sets default values
@@ -25,10 +26,10 @@ ACar::ACar()
   }
   SetActorScale3D(FVector(0.2f, 0.1f, 0.05f));
   SetActorRotation(FRotator(0.f, 270.f, 0.f));
-  AutoPossessPlayer = EAutoReceiveInput::Player0;
   AutoPossessAI = EAutoPossessAI::Disabled;
   
   m_pCarMovement = CreateDefaultSubobject<UCarMovementComponent>(TEXT("CarMovement"));
+  m_pNetComponent = CreateDefaultSubobject<UNetComponent>(TEXT("NetComponent"));
 }
 
 // Called when the game starts or when spawned
@@ -62,6 +63,6 @@ void ACar::Turn(float AxisValue)
 void ACar::Tick(float DeltaTime)
 {
   Super::Tick(DeltaTime);
-  m_pCarMovement->SetInput(m_vMovementInput);
+  m_pNetComponent->SetInput(m_vMovementInput);
 }
 

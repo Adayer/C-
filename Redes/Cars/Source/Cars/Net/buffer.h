@@ -64,7 +64,7 @@ public:
 	
 	template<typename T> 
 	void write(const T& data) { write(&data, sizeof(data)); }
-	void write(char* data);
+	void write(const char* data);
 
 	/**
 	 * Lee datos del buffer.
