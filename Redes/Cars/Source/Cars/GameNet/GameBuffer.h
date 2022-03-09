@@ -3,6 +3,7 @@
 #pragma once
 #include "Net/buffer.h"
 #include "Math/Vector.h"
+#include "Math/Transform.h"
 
 class CGameBuffer : public Net::CBuffer
 {
@@ -16,8 +17,10 @@ public:
 	//Write
 	void write(const FVector& _data);
 	void write(const FVector2D& _data);
+	void write(const FTransform& _data);
 
 	//Read
 	void read(FVector& data_);
 	void read(FVector2D& data_);
+	void read(FTransform& data_);
 };

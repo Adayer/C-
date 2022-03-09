@@ -57,8 +57,8 @@ void UNetComponent::SerializeData()
 
 	if (m_pManager->getID() == Net::ID::SERVER) //IS SERVER
 	{
-		FVector vPos = GetOwner()->GetActorLocation();
-		oData.write(vPos);
+		FTransform vTrans = GetOwner()->GetActorTransform();
+		oData.write(vTrans);
 		m_pManager->send(&oData, false);
 	}
 	else
