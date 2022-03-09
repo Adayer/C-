@@ -1,0 +1,16 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{7B2433F6-4029-B472-0B23-1A9DB3FD7FDC}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "Cars",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
+		}
+	]
+}
