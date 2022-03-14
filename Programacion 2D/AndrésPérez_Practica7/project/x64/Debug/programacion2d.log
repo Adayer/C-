@@ -1,0 +1,61 @@
+﻿  Background.cpp
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Background.h(32,5): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Background.h(33,5): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Background.cpp(37,80): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Background.cpp(37,30): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Collider.cpp
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(75,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(76,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(78,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(79,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(81,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(84,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(91,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(162,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(163,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(165,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(166,23): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(168,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(171,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(175,25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(224,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(225,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(227,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(228,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(231,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(232,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(234,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(235,24): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(237,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(241,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(246,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Collider.cpp(247,26): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Background.h(32,5): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Background.h(33,5): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\World.h(52,73): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\main.cpp(71,94): error C2661: 'World::World': no overloaded function takes 7 arguments
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\main.cpp(106,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\main.cpp(107,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\main.cpp(114,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\main.cpp(119,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\main.cpp(119,26): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  pugixml.cpp
+  Sprite.cpp
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Sprite.cpp(22,75): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Sprite.cpp(22,59): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Sprite.cpp(29,77): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Sprite.cpp(29,61): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Sprite.cpp(93,14): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Sprite.cpp(94,15): warning C4244: 'initializing': conversion from 'const int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Sprite.cpp(98,22): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  Time.cpp
+  vector2.cpp
+  World.cpp
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Background.h(32,5): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\Background.h(33,5): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\World.h(52,73): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion 2D\AndrésPérez_Practica7\src\World.cpp(23,5): warning C4305: 'argument': truncation from 'double' to 'float'
+  Generating Code...
