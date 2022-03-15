@@ -27,6 +27,13 @@ private:
 
     std::vector<CSprite*> m_tTiles;
     CTime* m_time;
+
+    //Player anim
+    bool bRunning = false;
+    CSprite* idleSprite;
+    CSprite* runSprite;
+
+
     //FUNCTIONS
 public:
     World(CTime& _time, float clearRed = 0.15f, float clearGreen = 0.15f, float clearBlue = 0.15f,
@@ -74,11 +81,15 @@ public:
 
     bool loadMap(const char* filename, uint16_t firstColId);
     vec2 getMapSize() const;
-    bool moveSprite(CSprite& sprite, const vec2& amount);
     inline std::string extractPath(const std::string& filename);
+    bool movePlayer(const vec2& amount);
 
-
-
+    void SetPlayerSprites(CSprite* _idleSprite, CSprite* _runSprite)
+    {
+        idleSprite = _idleSprite;
+        runSprite = _runSprite;
+    }
 private:
+    bool moveSprite(CSprite& sprite, const vec2& amount);
 
 };

@@ -20,6 +20,7 @@ public:
 	typedef void(*CallbackFunc)(CSprite&, float);
 private:
 	bool hasAnimation = false;
+	bool isActive = true;
 
 	CallbackFunc callback;
 
@@ -140,6 +141,8 @@ public:
 
 	const Collider* GetCollider() const { return spriteCollider; }
 
-	bool Collides(const CSprite& other) const;
+	bool Collides(CSprite& other);
+
+	void SetIsActive(bool _isActive) { isActive = _isActive; }
 
 };

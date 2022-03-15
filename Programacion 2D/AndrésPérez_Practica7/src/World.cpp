@@ -171,6 +171,37 @@ vec2 World::getMapSize() const
 {
     return m_mapSize;
 }
+bool World::movePlayer(const vec2& amount)
+{
+    if (amount.x != 0)
+    {
+        if (!bRunning)
+        {
+            bRunning = true;
+            runSprite->SetIsActive(true);
+            idleSprite->SetIsActive(false);
+        }
+        moveSprite(*runSprite, amount);
+        idleSprite->SetPosition(vec2(runSprite->GetPosition().x, runSprite->GetPosition().y));
+        idleSprite->SetScale(vec2(runSprite->GetScale().x, runSprite->GetScale().y));
+        return true;
+    }
+    else
+    {
+        if (bRunning)
+        {
+            bRunning = false;
+            runSprite->SetIsActive(false);
+            idleSprite->SetIsActive(true);
+        }
+        moveSprite(*idleSprite, amount);
+
+        runSprite->SetPosition(vec2(idleSprite->GetPosition().x, idleSprite->GetPosition().y));
+        runSprite->SetScale(vec2(idleSprite->GetScale().x, idleSprite->GetScale().y));
+        return true;
+    }
+}
+
 bool World::moveSprite(CSprite& sprite, const vec2& amount)
 {
     Player* pPlayer = static_cast<Player*>(sprite.GetUserData());
@@ -181,35 +212,47 @@ bool World::moveSprite(CSprite& sprite, const vec2& amount)
     xPos += xOffset * m_time->DeltaTime();
     //CheckCollision
     bool collidesIntoSomething = false;
+    sprite.SetPosition(vec2(xPos, sprite.GetPosition().y));
     for (unsigned int i = 0; i < m_tTiles.size(); ++i)
     {
         if (sprite.Collides(*m_tTiles[i]))
         {
             collidesIntoSomething = true;
+            sprite.SetPosition(vec2(bufferXPos, sprite.GetPosition().y));
             break;
         }
     }
-    xPos = collidesIntoSomething ? bufferXPos : xPos;
+    if (amount.x < 0 && sprite.GetScale().x > 0)
+    {
+        sprite.SetScale(vec2(-sprite.GetScale().x, sprite.GetScale().y));
+    }
+    else if(amount.x > 0 && sprite.GetScale().x < 0)
+    {
+        sprite.SetScale(vec2(-sprite.GetScale().x, sprite.GetScale().y));
+    }
 
     //Move Y
     float yPos = sprite.GetPosition().y;
     float bufferYPos = sprite.GetPosition().y;
-    pPlayer->SetCurrentYSpeed(pPlayer->GetCurrentYSpeed() - pPlayer->GRAVITY * m_time->DeltaTime());
-    yPos += pPlayer->GetCurrentYSpeed() * m_time->DeltaTime();
-    sprite.SetPosition(vec2(54.f, yPos));
+    float newSpeedY = pPlayer->GetCurrentYSpeed();
+    newSpeedY = newSpeedY + pPlayer->GRAVITY * m_time->DeltaTime();
+    pPlayer->SetCurrentYSpeed(newSpeedY);
+    yPos = yPos + pPlayer->GetCurrentYSpeed() * m_time->DeltaTime();
     collidesIntoSomething = false;
+    sprite.SetPosition(vec2(sprite.GetPosition().x, yPos));
     for (unsigned int i = 0; i < m_tTiles.size(); ++i)
     {
         if (sprite.Collides(*m_tTiles[i]))
         {
             collidesIntoSomething = true;
+            pPlayer->SetCurrentYSpeed(0.f);
+            sprite.SetPosition(vec2(sprite.GetPosition().x, bufferYPos));
             break;
         }
     }
-    yPos = collidesIntoSomething ? bufferYPos : yPos;
-    sprite.SetPosition(vec2(xPos, yPos));
+    
 
-    return false;
+    return true;
 }
 inline std::string World::extractPath(const std::string& filename)
 {

@@ -115,10 +115,6 @@ bool Collider::CheckRectRect(const vec2& _pos1, const vec2& _size1,
 	//Rect 1 inside of rect 2
 	if (Rect1InsideOfXRect2 && Rect1InsideOfYRect2)
 	{
-		lgfx_setcolor(1.f, 0.f, 0.f, 1.f);
-		lgfx_drawrect(_pos1.x, _pos1.y, _size1.x, _size1.y);
-		lgfx_setcolor(0.f, 1.f, 0.f, 1.f);
-		lgfx_drawrect(_pos2.x, _pos2.y, _size2.x, _size2.y);
 		return true;
 	}
 	////Rect 2 inside of rect 1

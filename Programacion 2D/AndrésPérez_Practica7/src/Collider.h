@@ -6,6 +6,7 @@ class Collider
 {
 protected:
 	vec2 m_currentPos;
+	bool hasForcedSize;
 public:
 	Collider(vec2& _pos) : m_currentPos(_pos) {}
 
@@ -58,7 +59,10 @@ public:
 	virtual bool Collides(const Collider& _other) const override;
 
 	vec2 GetSize() const { return m_size; }
-	void SetSize(vec2 _size) { m_size = _size; }
+	void SetSize(vec2 _size) 
+	{
+		m_size = _size; 
+	}
 
 protected:
 	virtual bool Collides(const vec2& _circlePos, float _radius) const override;

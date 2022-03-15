@@ -35,7 +35,7 @@ CSprite::CSprite(const ltex_t* tex, CollisionType _type, int _hframes, int _vfra
 }
 
 
-bool CSprite::Collides(const CSprite& other) const
+bool CSprite::Collides(CSprite& other)
 {
 	return spriteCollider->Collides(*(other.GetCollider()));
 }
@@ -74,7 +74,15 @@ void CSprite::Update(float deltaTime)
 		case CollisionType::COLLISION_RECT:
 		{
 			RectCollider* pCollider = reinterpret_cast<RectCollider*>(spriteCollider);
-			pCollider->SetSize(vec2(texture->width * scale.x, texture->height * scale.y));
+			if (forcedSize.x != 0 && forcedSize.y != 0)
+			{
+				pCollider->SetSize(vec2(forcedSize.x * scale.x, forcedSize.y * scale.y));
+			}
+			else
+			{
+				pCollider->SetSize(vec2(texture->width * scale.x, texture->height * scale.y));
+			}
+
 			break;
 		}
 		case CollisionType::COLLISION_PIXELS:
@@ -89,23 +97,27 @@ void CSprite::Update(float deltaTime)
 
 void CSprite::Draw() //const
 {
+	if (!isActive)
+	{
+		return;
+	}
 	//FIND UVs
 	float width = texture->width;
 	float height = texture->height;
-	if (forcedSize.x != 0 || forcedSize.y != 0)
+	if (forcedSize.x != 0 || forcedSize.y != 0 && !hasAnimation)
 	{
 		hSize = forcedSize.x;
 		vSize = forcedSize.y;
+		
 	}
 	else
 	{
 		hSize = width / hFrames;
 		vSize = height / vFrames;
 	}
-	
+
 	float currentXFrame = currentFrame % hFrames;
 	int currentYFrame = currentFrame / hFrames;
-	
 	
 	uv0.x = (hSize * currentXFrame) / width;
 	uv0.y = (vSize * currentYFrame) / height;
@@ -114,10 +126,8 @@ void CSprite::Draw() //const
 	uv1.y = (vSize * (currentYFrame + 1.f)) / height;
 
 	lgfx_setblend(blendMode);
-
 	
-	lgfx_setcolor(1.f, 0.f, 0.f, 1.f);
-
+	lgfx_setcolor(red, green, blue, 1.f);
 	ltex_drawrotsized(texture, 
 		position.x, position.y, 
 		rotation, 
@@ -125,8 +135,5 @@ void CSprite::Draw() //const
 		hSize * scale.x, vSize * scale.y,
 		uv0.x, uv0.y, uv1.x, uv1.y);
 
-	lgfx_setcolor(red, green, blue, 1.f);
-	lgfx_drawrect(position.x - hSize / 2.f, position.y - vSize / 2.f, hSize, vSize);
 	spriteCollider->SetPosition(position);
-
 }

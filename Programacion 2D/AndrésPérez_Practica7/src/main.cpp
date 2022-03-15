@@ -12,6 +12,7 @@
 
 #define TEXTURE_LIST(_ACTION)\
 _ACTION(Clouds, png)\
+_ACTION(Run, png)\
 _ACTION(Idle, png)
 
 #define LOAD_TEXTURE(_FILE_NAME, _TYPE)\
@@ -68,15 +69,32 @@ int main() {
 
     World* world = new World(time, 0.f, 0.5f, 0.75f, textClouds);
 
-    CSprite* playerSprite = new CSprite(textIdle, COLLISION_RECT);
+    Player* pPlayerData = new Player();
+    CSprite* playerSprite = new CSprite(textRun, COLLISION_RECT, 6, 1, true);
     playerSprite->SetColor(1.f, 1.f, 1.f);
     playerSprite->SetPivot(vec2(0.5f, 0.5f));
     playerSprite->SetScale(vec2(1.f, 1.f));
     playerSprite->SetBlendMode(BLEND_ALPHA);
-    playerSprite->SetPosition(vec2(684.f, 480.f));
-    playerSprite->SetUserData(new Player());
+    playerSprite->SetPosition(vec2(664.f, 300.f));
+    playerSprite->SetUserData(pPlayerData);
+    playerSprite->SetFPS(8.f);
+    playerSprite->SetCurrentFrame(1);
+    playerSprite->SetForcedSize(vec2(32.f, 32.f));
+    playerSprite->SetIsActive(false);
     world->AddSprite(*playerSprite);
-    
+
+    CSprite* playerIdleSprite = new CSprite(textIdle, COLLISION_RECT);
+    playerIdleSprite->SetColor(1.f, 1.f, 1.f);
+    playerIdleSprite->SetPivot(vec2(0.5f, 0.5f));
+    playerIdleSprite->SetScale(vec2(1.f, 1.f));
+    playerIdleSprite->SetBlendMode(BLEND_ALPHA);
+    playerIdleSprite->SetPosition(vec2(664.f, 300.f));
+    playerIdleSprite->SetUserData(pPlayerData);
+    playerIdleSprite->SetForcedSize(vec2(32.f, 32.f));
+    world->AddSprite(*playerIdleSprite);
+   
+    world->SetPlayerSprites(playerIdleSprite, playerSprite);
+
     double xPos(0.);
     double yPos(0.);
     vec2 mousePos(0.f, 0.f);
@@ -103,17 +121,19 @@ int main() {
         {
             xInput = -1.f;
         }
+        if (glfwGetKey(mainWindow, GLFW_KEY_SPACE))
+        {
+            pPlayerData->SetCurrentYSpeed(pPlayerData->JUMP_VELOCITY);
+        }
         //Mouse position
         glfwGetCursorPos(mainWindow, &xPos, &yPos);
         mousePos.x = xPos;
         mousePos.y = yPos;
         
-        /*lgfx_clearcolorbuffer(0.f, 0.f, 1.f);*/
-
         //Update Logic
         //world->SetCameraPosition(vec2(0.f, 0.f));
         world->Update(time.DeltaTime());
-        world->moveSprite(*playerSprite, vec2(xInput, 0.f));
+        world->movePlayer(vec2(xInput, 0.f));
         
         //Render
         world->Draw(vec2(screenWidth, screenHeight));
