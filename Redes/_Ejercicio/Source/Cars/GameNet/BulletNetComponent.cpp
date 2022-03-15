@@ -5,6 +5,9 @@
 #include "Net/Manager.h"
 #include "DrawDebugHelpers.h"
 #include "GameNet/GameBuffer.h"
+#include "../CarsGameInstance.h"
+#include "GameNet/GameNetMgr.h"
+
 
 // Sets default values for this component's properties
 UBulletNetComponent::UBulletNetComponent()
@@ -37,11 +40,13 @@ void UBulletNetComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 		m_fBulletLifeTime -= DeltaTime;
 		if (m_fBulletLifeTime <= 0)
 		{
+			Cast<UCarsGameInstance>(GetWorld()->GetGameInstance())->m_oGameNetMgr.DestroyBullet(m_uID);
 			SerializeData();
 		}
 	}
 	else
 	{
+		//DeserializeData();
 	}
 }
 

@@ -115,7 +115,9 @@ void CGameNetMgr::dataPacketReceived(Net::CPacket* packet)
 	}
 	case Net::BULLET_DESTROY:
 	{
-
+		Net::NetID uID;
+		oData.read(uID);
+		DestroyBullet(uID);
 	}
 	default:
 		break;
@@ -171,4 +173,9 @@ void CGameNetMgr::CreateBullet(unsigned int _uClient)
 		SpawnActor<ABullet>(m_tPlayers[_uClient]->GetActorLocation(), m_tPlayers[_uClient]->GetActorRotation(), SpawnInfo);
 	pBullet->GetNetComponent()->SetID(_uClient);
 	m_tBullets[_uClient] = pBullet;
+}
+void CGameNetMgr::DestroyBullet(unsigned int _uClient)
+{
+	m_tBullets[_uClient]->Destroy();
+	m_tBullets[_uClient] = nullptr;
 }

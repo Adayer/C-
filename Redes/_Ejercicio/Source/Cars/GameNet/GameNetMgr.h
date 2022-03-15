@@ -21,6 +21,7 @@ public:
 	virtual void dataPacketReceived(Net::CPacket* packet) override;
 	virtual void connectionPacketReceived(Net::CPacket* packet) override;
 	virtual void disconnectionPacketReceived(Net::CPacket* packet) override;
+	void DestroyBullet(unsigned int _uClient);
 
 private:
 	void CreateCar(unsigned int _uClient, FVector _vPos);

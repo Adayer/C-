@@ -17,6 +17,5 @@ public:
   ACarsGameModeBase(const class FObjectInitializer& ObjectInitializer);
   virtual APawn* SpawnDefaultPawnFor_Implementation(AController* NewPlayer, AActor* StartSpot) override;
 	
-  virtual void Tick(float DeltaTime) override;
-	
+  virtual void Tick(float DeltaTime) override;	
 };

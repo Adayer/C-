@@ -24,4 +24,3 @@ void ACarsGameModeBase::Tick(float DeltaTime)
 		pManager->tick();
 	}
 }
-
