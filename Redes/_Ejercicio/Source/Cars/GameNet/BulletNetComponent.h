@@ -21,6 +21,8 @@ class CARS_API UBulletNetComponent : public UActorComponent
 public:	
 	// Sets default values for this component's properties
 	UBulletNetComponent();
+	UFUNCTION()
+		void DestroyOwnerActor();
 
 protected:
 	// Called when the game starts

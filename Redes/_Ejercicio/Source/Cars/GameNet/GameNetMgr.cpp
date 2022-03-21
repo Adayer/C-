@@ -113,12 +113,19 @@ void CGameNetMgr::dataPacketReceived(Net::CPacket* packet)
 			CreateBullet(uID);
 		}
 	}
+	break;
 	case Net::BULLET_DESTROY:
 	{
-		Net::NetID uID;
-		oData.read(uID);
-		DestroyBullet(uID);
+		if(m_pManager->getID() != Net::ID::SERVER)
+		{
+			Net::NetID uID;
+			oData.read(uID);
+			
+			m_tBullets[uID]->GetNetComponent()->DestroyOwnerActor();
+			m_tBullets[uID] = nullptr;
+		}
 	}
+	break;
 	default:
 		break;
 	}
@@ -166,16 +173,17 @@ void CGameNetMgr::CreateCar(unsigned int _uClient, FVector _vPos)
 void CGameNetMgr::CreateBullet(unsigned int _uClient)
 {
 	FActorSpawnParameters SpawnInfo;
-	SpawnInfo.Name = FName("Bullet", _uClient);
 	SpawnInfo.SpawnCollisionHandlingOverride =
 		ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-	ABullet* pBullet = m_pCarsGameInstance->GetWorld()->
-		SpawnActor<ABullet>(m_tPlayers[_uClient]->GetActorLocation(), m_tPlayers[_uClient]->GetActorRotation(), SpawnInfo);
+	UWorld* gameWorld = m_pCarsGameInstance->GetWorld();
+	ABullet* pBullet = gameWorld->SpawnActor<ABullet>
+		(m_tPlayers[_uClient]->GetActorLocation(),
+		m_tPlayers[_uClient]->GetActorRotation(), 
+		SpawnInfo);
 	pBullet->GetNetComponent()->SetID(_uClient);
 	m_tBullets[_uClient] = pBullet;
 }
 void CGameNetMgr::DestroyBullet(unsigned int _uClient)
 {
-	m_tBullets[_uClient]->Destroy();
 	m_tBullets[_uClient] = nullptr;
 }

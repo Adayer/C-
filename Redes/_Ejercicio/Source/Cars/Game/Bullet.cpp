@@ -19,7 +19,7 @@ ABullet::ABullet()
 		m_pMesh->SetMaterial(0, CarMaterial.Object);
 	}
 	SetRootComponent(m_pMesh);
-	SetActorScale3D(FVector(0.1f, 0.1f, 0.1f));
+	SetActorScale3D(FVector(1.f, 1.f, 1.f));
 
 	m_pNetComponent = CreateDefaultSubobject<UBulletNetComponent>("NetComponent");
 }

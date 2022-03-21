@@ -24,7 +24,7 @@ UBulletNetComponent::UBulletNetComponent()
 void UBulletNetComponent::BeginPlay()
 {
 	Super::BeginPlay();
-
+	m_fBulletLifeTime = 5.f;
 	// ...
 	
 }
@@ -38,11 +38,19 @@ void UBulletNetComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 	if (m_pManager->getID() == Net::ID::SERVER)
 	{
 		m_fBulletLifeTime -= DeltaTime;
+		
+		for ()
+		{
+
+		}
+
 		if (m_fBulletLifeTime <= 0)
 		{
 			Cast<UCarsGameInstance>(GetWorld()->GetGameInstance())->m_oGameNetMgr.DestroyBullet(m_uID);
 			SerializeData();
+			GetOwner()->Destroy();
 		}
+		
 	}
 	else
 	{
@@ -66,5 +74,11 @@ void UBulletNetComponent::DeserializeData(CGameBuffer* pData)
 	}
 	else
 	{
+
 	}
+}
+
+void UBulletNetComponent::DestroyOwnerActor()
+{
+	GetOwner()->Destroy();
 }

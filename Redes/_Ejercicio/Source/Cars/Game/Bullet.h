@@ -28,6 +28,6 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	float m_fSpeed = 300.f;
+	float m_fSpeed = 30.f;
 	UBulletNetComponent* GetNetComponent() { return m_pNetComponent; }
 };
