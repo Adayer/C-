@@ -28,6 +28,7 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	void SetInput(const FVector2D& _vInput) { m_vMovementInput = _vInput; }
+	void StopCarMovement();
 	float GetVelocityMagnitude() const;
 
 protected:

@@ -104,3 +104,7 @@ float UCarMovementComponent::GetVelocityMagnitude() const
 	return m_vVelocity.Size();
 }
 
+void UCarMovementComponent::StopCarMovement()
+{
+	m_vVelocity = FVector::ZeroVector;
+}

@@ -7,6 +7,9 @@
 #include "GameNet/GameBuffer.h"
 #include "../CarsGameInstance.h"
 #include "GameNet/GameNetMgr.h"
+#include "../Game/Car.h"
+#include "../Game/CarMovementComponent.h"
+#include "NetComponent.h"
 
 
 // Sets default values for this component's properties
@@ -46,9 +49,9 @@ void UBulletNetComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 
 		if (m_fBulletLifeTime <= 0)
 		{
-			Cast<UCarsGameInstance>(GetWorld()->GetGameInstance())->m_oGameNetMgr.DestroyBullet(m_uID);
 			SerializeData();
 			GetOwner()->Destroy();
+			//Cast<UCarsGameInstance>(GetWorld()->GetGameInstance())->m_oGameNetMgr.DestroyBullet(m_uID);
 		}
 		
 	}
@@ -77,8 +80,26 @@ void UBulletNetComponent::DeserializeData(CGameBuffer* pData)
 
 	}
 }
-
 void UBulletNetComponent::DestroyOwnerActor()
 {
 	GetOwner()->Destroy();
+}
+void UBulletNetComponent::ProcessOnBulletBeginOverlap(ACar* _pOtherCar)
+{
+	if (m_pManager->getID() == Net::ID::SERVER)
+	{
+		if (_pOtherCar->GetNetComponent()->GetID() != m_uID)
+		{
+			//Stop the car
+			_pOtherCar->GetCarMovementComponent()->StopCarMovement();
+			
+			//Send message to stop client car
+			CGameBuffer oData;
+			Net::NetMessageType eMType = Net::NetMessageType::STOP_CAR;
+			oData.write(eMType);
+			oData.write(m_uID);
+			oData.write(_pOtherCar->GetNetComponent()->GetID());
+			m_pManager->send(&oData, true);
+		}
+	}
 }

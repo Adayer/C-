@@ -126,6 +126,14 @@ void CGameNetMgr::dataPacketReceived(Net::CPacket* packet)
 		}
 	}
 	break;
+	case Net::STOP_CAR:
+	{
+		Net::NetID uID;
+		oData.read(uID);
+		Net::NetID uCarID;
+		m_tPlayers[uCarID]->GetCarMovementComponent()->StopCarMovement();
+	}
+	break;
 	default:
 		break;
 	}
