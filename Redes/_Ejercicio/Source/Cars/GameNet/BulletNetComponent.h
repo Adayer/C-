@@ -37,6 +37,7 @@ public:
 	void SetID(unsigned int _uID) { m_uID = _uID; }
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	void ProcessOnBulletBeginOverlap(ACar* _pOtherCar);
+	/*void DestroyBulletFromServer();*/
 
 private:
 	Net::CManager* m_pManager;

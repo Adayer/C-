@@ -7,6 +7,7 @@
 #include "Bullet.generated.h"
 
 class UBulletNetComponent;
+class USphereComponent;
 UCLASS()
 class CARS_API ABullet : public AActor
 {
@@ -17,6 +18,8 @@ public:
 	ABullet();
 
 	UPROPERTY(EditAnywhere);
+	USphereComponent* m_pSphereCollision;
+	UPROPERTY(EditAnywhere);
 	UStaticMeshComponent* m_pMesh;
 	UPROPERTY(EditAnywhere);
 	UBulletNetComponent* m_pNetComponent;
@@ -25,11 +28,11 @@ protected:
 	virtual void BeginPlay() override;
 	UFUNCTION()
 		void OnBulletBeginOverlap(UPrimitiveComponent* OverlappedComp, AActor* Other, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-
+	bool bGeneratingOverlapEvents = false;
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	float m_fSpeed = 30.f;
+	float m_fSpeed = 800.f;
 	UBulletNetComponent* GetNetComponent() { return m_pNetComponent; }
 };

@@ -93,9 +93,12 @@ void UCarMovementComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	FVector vAccel = CalculateAcceleration();
-	FVector vAverageVelocity = CalculateAverageVelocity(vAccel, DeltaTime);
-	MoveActor(vAverageVelocity, DeltaTime);
+	if (!bPonerAFalseParaVerMejorElEfecto)
+	{
+		FVector vAccel = CalculateAcceleration();
+		FVector vAverageVelocity = CalculateAverageVelocity(vAccel, DeltaTime);
+		MoveActor(vAverageVelocity, DeltaTime);
+	}
 	// ...
 }
 
@@ -107,4 +110,5 @@ float UCarMovementComponent::GetVelocityMagnitude() const
 void UCarMovementComponent::StopCarMovement()
 {
 	m_vVelocity = FVector::ZeroVector;
+	bPonerAFalseParaVerMejorElEfecto = true;
 }

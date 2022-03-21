@@ -43,7 +43,7 @@ void CGameNetMgr::dataPacketReceived(Net::CPacket* packet)
 	oData.read(iID);
 	switch (iID)
 	{
-		case Net::LOAD_MAP:
+	case Net::LOAD_MAP:
 	{
 		char sLevel[32];
 		oData.read(sLevel);
@@ -121,17 +121,9 @@ void CGameNetMgr::dataPacketReceived(Net::CPacket* packet)
 			Net::NetID uID;
 			oData.read(uID);
 			
-			m_tBullets[uID]->GetNetComponent()->DestroyOwnerActor();
+			m_tBullets[uID]->Destroy();
 			m_tBullets[uID] = nullptr;
 		}
-	}
-	break;
-	case Net::STOP_CAR:
-	{
-		Net::NetID uID;
-		oData.read(uID);
-		Net::NetID uCarID;
-		m_tPlayers[uCarID]->GetCarMovementComponent()->StopCarMovement();
 	}
 	break;
 	default:

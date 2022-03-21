@@ -46,4 +46,6 @@ protected:
 	FVector2D m_vMovementInput = FVector2D::ZeroVector;
 	FVector m_vVelocity = FVector::ZeroVector;
 		
+	//Si pones esta variable a flase el coche impactado dejará de moverse y de recibir input
+	bool bPonerAFalseParaVerMejorElEfecto = true;
 };

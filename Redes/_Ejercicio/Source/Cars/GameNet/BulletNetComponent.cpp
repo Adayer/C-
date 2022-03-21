@@ -41,19 +41,13 @@ void UBulletNetComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 	if (m_pManager->getID() == Net::ID::SERVER)
 	{
 		m_fBulletLifeTime -= DeltaTime;
-		
-		for ()
-		{
-
-		}
 
 		if (m_fBulletLifeTime <= 0)
 		{
 			SerializeData();
 			GetOwner()->Destroy();
-			//Cast<UCarsGameInstance>(GetWorld()->GetGameInstance())->m_oGameNetMgr.DestroyBullet(m_uID);
-		}
-		
+			Cast<UCarsGameInstance>(GetWorld()->GetGameInstance())->m_oGameNetMgr.DestroyBullet(m_uID);
+		}	
 	}
 	else
 	{
@@ -77,12 +71,12 @@ void UBulletNetComponent::DeserializeData(CGameBuffer* pData)
 	}
 	else
 	{
-
 	}
 }
 void UBulletNetComponent::DestroyOwnerActor()
 {
 	GetOwner()->Destroy();
+	Cast<UCarsGameInstance>(GetWorld()->GetGameInstance())->m_oGameNetMgr.DestroyBullet(m_uID);
 }
 void UBulletNetComponent::ProcessOnBulletBeginOverlap(ACar* _pOtherCar)
 {
@@ -95,11 +89,18 @@ void UBulletNetComponent::ProcessOnBulletBeginOverlap(ACar* _pOtherCar)
 			
 			//Send message to stop client car
 			CGameBuffer oData;
-			Net::NetMessageType eMType = Net::NetMessageType::STOP_CAR;
+			Net::NetMessageType eMType = Net::NetMessageType::BULLET_DESTROY;
 			oData.write(eMType);
 			oData.write(m_uID);
-			oData.write(_pOtherCar->GetNetComponent()->GetID());
 			m_pManager->send(&oData, true);
+			
+			GetOwner()->Destroy();
+			Cast<UCarsGameInstance>(GetWorld()->GetGameInstance())->m_oGameNetMgr.DestroyBullet(m_uID);
 		}
 	}
 }
+//void UBulletNetComponent::DestroyBulletFromServer()
+//{
+//	SerializeData();
+//	GetOwner()->Destroy();
+//}
