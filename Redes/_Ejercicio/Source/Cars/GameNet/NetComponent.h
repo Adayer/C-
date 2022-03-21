@@ -30,6 +30,7 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	void SetID(unsigned int _uID) { m_uID = _uID; }
+	unsigned int GetID() { return m_uID; }
 
 	void SerializeData();
 

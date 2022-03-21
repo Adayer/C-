@@ -113,12 +113,22 @@ void CGameNetMgr::dataPacketReceived(Net::CPacket* packet)
 			CreateBullet(uID);
 		}
 	}
+	break;
 	case Net::BULLET_DESTROY:
 	{
 		Net::NetID uID;
 		oData.read(uID);
 		DestroyBullet(uID);
 	}
+	break;
+	case Net::STOP_CAR:
+	{
+		Net::NetID uID;
+		oData.read(uID);
+		Net::NetID uCarID;
+		m_tPlayers[uCarID]->GetCarMovementComponent()->StopCarMovement();
+	}
+	break;
 	default:
 		break;
 	}
@@ -166,7 +176,6 @@ void CGameNetMgr::CreateCar(unsigned int _uClient, FVector _vPos)
 void CGameNetMgr::CreateBullet(unsigned int _uClient)
 {
 	FActorSpawnParameters SpawnInfo;
-	SpawnInfo.Name = FName("Bullet", _uClient);
 	SpawnInfo.SpawnCollisionHandlingOverride =
 		ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 	ABullet* pBullet = m_pCarsGameInstance->GetWorld()->

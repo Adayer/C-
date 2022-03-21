@@ -12,6 +12,7 @@ namespace Net
 	class CManager;
 }
 class CGameBuffer;
+class ACar;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class CARS_API UBulletNetComponent : public UActorComponent
@@ -33,6 +34,7 @@ public:
 	// Called every frame
 	void SetID(unsigned int _uID) { m_uID = _uID; }
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+	void ProcessOnBulletBeginOverlap(ACar* _pOtherCar);
 
 private:
 	Net::CManager* m_pManager;
