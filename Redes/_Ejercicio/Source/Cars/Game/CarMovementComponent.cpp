@@ -93,7 +93,7 @@ void UCarMovementComponent::TickComponent(float DeltaTime, ELevelTick TickType, 
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	if (!bPonerAFalseParaVerMejorElEfecto)
+	if (!bStopCarInput)
 	{
 		FVector vAccel = CalculateAcceleration();
 		FVector vAverageVelocity = CalculateAverageVelocity(vAccel, DeltaTime);
@@ -110,5 +110,6 @@ float UCarMovementComponent::GetVelocityMagnitude() const
 void UCarMovementComponent::StopCarMovement()
 {
 	m_vVelocity = FVector::ZeroVector;
-	bPonerAFalseParaVerMejorElEfecto = true;
+	//Descomentar esta linea para hacer que se pare del todo una vez reciba el hit
+	//bStopCarInput = true;
 }
