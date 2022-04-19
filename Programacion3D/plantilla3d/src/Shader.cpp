@@ -14,44 +14,44 @@ Shader::Shader(const std::string& _vertexFilename, const std::string& _fragmentF
 
 	//Vertex shader
 	int retCode; 
-	uint32_t vertexShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vertexShader, 1, &cVertexShaderSource, nullptr);
-	glCompileShader(vertexShader);
-	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &retCode);
+	GLuint sVertexShader = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(sVertexShader, 1, &cVertexShaderSource, nullptr);
+	glCompileShader(sVertexShader);
+	glGetShaderiv(sVertexShader, GL_COMPILE_STATUS, &retCode);
 
 	if (retCode == GL_FALSE)
 	{
 		char errorLog[1024];
-		glGetShaderInfoLog(vertexShader, sizeof(errorLog), NULL, errorLog);
+		glGetShaderInfoLog(sVertexShader, sizeof(errorLog), NULL, errorLog);
 		m_error = errorLog;
-		glDeleteShader(vertexShader);
+		glDeleteShader(sVertexShader);
 		return;
 	}
 
 	//Fragment shader
 	std::string fragmentCode = readString(_fragmentFilename);
 	const char* cFragmentShaderSource = fragmentCode.c_str();
-	uint32_t fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fragmentShader, 1, &cFragmentShaderSource, nullptr);
-	glCompileShader(fragmentShader);
-	glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &retCode);
+	GLuint sFragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(sFragmentShader, 1, &cFragmentShaderSource, nullptr);
+	glCompileShader(sFragmentShader);
+	glGetShaderiv(sFragmentShader, GL_COMPILE_STATUS, &retCode);
 
 	if (retCode == GL_FALSE)
 	{
 		char errorLog[1024];
-		glGetShaderInfoLog(fragmentShader, sizeof(errorLog), NULL, errorLog);
+		glGetShaderInfoLog(sFragmentShader, sizeof(errorLog), NULL, errorLog);
 		m_error = errorLog;
-		glDeleteShader(fragmentShader);
+		glDeleteShader(sFragmentShader);
 		return;
 	}
 
 	//Create Program
 	m_uID = glCreateProgram();
-	glAttachShader(m_uID, vertexShader);
-	glAttachShader(m_uID, fragmentShader);
+	glAttachShader(m_uID, sVertexShader);
+	glAttachShader(m_uID, sFragmentShader);
 	glLinkProgram(m_uID);
-	//glDeleteShader(vertexShader);
-	//glDeleteShader(fragmentShader);
+	//glDeleteShader(sVertexShader);
+	//glDeleteShader(sFragmentShader);
 	glGetProgramiv(m_uID, GL_LINK_STATUS, &retCode);
 
 	if (retCode == GL_FALSE)
@@ -66,9 +66,12 @@ Shader::Shader(const std::string& _vertexFilename, const std::string& _fragmentF
 	}
 
 	//Vertex shader attributes
-	glGetAttribLocation(m_uID, "vpos");
-	glGetAttribLocation(m_uID, "vcolor");
+	m_vPosLoc = glGetAttribLocation(m_uID, "vpos");
+	m_vColorLoc = glGetAttribLocation(m_uID, "vcolor");
+
+	glUseProgram(m_uID); // TO DO: Cambiar a futuro
 }
+
 
 std::string Shader::readString(const std::string& filename)
 {
@@ -78,6 +81,10 @@ std::string Shader::readString(const std::string& filename)
 	return sstream.str();
 }
 
+int Shader::getLocation(const char* name) const
+{
+	return glGetUniformLocation(m_uID, name);
+}
 void Shader::setupAttribs() const
 {
 	if (m_vPosLoc != -1)
@@ -92,35 +99,35 @@ void Shader::setupAttribs() const
 	}
 }
 
-void Shader::setInt(int loc, int val)
+void Shader::setInt(int loc, int val) const
 {
 	if (loc != -1)
 	{
 		glUniform1i(loc, val);
 	}
 }
-void Shader::setFloat(int loc, float val)
+void Shader::setFloat(int loc, float val) const
 {
 	if (loc != -1)
 	{
 		glUniform1f(loc, val);
 	}
 }
-void Shader::setVec3(int loc, const glm::vec3& vec)
+void Shader::setVec3(int loc, const glm::vec3& vec) const
 {
 	if (loc != -1)
 	{
 		glUniform3f(loc, vec.x, vec.y, vec.z);
 	}
 }
-void Shader::setVec4(int loc, const glm::vec4& vec)
+void Shader::setVec4(int loc, const glm::vec4& vec) const
 {
 	if (loc != -1)
 	{
 		glUniform4f(loc, vec.x, vec.y, vec.z, vec.w);
 	}
 }
-void Shader::setMatrix(int loc, const glm::mat4& matrix)
+void Shader::setMatrix(int loc, const glm::mat4& matrix) const
 {
 	if (loc != -1)
 	{

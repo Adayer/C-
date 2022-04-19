@@ -23,11 +23,11 @@ public:
 	// Obtiene la localización de una variable uniform
 	int getLocation(const char* name) const;
 	// Da valor a una variable uniform
-	void setInt(int loc, int val);
-	void setFloat(int loc, float val);
-	void setVec3(int loc, const glm::vec3& vec);
-	void setVec4(int loc, const glm::vec4& vec);
-	void setMatrix(int loc, const glm::mat4& matrix);
+	void setInt(int loc, int val) const;
+	void setFloat(int loc, float val) const;
+	void setVec3(int loc, const glm::vec3& vec) const;
+	void setVec4(int loc, const glm::vec4& vec) const;
+	void setMatrix(int loc, const glm::mat4& matrix) const;
 
 private:
 	
@@ -37,7 +37,5 @@ private:
 	uint32_t m_uID;
 
 	char* m_error;
-
-
 	std::string readString(const std::string& filename);
 };

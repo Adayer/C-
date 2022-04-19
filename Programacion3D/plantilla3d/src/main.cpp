@@ -3,12 +3,11 @@
 #endif
 
 #include <GL/glew.h>
-
 #include "../lib/glfw/glfw3.h"
 #include <iostream>
 #include <vector>
-
-#include "Shader.h"
+#include <GL/glew.h>
+#include "Engine3D.h"
 
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
@@ -31,12 +30,8 @@ int main() {
 	}
 	glfwMakeContextCurrent(win);
 
-	//THIS |
-	//     |
-	//     v
-	glewInit();
-	Shader* shaderPruebas = new Shader("data/vertex.glsl", "data/fragment.glsl");
-
+	Engine3D* renderEngine = new Engine3D();
+	renderEngine->Init();
 
 	// main loop
 	float angle = 0;
@@ -51,6 +46,11 @@ int main() {
 		glfwGetWindowSize(win, &screenWidth, &screenHeight);
 
 		
+		glClearColor(0, 1, 0, 1);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		
+
+		renderEngine->Draw();
 
 		// refresh screen
 		glfwSwapBuffers(win);
