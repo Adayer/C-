@@ -22,19 +22,30 @@ void Engine3D::Init()
 
 	Vertex vertices[3] =
 	{
-		Vertex(glm::vec3(0, 0.5f, 0), glm::vec3(1, 1, 1)),
-		Vertex(glm::vec3(-0.5f, -0.5f, 0), glm::vec3(1, 1, 1)),
-		Vertex(glm::vec3(0.5f, -0.5f, 0), glm::vec3(1, 1, 1))
+		Vertex(glm::vec3(0, 0.5f, 0), glm::vec3(0, 0, 1)),
+		Vertex(glm::vec3(-0.5f, -0.5f, 0), glm::vec3(0, 1, 0)),
+		Vertex(glm::vec3(0.5f, -0.5f, 0), glm::vec3(1, 0, 0))
 	};
 	uint16_t indexes[3] = { 0, 1, 2 };
-	m_tBuffers.push_back(Buffer(vertices, indexes));
+
+	m_tBuffers.push_back(new Buffer(vertices, indexes, glm::vec3(-3.f, 0.f, 0.f)));
+	m_tBuffers.push_back(new Buffer(vertices, indexes, glm::vec3(-3.f, 0.f, -3.f)));
+	m_tBuffers.push_back(new Buffer(vertices, indexes, glm::vec3(-3.f, 0.f, -6.f)));
+	
+	m_tBuffers.push_back(new Buffer(vertices, indexes, glm::vec3(0.f, 0.f, 0.f)));
+	m_tBuffers.push_back(new Buffer(vertices, indexes, glm::vec3(0.f, 0.f, -3.f)));
+	m_tBuffers.push_back(new Buffer(vertices, indexes, glm::vec3(0.f, 0.f, -6.f)));
+	
+	m_tBuffers.push_back(new Buffer(vertices, indexes, glm::vec3(3.f, 0.f, 0.f)));
+	m_tBuffers.push_back(new Buffer(vertices, indexes, glm::vec3(3.f, 0.f, -3.f)));
+	m_tBuffers.push_back(new Buffer(vertices, indexes, glm::vec3(3.f, 0.f, -6.f)));
 }
-void Engine3D::Draw()
+void Engine3D::Draw(float _deltaTime)
 {
 	size_t numBuffer = m_tBuffers.size();
 	for (size_t i = 0; i < numBuffer; ++i)
 	{
-		m_tBuffers[i].CalculatePMat(P, V);
-		m_tBuffers[i].Draw(*m_sShaderTriangles);
+		m_tBuffers[i]->CalculatePMat(P, V, _deltaTime);
+		m_tBuffers[i]->Draw(*m_sShaderTriangles);
 	}
 }

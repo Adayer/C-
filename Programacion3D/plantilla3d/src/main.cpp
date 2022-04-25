@@ -31,9 +31,12 @@ int main() {
 	glfwMakeContextCurrent(win);
 
 	Engine3D* renderEngine = new Engine3D();
+	
 	renderEngine->Init();
-
 	// main loop
+
+	//Buffer cosa = Buffer(pruebasVertices, pruebasIndexes);
+
 	float angle = 0;
 	double lastTime = glfwGetTime();
 	while ( !glfwWindowShouldClose(win) && !glfwGetKey(win, GLFW_KEY_ESCAPE) ) {
@@ -46,11 +49,11 @@ int main() {
 		glfwGetWindowSize(win, &screenWidth, &screenHeight);
 
 		
-		glClearColor(0, 1, 0, 1);
+		glClearColor(0, 0, 0, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 
-		renderEngine->Draw();
+		renderEngine->Draw(deltaTime);
 
 		// refresh screen
 		glfwSwapBuffers(win);

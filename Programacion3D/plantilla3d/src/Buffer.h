@@ -1,13 +1,15 @@
 #pragma once
 #include <glm.hpp>
+#include "Vertex.h"
+#include <vector>
 
 class Shader;
-class Vertex;
+//class Vertex;
 
 class Buffer
 {
 public:
-	Buffer(const Vertex* _tVertex, const uint16_t* _tIndexes);
+	Buffer(const Vertex* _tVertex, const uint16_t* _tIndexes, glm::vec3 _vPos);
 	~Buffer();
 	void Draw(const Shader& shader) const;
 
@@ -17,7 +19,7 @@ public:
 	void SetRotation(float _fRot) { m_fRot = _fRot; }
 	float GetRotation() { return m_fRot; }
 
-	void CalculatePMat(const glm::mat4& _P, const glm::mat4& _V);
+	void CalculatePMat(const glm::mat4& _P, const glm::mat4& _V, float _deltaTime);
 private:
 
 
