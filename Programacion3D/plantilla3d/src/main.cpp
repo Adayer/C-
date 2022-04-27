@@ -2,12 +2,15 @@
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
 #endif
 
+
+
 #include <GL/glew.h>
 #include "../lib/glfw/glfw3.h"
 #include <iostream>
 #include <vector>
 #include <GL/glew.h>
 #include "Engine3D.h"
+#include "World.h"
 
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
@@ -31,8 +34,11 @@ int main() {
 	glfwMakeContextCurrent(win);
 
 	Engine3D* renderEngine = new Engine3D();
-	
 	renderEngine->Init();
+
+	World* world = new World();
+	world->InitWorld();
+	
 	// main loop
 
 	//Buffer cosa = Buffer(pruebasVertices, pruebasIndexes);
@@ -48,12 +54,8 @@ int main() {
 		int screenWidth, screenHeight;
 		glfwGetWindowSize(win, &screenWidth, &screenHeight);
 
-		
-		glClearColor(0, 0, 0, 1);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		
-
-		renderEngine->Draw(deltaTime);
+		world->update(deltaTime);
+		world->draw();
 
 		// refresh screen
 		glfwSwapBuffers(win);
