@@ -1,0 +1,45 @@
+﻿  AudioBuffer.cpp
+  AudioSource.cpp
+  Listener.cpp
+  main.cpp
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\main.cpp(17,1): warning C4005: '_CRT_SECURE_NO_WARNINGS': macro redefinition
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\main.cpp : message : see previous definition of '_CRT_SECURE_NO_WARNINGS'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\main.cpp(55,59): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\main.cpp(55,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\main.cpp(56,52): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\main.cpp(56,22): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\main.cpp(61,56): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\main.cpp(66,56): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
+AudioBuffer.obj : error LNK2019: unresolved external symbol __imp_alGetError referenced in function "public: static class AudioBuffer * __cdecl AudioBuffer::load(char const *)" (?load@AudioBuffer@@SAPEAV1@PEBD@Z)
+AudioBuffer.obj : error LNK2019: unresolved external symbol __imp_alGenBuffers referenced in function "public: static class AudioBuffer * __cdecl AudioBuffer::load(char const *)" (?load@AudioBuffer@@SAPEAV1@PEBD@Z)
+AudioBuffer.obj : error LNK2019: unresolved external symbol __imp_alDeleteBuffers referenced in function "public: __cdecl AudioBuffer::~AudioBuffer(void)" (??1AudioBuffer@@QEAA@XZ)
+AudioBuffer.obj : error LNK2019: unresolved external symbol __imp_alBufferData referenced in function "public: static class AudioBuffer * __cdecl AudioBuffer::load(char const *)" (?load@AudioBuffer@@SAPEAV1@PEBD@Z)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alGenSources referenced in function "public: __cdecl AudioSource::AudioSource(class AudioBuffer *)" (??0AudioSource@@QEAA@PEAVAudioBuffer@@@Z)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourcef referenced in function "public: __cdecl AudioSource::AudioSource(class AudioBuffer *)" (??0AudioSource@@QEAA@PEAVAudioBuffer@@@Z)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSource3f referenced in function "public: __cdecl AudioSource::AudioSource(class AudioBuffer *)" (??0AudioSource@@QEAA@PEAVAudioBuffer@@@Z)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourcei referenced in function "public: __cdecl AudioSource::AudioSource(class AudioBuffer *)" (??0AudioSource@@QEAA@PEAVAudioBuffer@@@Z)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourcePlay referenced in function "public: void __cdecl AudioSource::play(void)" (?play@AudioSource@@QEAAXXZ)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourceStop referenced in function "public: void __cdecl AudioSource::stop(void)" (?stop@AudioSource@@QEAAXXZ)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourcePause referenced in function "public: void __cdecl AudioSource::pause(void)" (?pause@AudioSource@@QEAAXXZ)
+Listener.obj : error LNK2019: unresolved external symbol __imp_alListener3f referenced in function "public: __cdecl Listener::Listener(void)" (??0Listener@@QEAA@XZ)
+main.obj : error LNK2019: unresolved external symbol __imp_alcCreateContext referenced in function main
+main.obj : error LNK2019: unresolved external symbol __imp_alcMakeContextCurrent referenced in function main
+main.obj : error LNK2019: unresolved external symbol __imp_alcDestroyContext referenced in function main
+main.obj : error LNK2019: unresolved external symbol __imp_alcGetCurrentContext referenced in function main
+main.obj : error LNK2019: unresolved external symbol __imp_alcGetContextsDevice referenced in function main
+main.obj : error LNK2019: unresolved external symbol __imp_alcOpenDevice referenced in function main
+main.obj : error LNK2019: unresolved external symbol __imp_alcCloseDevice referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwInit referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwTerminate referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwCreateWindow referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwWindowShouldClose referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwGetKey referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwGetTime referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function main
+..\openal\OpenAL32.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+..\lib\glfw3.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\x64\Debug\programacion2d.exe : fatal error LNK1120: 27 unresolved externals

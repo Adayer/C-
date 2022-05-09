@@ -1,5 +1,3 @@
-#define _USE_MATH_DEFINES
-
 #include "../openal/AL/al.h"
 #include "../openal/AL/alc.h"
 #include "../openal/AL/alext.h"
@@ -7,92 +5,84 @@
 #include "AudioSource.h"
 #include "AudioBuffer.h"
 #include "Listener.h"
-#include <iostream>
-#include <cmath>
+
+#define _USE_MATH_DEFINES
 #include <math.h>
-#include <string>
+#include <cmath>
 
 
 #ifdef _MSC_VER
 #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
 #endif
-
+#define _CRT_SECURE_NO_WARNINGS
 #define LITE_GFX_IMPLEMENTATION
+
 #include <glfw3.h>
-#include <sstream>
-#include <vector>
-
-#include <fstream>     
-#include <iterator>
 #include "litegfx.h"
-
-using namespace std;
-
 
 int main()
 {
-	double lastTime = 0;
-	double updateTime = glfwGetTime();
-	double deltaTime = 0;
-	double g = 0;
-	char p[] = "prac2 sonido";
+	double dBufferTime = 0;
+	double dUpdateTime = glfwGetTime();
+	double dDeltaTime = 0;
+
+	double dAngle = 0;
+	double dSpeed = 90.f;
+	double dRadius = 150.f;
+	char sFilename[] = "prac1 sonido";
 	glfwInit();
-	GLFWwindow* a = glfwCreateWindow(400, 400, &p[0], NULL, NULL);
-	glfwMakeContextCurrent(a);
-	lgfx_setup2d(400, 400);
+	GLFWwindow* pWindow = glfwCreateWindow(600, 600, &sFilename[0], NULL, NULL);
+	glfwMakeContextCurrent(pWindow);
+	lgfx_setup2d(600, 600);
 
+	ALCdevice* pAudioDevice = alcOpenDevice(NULL);
+	ALCcontext* pAudioContext = alcCreateContext(pAudioDevice, NULL);
+	alcMakeContextCurrent(pAudioContext);
 
-	ALCdevice* device = alcOpenDevice(NULL);
-	ALCcontext* Context = alcCreateContext(device, NULL);
-	alcMakeContextCurrent(Context);
+	AudioSource* pSource = new AudioSource(AudioBuffer::load("data/music.wav"));
+	pSource->setVelocity(10, 10, 10);
+	Listener* pListener = new Listener();
+	pSource->play();
 
-	//engine.wav no funciona???
-	AudioBuffer* buffer = AudioBuffer::load("data/music.wav");
-
-	AudioSource* source = new AudioSource(buffer);
-
-	Listener* listener = new Listener();
-	source->play();
-
-	while (!glfwWindowShouldClose(a))
+	while (!glfwWindowShouldClose(pWindow))
 	{
 		//Time
-		lastTime = updateTime;
-		updateTime = glfwGetTime();
-		deltaTime = updateTime - lastTime;
+		dBufferTime = dUpdateTime;
+		dUpdateTime = glfwGetTime();
+		dDeltaTime = dUpdateTime - dBufferTime;
 
 		lgfx_clearcolorbuffer(0.5f, 0.5f, 0.5f);
-
-
-
 		lgfx_setcolor(1, 0, 0, 1);
-		g += (64 * M_PI / 180) * deltaTime;
-		source->setPosition(200 + cos(g) * 100 - 10, 200 + sin(g) * 100 - 10, 0);
-		lgfx_drawoval(200 + cos(g) * 100 - 10, 200 + sin(g) * 100 - 10, 20, 20);
+		dAngle = dAngle + (dSpeed * M_PI / 180.) * dDeltaTime;
 
+		float x = 200. + cos(dAngle) * dRadius;
+		float y = 200. + sin(dAngle) * dRadius;
+		
+		pSource->setPosition(x, y, 0);
 
-		if (glfwGetKey(a, GLFW_KEY_RIGHT) == GLFW_PRESS || glfwGetKey(a, GLFW_KEY_D) == GLFW_PRESS)
+		lgfx_drawoval(200. + cos(dAngle) * dRadius, 200. + sin(dAngle) * dRadius, 20.f, 20.f);
+		
+		if (glfwGetKey(pWindow, GLFW_KEY_RIGHT) == GLFW_PRESS || glfwGetKey(pWindow, GLFW_KEY_D) == GLFW_PRESS)
 		{
-			listener->setListenerPosition(listener->posX += 100 * deltaTime, 380, 0);
+			pListener->setListenerPosition(pListener->GetPosX() + 100 * dDeltaTime, 300, 0);
 		}
 
-		if (glfwGetKey(a, GLFW_KEY_LEFT) == GLFW_PRESS || glfwGetKey(a, GLFW_KEY_A) == GLFW_PRESS)
+		if (glfwGetKey(pWindow, GLFW_KEY_LEFT) == GLFW_PRESS || glfwGetKey(pWindow, GLFW_KEY_A) == GLFW_PRESS)
 		{
-			listener->setListenerPosition(listener->posX += -100 * deltaTime, 380, 0);
+			pListener->setListenerPosition(pListener->GetPosX() - 100. * dDeltaTime, 300.f, 0.f);
 		}
 
 		lgfx_setcolor(1, 1, 1, 1);
-		lgfx_drawoval(listener->posX, 380, 20, 20);
-
-		glfwSwapBuffers(a);
+		lgfx_drawoval(pListener->GetPosX(), 380, 20, 20);
+		glfwSwapBuffers(pWindow);
 		glfwPollEvents();
 	}
 
-	Context = alcGetCurrentContext();
-	device = alcGetContextsDevice(Context);
+	pAudioContext = alcGetCurrentContext();
+	pAudioDevice = alcGetContextsDevice(pAudioContext);
 	alcMakeContextCurrent(NULL);
-	alcDestroyContext(Context);
-	alcCloseDevice(device);
+	alcDestroyContext(pAudioContext);
+	alcCloseDevice(pAudioDevice);
 
 	glfwTerminate();
 

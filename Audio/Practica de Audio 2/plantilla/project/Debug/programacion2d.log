@@ -1,15 +1,3 @@
-﻿  AudioBuffer.cpp
-  AudioSource.cpp
-  Listener.cpp
-  main.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\shared\minwindef.h(130,1): warning C4005: 'APIENTRY': macro redefinition
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\lib\glfw3.h(98): message : see previous definition of 'APIENTRY'
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\main.cpp(70,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\main.cpp(70,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\main.cpp(71,61): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\main.cpp(71,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\main.cpp(76,67): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\main.cpp(81,68): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
+﻿  AudioSource.cpp
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   programacion2d.vcxproj -> C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\Debug\programacion2d.exe

@@ -1,4 +1,4 @@
 C:\Users\pablo.bermejo\Desktop\Practica de Audio\plantilla\project\Debug\programacion2d.exe
 C:\Users\pablo\Desktop\Practica de Audio\plantilla\project\Debug\programacion2d.exe
-C:\Users\pablo\Desktop\Practica de Audio 2\plantilla\project\Debug\programacion2d.exe
+C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio\plantilla\project\Debug\programacion2d.exe
 C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Audio\Practica de Audio 2\plantilla\project\Debug\programacion2d.exe
