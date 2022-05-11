@@ -31,8 +31,9 @@ public:
 
 private:
 	
-	unsigned int m_vPosLoc;
-	unsigned int m_vColorLoc;
+	int m_vPosLoc;
+	int m_vColorLoc;
+	int m_vTextLoc;
 
 	uint32_t m_uID;
 

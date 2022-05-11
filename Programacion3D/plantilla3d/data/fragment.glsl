@@ -1,5 +1,15 @@
-varying vec3 fcolor;
+uniform sampler2D texSampler;
+uniform int hasTex;
+varying vec2 ftex;
 
-void main() {
-	gl_FragColor = vec4(fcolor, 1);
+void main()
+{
+if(fhasTex == 1)
+{
+gl_FragColor = texture2D(texSampler, ftex);
+}
+else
+{
+gl_FragColor = vec4(1,1,1,1);
+}
 }

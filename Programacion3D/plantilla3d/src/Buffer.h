@@ -10,9 +10,9 @@ class Shader;
 class Buffer
 {
 public:
-	Buffer(const Vertex* _tVertex, const uint16_t* _tIndexes, glm::vec3 _vPos, const Shader* _pOverride = nullptr);
+	Buffer(const Vertex* _tVertex, const uint16_t* _tIndexes, glm::vec3 _vPos);
 	~Buffer();
-	void Draw() const;
+	void Draw(const Shader* _pUsedShader) const;
 
 	void SetPosition(glm::vec3 _vPos) { m_vPos = _vPos; }
 	glm::vec3 GetPosition() { return m_vPos; }
@@ -21,9 +21,6 @@ public:
 	float GetRotation() { return m_fRot; }
 
 private:
-
-	const Shader* m_pOverrideShader = nullptr;
-
 	uint32_t m_tIDs[2];
 
 	glm::vec3 m_vPos;

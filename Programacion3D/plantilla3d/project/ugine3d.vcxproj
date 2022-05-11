@@ -144,10 +144,12 @@
     <ClInclude Include="..\src\Common.h" />
     <ClInclude Include="..\src\Engine3D.h" />
     <ClInclude Include="..\src\Entity.h" />
+    <ClInclude Include="..\src\Material.h" />
     <ClInclude Include="..\src\Mesh.h" />
     <ClInclude Include="..\src\Model.h" />
     <ClInclude Include="..\src\Shader.h" />
     <ClInclude Include="..\src\State.h" />
+    <ClInclude Include="..\src\Texture.h" />
     <ClInclude Include="..\src\Util.h" />
     <ClInclude Include="..\src\Vertex.h" />
     <ClInclude Include="..\src\World.h" />
@@ -160,10 +162,12 @@
     <ClCompile Include="..\src\Engine3D.cpp" />
     <ClCompile Include="..\src\Entity.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\Material.cpp" />
     <ClCompile Include="..\src\Mesh.cpp" />
     <ClCompile Include="..\src\Model.cpp" />
     <ClCompile Include="..\src\Shader.cpp" />
     <ClCompile Include="..\src\State.cpp" />
+    <ClCompile Include="..\src\Texture.cpp" />
     <ClCompile Include="..\src\Util.cpp" />
     <ClCompile Include="..\src\World.cpp" />
   </ItemGroup>

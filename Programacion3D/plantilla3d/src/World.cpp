@@ -4,6 +4,7 @@
 #include "Vertex.h"
 #include "Model.h"
 #include "Mesh.h"
+#include "Texture.h"
 
 World::World()
 {
@@ -27,8 +28,10 @@ void World::InitWorld()
 
 	//Add triangles
 	Mesh* triangleMesh = new Mesh();
-	Buffer* puntero = (new Buffer(vertices, indexes, glm::vec3(-3.f, 0.f, 0.f)));
-	triangleMesh->addBuffer(*puntero);
+	Buffer* pBuffer = (new Buffer(vertices, indexes, glm::vec3(-3.f, 0.f, 0.f)));
+	Material* pMaterialFront = (new Material(Texture::load("front.png")));
+	Material* pMaterialBack = (new Material(Texture::load("front.png")));
+	triangleMesh->addBuffer(*pBuffer, *pMaterialFront);
 	
 	Model* newModel = new Model(*triangleMesh);
 	newModel->setPosition(glm::vec3(0, 0, 0));
