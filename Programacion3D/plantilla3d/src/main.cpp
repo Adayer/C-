@@ -3,6 +3,7 @@
 #endif
 
 #define STB_IMAGE_IMPLEMENTATION
+#define TINYOBJLOADER_IMPLEMENTATION
 
 #include <GL/glew.h>
 #include "../lib/glfw/glfw3.h"

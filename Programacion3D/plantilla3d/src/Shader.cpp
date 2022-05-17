@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+//gl_FragColor = texture2D(texSampler, ftex);
 
 Shader::Shader(const std::string& _vertexFilename, const std::string& _fragmentFilename)
 {
@@ -68,7 +69,7 @@ Shader::Shader(const std::string& _vertexFilename, const std::string& _fragmentF
 	//Vertex shader attributes
 	m_vPosLoc = glGetAttribLocation(m_uID, "vpos");
 	//m_vColorLoc = glGetAttribLocation(m_uID, "vcolor");
-	m_vTextLoc = glGetAttribLocation(m_uID, "vtext");
+	m_vTextLoc = glGetAttribLocation(m_uID, "vtex");
 
 	glUseProgram(m_uID); // TO DO: Cambiar a futuro
 }
@@ -93,15 +94,15 @@ void Shader::setupAttribs() const
 		glEnableVertexAttribArray(m_vPosLoc);
 		glVertexAttribPointer(m_vPosLoc, 3, GL_FLOAT, false, sizeof(Vertex),reinterpret_cast<const void*>(offsetof(Vertex, vPos)));
 	}
-	if (m_vColorLoc != -1)
+	/*if (m_vColorLoc != -1)
 	{
 		glEnableVertexAttribArray(m_vColorLoc);
 		glVertexAttribPointer(m_vColorLoc, 3, GL_FLOAT, false, sizeof(Vertex),reinterpret_cast<const void*>(offsetof(Vertex, vColor)));
-	}
+	}*/
 	if (m_vTextLoc != -1)
 	{
 		glEnableVertexAttribArray(m_vTextLoc);
-		glVertexAttribPointer(m_vTextLoc, 3, GL_FLOAT, false, sizeof(Vertex), reinterpret_cast<const void*>(offsetof(Vertex, vTextureCoord)));
+		glVertexAttribPointer(m_vTextLoc, 2, GL_FLOAT, false, sizeof(Vertex), reinterpret_cast<const void*>(offsetof(Vertex, vTextureCoord)));
 	}
 }
 

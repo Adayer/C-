@@ -6,7 +6,9 @@
 class Mesh
 {
 public:
-	void addBuffer(const Buffer& buffer, const Material& material);
+	static Mesh* load(const char* filename, const Shader* shader = nullptr);
+
+	void addBuffer(Buffer* buffer, Material* material);
 	void draw() const;
 
 	size_t getNumBuffers() const
@@ -17,7 +19,7 @@ public:
 	{
 		if (index < m_tBuffers.size())
 		{
-			return &m_tBuffers[index];
+			return m_tBuffers[index];
 		}
 		return nullptr;
 	}
@@ -25,7 +27,7 @@ public:
 	{
 		if (index < (m_tBuffers.size() - 1))
 		{
-			return &m_tBuffers[index];
+			return m_tBuffers[index];
 		}
 		return nullptr;
 	}
@@ -34,7 +36,7 @@ public:
 	{
 		if (index < m_tMaterials.size())
 		{
-			return &m_tMaterials[index];
+			return m_tMaterials[index];
 		}
 		return nullptr;
 	}
@@ -42,12 +44,12 @@ public:
 	{
 		if (index < (m_tMaterials.size() - 1))
 		{
-			return &m_tMaterials[index];
+			return m_tMaterials[index];
 		}
 		return nullptr;
 	}
 	
 private:
-	std::vector<Buffer> m_tBuffers;
-	std::vector<Material> m_tMaterials;
+	std::vector<Buffer*> m_tBuffers;
+	std::vector<Material*> m_tMaterials;
 };

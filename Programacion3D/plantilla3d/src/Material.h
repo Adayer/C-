@@ -25,7 +25,7 @@ public:
 
 	const Texture* getTexture() const { return m_pTexture; }
 	void setTexture(Texture* _pTex) { m_pTexture = _pTex; }
-	void prepare();
+	void prepare() const;
 
 private: 
 	Shader* m_pShader = nullptr;

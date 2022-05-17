@@ -4,8 +4,9 @@
 Texture* Texture::load(const char* filename)
 {
 	Texture* newTexture = new Texture();
+	
+	stbi_set_flip_vertically_on_load(true);
 	unsigned char* pixels = stbi_load(filename, &newTexture->texSize.x, &newTexture->texSize.y, nullptr, 4);
-
 	glGenTextures(1, &newTexture->texId);
 	glBindTexture(GL_TEXTURE_2D, newTexture->texId);
 
@@ -19,14 +20,6 @@ Texture* Texture::load(const char* filename)
 	stbi_image_free(pixels);
 
 	return newTexture;
-}
-uint32_t Texture::getId() const
-{
-
-}
-const glm::ivec2& Texture::getSize() const
-{
-
 }
 void Texture::bind() const
 {

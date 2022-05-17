@@ -6,5 +6,4 @@ varying vec2 ftex;
 void main() {
 	gl_Position = mvp * vec4(vpos, 1);
 	ftex = vtex;
-	fhasTex = vhasTex:
 }

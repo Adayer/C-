@@ -10,7 +10,8 @@ class Shader;
 class Buffer
 {
 public:
-	Buffer(const Vertex* _tVertex, const uint16_t* _tIndexes, glm::vec3 _vPos);
+	Buffer() {}
+	Buffer(const Vertex* _tVertex,int _iNumVertexes,const uint16_t* _tIndexes, int _iNumIndexes, glm::vec3 _vPos);
 	~Buffer();
 	void Draw(const Shader* _pUsedShader) const;
 
@@ -22,6 +23,8 @@ public:
 
 private:
 	uint32_t m_tIDs[2];
+	int m_iNumIndexes = 0;
+	int m_iNumVertexes = 0;
 
 	glm::vec3 m_vPos;
 	float m_fRot;

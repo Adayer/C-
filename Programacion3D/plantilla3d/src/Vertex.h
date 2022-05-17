@@ -3,7 +3,7 @@
 
 struct Vertex
 {
-	Vertex(glm::vec3 _vPos, glm::vec3 _vColor, glm::vec2 _TextureCoord = glm::vec2(0.f, 0.f)) :
+	Vertex(glm::vec3 _vPos, glm::vec3 _vColor, glm::vec2 _TextureCoord) :
 		vPos(_vPos), 
 		vColor(_vColor),
 		vTextureCoord(_TextureCoord)
