@@ -95,7 +95,7 @@
       <PreprocessorDefinitions>GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>../lib/stb_image;../lib/glm;../lib/glfw</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion3D\plantilla3d\lib\tinyobjloader-master;../lib/stb_image;../lib/glm;../lib/glfw</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.win64.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -131,7 +131,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>../lib/stb_image;../lib/glm;../lib/glfw</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\andres.perez.LIVEU-TAD\Documents\GitHub\C-\Programacion3D\plantilla3d\lib\tinyobjloader-master;../lib/stb_image;../lib/glm;../lib/glfw</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.win64.lib;opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

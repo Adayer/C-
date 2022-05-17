@@ -2,10 +2,13 @@
 #include "Buffer.h"
 #include "Shader.h"
 #include "Material.h"
+#include <string>
 
 class Mesh
 {
 public:
+	Mesh()
+	{}
 	static Mesh* load(const char* filename, const Shader* shader = nullptr);
 
 	void addBuffer(Buffer* buffer, Material* material);

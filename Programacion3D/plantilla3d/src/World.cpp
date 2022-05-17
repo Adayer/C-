@@ -11,6 +11,7 @@ World::World()
 }
 void World::InitWorld()
 {
+	/*
 	Vertex verticesSides[8] =
 	{	
 		//Left, Top, Back
@@ -72,13 +73,6 @@ void World::InitWorld()
 		4, 5, 6, 4, 6, 7
 	};
 
-	//Add camera
-	Camera* newCamera = new Camera();
-	newCamera->setClearColor(glm::vec3(1, 1, 0));
-	newCamera->setViewport(glm::ivec4(0, 0, 800, 600));
-	newCamera->setPosition(glm::vec3(0, 0, 6));
-	addEntity(newCamera);
-
 	//Add triangles
 	Mesh* triangleMesh = new Mesh();
 	//Sides
@@ -91,8 +85,16 @@ void World::InitWorld()
 	Material* pMaterialTop = (new Material(Texture::load("data/top.png")));
 	triangleMesh->addBuffer(pBufferSides, pMaterialFront);
 	triangleMesh->addBuffer(pBufferTops, pMaterialTop);
+	*/
+	//Add camera
+	Camera* newCamera = new Camera();
+	newCamera->setClearColor(glm::vec3(1, 1, 0));
+	newCamera->setViewport(glm::ivec4(0, 0, 800, 600));
+	newCamera->setPosition(glm::vec3(0, 0, 6));
+	addEntity(newCamera);
 	
-	Model* newModel = new Model(*triangleMesh);
+	Mesh* cajas = Mesh::load("data/box_stack.obj");
+	Model* newModel = new Model(*cajas);
 	newModel->setPosition(glm::vec3(0, 0, 0));
 	newModel->setScale(glm::vec3(1, 1, 1));
 	newModel->setRotation(glm::vec3(0, 0, 0));
