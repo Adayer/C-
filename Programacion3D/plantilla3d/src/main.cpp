@@ -14,6 +14,7 @@
 #include "Engine3D.h"
 #include "World.h"
 #include "Texture.h"
+#include "Camera.h"
 
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
@@ -47,6 +48,7 @@ int main() {
 	//Buffer cosa = Buffer(pruebasVertices, pruebasIndexes);
 
 	float angle = 0;
+	float cameraMoveSpeed = 5;
 	double lastTime = glfwGetTime();
 	while ( !glfwWindowShouldClose(win) && !glfwGetKey(win, GLFW_KEY_ESCAPE) ) {
 		// get delta time
@@ -56,6 +58,26 @@ int main() {
 		// get window size
 		int screenWidth, screenHeight;
 		glfwGetWindowSize(win, &screenWidth, &screenHeight);
+
+		glm::vec3 cameraOffset(0, 0, 0);
+		if (glfwGetKey(win, GLFW_KEY_RIGHT))
+		{
+			cameraOffset.x += 1;
+		}
+		else if (glfwGetKey(win, GLFW_KEY_LEFT))
+		{
+			cameraOffset.x -= 1;
+		}
+		if (glfwGetKey(win, GLFW_KEY_UP))
+		{
+			cameraOffset.z -= 1;
+		}
+		else if (glfwGetKey(win, GLFW_KEY_DOWN))
+		{
+			cameraOffset.z += 1;
+		}
+		cameraOffset *= cameraMoveSpeed * deltaTime;
+		world->getMainCamera()->Move(cameraOffset);
 
 		world->update(deltaTime);
 		world->draw();

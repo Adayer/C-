@@ -15,4 +15,12 @@ void Material::prepare() const
 	m_pTexture->bind();
 	int locTexSample = getShader()->getLocation("texSampler");
 	getShader()->setInt(locTexSample, 0);
+
+	//TO DO: Set uniforms
+	//Set ModelView and Normal (traspuesta de la inversa de ModelView)
+	//Num lights
+	//Color diffuso
+	//Shininess
+	// Llamar al prepare de cada luz
+	//
 }

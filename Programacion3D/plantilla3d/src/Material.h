@@ -25,9 +25,17 @@ public:
 
 	const Texture* getTexture() const { return m_pTexture; }
 	void setTexture(Texture* _pTex) { m_pTexture = _pTex; }
+	const glm::vec4& getColor() const { return m_vColor; }
+	void setColor(const glm::vec4& color) { m_vColor = color; }
+	uint8_t getShininess() const { return m_uShininess; }
+	void setShininess(uint8_t shininess) { m_uShininess = shininess; }
+	
 	void prepare() const;
+
 
 private: 
 	Shader* m_pShader = nullptr;
 	Texture* m_pTexture = nullptr;
+	glm::vec4 m_vColor;
+	uint8_t m_uShininess;
 };

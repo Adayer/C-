@@ -1,13 +1,13 @@
+#define TINYOBJLOADER_IMPLEMENTATION
 #include "Mesh.h"
 #include "State.h"
 #include "Texture.h"
-#define TINYOBJLOADER_IMPLEMENTATION
 #include <tiny_obj_loader.h>
 
 Mesh* Mesh::load(const char* filename, const Shader* shader)
 {
 	Mesh* newMesh = new Mesh();
-	std::string route = "data/";
+
 	//Obj
 	tinyobj::attrib_t attrib;
 	//Meshes? Buffers?
@@ -17,7 +17,7 @@ Mesh* Mesh::load(const char* filename, const Shader* shader)
 	//Errores y warnings
 	std::string warn, err;
 
-	if (!tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, filename))
+	if (!tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, filename, "data"))
 	{
 		return nullptr;
 	}
@@ -25,8 +25,9 @@ Mesh* Mesh::load(const char* filename, const Shader* shader)
 	//for (const auto& shape : shapes) 
 	for(unsigned int i = 0; i < shapes.size(); ++i)
 	{
-		Vertex* vertexes = new Vertex[shapes.size()];
-		uint16_t* indexes = new uint16_t[shapes.size()];
+		std::string route = "data/";
+		std::vector<Vertex> tVertexes;
+		std::vector<uint16_t> tIndexes;
 		//for (const auto& index : shape.mesh.indices) 
 		for(unsigned int y = 0; y < shapes[i].mesh.indices.size(); ++y)
 		{
@@ -41,14 +42,19 @@ Mesh* Mesh::load(const char* filename, const Shader* shader)
 				shapes[i].mesh.indices[y].texcoord_index + 0];
 			vertexAux->vTextureCoord.y = attrib.texcoords[2 *
 				shapes[i].mesh.indices[y].texcoord_index + 1];
-			vertexes[y] = *vertexAux;
-			indexes[y] = y;
+			tVertexes.push_back(*vertexAux);
+			tIndexes.push_back(y);
 		}
 		int numShapes = shapes.size();
-		Buffer* newBuffer = new Buffer(vertexes, numShapes, indexes, numShapes, glm::vec3(0, 0, 0));
-		Material* newMaterial = (new Material(Texture::load(route.append(materials[i].ambient_texname).c_str())));
+		Buffer* newBuffer = new Buffer(&tVertexes[0], tVertexes.size(), &tIndexes[0], tIndexes.size(), glm::vec3(0, 0, 0));
+		
+		route = route.append(materials[i].ambient_texname);
+		Material* newMaterial = (new Material(Texture::load(route.c_str())));
+		newMaterial->setShininess(materials[i].shininess);
+		newMaterial->setColor(glm::vec4(materials[i].ambient[0], materials[i].ambient[1], materials[i].ambient[2], 1));
 		newMesh->addBuffer(newBuffer, newMaterial);
 	}
+	int a = 0;
 	return newMesh;
 }
 void Mesh::addBuffer(Buffer* buffer, Material* material)

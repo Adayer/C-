@@ -34,6 +34,7 @@ private:
 	int m_vPosLoc;
 	int m_vColorLoc;
 	int m_vTextLoc;
+	int m_vVertexNormLoc;
 
 	uint32_t m_uID;
 

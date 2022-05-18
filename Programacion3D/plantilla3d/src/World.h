@@ -2,6 +2,8 @@
 #include <vector>
 #include "Entity.h"
 class Camera;
+class Light;
+
 class World
 {
 public:
@@ -26,10 +28,21 @@ public:
 		}
 		return nullptr;
 	}
-	
+	Camera* getMainCamera() 
+	{
+		if (m_tCameras.size() > 0) { return m_tCameras[0]; } 
+		else { return nullptr; }
+	}
 	void update(float deltaTime);
 	void draw();
+
+	const glm::vec3& getAmbient() const { return m_vWorldAmbient; }
+	void setAmbient(const glm::vec3& ambient) { m_vWorldAmbient = ambient; }
+
 private:
 	std::vector<Entity*> m_tEntities;
-	std::vector<Camera> m_tCameras;
+	std::vector<Camera*> m_tCameras;
+	std::vector<Light*> m_tLights;
+
+	glm::vec3 m_vWorldAmbient;
 };

@@ -4,7 +4,7 @@
 class Camera : public Entity
 {
 public:
-	Camera() : Entity()
+	Camera() : Entity(), m_vPosition(0,0,6), m_vDirection(0,0,-1)
 	{
 
 	}
@@ -15,9 +15,16 @@ public:
 	const glm::vec3& getClearColor() const { return m_vColor; }
 	void setClearColor(const glm::vec3& color) { m_vColor = color; }
 
+	void SetCameraDirection(const glm::vec3& _direction) { m_vDirection = _direction; }
+
 	void prepare();
+
+	void Move(const glm::vec3& _offSet);
 protected:
 	glm::mat4 m_mProjection;
 	glm::ivec4 m_vViewport;
 	glm::vec3 m_vColor;
+
+	glm::vec3 m_vPosition;
+	glm::vec3 m_vDirection;
 };

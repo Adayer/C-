@@ -4,6 +4,7 @@
 #include "Shader.h"
 
 class Shader;
+class Light;
 
 class State
 {
@@ -12,4 +13,7 @@ public:
 	static glm::mat4 projectionMatrix;
 	static glm::mat4 viewMatrix;
 	static glm::mat4 modelMatrix;
+
+	static std::vector<Light*> tLights;
+	static glm::vec3 ambient;
 };

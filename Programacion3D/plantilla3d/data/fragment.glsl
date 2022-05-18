@@ -1,7 +1,10 @@
+#version 430
+
+in vec4 varyingColor;
+in vec2 ftex;
 uniform sampler2D texSampler;
-varying vec2 ftex;
 
 void main()
 {
-gl_FragColor = texture2D(texSampler, ftex);
+gl_FragColor = texture2D(texSampler, ftex) * varyingColor;
 }
