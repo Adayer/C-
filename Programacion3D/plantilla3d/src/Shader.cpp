@@ -70,7 +70,7 @@ Shader::Shader(const std::string& _vertexFilename, const std::string& _fragmentF
 	m_vPosLoc = glGetAttribLocation(m_uID, "vpos");
 	//m_vColorLoc = glGetAttribLocation(m_uID, "vcolor");
 	m_vTextLoc = glGetAttribLocation(m_uID, "vtex");
-	m_vVertexNormLoc = glGetAttribLocation(m_uID, "vertexNormal");
+	m_vVertexNormLoc = glGetAttribLocation(m_uID, "vnormal");
 
 	glUseProgram(m_uID); // TO DO: Cambiar a futuro
 }
@@ -109,6 +109,11 @@ void Shader::setupAttribs() const
 	{
 		glEnableVertexAttribArray(m_vTextLoc);
 		glVertexAttribPointer(m_vTextLoc, 2, GL_FLOAT, false, sizeof(Vertex), reinterpret_cast<const void*>(offsetof(Vertex, vTextureCoord)));
+	}
+	if (m_vVertexNormLoc != -1)
+	{
+		glEnableVertexAttribArray(m_vVertexNormLoc);
+		glVertexAttribPointer(m_vVertexNormLoc, 3, GL_FLOAT, false, sizeof(Vertex), reinterpret_cast<const void*>(offsetof(Vertex, vNormal)));
 	}
 }
 

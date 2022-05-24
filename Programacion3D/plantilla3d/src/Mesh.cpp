@@ -42,6 +42,9 @@ Mesh* Mesh::load(const char* filename, const Shader* shader)
 				shapes[i].mesh.indices[y].texcoord_index + 0];
 			vertexAux->vTextureCoord.y = attrib.texcoords[2 *
 				shapes[i].mesh.indices[y].texcoord_index + 1];
+			vertexAux->vNormal.x = attrib.normals[3 * shapes[i].mesh.indices[y].normal_index + 0];
+			vertexAux->vNormal.y = attrib.normals[3 * shapes[i].mesh.indices[y].normal_index + 1];
+			vertexAux->vNormal.z = attrib.normals[3 * shapes[i].mesh.indices[y].normal_index + 2];
 			tVertexes.push_back(*vertexAux);
 			tIndexes.push_back(y);
 		}

@@ -23,8 +23,15 @@ void World::InitWorld()
 	Model* newModel = new Model(*cowboy);
 	newModel->setPosition(glm::vec3(4, 0, -5));
 	newModel->setScale(glm::vec3(0.25, 0.25, 0.25));
-	newModel->setRotation(glm::vec3(0, 0, 0));
+	newModel->setRotation(glm::vec3(0, 45, 0));
 	addEntity(newModel);
+
+	Light* newLight = new Light();
+	newLight->setColor(glm::vec3(1.f, 0.f, 0.f));
+	newLight->setType(Type::Directional);
+	m_tLights.push_back(newLight);
+
+	m_vWorldAmbient = glm::vec3(1.f, 1.f, 1.f);
 }
 void World::update(float deltaTime)
 {
