@@ -28,7 +28,17 @@ void World::InitWorld()
 
 	Light* newLight = new Light();
 	newLight->setColor(glm::vec3(1.f, 0.f, 0.f));
+	newLight->setType(Type::Point);
+	//newLight->setPos(glm::vec3(10000.f, 10000.f, 10000.f));
+	newLight->setPos(glm::vec3(1000.f, 1000.f, 1000.f));
+	newLight->setLinearAttenuation(0.f);
+	m_tLights.push_back(newLight);
+
+	newLight = new Light();
+	newLight->setColor(glm::vec3(0.f, 0.f, 1.f));
 	newLight->setType(Type::Directional);
+	newLight->setPos(glm::vec3(-10000.f, -10000.f, -10000.f));
+	newLight->setLinearAttenuation(0.f);
 	m_tLights.push_back(newLight);
 
 	m_vWorldAmbient = glm::vec3(1.f, 1.f, 1.f);

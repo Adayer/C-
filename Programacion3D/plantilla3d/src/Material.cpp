@@ -30,10 +30,14 @@ void Material::prepare() const
 	int locGlobalAmbient = getShader()->getLocation("globalAmbient");
 	getShader()->setVec3(locGlobalAmbient, State::ambient);
 	
-	int numLights = getShader()->getLocation("numLights");
-	getShader()->setInt(numLights, State::tLights.size());
+	int locNumLights = getShader()->getLocation("numLights");
+	getShader()->setInt(locNumLights, State::tLights.size());
 
-	State::tLights[0]->prepare(0, getShader());
+	size_t numLights = State::tLights.size();
+	for (size_t i = 0; i < numLights; i++)
+	{
+		State::tLights[i]->prepare(i, getShader());
+	}
 	
 	int locMatAmbient = getShader()->getLocation("material.ambient");
 	getShader()->setVec4(locMatAmbient, glm::vec4(m_vColor));

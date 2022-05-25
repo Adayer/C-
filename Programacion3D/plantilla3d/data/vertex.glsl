@@ -24,6 +24,7 @@ out vec3 N[3];
 out vec3 L[3];
 out vec3 H[3];
 
+out vec4 fpos;
 
 void main() {
 
@@ -32,10 +33,11 @@ void main() {
 	for(int i = 0; i < numLights; ++i)
 	{
 		N[i] = normalize((norm_matrix * vec4(vnormal, 1.0)).xyz); //varyingNormal
-		L[i] = normalize(light[i].position - P.xyz); //varyingLightPos
-		H[i] =	L[i] - P.xyz;
+		L[i] = light[i].position - P.xyz; //varyingLightPos
+		H[i] = normalize(L[i]) - P.xyz;
 	}
 
 	gl_Position = mvp * vec4(vpos, 1);
 	ftex = vtex;
+	fpos = mvp * vec4(vpos, 1);
 }

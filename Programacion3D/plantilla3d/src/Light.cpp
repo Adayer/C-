@@ -27,5 +27,12 @@ void Light::prepare(int index, const Shader* shader) const
 
 	int locMatPos = shader->getLocation
 	((lightName + std::to_string(index) + positionName).c_str());
-	shader->setVec3(locMatPos, glm::vec3(1000, 10000, 10000));
+	shader->setVec3(locMatPos, m_vPos);
+
+	int locIsPoint = shader->getLocation("isPointLight");
+	int value = m_eType == Type::Point ? 1 : 0;
+	shader->setInt(locIsPoint, value);
+	
+	int locAtt = shader->getLocation("linearAtt");
+	shader->setFloat(locAtt, m_fLinearAttenuation);
 }
