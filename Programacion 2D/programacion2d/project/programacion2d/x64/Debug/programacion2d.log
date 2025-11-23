@@ -1,0 +1,12 @@
+﻿main.obj : error LNK2019: unresolved external symbol glfwInit referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwTerminate referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwCreateWindow referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwWindowShouldClose referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwSetWindowShouldClose referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwGetKey referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwSwapBuffers referenced in function main
+CTime.obj : error LNK2019: unresolved external symbol glfwGetTime referenced in function "public: void __cdecl CTime::UpdateDeltaTime(void)" (?UpdateDeltaTime@CTime@@QEAAXXZ)
+C:\Github\C-\Programacion 2D\programacion2d\project\..\lib\\glfw3.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Github\C-\Programacion 2D\programacion2d\project\x64\Debug\programacion2d.exe : fatal error LNK1120: 10 unresolved externals

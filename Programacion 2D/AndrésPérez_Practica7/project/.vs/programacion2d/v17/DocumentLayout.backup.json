@@ -1,0 +1,102 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Github\\C-\\Programacion 2D\\Andr\u00E9sP\u00E9rez_Practica7\\project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{12C74402-E6BB-4B59-A4A7-43EEAE9E5D6A}|programacion2d.vcxproj|C:\\Github\\C-\\Programacion 2D\\Andr\u00E9sP\u00E9rez_Practica7\\src\\World.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12C74402-E6BB-4B59-A4A7-43EEAE9E5D6A}|programacion2d.vcxproj|C:\\Github\\C-\\Programacion 2D\\Andr\u00E9sP\u00E9rez_Practica7\\src\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12C74402-E6BB-4B59-A4A7-43EEAE9E5D6A}|programacion2d.vcxproj|C:\\Github\\C-\\Programacion 2D\\Andr\u00E9sP\u00E9rez_Practica7\\lib\\litegfx.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12C74402-E6BB-4B59-A4A7-43EEAE9E5D6A}|programacion2d.vcxproj|C:\\Github\\C-\\Programacion 2D\\Andr\u00E9sP\u00E9rez_Practica7\\src\\Time.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12C74402-E6BB-4B59-A4A7-43EEAE9E5D6A}|programacion2d.vcxproj|C:\\Github\\C-\\Programacion 2D\\Andr\u00E9sP\u00E9rez_Practica7\\src\\main.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "litegfx.h",
+              "DocumentMoniker": "C:\\Github\\C-\\Programacion 2D\\Andr\u00E9sP\u00E9rez_Practica7\\lib\\litegfx.h",
+              "RelativeDocumentMoniker": "..\\lib\\litegfx.h",
+              "ToolTip": "C:\\Github\\C-\\Programacion 2D\\Andr\u00E9sP\u00E9rez_Practica7\\lib\\litegfx.h",
+              "RelativeToolTip": "..\\lib\\litegfx.h",
+              "ViewState": "AgIAAO0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-18T09:00:31.092Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Time.cpp",
+              "DocumentMoniker": "C:\\Github\\C-\\Programacion 2D\\Andr\u00E9sP\u00E9rez_Practica7\\src\\Time.cpp",
+              "RelativeDocumentMoniker": "..\\src\\Time.cpp",
+              "ToolTip": "C:\\Github\\C-\\Programacion 2D\\Andr\u00E9sP\u00E9rez_Practica7\\src\\Time.cpp",
+              "RelativeToolTip": "..\\src\\Time.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-18T08:57:50.133Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "World.cpp",
+              "DocumentMoniker": "C:\\Github\\C-\\Programacion 2D\\Andr\u00E9sP\u00E9rez_Practica7\\src\\World.cpp",
+              "RelativeDocumentMoniker": "..\\src\\World.cpp",
+              "ToolTip": "C:\\Github\\C-\\Programacion 2D\\Andr\u00E9sP\u00E9rez_Practica7\\src\\World.cpp",
+              "RelativeToolTip": "..\\src\\World.cpp",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAQwKcAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-18T08:57:46.618Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "main.h",
+              "DocumentMoniker": "C:\\Github\\C-\\Programacion 2D\\Andr\u00E9sP\u00E9rez_Practica7\\src\\main.h",
+              "RelativeDocumentMoniker": "..\\src\\main.h",
+              "ToolTip": "C:\\Github\\C-\\Programacion 2D\\Andr\u00E9sP\u00E9rez_Practica7\\src\\main.h",
+              "RelativeToolTip": "..\\src\\main.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-18T08:57:43.812Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Github\\C-\\Programacion 2D\\Andr\u00E9sP\u00E9rez_Practica7\\src\\main.cpp",
+              "RelativeDocumentMoniker": "..\\src\\main.cpp",
+              "ToolTip": "C:\\Github\\C-\\Programacion 2D\\Andr\u00E9sP\u00E9rez_Practica7\\src\\main.cpp",
+              "RelativeToolTip": "..\\src\\main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-18T08:57:12.072Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

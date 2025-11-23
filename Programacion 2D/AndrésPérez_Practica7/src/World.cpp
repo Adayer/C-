@@ -165,7 +165,7 @@ bool World::loadMap(const char* filename, uint16_t firstColId)
         std::cout << result.description() << std::endl;
         return nullptr;
     }
-
+    return result;
 }
 vec2 World::getMapSize() const
 {

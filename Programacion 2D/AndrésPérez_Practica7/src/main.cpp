@@ -9,6 +9,10 @@
 #include "Sprite.h"
 #include <vector>
 #include "Player.h"
+#include <glfw3.h>
+#include <gl/GL.h>
+
+#include "litegfx.h"
 
 #define TEXTURE_LIST(_ACTION)\
 _ACTION(Clouds, png)\
